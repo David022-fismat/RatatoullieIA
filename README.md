@@ -1,6 +1,12 @@
 # Protótipo RatatouilleIA – agentes de planejamento de refeições
 
-## Rodar
+## Usar o agente
+
+    python agente.py           # pergunta perfil e estoque, mostra o cardápio e aprende com o retorno
+    python agente.py --llm     # mesmo, com o Montador usando LLM (precisa de ANTHROPIC_API_KEY)
+    python agente.py --novo    # refaz o perfil (fica salvo em perfil.json)
+
+## Demonstrações
 
     pip install -r requirements.txt
     python demo_montador_avaliador.py        # Montador + Avaliador (base e LLM simulado)
