@@ -1,0 +1,4 @@
+{"nome": "Omelete de abobrinha", "porcoes": 2, "tempo_min": 15, "preparo": "", "ingredientes": [{"id": "ovo", "gramas": 180.0}, {"id": "abobrinha", "gramas": 200.0}, {"id": "cebola", "gramas": 40.0}], "origem": "llm"}
+{"nome": "Cuscuz com ovo e tomate", "porcoes": 2, "tempo_min": 15, "preparo": "", "ingredientes": [{"id": "farinha_milho", "gramas": 160.0}, {"id": "ovo", "gramas": 120.0}, {"id": "tomate", "gramas": 150.0}], "origem": "llm"}
+{"nome": "Macaxeira cozida com ovo e tomate", "porcoes": 2, "tempo_min": 30, "preparo": "", "ingredientes": [{"id": "mandioca", "gramas": 500.0}, {"id": "ovo", "gramas": 120.0}, {"id": "tomate", "gramas": 150.0}], "origem": "llm"}
+{"nome": "Arroz, feijão e abobrinha refogada", "porcoes": 2, "tempo_min": 35, "preparo": "", "ingredientes": [{"id": "arroz", "gramas": 160.0}, {"id": "feijao", "gramas": 120.0}, {"id": "abobrinha", "gramas": 200.0}], "origem": "llm"}
