@@ -1,0 +1,6 @@
+restricao,tipo,ingredientes_excluidos
+vegetariano,escolha,frango|coxa_sobrecoxa|carne_moida|carne_bovina|pernil|linguica|paio|bacon|sardinha|peixe|frango_inteiro|figado|camarao
+sem_lactose,saude,leite|leite_po|queijo|manteiga|mussarela|parmesao
+alergia_ovo,saude,ovo|maionese|pao_forma
+celiaco,saude,macarrao|pao_forma|farinha_trigo|trigo_quibe|aveia|molho_soja|farinha_rosca
+sem_carne_vermelha,escolha,carne_moida|carne_bovina|pernil|linguica|paio|bacon|figado

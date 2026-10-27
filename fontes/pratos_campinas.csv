@@ -1,0 +1,23 @@
+prato;padrao;tipo;receita;obs
+Ovos mexidos com legumes;^ovos mexidos;prato;derivada;cardápio varia o legume (tomate, abobrinha, batata, cenoura)
+Escondidinho de batata com frango;^escondidinho de batata com frango;prato;derivada;
+Escondidinho de batata com legumes;^escondidinho de batata com cenoura;prato;derivada;versão sem carne do cardápio
+Escondidinho de batata com peixe;^escondidinho de batata com peixe;prato;derivada;
+Risoto de carne com cenoura e tomate;^risoto (de|com) (carne|musculo);prato;bh:Arroz Temperado;mesma composição: arroz, carne, cenoura, tomate
+Carne em cubos;^(carne em (cubos|iscas)|paleta|file mignon suino)$;prato;bh:Carne de Panela;
+Carne em cubos com mandioca;^carne em cubos com mandioca;prato;derivada;
+Carne moída com mandioquinha;^carne moida com mandioquinha;prato;derivada;
+Carne moída ao molho de tomate;^carne moida (ao molho|com tomate);prato;derivada;
+Macarrão com molho de carne;^molho com (carne|musculo);prato;bh:Macarronada à Bolonhesa com Ovos;
+Frango com abóbora;^frango com abobora;prato;bh:Frango Ensopado com Moranga;
+Frango desfiado com tomate;^frango (desfiado )?com tomate|^frango$;prato;derivada;
+Grão de bico com frango;^grao de bico com frango;prato;derivada;
+Peixe ao molho;^peixe ao molho;prato;derivada;
+Pernil suíno desfiado com tomate;^pernil suino desfiado;prato;derivada;
+Feijoadinha;^feijoadinha;prato;derivada;feijão preto com carne em iscas
+Panqueca de carne moída;^panqueca;prato;derivada;
+Bolinho de carne assado;^bolinho de carne;prato;bh:Almôndegas ou Hamburguers;
+Virado de abobrinha;^virado de abobrinha;prato;bh:Virado de Abobrinha;Campinas usa farinha de milho
+Virado de couve;^virado de couve;prato;derivada;
+Sopa de legumes;^sopa com;prato;derivada;cardápio varia (batata, abóbora, chuchu, couve, escarola, arroz)
+Legumes refogados (jardineira);^(jardineira|mix de legumes|chuchu refogado);acompanhamento;bh:Jardineira de Legumes;

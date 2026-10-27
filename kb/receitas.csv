@@ -1,0 +1,51 @@
+id,nome,regiao,refeicao,tempo_min,porcoes,tags,tipo,fonte,frequencia_campinas
+r01,arroz feijão e ovo,Brasil,almoco|jantar,30,2,vegetariano|sem_lactose|rapido,prato,grupo,0
+r02,cuscuz com ovo,Nordeste,cafe|jantar,15,2,vegetariano|sem_lactose|rapido,prato,grupo,0
+r03,frango grelhado com legumes,Brasil,almoco|jantar,35,2,sem_lactose,prato,grupo,0
+r04,macarrão à bolonhesa,Sudeste,almoco|jantar,30,2,sem_lactose,prato,grupo,0
+r05,escondidinho de mandioca com carne,Nordeste,almoco|jantar,60,2,,prato,grupo,0
+r06,omelete de abobrinha,Brasil,cafe|jantar,15,2,vegetariano|sem_lactose|rapido,prato,grupo,0
+r07,feijão preto com couve e arroz,Sudeste,almoco|jantar,40,2,vegetariano|sem_lactose,prato,grupo,0
+r08,sardinha com batata e salada,Brasil,almoco|jantar,25,2,sem_lactose|rapido,prato,grupo,0
+r09,sopa de legumes,Sul,jantar,40,2,vegetariano|sem_lactose,prato,grupo,0
+r10,macaxeira cozida com queijo,Nordeste,cafe|jantar,25,2,vegetariano,prato,grupo,0
+r11,pão com ovo e banana,Brasil,cafe,10,2,vegetariano|sem_lactose|rapido,prato,grupo,0
+r12,frango desfiado com purê,Sul,almoco|jantar,45,2,,prato,grupo,0
+ms01,Farofa de Legumes,Brasil,almoco|jantar,30,2,vegetariano|sem_lactose|alergia_ovo|celiaco|sem_carne_vermelha,acompanhamento,"Na Cozinha com as Frutas, Legumes e Verduras (Ministério da Saúde/UFMG, 2016, CC BY-NC-SA 4.0)",0
+ms02,Purê de Legumes,Brasil,almoco|jantar,30,2,vegetariano|alergia_ovo|celiaco|sem_carne_vermelha,acompanhamento,"Na Cozinha com as Frutas, Legumes e Verduras (Ministério da Saúde/UFMG, 2016, CC BY-NC-SA 4.0)",0
+ms03,Suflê de Chuchu,Brasil,almoco|jantar,50,2,vegetariano|celiaco|sem_carne_vermelha,prato,"Na Cozinha com as Frutas, Legumes e Verduras (Ministério da Saúde/UFMG, 2016, CC BY-NC-SA 4.0)",0
+ms04,Bolinho Assado de Chuchu,Brasil,almoco|jantar,50,2,vegetariano|sem_carne_vermelha,prato,"Na Cozinha com as Frutas, Legumes e Verduras (Ministério da Saúde/UFMG, 2016, CC BY-NC-SA 4.0)",0
+ms05,Mamão Verde Refogado,Brasil,almoco|jantar,30,2,vegetariano|sem_lactose|alergia_ovo|celiaco|sem_carne_vermelha,acompanhamento,"Na Cozinha com as Frutas, Legumes e Verduras (Ministério da Saúde/UFMG, 2016, CC BY-NC-SA 4.0)",0
+ms06,Kibe de Forno com Abóbora,Brasil,almoco|jantar,50,2,vegetariano|alergia_ovo|sem_carne_vermelha,prato,"Na Cozinha com as Frutas, Legumes e Verduras (Ministério da Saúde/UFMG, 2016, CC BY-NC-SA 4.0)",0
+ms07,Charuto de Repolho,Brasil,almoco|jantar,50,2,sem_lactose|alergia_ovo,prato,"Na Cozinha com as Frutas, Legumes e Verduras (Ministério da Saúde/UFMG, 2016, CC BY-NC-SA 4.0)",0
+ms08,Panqueca Verde,Brasil,almoco|jantar,50,2,vegetariano|sem_carne_vermelha,prato,"Na Cozinha com as Frutas, Legumes e Verduras (Ministério da Saúde/UFMG, 2016, CC BY-NC-SA 4.0)",0
+ms09,Trouxinha de Couve com Carne Moída e Angu,Sudeste,almoco|jantar,50,2,sem_lactose|alergia_ovo|celiaco,prato,"Na Cozinha com as Frutas, Legumes e Verduras (Ministério da Saúde/UFMG, 2016, CC BY-NC-SA 4.0)",0
+ms10,Rocambole de Moranga com Batata,Brasil,almoco|jantar,50,2,sem_carne_vermelha,prato,"Na Cozinha com as Frutas, Legumes e Verduras (Ministério da Saúde/UFMG, 2016, CC BY-NC-SA 4.0)",0
+ms11,Torta de Tomate,Brasil,almoco|jantar,50,2,vegetariano|sem_carne_vermelha,prato,"Na Cozinha com as Frutas, Legumes e Verduras (Ministério da Saúde/UFMG, 2016, CC BY-NC-SA 4.0)",0
+ms12,Almôndega com Jiló,Sudeste,almoco|jantar,30,2,sem_lactose|alergia_ovo,prato,"Na Cozinha com as Frutas, Legumes e Verduras (Ministério da Saúde/UFMG, 2016, CC BY-NC-SA 4.0)",0
+ms13,Torta de Arroz com Recheio de Tomate,Brasil,almoco|jantar,50,2,vegetariano|sem_carne_vermelha,prato,"Na Cozinha com as Frutas, Legumes e Verduras (Ministério da Saúde/UFMG, 2016, CC BY-NC-SA 4.0)",0
+ms14,Suflê de Cenoura,Brasil,almoco|jantar,50,2,vegetariano|sem_carne_vermelha,prato,"Na Cozinha com as Frutas, Legumes e Verduras (Ministério da Saúde/UFMG, 2016, CC BY-NC-SA 4.0)",0
+ms15,Virado de Quiabo,Sudeste,almoco|jantar,30,2,vegetariano|sem_lactose|alergia_ovo|celiaco|sem_carne_vermelha,prato,"Na Cozinha com as Frutas, Legumes e Verduras (Ministério da Saúde/UFMG, 2016, CC BY-NC-SA 4.0)",0
+ms16,Arroz com Pupunha,Norte,almoco|jantar,30,2,vegetariano|sem_lactose|alergia_ovo|celiaco|sem_carne_vermelha,acompanhamento,"Preparações Regionais Saudáveis (Ministério da Saúde, 2010)",0
+ms17,Caldeirada de Peixe com Chicória,Norte,almoco|jantar,50,2,sem_lactose|celiaco|sem_carne_vermelha,prato,"Preparações Regionais Saudáveis (Ministério da Saúde, 2010)",0
+ms18,Galinhada com Pequi,Centro-Oeste,almoco|jantar,50,2,sem_lactose|alergia_ovo|celiaco|sem_carne_vermelha,prato,"Preparações Regionais Saudáveis (Ministério da Saúde, 2010)",0
+ms19,Cozidão Maranhense,Nordeste,almoco|jantar,50,2,sem_lactose|alergia_ovo|celiaco,prato,"Preparações Regionais Saudáveis (Ministério da Saúde, 2010)",0
+ms20,Refogado de Carne com Palma,Nordeste,almoco|jantar,30,2,sem_lactose|alergia_ovo|celiaco,prato,"Preparações Regionais Saudáveis (Ministério da Saúde, 2010)",0
+ms21,Vatapá de Inhame,Nordeste,almoco|jantar,30,2,sem_lactose|alergia_ovo|celiaco|sem_carne_vermelha,acompanhamento,"Preparações Regionais Saudáveis (Ministério da Saúde, 2010)",0
+ms22,Arroz com Fibra de Caju,Nordeste,almoco|jantar,30,2,vegetariano|sem_lactose|alergia_ovo|celiaco|sem_carne_vermelha,acompanhamento,"Preparações Regionais Saudáveis (Ministério da Saúde, 2010)",0
+ms23,Fígado com Jiló,Sudeste,almoco|jantar,30,2,alergia_ovo|celiaco,prato,"Preparações Regionais Saudáveis (Ministério da Saúde, 2010)",0
+ms24,Angu com Espinafre,Sudeste,almoco|jantar,30,2,vegetariano|sem_lactose|alergia_ovo|celiaco|sem_carne_vermelha,acompanhamento,"Preparações Regionais Saudáveis (Ministério da Saúde, 2010)",0
+ms25,Virado de Vagem,Sudeste,almoco|jantar,30,2,vegetariano|alergia_ovo|celiaco|sem_carne_vermelha,acompanhamento,"Preparações Regionais Saudáveis (Ministério da Saúde, 2010)",0
+ia01,Cuscuz com ovo mexido e tomate,Nordeste,almoco|jantar,15,2,vegetariano|sem_lactose|celiaco|sem_carne_vermelha,prato,"Gerada por IA (Claude) para lacuna: rápida para quem mora sozinho (1 porção, até 20 min); PENDENTE de revisão do grupo",0
+ia02,Macarrão com sardinha e tomate,Brasil,almoco|jantar,20,2,sem_lactose|alergia_ovo|sem_carne_vermelha,prato,"Gerada por IA (Claude) para lacuna: rápida para quem mora sozinho (1 porção, até 20 min); PENDENTE de revisão do grupo",0
+ia03,Frango em cubos com abobrinha,Brasil,almoco|jantar,20,2,sem_lactose|alergia_ovo|celiaco|sem_carne_vermelha,prato,"Gerada por IA (Claude) para lacuna: rápida para quem mora sozinho (1 porção, até 20 min); PENDENTE de revisão do grupo",0
+ia04,Feijão preto com abóbora e couve,Sudeste,almoco|jantar,45,2,vegetariano|sem_lactose|alergia_ovo|celiaco|sem_carne_vermelha,prato,Gerada por IA (Claude) para lacuna: vegetariana com leguminosa; PENDENTE de revisão do grupo,0
+ia05,Grão-de-bico refogado com tomate e espinafre,Brasil,almoco|jantar,45,2,vegetariano|sem_lactose|alergia_ovo|celiaco|sem_carne_vermelha,prato,Gerada por IA (Claude) para lacuna: vegetariana com leguminosa; PENDENTE de revisão do grupo,0
+ia06,Escondidinho de mandioca com feijão,Nordeste,almoco|jantar,50,2,vegetariano|alergia_ovo|celiaco|sem_carne_vermelha,prato,Gerada por IA (Claude) para lacuna: vegetariana com leguminosa; PENDENTE de revisão do grupo,0
+ia07,Carne moída com legumes,Brasil,almoco|jantar,35,2,sem_lactose|alergia_ovo|celiaco,prato,Gerada por IA (Claude) para lacuna: marmita para a semana que congela bem (4 porções); PENDENTE de revisão do grupo,0
+ia08,Frango desfiado com milho e cenoura,Brasil,almoco|jantar,45,2,sem_lactose|alergia_ovo|celiaco|sem_carne_vermelha,prato,Gerada por IA (Claude) para lacuna: marmita para a semana que congela bem (4 porções); PENDENTE de revisão do grupo,0
+ia09,Polenta mole com molho de carne moída,Sul,almoco|jantar,30,2,sem_lactose|alergia_ovo|celiaco,prato,Gerada por IA (Claude) para lacuna: baixo custo; PENDENTE de revisão do grupo,0
+ia10,Sopa de feijão com macarrão,Sudeste,almoco|jantar,40,2,vegetariano|sem_lactose|alergia_ovo|sem_carne_vermelha,prato,Gerada por IA (Claude) para lacuna: baixo custo; PENDENTE de revisão do grupo,0
+ia11,Peixe assado com batata e tomate,Brasil,almoco|jantar,40,2,sem_lactose|alergia_ovo|celiaco|sem_carne_vermelha,prato,Gerada por IA (Claude) para lacuna: sem lactose e sem glúten; PENDENTE de revisão do grupo,0
+ia12,Baião de dois simples,Nordeste,almoco|jantar,40,2,vegetariano|alergia_ovo|celiaco|sem_carne_vermelha,prato,Gerada por IA (Claude) para lacuna: regional nordestina do dia a dia; PENDENTE de revisão do grupo,0
+ia13,Cuscuz nordestino com ovo e legumes,Nordeste,almoco|jantar,20,2,vegetariano|sem_lactose|celiaco|sem_carne_vermelha,prato,Gerada por IA (Claude) para lacuna: regional nordestina do dia a dia; PENDENTE de revisão do grupo,0

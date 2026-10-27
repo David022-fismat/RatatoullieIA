@@ -1,0 +1,603 @@
+{
+ "n_pratos": 42,
+ "e1_cobertura": [
+  {
+   "perfil": "sem restrição",
+   "originais": 42,
+   "com_adaptacao": 42,
+   "total": 42
+  },
+  {
+   "perfil": "vegetariano",
+   "originais": 22,
+   "com_adaptacao": 22,
+   "total": 42
+  },
+  {
+   "perfil": "sem_lactose",
+   "originais": 28,
+   "com_adaptacao": 42,
+   "total": 42
+  },
+  {
+   "perfil": "celiaco",
+   "originais": 29,
+   "com_adaptacao": 42,
+   "total": 42
+  },
+  {
+   "perfil": "alergia_ovo",
+   "originais": 28,
+   "com_adaptacao": 30,
+   "total": 42
+  },
+  {
+   "perfil": "sem_carne_vermelha",
+   "originais": 32,
+   "com_adaptacao": 32,
+   "total": 42
+  },
+  {
+   "perfil": "vegetariano + sem_lactose",
+   "originais": 12,
+   "com_adaptacao": 22,
+   "total": 42
+  },
+  {
+   "perfil": "celiaco + sem_lactose",
+   "originais": 22,
+   "com_adaptacao": 42,
+   "total": 42
+  }
+ ],
+ "e2_deteccao": [
+  {
+   "tipo": "ingrediente proibido",
+   "rejeitadas_pct": 100.0,
+   "n": 300
+  },
+  {
+   "tipo": "ingrediente inexistente",
+   "rejeitadas_pct": 100.0,
+   "n": 300
+  },
+  {
+   "tipo": "porção absurda (×5)",
+   "rejeitadas_pct": 83.0,
+   "n": 300
+  },
+  {
+   "tipo": "tempo acima do limite",
+   "rejeitadas_pct": 100.0,
+   "n": 300
+  },
+  {
+   "tipo": "sem erro (controle)",
+   "rejeitadas_pct": 0.0,
+   "n": 300
+  }
+ ],
+ "e3_rodadas": [
+  {
+   "taxa_erro_llm": 0,
+   "rodadas_media": 1,
+   "completos_pct": 100.0
+  },
+  {
+   "taxa_erro_llm": 0.1,
+   "rodadas_media": 1.07,
+   "completos_pct": 100.0
+  },
+  {
+   "taxa_erro_llm": 0.2,
+   "rodadas_media": 1.32,
+   "completos_pct": 100.0
+  },
+  {
+   "taxa_erro_llm": 0.3,
+   "rodadas_media": 1.57,
+   "completos_pct": 100.0
+  },
+  {
+   "taxa_erro_llm": 0.4,
+   "rodadas_media": 1.8,
+   "completos_pct": 100.0
+  },
+  {
+   "taxa_erro_llm": 0.5,
+   "rodadas_media": 2.0,
+   "completos_pct": 99.5
+  },
+  {
+   "taxa_erro_llm": 0.6,
+   "rodadas_media": 2.33,
+   "completos_pct": 92.5
+  },
+  {
+   "taxa_erro_llm": 0.7,
+   "rodadas_media": 2.62,
+   "completos_pct": 68.0
+  },
+  {
+   "taxa_erro_llm": 0.8,
+   "rodadas_media": 2.9,
+   "completos_pct": 40.5
+  }
+ ],
+ "e4_personalizacao": {
+  "geral": {
+   "sem aprendizado": [
+    44.0,
+    43.7,
+    45.0,
+    47.0,
+    44.0,
+    44.0,
+    43.7,
+    43.7,
+    47.3,
+    45.3,
+    43.3,
+    44.0
+   ],
+   "regra simples": [
+    44.0,
+    45.3,
+    45.0,
+    49.7,
+    47.7,
+    47.0,
+    45.3,
+    46.3,
+    48.0,
+    44.7,
+    44.3,
+    47.7
+   ],
+   "regra centrada": [
+    44.0,
+    44.0,
+    45.0,
+    49.3,
+    45.3,
+    47.7,
+    47.0,
+    46.3,
+    50.7,
+    48.7,
+    48.7,
+    49.7
+   ]
+  },
+  "por_arquetipo": {
+   "quer rapidez": {
+    "sem aprendizado": [
+     66.0,
+     61.0,
+     67.0,
+     65.0,
+     60.0,
+     65.0,
+     68.0,
+     70.0,
+     64.0,
+     65.0,
+     58.0,
+     66.0
+    ],
+    "regra simples": [
+     66.0,
+     65.0,
+     69.0,
+     74.0,
+     72.0,
+     78.0,
+     78.0,
+     77.0,
+     78.0,
+     79.0,
+     80.0,
+     79.0
+    ],
+    "regra centrada": [
+     66.0,
+     62.0,
+     68.0,
+     72.0,
+     64.0,
+     75.0,
+     75.0,
+     76.0,
+     73.0,
+     75.0,
+     72.0,
+     80.0
+    ]
+   },
+   "quer comida in natura": {
+    "sem aprendizado": [
+     35.0,
+     36.0,
+     31.0,
+     40.0,
+     37.0,
+     33.0,
+     33.0,
+     29.0,
+     39.0,
+     37.0,
+     36.0,
+     33.0
+    ],
+    "regra simples": [
+     35.0,
+     37.0,
+     29.0,
+     39.0,
+     37.0,
+     30.0,
+     28.0,
+     28.0,
+     33.0,
+     28.0,
+     23.0,
+     32.0
+    ],
+    "regra centrada": [
+     35.0,
+     37.0,
+     31.0,
+     40.0,
+     37.0,
+     34.0,
+     35.0,
+     31.0,
+     39.0,
+     36.0,
+     38.0,
+     35.0
+    ]
+   },
+   "quer verdura no prato": {
+    "sem aprendizado": [
+     31.0,
+     34.0,
+     37.0,
+     36.0,
+     35.0,
+     34.0,
+     30.0,
+     32.0,
+     39.0,
+     34.0,
+     36.0,
+     33.0
+    ],
+    "regra simples": [
+     31.0,
+     34.0,
+     37.0,
+     36.0,
+     34.0,
+     33.0,
+     30.0,
+     34.0,
+     33.0,
+     27.0,
+     30.0,
+     32.0
+    ],
+    "regra centrada": [
+     31.0,
+     33.0,
+     36.0,
+     36.0,
+     35.0,
+     34.0,
+     31.0,
+     32.0,
+     40.0,
+     35.0,
+     36.0,
+     34.0
+    ]
+   }
+  }
+ },
+ "e5_nutrientes": [
+  {
+   "nome": "arroz feijão e ovo",
+   "fonte": "Grupo",
+   "kcal": 584.9,
+   "proteina_g": 26.4,
+   "fibra_g": 13.4
+  },
+  {
+   "nome": "cuscuz com ovo",
+   "fonte": "Grupo",
+   "kcal": 410.8,
+   "proteina_g": 13.6,
+   "fibra_g": 4.4
+  },
+  {
+   "nome": "frango grelhado com legumes",
+   "fonte": "Grupo",
+   "kcal": 510.3,
+   "proteina_g": 40.2,
+   "fibra_g": 4.9
+  },
+  {
+   "nome": "macarrão à bolonhesa",
+   "fonte": "Grupo",
+   "kcal": 567.0,
+   "proteina_g": 35.8,
+   "fibra_g": 4.6
+  },
+  {
+   "nome": "escondidinho de mandioca com carne",
+   "fonte": "Grupo",
+   "kcal": 558.5,
+   "proteina_g": 27.4,
+   "fibra_g": 5.3
+  },
+  {
+   "nome": "omelete de abobrinha",
+   "fonte": "Grupo",
+   "kcal": 155.5,
+   "proteina_g": 13.1,
+   "fibra_g": 1.8
+  },
+  {
+   "nome": "feijão preto com couve e arroz",
+   "fonte": "Grupo",
+   "kcal": 506.7,
+   "proteina_g": 21.1,
+   "fibra_g": 16.9
+  },
+  {
+   "nome": "sardinha com batata e salada",
+   "fonte": "Grupo",
+   "kcal": 287.1,
+   "proteina_g": 13.8,
+   "fibra_g": 3.3
+  },
+  {
+   "nome": "sopa de legumes",
+   "fonte": "Grupo",
+   "kcal": 122.0,
+   "proteina_g": 4.3,
+   "fibra_g": 6.0
+  },
+  {
+   "nome": "macaxeira cozida com queijo",
+   "fonte": "Grupo",
+   "kcal": 509.5,
+   "proteina_g": 11.4,
+   "fibra_g": 4.8
+  },
+  {
+   "nome": "pão com ovo e banana",
+   "fonte": "Grupo",
+   "kcal": 310.3,
+   "proteina_g": 13.8,
+   "fibra_g": 5.5
+  },
+  {
+   "nome": "frango desfiado com purê",
+   "fonte": "Grupo",
+   "kcal": 314.3,
+   "proteina_g": 36.2,
+   "fibra_g": 2.8
+  },
+  {
+   "nome": "Suflê de Chuchu",
+   "fonte": "Ministério da Saúde",
+   "kcal": 67.8,
+   "proteina_g": 4.1,
+   "fibra_g": 1.0
+  },
+  {
+   "nome": "Bolinho Assado de Chuchu",
+   "fonte": "Ministério da Saúde",
+   "kcal": 125.5,
+   "proteina_g": 6.1,
+   "fibra_g": 2.6
+  },
+  {
+   "nome": "Kibe de Forno com Abóbora",
+   "fonte": "Ministério da Saúde",
+   "kcal": 163.7,
+   "proteina_g": 4.0,
+   "fibra_g": 1.4
+  },
+  {
+   "nome": "Charuto de Repolho",
+   "fonte": "Ministério da Saúde",
+   "kcal": 186.1,
+   "proteina_g": 8.7,
+   "fibra_g": 2.1
+  },
+  {
+   "nome": "Panqueca Verde",
+   "fonte": "Ministério da Saúde",
+   "kcal": 182.0,
+   "proteina_g": 6.8,
+   "fibra_g": 1.5
+  },
+  {
+   "nome": "Trouxinha de Couve com Carne Moída e Angu",
+   "fonte": "Ministério da Saúde",
+   "kcal": 523.5,
+   "proteina_g": 29.4,
+   "fibra_g": 4.9
+  },
+  {
+   "nome": "Rocambole de Moranga com Batata",
+   "fonte": "Ministério da Saúde",
+   "kcal": 198.0,
+   "proteina_g": 14.2,
+   "fibra_g": 2.3
+  },
+  {
+   "nome": "Torta de Tomate",
+   "fonte": "Ministério da Saúde",
+   "kcal": 321.0,
+   "proteina_g": 9.6,
+   "fibra_g": 1.5
+  },
+  {
+   "nome": "Almôndega com Jiló",
+   "fonte": "Ministério da Saúde",
+   "kcal": 83.6,
+   "proteina_g": 9.4,
+   "fibra_g": 1.6
+  },
+  {
+   "nome": "Torta de Arroz com Recheio de Tomate",
+   "fonte": "Ministério da Saúde",
+   "kcal": 711.7,
+   "proteina_g": 24.7,
+   "fibra_g": 3.5
+  },
+  {
+   "nome": "Suflê de Cenoura",
+   "fonte": "Ministério da Saúde",
+   "kcal": 77.5,
+   "proteina_g": 2.8,
+   "fibra_g": 1.2
+  },
+  {
+   "nome": "Virado de Quiabo",
+   "fonte": "Ministério da Saúde",
+   "kcal": 408.3,
+   "proteina_g": 8.5,
+   "fibra_g": 5.7
+  },
+  {
+   "nome": "Caldeirada de Peixe com Chicória",
+   "fonte": "Ministério da Saúde",
+   "kcal": 165.0,
+   "proteina_g": 19.4,
+   "fibra_g": 2.2
+  },
+  {
+   "nome": "Galinhada com Pequi",
+   "fonte": "Ministério da Saúde",
+   "kcal": 947.7,
+   "proteina_g": 44.9,
+   "fibra_g": 17.9
+  },
+  {
+   "nome": "Cozidão Maranhense",
+   "fonte": "Ministério da Saúde",
+   "kcal": 84.7,
+   "proteina_g": 10.1,
+   "fibra_g": 2.7
+  },
+  {
+   "nome": "Refogado de Carne com Palma",
+   "fonte": "Ministério da Saúde",
+   "kcal": 101.9,
+   "proteina_g": 12.6,
+   "fibra_g": 0.5
+  },
+  {
+   "nome": "Fígado com Jiló",
+   "fonte": "Ministério da Saúde",
+   "kcal": 151.2,
+   "proteina_g": 21.2,
+   "fibra_g": 1.7
+  },
+  {
+   "nome": "Cuscuz com ovo mexido e tomate",
+   "fonte": "IA (lacunas)",
+   "kcal": 417.6,
+   "proteina_g": 18.5,
+   "fibra_g": 4.7
+  },
+  {
+   "nome": "Macarrão com sardinha e tomate",
+   "fonte": "IA (lacunas)",
+   "kcal": 769.7,
+   "proteina_g": 31.1,
+   "fibra_g": 4.9
+  },
+  {
+   "nome": "Frango em cubos com abobrinha",
+   "fonte": "IA (lacunas)",
+   "kcal": 268.6,
+   "proteina_g": 34.8,
+   "fibra_g": 3.0
+  },
+  {
+   "nome": "Feijão preto com abóbora e couve",
+   "fonte": "IA (lacunas)",
+   "kcal": 284.4,
+   "proteina_g": 16.3,
+   "fibra_g": 17.6
+  },
+  {
+   "nome": "Grão-de-bico refogado com tomate e espinafre",
+   "fonte": "IA (lacunas)",
+   "kcal": 301.5,
+   "proteina_g": 16.2,
+   "fibra_g": 11.1
+  },
+  {
+   "nome": "Escondidinho de mandioca com feijão",
+   "fonte": "IA (lacunas)",
+   "kcal": 603.6,
+   "proteina_g": 13.6,
+   "fibra_g": 14.8
+  },
+  {
+   "nome": "Carne moída com legumes",
+   "fonte": "IA (lacunas)",
+   "kcal": 269.8,
+   "proteina_g": 27.1,
+   "fibra_g": 4.1
+  },
+  {
+   "nome": "Frango desfiado com milho e cenoura",
+   "fonte": "IA (lacunas)",
+   "kcal": 306.9,
+   "proteina_g": 35.8,
+   "fibra_g": 5.2
+  },
+  {
+   "nome": "Polenta mole com molho de carne moída",
+   "fonte": "IA (lacunas)",
+   "kcal": 425.3,
+   "proteina_g": 25.7,
+   "fibra_g": 4.9
+  },
+  {
+   "nome": "Sopa de feijão com macarrão",
+   "fonte": "IA (lacunas)",
+   "kcal": 424.3,
+   "proteina_g": 17.5,
+   "fibra_g": 14.7
+  },
+  {
+   "nome": "Peixe assado com batata e tomate",
+   "fonte": "IA (lacunas)",
+   "kcal": 392.1,
+   "proteina_g": 30.6,
+   "fibra_g": 4.6
+  },
+  {
+   "nome": "Baião de dois simples",
+   "fonte": "IA (lacunas)",
+   "kcal": 572.9,
+   "proteina_g": 23.9,
+   "fibra_g": 11.0
+  },
+  {
+   "nome": "Cuscuz nordestino com ovo e legumes",
+   "fonte": "IA (lacunas)",
+   "kcal": 407.9,
+   "proteina_g": 13.3,
+   "fibra_g": 6.4
+  }
+ ]
+}

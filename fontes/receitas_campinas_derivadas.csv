@@ -1,0 +1,91 @@
+receita;ingrediente;per_capita_g;origem_do_valor
+Ovos mexidos com legumes;ovo;50;BH Ovos Mexidos
+Ovos mexidos com legumes;abobrinha;16;BH Virado de Abobrinha
+Ovos mexidos com legumes;tomate;20;BH Virado de Abobrinha
+Ovos mexidos com legumes;cebola;2;BH Ovos Mexidos
+Ovos mexidos com legumes;oleo;1;BH Ovos Mexidos
+Escondidinho de batata com frango;batata;80;BH Purê de Batata
+Escondidinho de batata com frango;leite_po;8;BH Purê de Batata
+Escondidinho de batata com frango;oleo;2;BH Purê de Batata
+Escondidinho de batata com frango;frango;50;BH Legumes com Molho de Frango
+Escondidinho de batata com frango;tomate;13;BH Legumes com Molho de Frango
+Escondidinho de batata com frango;cebola;4;BH Purê de Batata
+Escondidinho de batata com frango;alho;1;BH Purê de Batata
+Escondidinho de batata com legumes;batata;80;BH Purê de Batata
+Escondidinho de batata com legumes;leite_po;8;BH Purê de Batata
+Escondidinho de batata com legumes;oleo;2;BH Purê de Batata
+Escondidinho de batata com legumes;cenoura;15;BH Legumes com Molho de Frango
+Escondidinho de batata com legumes;tomate;13;BH Legumes com Molho de Frango
+Escondidinho de batata com legumes;cebola;4;BH Purê de Batata
+Escondidinho de batata com legumes;alho;1;BH Purê de Batata
+Escondidinho de batata com peixe;batata;80;BH Purê de Batata
+Escondidinho de batata com peixe;leite_po;8;BH Purê de Batata
+Escondidinho de batata com peixe;oleo;2;BH Purê de Batata
+Escondidinho de batata com peixe;peixe;50;per capita de proteína dos pratos de almoço do manual BH
+Escondidinho de batata com peixe;tomate;13;BH Legumes com Molho de Frango
+Escondidinho de batata com peixe;cebola;4;BH Purê de Batata
+Carne em cubos com mandioca;carne_bovina;50;BH Carne de Panela
+Carne em cubos com mandioca;mandioca;70;BH Caldo de Mandioca
+Carne em cubos com mandioca;cebola;4;BH Carne de Panela
+Carne em cubos com mandioca;alho;1;BH Carne de Panela
+Carne em cubos com mandioca;oleo;1;BH Carne de Panela
+Carne moída com mandioquinha;carne_moida;50;BH Macarronada à Bolonhesa (carne, almoço)
+Carne moída com mandioquinha;mandioquinha;50;BH Torta de Mandioquinha
+Carne moída com mandioquinha;tomate;13;BH Macarronada à Bolonhesa
+Carne moída com mandioquinha;cebola;4;BH Macarronada à Bolonhesa
+Carne moída com mandioquinha;alho;1;BH Macarronada à Bolonhesa
+Carne moída com mandioquinha;oleo;1;BH Macarronada à Bolonhesa
+Carne moída ao molho de tomate;carne_moida;50;BH Macarronada à Bolonhesa (carne, almoço)
+Carne moída ao molho de tomate;tomate;13;BH Molho de Tomate
+Carne moída ao molho de tomate;extrato_tomate;5;BH Molho de Tomate
+Carne moída ao molho de tomate;cebola;3;BH Molho de Tomate
+Carne moída ao molho de tomate;alho;0.5;BH Molho de Tomate
+Carne moída ao molho de tomate;oleo;1;BH Molho de Tomate
+Frango desfiado com tomate;frango;50;BH Legumes com Molho de Frango
+Frango desfiado com tomate;tomate;13;BH Legumes com Molho de Frango
+Frango desfiado com tomate;cebola;5;BH Legumes com Molho de Frango
+Frango desfiado com tomate;alho;0.5;BH Legumes com Molho de Frango
+Frango desfiado com tomate;oleo;1;BH Legumes com Molho de Frango
+Grão de bico com frango;grao_de_bico;25;per capita de feijão do BH Feijão Tropeiro
+Grão de bico com frango;frango;50;BH Legumes com Molho de Frango
+Grão de bico com frango;tomate;13;BH Legumes com Molho de Frango
+Grão de bico com frango;cebola;4;BH Feijão Enriquecido
+Grão de bico com frango;alho;1;BH Feijão Enriquecido
+Grão de bico com frango;oleo;1;BH Feijão Simples
+Peixe ao molho;peixe;50;per capita de proteína dos pratos de almoço do manual BH
+Peixe ao molho;tomate;13;BH Molho de Tomate
+Peixe ao molho;extrato_tomate;5;BH Molho de Tomate
+Peixe ao molho;cebola;3;BH Molho de Tomate
+Peixe ao molho;alho;0.5;BH Molho de Tomate
+Peixe ao molho;oleo;1;BH Molho de Tomate
+Pernil suíno desfiado com tomate;pernil;45;BH Feijoada (pernil, almoço)
+Pernil suíno desfiado com tomate;tomate;13;BH Molho de Tomate
+Pernil suíno desfiado com tomate;cebola;4;BH Feijoada
+Pernil suíno desfiado com tomate;alho;2;BH Feijoada
+Pernil suíno desfiado com tomate;oleo;1;BH Molho de Tomate
+Feijoadinha;feijao_preto;30;BH Feijoada
+Feijoadinha;carne_bovina;45;BH Feijoada (per capita do pernil, trocado por carne bovina)
+Feijoadinha;cebola;4;BH Feijoada
+Feijoadinha;alho;2;BH Feijoada
+Panqueca de carne moída;farinha_trigo;15;BH Torta de Liquidificador com Frango (massa)
+Panqueca de carne moída;leite_po;2.5;BH Torta de Liquidificador com Frango (massa)
+Panqueca de carne moída;ovo;6;BH Torta de Liquidificador com Frango (massa)
+Panqueca de carne moída;oleo;3;BH Torta de Liquidificador com Frango (massa)
+Panqueca de carne moída;carne_moida;50;BH Macarronada à Bolonhesa (carne, almoço)
+Panqueca de carne moída;tomate;13;BH Molho de Tomate
+Panqueca de carne moída;extrato_tomate;5;BH Molho de Tomate
+Panqueca de carne moída;cebola;4;BH Macarronada à Bolonhesa
+Virado de couve;couve;15;BH Arroz Tropeiro
+Virado de couve;farinha_milho;20;BH Virado de Abobrinha (farinha)
+Virado de couve;ovo;40;BH Virado de Abobrinha
+Virado de couve;cebola;4;BH Virado de Abobrinha
+Virado de couve;alho;1;BH Virado de Abobrinha
+Virado de couve;oleo;2;BH Virado de Abobrinha
+Sopa de legumes;batata;40;BH Jardineira de Legumes
+Sopa de legumes;moranga;15;BH Feijão Enriquecido
+Sopa de legumes;chuchu;10;BH Jardineira de Legumes
+Sopa de legumes;cenoura;10;BH Sopa de Legumes com Carne e Macarrão
+Sopa de legumes;couve;10;BH Feijão Tropeiro
+Sopa de legumes;cebola;4;BH Sopa de Legumes com Carne e Macarrão
+Sopa de legumes;oleo;1;BH Sopa de Legumes com Carne e Macarrão
+Sopa de legumes;alho;0.5;BH Sopa de Legumes com Carne e Macarrão

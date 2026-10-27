@@ -1,0 +1,397 @@
+<title>Agentes RatatouilleIA</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: relatório de uma coluna (~72ch); resultados primeiro, depois o código passo a passo.
+   Cada gráfico fica numa "ficha" com a conclusão escrita acima e os dados num quadro recolhível abaixo. */
+:root {
+  --bg: #f6f7f4; --surface: #fdfdfb; --ink: #1b1f1c; --ink-2: #4b534e; --muted: #737b76;
+  --rule: #dde2dd; --accent: #2f6b4f; --accent-soft: #e4efe8; --code-bg: #eef1ed;
+  --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --neutral: #9aa09c;
+  --font-display: "Bricolage Grotesque", "Trebuchet MS", sans-serif;
+  --font-body: "Source Sans 3", "Segoe UI", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #131614; --surface: #1a1e1b; --ink: #e8ece9; --ink-2: #b8c0ba; --muted: #8d968f;
+  --rule: #2c332e; --accent: #7cc29d; --accent-soft: #1f2d25; --code-bg: #1f2420;
+  --s1: #3987e5; --s2: #d95926; --s3: #199e70; --neutral: #7d847f; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #131614; --surface: #1a1e1b; --ink: #e8ece9; --ink-2: #b8c0ba; --muted: #8d968f;
+  --rule: #2c332e; --accent: #7cc29d; --accent-soft: #1f2d25; --code-bg: #1f2420;
+  --s1: #3987e5; --s2: #d95926; --s3: #199e70; --neutral: #7d847f; color-scheme: dark }
+body { background: var(--bg); color: var(--ink); font: 400 17px/1.6 var(--font-body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.wrap { max-width: 860px; margin: 0 auto; padding-block: 48px 96px; display: flex; flex-direction: column; gap: 56px; }
+header { display: flex; flex-direction: column; gap: 12px; }
+.eyebrow { font: 600 13px/1 var(--font-body); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(34px, 6vw, 52px); line-height: 1.05; font-weight: 700; letter-spacing: -.01em; }
+h2 { font-size: 30px; line-height: 1.15; font-weight: 700; }
+h3 { font-size: 21px; line-height: 1.25; font-weight: 500; }
+p { margin: 0; max-width: 68ch; }
+.lead { font-size: 19px; color: var(--ink-2); }
+.meta { display: flex; flex-wrap: wrap; gap: 8px 20px; color: var(--muted); font-size: 15px; font-variant-numeric: tabular-nums; }
+section { display: flex; flex-direction: column; gap: 22px; }
+.ficha { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 24px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.achado { color: var(--ink-2); }
+.achado b { color: var(--ink); font-weight: 600; }
+.grafico { position: relative; height: 320px; min-width: 0; }
+.grafico.baixo { height: 230px; }
+.duplo { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+.triplo { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; }
+.mini-titulo { font: 600 14px/1.3 var(--font-body); color: var(--ink-2); margin-bottom: 6px; }
+.triplo .mini-titulo { min-height: 2.6em; }
+details { border-top: 1px solid var(--rule); padding-top: 10px; }
+summary { cursor: pointer; color: var(--muted); font-size: 14px; }
+summary:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.tabela { overflow-x: auto; margin-top: 10px; }
+table { border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; width: 100%; }
+th, td { text-align: left; padding: 6px 10px; border-bottom: 1px solid var(--rule); white-space: nowrap; }
+th { color: var(--muted); font-weight: 600; }
+td.n, th.n { text-align: right; }
+.passo { display: grid; grid-template-columns: 44px 1fr; gap: 4px 16px; }
+.passo .num { font: 700 26px/1 var(--font-display); color: var(--accent); padding-top: 2px; }
+.passo .corpo { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+ol.etapas, ul.lista { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 6px; max-width: 68ch; }
+code { font-family: var(--font-mono); font-size: .86em; background: var(--code-bg); padding: 1px 5px; border-radius: 4px; }
+pre { margin: 0; background: var(--code-bg); border-radius: 8px; padding: 14px 16px; overflow-x: auto; font: 400 13.5px/1.55 var(--font-mono); color: var(--ink); }
+pre code { background: none; padding: 0; font-size: inherit; }
+.arquivo { font: 600 12px/1 var(--font-mono); color: var(--muted); }
+.nota { border-left: 3px solid var(--accent); padding: 4px 0 4px 14px; color: var(--ink-2); border-radius: 0; }
+.mapa { overflow-x: auto; }
+.mapa table td:first-child { font-family: var(--font-mono); font-size: 13px; }
+hr { border: 0; border-top: 1px solid var(--rule); margin: 0; }
+@media (max-width: 520px) { .ficha { padding: 16px; } .passo { grid-template-columns: 1fr; } .grafico { height: 280px; } }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+
+<div class="wrap">
+<header>
+  <span class="eyebrow">Challenge 2 · Grupo CNV</span>
+  <h1>Agentes RatatouilleIA</h1>
+  <p class="lead">Como o Montador e o Avaliador se comportam em cinco experimentos simulados, e como o código foi construído, passo a passo.</p>
+  <div class="meta"><span>Base: 50 receitas (42 pratos, 8 acompanhamentos)</span><span>Experimentos: <code>scripts/experimentos.py</code></span><span>Semente aleatória fixa (42): os números se repetem</span></div>
+</header>
+
+<section id="resultados">
+  <h2>O que os experimentos mostram</h2>
+  <p>Todos os números abaixo saem do arquivo <code>resultados/experimentos.json</code>, gerado ao rodar o script. Nenhum usa pessoas reais: são simulações para testar o comportamento dos agentes antes do teste com usuários.</p>
+
+  <div class="ficha">
+    <h3>1. Quantos pratos cada restrição deixa disponíveis</h3>
+    <p class="achado" id="txt-e1"></p>
+    <div class="grafico" style="height:360px"><canvas id="g-e1" role="img" aria-label="Pratos disponíveis por restrição, antes e depois das adaptações"></canvas></div>
+    <details><summary>Ver dados</summary><div class="tabela" id="t-e1"></div></details>
+  </div>
+
+  <div class="ficha">
+    <h3>2. O Avaliador pega os erros que um LLM cometeria?</h3>
+    <p class="achado" id="txt-e2"></p>
+    <div class="grafico"><canvas id="g-e2" role="img" aria-label="Porcentagem de receitas rejeitadas por tipo de erro injetado"></canvas></div>
+    <details><summary>Ver dados</summary><div class="tabela" id="t-e2"></div></details>
+  </div>
+
+  <div class="ficha">
+    <h3>3. Quantas rodadas até fechar o cardápio</h3>
+    <p class="achado" id="txt-e3"></p>
+    <div class="duplo">
+      <div><div class="mini-titulo">Rodadas usadas, em média (máximo 3)</div><div class="grafico baixo"><canvas id="g-e3a" role="img" aria-label="Rodadas médias por taxa de erro do LLM"></canvas></div></div>
+      <div><div class="mini-titulo">Cardápios fechados com 5 pratos (%)</div><div class="grafico baixo"><canvas id="g-e3b" role="img" aria-label="Porcentagem de cardápios completos por taxa de erro do LLM"></canvas></div></div>
+    </div>
+    <details><summary>Ver dados</summary><div class="tabela" id="t-e3"></div></details>
+  </div>
+
+  <div class="ficha">
+    <h3>4. A personalização melhora as sugestões com o tempo?</h3>
+    <p class="achado" id="txt-e4"></p>
+    <div class="mini-titulo">Todos os usuários simulados: receitas sugeridas que a pessoa faria (%)</div>
+    <div class="grafico"><canvas id="g-e4" role="img" aria-label="Taxa de aceitação semanal com e sem aprendizado"></canvas></div>
+    <div class="triplo" id="e4-mult"></div>
+    <details><summary>Ver dados</summary><div class="tabela" id="t-e4"></div></details>
+  </div>
+
+  <div class="ficha">
+    <h3>5. Calorias e proteína por pessoa em cada prato</h3>
+    <p class="achado" id="txt-e5"></p>
+    <div class="grafico" style="height:380px"><canvas id="g-e5" role="img" aria-label="Dispersão de kcal por proteína por prato, por fonte da receita"></canvas></div>
+    <details><summary>Ver dados</summary><div class="tabela" id="t-e5"></div></details>
+  </div>
+</section>
+
+<hr>
+
+<section id="codigo">
+  <h2>Como o código funciona, passo a passo</h2>
+  <p>O sistema tem duas fases. Primeiro, um script monta a base de conhecimento a partir das fontes. Depois, a cada pedido do usuário, os agentes trabalham em cima dessa base: o Montador propõe, o Avaliador verifica e o laço de rodadas junta os dois.</p>
+
+  <div class="mapa"><table>
+    <tr><th>Arquivo</th><th>O que faz</th></tr>
+    <tr><td>scripts/construir_base.py</td><td>lê as fontes e gera a base em <code>kb/</code></td></tr>
+    <tr><td>scripts/medidas.py</td><td>converte medidas caseiras em gramas</td></tr>
+    <tr><td>agentes.py</td><td>perfil, quadro compartilhado, Guardião (e o protótipo inicial)</td></tr>
+    <tr><td>montador.py</td><td>Agente Montador: propõe receitas</td></tr>
+    <tr><td>avaliador.py</td><td>Agente Avaliador: valida, pontua e calcula nutrientes</td></tr>
+    <tr><td>planejamento.py</td><td>laço de rodadas e aprendizado com o retorno</td></tr>
+    <tr><td>scripts/gerar_receitas_llm.py</td><td>gera receitas de IA para lacunas, com curadoria</td></tr>
+    <tr><td>scripts/experimentos.py</td><td>os experimentos desta página</td></tr>
+  </table></div>
+
+  <pre class="mermaid">
+flowchart LR
+  F[Fontes: Ministério, grupo, IA, TACO] --> B[construir_base.py]
+  B --> KB[(kb/: ingredientes, receitas, restrições, substituições)]
+  U[Perfil + estoque] --> M[Montador]
+  KB --> M
+  M -- receitas candidatas --> A[Avaliador]
+  KB --> A
+  A -- rejeitadas + motivos --> M
+  A -- aprovadas com nota --> C[Cardápio da semana]
+  C -- fiz / não fiz --> P[Aprendizado dos pesos]
+  P --> U
+  </pre>
+
+  <div class="passo"><div class="num">1</div><div class="corpo">
+    <h3>Montar a base de conhecimento</h3>
+    <p>A base não é editada à mão: o script <code>construir_base.py</code> refaz tudo a partir de <code>fontes/</code>, então qualquer correção fica registrada no Git.</p>
+    <ol class="etapas">
+      <li>Lê as receitas do Ministério da Saúde, as do grupo e as geradas por IA.</li>
+      <li>Traduz cada ingrediente escrito ("cebola picada em cubos pequenos") para um id da base (<code>cebola</code>), por uma lista de trechos de texto. Temperos como sal e cheiro-verde são ignorados.</li>
+      <li>Converte a medida caseira em gramas com <code>medidas.py</code>: volume da medida × densidade do ingrediente, ou número de unidades × peso médio da unidade.</li>
+      <li>Divide pelo rendimento da receita e grava tudo para 2 porções, o padrão do sistema.</li>
+      <li>Liga cada ingrediente à TACO para ter kcal, proteína, fibra e sódio por 100 g.</li>
+      <li>Calcula as tags de restrição de cada receita a partir dos ingredientes.</li>
+      <li>Recusa terminar se alguma receita usar um ingrediente sem cadastro, e escreve o relatório <code>kb/RELATORIO_BASE.md</code>.</li>
+    </ol>
+    <span class="arquivo">scripts/medidas.py</span>
+<pre><code>for medida, ml in VOLUME_ML.items():          # "xicara": 240, "colher de sopa": 15...
+    if medida in t:
+        estado = next((d for k, d in ESTADO.items() if k in ing), None)
+        dens = estado if estado is not None else DENSIDADE.get(iid)
+        ...
+        return q * ml * dens, ""                  # ex.: ½ xícara de óleo = 0,5 × 240 × 0,9 = 108 g</code></pre>
+  </div></div>
+
+  <div class="passo"><div class="num">2</div><div class="corpo">
+    <h3>Perfil e Guardião</h3>
+    <p>O <code>Perfil</code> guarda o que vale para a pessoa: restrições (regras rígidas), tempo máximo, quantas pessoas comem, gostos e os <b>pesos</b> que dizem o que importa mais para ela. O Guardião transforma as restrições num conjunto de ingredientes proibidos, consultando a tabela <code>restricoes.csv</code>.</p>
+    <span class="arquivo">agentes.py</span>
+<pre><code>def proibidos(self, perfil: Perfil) -> set:
+    out = set()
+    for r in perfil.restricoes:                  # ex.: ["vegetariano", "sem_lactose"]
+        out |= self.restricoes.get(r, set())     # junta os ingredientes proibidos de cada uma
+    return out</code></pre>
+    <p class="nota">É uma consulta a uma tabela, não uma decisão do LLM. Por isso a mesma restrição sempre bloqueia os mesmos ingredientes.</p>
+  </div></div>
+
+  <div class="passo"><div class="num">3</div><div class="corpo">
+    <h3>Agente Montador: propor receitas</h3>
+    <p>O Montador só propõe; quem decide é o Avaliador. Ele tem dois modos com a mesma saída (uma lista de receitas em JSON), e cai sozinho no modo base se o LLM falhar.</p>
+    <span class="arquivo">montador.py</span>
+<pre><code>def propor(self, perfil, estoque, feedback, n=6):
+    if self.modo == "llm":
+        try:
+            receitas = self._propor_llm(perfil, estoque, feedback, n)
+            if receitas:
+                return receitas
+        except Exception as e:                   # API fora, JSON quebrado etc.
+            self.log.append(f"falha no LLM ({type(e).__name__}); usando a base")
+    return self._propor_base(perfil, estoque, feedback, n)</code></pre>
+    <p><b>Modo LLM.</b> O prompt leva a lista de ingredientes permitidos (os proibidos já saíram), o tempo máximo, o estoque, dois exemplos de receita em JSON e <b>todos os motivos de rejeição acumulados</b>. Da resposta, o código recorta só o array JSON e descarta receitas fora do formato.</p>
+    <p><b>Modo base.</b> Percorre as receitas da base e adapta cada uma ao perfil:</p>
+<pre><code>proteinas = {i: g for i, g in r["itens"].items() if self.ing[i]["categoria"] == "proteina"}
+if proteinas and max(proteinas, key=proteinas.get) in evitar:
+    return None      # "frango ensopado" sem frango não serve: descarta
+...
+sub = next((s for s in self.subs.get(i, [])
+            if s == "remover" or (s not in evitar and s in self.ing)), None)</code></pre>
+    <ol class="etapas">
+      <li>Pula acompanhamentos e receitas mais demoradas que o tempo do perfil.</li>
+      <li>Se a proteína principal for proibida, descarta a receita.</li>
+      <li>Troca os outros ingredientes proibidos pelo primeiro substituto permitido da tabela (<code>leite → bebida vegetal</code>) ou os remove (bacon, paio). Se não houver saída, descarta.</li>
+      <li>Ordena pelo aproveitamento do estoque, com uma pequena penalidade por troca, para preferir receitas originais.</li>
+    </ol>
+  </div></div>
+
+  <div class="passo"><div class="num">4</div><div class="corpo">
+    <h3>Agente Avaliador: verificar e pontuar</h3>
+    <p>O Avaliador não confia no Montador. Faz as checagens na ordem, da mais barata para a mais cara, e só dá nota a quem passa em todas.</p>
+    <span class="arquivo">avaliador.py</span>
+<pre><code>for checagem in (self._formato, self._ingredientes_existem):
+    motivos = checagem(r)
+    if motivos:
+        return Resultado(r, False, motivos=motivos)
+motivos = self._restricoes(r, perfil) + self._quantidades(r)
+if r["tempo_min"] > perfil.tempo_max_min:
+    motivos.append(f"demora {r['tempo_min']} min; o máximo do perfil é {perfil.tempo_max_min}")
+if motivos:
+    return Resultado(r, False, motivos=motivos)
+
+c = self._caracteristicas(r, perfil, estoque)        # 5 valores entre 0 e 1
+nota = sum(pesos[k] * v for k, v in c.items())        # soma ponderada pelos pesos do perfil</code></pre>
+    <ul class="lista">
+      <li><b>Checagens:</b> formato do JSON, ingredientes existentes na base, restrições (veto), porção por pessoa dentro do limite da categoria, tempo.</li>
+      <li><b>Características da nota:</b> quanto é comida in natura (descontando ultraprocessados), se tem verdura ou fruta, gosto da pessoa, rapidez e aproveitamento do que vai estragar.</li>
+      <li><b>Explicação:</b> as duas características que mais somaram viram a frase ("tem verdura ou fruta, é rápida").</li>
+      <li><b>Nutrientes:</b> soma os valores da TACO de cada ingrediente e divide pelas porções.</li>
+    </ul>
+  </div></div>
+
+  <div class="passo"><div class="num">5</div><div class="corpo">
+    <h3>O laço entre os dois agentes</h3>
+    <p>A função <code>planejar</code> repete até 3 rodadas. Em cada uma, pede ao Montador só o que falta, o Avaliador julga, e os motivos de rejeição <b>se acumulam</b>, para o Montador não corrigir um erro e reintroduzir outro.</p>
+    <span class="arquivo">planejamento.py</span>
+<pre><code>for rodada in range(1, max_rodadas + 1):
+    faltam = n - len(aprovadas)
+    propostas = montador.propor(perfil, estoque, feedback, n=faltam + 2)  # margem
+    ok, motivos, todos = avaliador.avaliar_lote(propostas, perfil, estoque)
+    ...
+    feedback["motivos"] = sorted(set(feedback["motivos"]) | set(motivos))  # acumula
+    if len(aprovadas) >= n:
+        break</code></pre>
+    <p class="nota">Se não fechar em 3 rodadas, o status diz quantas receitas faltaram. A ideia é a interface mostrar as alternativas para a pessoa decidir, em vez de o sistema insistir.</p>
+  </div></div>
+
+  <div class="passo"><div class="num">6</div><div class="corpo">
+    <h3>Aprendizado com o retorno da semana</h3>
+    <p>Depois da semana, a pessoa diz o que fez. A função compara cada característica com a <b>média das sugestões</b> e mexe só no peso do que diferencia o que foi feito do que não foi. O experimento 4 mostra por que isso é melhor que somar a característica direto.</p>
+<pre><code>media = {k: sum(c[k] for c in caracteristicas.values()) / len(caracteristicas) for k in chaves}
+for nome, c in caracteristicas.items():
+    sinal = 1 if nome in feitas else -1
+    for k in chaves:
+        perfil.pesos[k] = min(maximo, max(minimo, perfil.pesos.get(k, 1.0) + taxa * sinal * (c[k] - media[k])))</code></pre>
+    <p class="nota">Os pesos ficam entre 0,2 e 3, para um retorno isolado não distorcer o perfil. Restrições nunca são aprendidas: só mudam quando a pessoa edita.</p>
+  </div></div>
+
+  <div class="passo"><div class="num">7</div><div class="corpo">
+    <h3>Receitas de IA com curadoria</h3>
+    <p><code>gerar_receitas_llm.py</code> pede ao LLM receitas para lacunas definidas (rápida para quem mora sozinho, vegetariana com leguminosa, marmita, baixo custo, sem lactose e sem glúten, nordestina). Cada uma passa pelo mesmo Avaliador, com as restrições da lacuna.</p>
+    <ol class="etapas">
+      <li>Aprovadas vão para <code>fontes/receitas_llm.csv</code> com <code>revisado_pelo_grupo=nao</code>.</li>
+      <li>Rejeitadas vão para <code>receitas_llm_rejeitadas.csv</code> com os motivos, para melhorar o prompt.</li>
+      <li>O grupo revisa, marca <code>sim</code> e roda <code>construir_base.py</code>. Antes da entrega, só as revisadas entram.</li>
+    </ol>
+  </div></div>
+
+  <div class="passo"><div class="num">8</div><div class="corpo">
+    <h3>Como os experimentos foram simulados</h3>
+    <ul class="lista">
+      <li><b>Experimento 1:</b> para cada combinação de restrições, conta os pratos sem nenhum ingrediente proibido e os que o Montador consegue adaptar.</li>
+      <li><b>Experimento 2:</b> pega pratos válidos, injeta um erro de cada tipo (300 receitas por tipo) e conta quantos o Avaliador rejeita. O grupo de controle não recebe erro.</li>
+      <li><b>Experimento 3:</b> um "LLM" de mentira devolve receitas reais da base, cada uma com um erro com probabilidade p. Ele <b>não aprende</b> com os motivos, então é o pior caso. 200 simulações por taxa.</li>
+      <li><b>Experimento 4:</b> 60 usuários com um gosto escondido (querem rapidez, comida in natura ou verdura no prato). A pessoa "faz" uma sugestão se ela estiver entre as 20% melhores para o gosto dela. 12 semanas, 5 sugestões por semana.</li>
+      <li><b>Experimento 5:</b> nutrientes por pessoa de cada prato, calculados pela TACO a partir dos ingredientes crus.</li>
+    </ul>
+    <pre><code>python scripts/experimentos.py      # gera resultados/experimentos.json</code></pre>
+  </div></div>
+</section>
+</div>
+
+<script id="dados" type="application/json">{"n_pratos": 42, "e1_cobertura": [{"perfil": "sem restrição", "originais": 42, "com_adaptacao": 42, "total": 42}, {"perfil": "vegetariano", "originais": 22, "com_adaptacao": 22, "total": 42}, {"perfil": "sem_lactose", "originais": 28, "com_adaptacao": 42, "total": 42}, {"perfil": "celiaco", "originais": 29, "com_adaptacao": 42, "total": 42}, {"perfil": "alergia_ovo", "originais": 28, "com_adaptacao": 30, "total": 42}, {"perfil": "sem_carne_vermelha", "originais": 32, "com_adaptacao": 32, "total": 42}, {"perfil": "vegetariano + sem_lactose", "originais": 12, "com_adaptacao": 22, "total": 42}, {"perfil": "celiaco + sem_lactose", "originais": 22, "com_adaptacao": 42, "total": 42}], "e2_deteccao": [{"tipo": "ingrediente proibido", "rejeitadas_pct": 100.0, "n": 300}, {"tipo": "ingrediente inexistente", "rejeitadas_pct": 100.0, "n": 300}, {"tipo": "porção absurda (×5)", "rejeitadas_pct": 83.0, "n": 300}, {"tipo": "tempo acima do limite", "rejeitadas_pct": 100.0, "n": 300}, {"tipo": "sem erro (controle)", "rejeitadas_pct": 0.0, "n": 300}], "e3_rodadas": [{"taxa_erro_llm": 0, "rodadas_media": 1, "completos_pct": 100.0}, {"taxa_erro_llm": 0.1, "rodadas_media": 1.07, "completos_pct": 100.0}, {"taxa_erro_llm": 0.2, "rodadas_media": 1.32, "completos_pct": 100.0}, {"taxa_erro_llm": 0.3, "rodadas_media": 1.57, "completos_pct": 100.0}, {"taxa_erro_llm": 0.4, "rodadas_media": 1.8, "completos_pct": 100.0}, {"taxa_erro_llm": 0.5, "rodadas_media": 2.0, "completos_pct": 99.5}, {"taxa_erro_llm": 0.6, "rodadas_media": 2.33, "completos_pct": 92.5}, {"taxa_erro_llm": 0.7, "rodadas_media": 2.62, "completos_pct": 68.0}, {"taxa_erro_llm": 0.8, "rodadas_media": 2.9, "completos_pct": 40.5}], "e4_personalizacao": {"geral": {"sem aprendizado": [44.0, 43.7, 45.0, 47.0, 44.0, 44.0, 43.7, 43.7, 47.3, 45.3, 43.3, 44.0], "regra simples": [44.0, 45.3, 45.0, 49.7, 47.7, 47.0, 45.3, 46.3, 48.0, 44.7, 44.3, 47.7], "regra centrada": [44.0, 44.0, 45.0, 49.3, 45.3, 47.7, 47.0, 46.3, 50.7, 48.7, 48.7, 49.7]}, "por_arquetipo": {"quer rapidez": {"sem aprendizado": [66.0, 61.0, 67.0, 65.0, 60.0, 65.0, 68.0, 70.0, 64.0, 65.0, 58.0, 66.0], "regra simples": [66.0, 65.0, 69.0, 74.0, 72.0, 78.0, 78.0, 77.0, 78.0, 79.0, 80.0, 79.0], "regra centrada": [66.0, 62.0, 68.0, 72.0, 64.0, 75.0, 75.0, 76.0, 73.0, 75.0, 72.0, 80.0]}, "quer comida in natura": {"sem aprendizado": [35.0, 36.0, 31.0, 40.0, 37.0, 33.0, 33.0, 29.0, 39.0, 37.0, 36.0, 33.0], "regra simples": [35.0, 37.0, 29.0, 39.0, 37.0, 30.0, 28.0, 28.0, 33.0, 28.0, 23.0, 32.0], "regra centrada": [35.0, 37.0, 31.0, 40.0, 37.0, 34.0, 35.0, 31.0, 39.0, 36.0, 38.0, 35.0]}, "quer verdura no prato": {"sem aprendizado": [31.0, 34.0, 37.0, 36.0, 35.0, 34.0, 30.0, 32.0, 39.0, 34.0, 36.0, 33.0], "regra simples": [31.0, 34.0, 37.0, 36.0, 34.0, 33.0, 30.0, 34.0, 33.0, 27.0, 30.0, 32.0], "regra centrada": [31.0, 33.0, 36.0, 36.0, 35.0, 34.0, 31.0, 32.0, 40.0, 35.0, 36.0, 34.0]}}}, "e5_nutrientes": [{"nome": "arroz feijão e ovo", "fonte": "Grupo", "kcal": 584.9, "proteina_g": 26.4, "fibra_g": 13.4}, {"nome": "cuscuz com ovo", "fonte": "Grupo", "kcal": 410.8, "proteina_g": 13.6, "fibra_g": 4.4}, {"nome": "frango grelhado com legumes", "fonte": "Grupo", "kcal": 510.3, "proteina_g": 40.2, "fibra_g": 4.9}, {"nome": "macarrão à bolonhesa", "fonte": "Grupo", "kcal": 567.0, "proteina_g": 35.8, "fibra_g": 4.6}, {"nome": "escondidinho de mandioca com carne", "fonte": "Grupo", "kcal": 558.5, "proteina_g": 27.4, "fibra_g": 5.3}, {"nome": "omelete de abobrinha", "fonte": "Grupo", "kcal": 155.5, "proteina_g": 13.1, "fibra_g": 1.8}, {"nome": "feijão preto com couve e arroz", "fonte": "Grupo", "kcal": 506.7, "proteina_g": 21.1, "fibra_g": 16.9}, {"nome": "sardinha com batata e salada", "fonte": "Grupo", "kcal": 287.1, "proteina_g": 13.8, "fibra_g": 3.3}, {"nome": "sopa de legumes", "fonte": "Grupo", "kcal": 122.0, "proteina_g": 4.3, "fibra_g": 6.0}, {"nome": "macaxeira cozida com queijo", "fonte": "Grupo", "kcal": 509.5, "proteina_g": 11.4, "fibra_g": 4.8}, {"nome": "pão com ovo e banana", "fonte": "Grupo", "kcal": 310.3, "proteina_g": 13.8, "fibra_g": 5.5}, {"nome": "frango desfiado com purê", "fonte": "Grupo", "kcal": 314.3, "proteina_g": 36.2, "fibra_g": 2.8}, {"nome": "Suflê de Chuchu", "fonte": "Ministério da Saúde", "kcal": 67.8, "proteina_g": 4.1, "fibra_g": 1.0}, {"nome": "Bolinho Assado de Chuchu", "fonte": "Ministério da Saúde", "kcal": 125.5, "proteina_g": 6.1, "fibra_g": 2.6}, {"nome": "Kibe de Forno com Abóbora", "fonte": "Ministério da Saúde", "kcal": 163.7, "proteina_g": 4.0, "fibra_g": 1.4}, {"nome": "Charuto de Repolho", "fonte": "Ministério da Saúde", "kcal": 186.1, "proteina_g": 8.7, "fibra_g": 2.1}, {"nome": "Panqueca Verde", "fonte": "Ministério da Saúde", "kcal": 182.0, "proteina_g": 6.8, "fibra_g": 1.5}, {"nome": "Trouxinha de Couve com Carne Moída e Angu", "fonte": "Ministério da Saúde", "kcal": 523.5, "proteina_g": 29.4, "fibra_g": 4.9}, {"nome": "Rocambole de Moranga com Batata", "fonte": "Ministério da Saúde", "kcal": 198.0, "proteina_g": 14.2, "fibra_g": 2.3}, {"nome": "Torta de Tomate", "fonte": "Ministério da Saúde", "kcal": 321.0, "proteina_g": 9.6, "fibra_g": 1.5}, {"nome": "Almôndega com Jiló", "fonte": "Ministério da Saúde", "kcal": 83.6, "proteina_g": 9.4, "fibra_g": 1.6}, {"nome": "Torta de Arroz com Recheio de Tomate", "fonte": "Ministério da Saúde", "kcal": 711.7, "proteina_g": 24.7, "fibra_g": 3.5}, {"nome": "Suflê de Cenoura", "fonte": "Ministério da Saúde", "kcal": 77.5, "proteina_g": 2.8, "fibra_g": 1.2}, {"nome": "Virado de Quiabo", "fonte": "Ministério da Saúde", "kcal": 408.3, "proteina_g": 8.5, "fibra_g": 5.7}, {"nome": "Caldeirada de Peixe com Chicória", "fonte": "Ministério da Saúde", "kcal": 165.0, "proteina_g": 19.4, "fibra_g": 2.2}, {"nome": "Galinhada com Pequi", "fonte": "Ministério da Saúde", "kcal": 947.7, "proteina_g": 44.9, "fibra_g": 17.9}, {"nome": "Cozidão Maranhense", "fonte": "Ministério da Saúde", "kcal": 84.7, "proteina_g": 10.1, "fibra_g": 2.7}, {"nome": "Refogado de Carne com Palma", "fonte": "Ministério da Saúde", "kcal": 101.9, "proteina_g": 12.6, "fibra_g": 0.5}, {"nome": "Fígado com Jiló", "fonte": "Ministério da Saúde", "kcal": 151.2, "proteina_g": 21.2, "fibra_g": 1.7}, {"nome": "Cuscuz com ovo mexido e tomate", "fonte": "IA (lacunas)", "kcal": 417.6, "proteina_g": 18.5, "fibra_g": 4.7}, {"nome": "Macarrão com sardinha e tomate", "fonte": "IA (lacunas)", "kcal": 769.7, "proteina_g": 31.1, "fibra_g": 4.9}, {"nome": "Frango em cubos com abobrinha", "fonte": "IA (lacunas)", "kcal": 268.6, "proteina_g": 34.8, "fibra_g": 3.0}, {"nome": "Feijão preto com abóbora e couve", "fonte": "IA (lacunas)", "kcal": 284.4, "proteina_g": 16.3, "fibra_g": 17.6}, {"nome": "Grão-de-bico refogado com tomate e espinafre", "fonte": "IA (lacunas)", "kcal": 301.5, "proteina_g": 16.2, "fibra_g": 11.1}, {"nome": "Escondidinho de mandioca com feijão", "fonte": "IA (lacunas)", "kcal": 603.6, "proteina_g": 13.6, "fibra_g": 14.8}, {"nome": "Carne moída com legumes", "fonte": "IA (lacunas)", "kcal": 269.8, "proteina_g": 27.1, "fibra_g": 4.1}, {"nome": "Frango desfiado com milho e cenoura", "fonte": "IA (lacunas)", "kcal": 306.9, "proteina_g": 35.8, "fibra_g": 5.2}, {"nome": "Polenta mole com molho de carne moída", "fonte": "IA (lacunas)", "kcal": 425.3, "proteina_g": 25.7, "fibra_g": 4.9}, {"nome": "Sopa de feijão com macarrão", "fonte": "IA (lacunas)", "kcal": 424.3, "proteina_g": 17.5, "fibra_g": 14.7}, {"nome": "Peixe assado com batata e tomate", "fonte": "IA (lacunas)", "kcal": 392.1, "proteina_g": 30.6, "fibra_g": 4.6}, {"nome": "Baião de dois simples", "fonte": "IA (lacunas)", "kcal": 572.9, "proteina_g": 23.9, "fibra_g": 11.0}, {"nome": "Cuscuz nordestino com ovo e legumes", "fonte": "IA (lacunas)", "kcal": 407.9, "proteina_g": 13.3, "fibra_g": 6.4}]}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+(function () {
+  const D = JSON.parse(document.getElementById("dados").textContent);
+  const fmt = (v, d = 1) => Number(v).toLocaleString("pt-BR", { maximumFractionDigits: d, minimumFractionDigits: 0 });
+  const $ = id => document.getElementById(id);
+
+  // ---------- textos (gerados dos dados, para nunca divergirem dos gráficos)
+  const e1 = D.e1_cobertura, by = Object.fromEntries(e1.map(r => [r.perfil, r]));
+  const NOMES = { sem_lactose: "sem lactose", celiaco: "celíaco", alergia_ovo: "alergia a ovo", sem_carne_vermelha: "sem carne vermelha" };
+  const humano = p => p.split(" + ").map(x => NOMES[x] || x).join(" + ");
+  $("txt-e1").innerHTML = `Dos ${D.n_pratos} pratos da base, as substituições do Montador recuperam muitos que seriam perdidos: <b>sem lactose vai de ${by["sem_lactose"].originais} para ${by["sem_lactose"].com_adaptacao}</b>, celíaco de ${by["celiaco"].originais} para ${by["celiaco"].com_adaptacao}, e vegetariano sem lactose de ${by["vegetariano + sem_lactose"].originais} para ${by["vegetariano + sem_lactose"].com_adaptacao}. O vegetariano fica em ${by["vegetariano"].com_adaptacao} de propósito: o Montador não troca a proteína principal de um prato.`;
+  const e2 = Object.fromEntries(D.e2_deteccao.map(r => [r.tipo, r]));
+  $("txt-e2").innerHTML = `Com ${e2["sem erro (controle)"].n} receitas por tipo, o Avaliador rejeitou <b>100% das receitas com ingrediente proibido, inexistente ou tempo acima do limite</b>, e nenhuma do grupo de controle. A porção absurda escapou em ${fmt(100 - e2["porção absurda (×5)"].rejeitadas_pct)}% dos casos: quando o ingrediente multiplicado era pequeno, 5 vezes ele ainda ficava abaixo do limite por pessoa. Um limite de kcal por porção fecharia essa brecha.`;
+  const e3 = D.e3_rodadas, t = p => e3.find(r => r.taxa_erro_llm === p);
+  $("txt-e3").innerHTML = `Mesmo com um LLM simulado que não aprende com os motivos, o laço de 3 rodadas <b>fecha o cardápio em ${fmt(t(0.5).completos_pct)}% das vezes quando metade das receitas vem com erro</b>, usando ${fmt(t(0.5).rodadas_media, 2)} rodadas em média. A partir de 70% de erro, as 3 rodadas não bastam (${fmt(t(0.7).completos_pct)}% fechados com 70%, ${fmt(t(0.8).completos_pct)}% com 80%).`;
+  const g4 = D.e4_personalizacao.geral, a4 = D.e4_personalizacao.por_arquetipo;
+  const fim = v => v.slice(-4).reduce((s, x) => s + x, 0) / 4;
+  $("txt-e4").innerHTML = `Com a regra centrada, a aceitação média sobe de <b>${fmt(g4["regra centrada"][0])}% para ${fmt(fim(g4["regra centrada"]))}%</b> nas últimas 4 semanas, contra ${fmt(fim(g4["sem aprendizado"]))}% sem aprendizado. O ganho vem quase todo de quem quer rapidez (${fmt(a4["quer rapidez"]["regra centrada"][0])}% → ${fmt(fim(a4["quer rapidez"]["regra centrada"]))}%). Para "comida in natura" e "verdura no prato" a curva fica plana: quase todas as receitas já pontuam alto nessas características, então elas não ajudam a distinguir uma receita da outra. A regra simples chega a piorar o caso in natura (${fmt(a4["quer comida in natura"]["regra simples"][0])}% → ${fmt(fim(a4["quer comida in natura"]["regra simples"]))}%). Próximo passo: características mais finas, como a proporção de hortaliça e a presença de ingredientes favoritos.`;
+  const fontes = ["Grupo", "Ministério da Saúde", "IA (lacunas)"];
+  const med = arr => { const s = [...arr].sort((a, b) => a - b), m = Math.floor(s.length / 2); return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2; };
+  const porF = f => D.e5_nutrientes.filter(r => r.fonte === f);
+  const mf = f => ({ kcal: med(porF(f).map(r => r.kcal)), prot: med(porF(f).map(r => r.proteina_g)), n: porF(f).length });
+  const ms = mf("Ministério da Saúde"), gr = mf("Grupo"), ia = mf("IA (lacunas)");
+  $("txt-e5").innerHTML = `Os pratos do Ministério são mais leves: <b>mediana de ${fmt(ms.kcal, 0)} kcal e ${fmt(ms.prot)} g de proteína por pessoa</b>, contra ${fmt(gr.kcal, 0)} kcal no grupo e ${fmt(ia.kcal, 0)} kcal nas receitas de IA. Muitos deles, como suflês e almôndegas, foram pensados para ir com arroz e feijão. Isso indica o próximo passo do planejador: montar a refeição como prato + acompanhamento.`;
+
+  // ---------- tabelas
+  const tabela = (id, cab, linhas, num = []) => {
+    $(id).innerHTML = `<table><tr>${cab.map((c, i) => `<th class="${num.includes(i) ? "n" : ""}">${c}</th>`).join("")}</tr>${linhas.map(l => `<tr>${l.map((c, i) => `<td class="${num.includes(i) ? "n" : ""}">${c}</td>`).join("")}</tr>`).join("")}</table>`;
+  };
+  tabela("t-e1", ["Perfil", "Só originais", "Com adaptações", "Total de pratos"], e1.map(r => [humano(r.perfil), r.originais, r.com_adaptacao, r.total]), [1, 2, 3]);
+  tabela("t-e2", ["Tipo de erro injetado", "Rejeitadas (%)", "Receitas testadas"], D.e2_deteccao.map(r => [r.tipo, fmt(r.rejeitadas_pct), r.n]), [1, 2]);
+  tabela("t-e3", ["Taxa de erro do LLM", "Rodadas (média)", "Cardápios completos (%)"], e3.map(r => [fmt(r.taxa_erro_llm * 100, 0) + "%", fmt(r.rodadas_media, 2), fmt(r.completos_pct)]), [0, 1, 2]);
+  const semanas = g4["sem aprendizado"].map((_, i) => i + 1);
+  tabela("t-e4", ["Semana", "Sem aprendizado (%)", "Regra simples (%)", "Regra centrada (%)"], semanas.map((s, i) => [s, fmt(g4["sem aprendizado"][i]), fmt(g4["regra simples"][i]), fmt(g4["regra centrada"][i])]), [0, 1, 2, 3]);
+  tabela("t-e5", ["Prato", "Fonte", "kcal", "Proteína (g)", "Fibra (g)"], [...D.e5_nutrientes].sort((a, b) => b.kcal - a.kcal).map(r => [r.nome, r.fonte, fmt(r.kcal, 0), fmt(r.proteina_g), fmt(r.fibra_g)]), [2, 3, 4]);
+
+  // ---------- gráficos
+  const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  let graficos = [];
+  const multDiv = $("e4-mult");
+  Object.keys(a4).forEach((arq, i) => {
+    multDiv.insertAdjacentHTML("beforeend", `<div><div class="mini-titulo">${arq[0].toUpperCase() + arq.slice(1).replace("quer", "querem")}</div><div class="grafico baixo"><canvas id="g-e4-${i}" role="img" aria-label="Aceitação semanal para usuários que ${arq}"></canvas></div></div>`);
+  });
+
+  function desenhar() {
+    graficos.forEach(g => g.destroy()); graficos = [];
+    const C = { ink: css("--ink"), ink2: css("--ink-2"), muted: css("--muted"), rule: css("--rule"), surface: css("--surface"),
+      s1: css("--s1"), s2: css("--s2"), s3: css("--s3"), neutral: css("--neutral") };
+    Chart.defaults.font.family = css("--font-body") || "sans-serif";
+    Chart.defaults.font.size = 13;
+    Chart.defaults.color = C.muted;
+    const tooltip = { backgroundColor: C.surface, titleColor: C.ink, bodyColor: C.ink2, borderColor: C.rule, borderWidth: 1, padding: 10, boxPadding: 4, usePointStyle: true };
+    const eixo = (titulo, extra = {}) => ({ grid: { color: C.rule, drawTicks: false }, border: { display: false }, ticks: { color: C.muted, padding: 6 }, title: titulo ? { display: true, text: titulo, color: C.muted } : { display: false }, ...extra });
+    const legenda = { position: "top", align: "start", labels: { color: C.ink2, usePointStyle: true, pointStyle: "rectRounded", boxWidth: 10, boxHeight: 10, padding: 14 } };
+    const rotulos = { id: "rotulos", afterDatasetsDraw(ch) {
+      const { ctx } = ch; ctx.save(); ctx.fillStyle = C.ink2; ctx.font = `600 13px ${Chart.defaults.font.family}`; ctx.textAlign = "center";
+      ch.getDatasetMeta(0).data.forEach((b, i) => ctx.fillText(fmt(ch.data.datasets[0].data[i]) + "%", b.x, b.y - 8)); ctx.restore(); } };
+
+    graficos.push(new Chart($("g-e1"), { type: "bar",
+      data: { labels: e1.map(r => humano(r.perfil)), datasets: [
+        { label: "Só receitas originais", data: e1.map(r => r.originais), backgroundColor: C.neutral, borderRadius: 4, borderSkipped: "start", barPercentage: .8, categoryPercentage: .7 },
+        { label: "Com adaptações do Montador", data: e1.map(r => r.com_adaptacao), backgroundColor: C.s1, borderRadius: 4, borderSkipped: "start", barPercentage: .8, categoryPercentage: .7 }] },
+      options: { indexAxis: "y", maintainAspectRatio: false, plugins: { legend: legenda, tooltip: { ...tooltip, callbacks: { label: c => ` ${c.dataset.label}: ${c.raw} de ${D.n_pratos} pratos` } } },
+        scales: { x: eixo("Pratos disponíveis", { min: 0, max: D.n_pratos, ticks: { color: C.muted, stepSize: 7 } }), y: { grid: { display: false }, border: { display: false }, ticks: { color: C.ink2 } } } } }));
+
+    graficos.push(new Chart($("g-e2"), { type: "bar",
+      data: { labels: D.e2_deteccao.map(r => r.tipo), datasets: [{ label: "Rejeitadas", data: D.e2_deteccao.map(r => r.rejeitadas_pct),
+        backgroundColor: D.e2_deteccao.map(r => r.tipo.startsWith("sem erro") ? C.neutral : C.s1), borderRadius: 4, borderSkipped: "start", maxBarThickness: 56 }] },
+      options: { maintainAspectRatio: false, layout: { padding: { top: 22 } }, plugins: { legend: { display: false }, tooltip: { ...tooltip, callbacks: { label: c => ` ${fmt(c.raw)}% rejeitadas de 300` } } },
+        scales: { y: eixo("Receitas rejeitadas (%)", { min: 0, max: 100, ticks: { color: C.muted, stepSize: 25, callback: v => v + "%" } }), x: { grid: { display: false }, border: { color: C.rule }, ticks: { color: C.ink2, maxRotation: 0, autoSkip: false, callback(v) { const s = this.getLabelForValue(v); return s.length > 16 ? s.replace(/ \(/, "\n(").split("\n") : s; } } } } },
+      plugins: [rotulos] }));
+
+    const linhaBase = (cor, extra = {}) => ({ borderColor: cor, backgroundColor: cor, borderWidth: 2, pointRadius: 4, pointHoverRadius: 6, pointBorderColor: C.surface, pointBorderWidth: 2, tension: 0, ...extra });
+    const taxas = e3.map(r => fmt(r.taxa_erro_llm * 100, 0) + "%");
+    const optsLinha = (ytitulo, ymin, ymax, extraY = {}) => ({ maintainAspectRatio: false, interaction: { mode: "index", intersect: false },
+      plugins: { legend: { display: false }, tooltip }, scales: { y: eixo(ytitulo, { min: ymin, max: ymax, ...extraY }), x: eixo("Receitas com erro vindas do LLM", { grid: { display: false } }) } });
+    graficos.push(new Chart($("g-e3a"), { type: "line", data: { labels: taxas, datasets: [{ label: "Rodadas (média)", data: e3.map(r => r.rodadas_media), ...linhaBase(C.s1) }] },
+      options: optsLinha("", 1, 3, { ticks: { color: C.muted, stepSize: .5 } }) }));
+    graficos.push(new Chart($("g-e3b"), { type: "line", data: { labels: taxas, datasets: [{ label: "Completos (%)", data: e3.map(r => r.completos_pct), ...linhaBase(C.s1) }] },
+      options: optsLinha("", 0, 100, { ticks: { color: C.muted, stepSize: 25, callback: v => v + "%" } }) }));
+
+    const series4 = [["sem aprendizado", C.neutral, [5, 4]], ["regra simples", C.s2, []], ["regra centrada", C.s1, []]];
+    const ds4 = src => series4.map(([k, cor, dash]) => ({ label: k[0].toUpperCase() + k.slice(1), data: src[k], ...linhaBase(cor, { borderDash: dash, pointRadius: 3 }) }));
+    graficos.push(new Chart($("g-e4"), { type: "line", data: { labels: semanas.map(s => "Sem. " + s), datasets: ds4(g4) },
+      options: { maintainAspectRatio: false, interaction: { mode: "index", intersect: false }, plugins: { legend: legenda, tooltip: { ...tooltip, callbacks: { label: c => ` ${c.dataset.label}: ${fmt(c.raw)}%` } } },
+        scales: { y: eixo("Aceitação (%)", { min: 30, max: 60, ticks: { color: C.muted, stepSize: 10, callback: v => v + "%" } }), x: eixo("", { grid: { display: false } }) } } }));
+    Object.keys(a4).forEach((arq, i) => graficos.push(new Chart($("g-e4-" + i), { type: "line", data: { labels: semanas, datasets: ds4(a4[arq]) },
+      options: { maintainAspectRatio: false, interaction: { mode: "index", intersect: false }, plugins: { legend: { display: false }, tooltip: { ...tooltip, callbacks: { title: it => "Semana " + it[0].label, label: c => ` ${c.dataset.label}: ${fmt(c.raw)}%` } } },
+        scales: { y: eixo("", { min: 0, max: 100, ticks: { color: C.muted, stepSize: 25, callback: v => v + "%" } }), x: eixo("Semana", { grid: { display: false }, ticks: { color: C.muted, maxTicksLimit: 6 } }) } } })));
+
+    const cores5 = [C.s1, C.s2, C.s3];
+    graficos.push(new Chart($("g-e5"), { type: "scatter",
+      data: { datasets: fontes.map((f, i) => ({ label: `${f} (${porF(f).length})`, data: porF(f).map(r => ({ x: r.kcal, y: r.proteina_g, nome: r.nome })),
+        backgroundColor: cores5[i], borderColor: C.surface, borderWidth: 2, pointRadius: 6, pointHoverRadius: 8, pointStyle: ["circle", "rectRounded", "triangle"][i] })) },
+      options: { maintainAspectRatio: false, plugins: { legend: { ...legenda, labels: { ...legenda.labels, pointStyle: undefined } },
+        tooltip: { ...tooltip, callbacks: { label: c => ` ${c.raw.nome}: ${fmt(c.raw.x, 0)} kcal, ${fmt(c.raw.y)} g de proteína` } } },
+        scales: { x: eixo("kcal por pessoa", { min: 0, ticks: { color: C.muted, callback: v => fmt(v, 0) } }), y: eixo("Proteína por pessoa (g)", { min: 0 }) } } }));
+  }
+
+  if (window.Chart) { desenhar(); } else { document.querySelectorAll("canvas").forEach(c => c.closest(".grafico").innerHTML = '<p class="achado">Os gráficos não carregaram. Os dados estão em "Ver dados".</p>'); }
+  const redesenhar = () => window.Chart && desenhar();
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", redesenhar);
+  new MutationObserver(redesenhar).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+})();
+</script>

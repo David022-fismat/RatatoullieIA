@@ -1,0 +1,13 @@
+id,nome,regiao,refeicao,tempo_min,porcoes,tags
+r01,arroz feijão e ovo,Brasil,almoco|jantar,30,2,vegetariano|sem_lactose|rapido
+r02,cuscuz com ovo,Nordeste,cafe|jantar,15,2,vegetariano|sem_lactose|rapido
+r03,frango grelhado com legumes,Brasil,almoco|jantar,35,2,sem_lactose
+r04,macarrão à bolonhesa,Sudeste,almoco|jantar,30,2,sem_lactose
+r05,escondidinho de mandioca com carne,Nordeste,almoco|jantar,60,2,
+r06,omelete de abobrinha,Brasil,cafe|jantar,15,2,vegetariano|sem_lactose|rapido
+r07,feijão preto com couve e arroz,Sudeste,almoco|jantar,40,2,vegetariano|sem_lactose
+r08,sardinha com batata e salada,Brasil,almoco|jantar,25,2,sem_lactose|rapido
+r09,sopa de legumes,Sul,jantar,40,2,vegetariano|sem_lactose
+r10,macaxeira cozida com queijo,Nordeste,cafe|jantar,25,2,vegetariano
+r11,pão com ovo e banana,Brasil,cafe,10,2,vegetariano|sem_lactose|rapido
+r12,frango desfiado com purê,Sul,almoco|jantar,45,2,

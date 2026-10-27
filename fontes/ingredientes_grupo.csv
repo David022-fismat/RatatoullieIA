@@ -1,0 +1,26 @@
+id,nome,nova,categoria,dias_validade,embalagem_g,preco_embalagem,sinonimos
+arroz,arroz branco,in natura,cereal,365,1000,6.50,arroz tipo 1|arroz t1|arz
+feijao,feijão carioca,in natura,leguminosa,180,1000,8.00,feijao carioca|fjo carioca|feij car
+feijao_preto,feijão preto,in natura,leguminosa,180,1000,8.50,feijao preto|fjo preto
+ovo,ovo,in natura,proteina,21,600,9.00,ovos brancos|ovo branco dz|ovos
+frango,peito de frango,in natura,proteina,3,1000,18.00,file peito frango|fgo peito|frango
+carne_moida,carne moída,in natura,proteina,2,500,19.00,carne moida|cne moida
+sardinha,sardinha em lata,processado,proteina,365,125,6.00,sardinha lata|sard oleo
+leite,leite integral,processado,laticinio,90,1000,5.50,lte uht integ 1l|leite uht
+queijo,queijo minas,processado,laticinio,10,500,22.00,qjo minas|queijo minas frescal
+farinha_milho,flocão de milho,in natura,cereal,180,500,3.50,flocao milho|farinha milho flocada
+macarrao,macarrão,processado,cereal,365,500,4.50,macarrao espaguete|mac esp
+mandioca,mandioca,in natura,tuberculo,5,1000,6.00,macaxeira|aipim|mand
+batata,batata,in natura,tuberculo,15,1000,6.50,batata inglesa|bat ingl
+tomate,tomate,in natura,hortalica,6,1000,7.00,tomate italiano|tom
+cebola,cebola,in natura,hortalica,30,1000,5.00,ceb
+alho,alho,in natura,tempero,60,200,5.00,alho nacional
+cenoura,cenoura,in natura,hortalica,15,1000,4.50,cen
+abobrinha,abobrinha,in natura,hortalica,7,1000,6.00,abob italiana
+couve,couve,in natura,hortalica,4,200,3.00,couve manteiga|couve mac
+alface,alface,in natura,hortalica,4,300,3.50,alface crespa
+banana,banana,in natura,fruta,6,1000,5.50,banana prata|ban prata
+laranja,laranja,in natura,fruta,15,1000,4.00,laranja pera
+pao_forma,pão de forma,ultraprocessado,cereal,7,500,9.00,pao forma|pao frm trad
+oleo,óleo de soja,processado,gordura,365,900,8.00,oleo soja|ol soja
+bebida_vegetal,bebida vegetal,processado,laticinio,30,1000,9.00,bebida de soja|bebida aveia|beb vegetal
