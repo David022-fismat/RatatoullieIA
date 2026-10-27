@@ -2,7 +2,7 @@
 Demonstração do Orquestrador SEM chave de API.
 
     python demo_orquestrador.py           # LLM simulado (regras simples no lugar do LLM)
-    python demo_orquestrador.py --llm     # LLM de verdade (precisa de ANTHROPIC_API_KEY)
+    python demo_orquestrador.py --llm     # LLM de verdade (GEMINI_API_KEY, GROQ_API_KEY ou ANTHROPIC_API_KEY)
 
 O LLM simulado decide com regras simples, mas olhando o RESULTADO de cada ferramenta,
 como o LLM real faz: se o plano voltar vazio, ele relaxa o tempo e tenta de novo.

@@ -1,7 +1,8 @@
 """
 Orquestrador: agente com LLM que DECIDE quais agentes chamar, em que ordem e o que fazer com o resultado.
 
-    python agente_interativo.py --chat           # conversa com o Orquestrador (precisa de ANTHROPIC_API_KEY)
+    python agente_interativo.py --chat   # conversa com o Orquestrador (chave do Gemini, Groq ou Anthropic;
+                                         # veja provedores.py)
     python demo_orquestrador.py       # mesma coisa com um LLM simulado, para ver as decisões sem chave
 
 Como funciona (padrão ReAct / tool calling):
@@ -21,14 +22,13 @@ from __future__ import annotations
 
 import json
 import math
-import os
 import time
 from pathlib import Path
 
 from agente_interativo import ARQ_PERFIL, RESTRICOES, reconhecer, salvar_perfil
 from agentes import Comprador, Estado, Guardiao, LeitorDeNota, Perfil, Planejador, carregar_base
 from avaliador import Avaliador
-from montador import Montador, llm_anthropic
+from montador import Montador
 from planejamento import aprender_com_feedback, planejar
 
 RAIZ = Path(__file__).parent
@@ -109,16 +109,16 @@ FERRAMENTAS = [
 
 
 class Orquestrador:
-    def __init__(self, cliente=None, modelo=None, montador_com_llm=False, perfil=None, estoque=None,
+    def __init__(self, cliente=None, modelo=None, llm_montador=None, perfil=None, estoque=None,
                  salvar=True):
         self.ing, self.rec, restr = carregar_base()
         self.leitor = LeitorDeNota(self.ing)
         self.guardiao = Guardiao(restr)
         self.avaliador = Avaliador(self.ing, restr)
-        self.montador_com_llm = montador_com_llm
+        self.llm_montador = llm_montador          # função prompt -> texto, ou None (modo base)
         self.comprador = Comprador(self.ing, Planejador(self.ing, self.rec, self.guardiao))
         self.cliente = cliente
-        self.modelo = modelo or os.getenv("MODELO_ORQUESTRADOR", "claude-haiku-5-5")
+        self.modelo = modelo
         self.salvar = salvar
         self.perfil = perfil or self._carregar_perfil()
         self.estoque = estoque if estoque is not None else self._carregar_estoque()
@@ -227,7 +227,7 @@ class Orquestrador:
             perfil = Perfil(**{**perfil.__dict__, "tempo_max_min": int(tempo_max_min_hoje),
                                "pesos": dict(perfil.pesos)})
         montador = Montador(self.ing, self.rec, self.guardiao,
-                            llm=llm_anthropic if self.montador_com_llm else None)
+                            llm=self.llm_montador)
         pedir = n * 4 if so_com_o_que_tem else n
         res = planejar(montador, self.avaliador, perfil, self.estoque, n=pedir)
         cardapio = res["cardapio"]
@@ -312,8 +312,8 @@ class Orquestrador:
             self._log({"mensagem": mensagem, "decisoes": self.decisoes, "resposta": aviso})
             return aviso
         if self.cliente is None:
-            import anthropic
-            self.cliente = anthropic.Anthropic()
+            from provedores import criar_cliente, provedor_disponivel
+            self.cliente, self.modelo = criar_cliente(provedor_disponivel() or "anthropic")
 
         self.historico.append({"role": "user", "content": mensagem})
         resposta = None

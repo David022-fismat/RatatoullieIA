@@ -23,6 +23,16 @@ compras, otimizar no orçamento, registrar o retorno). As ferramentas são os ou
 | planejar_com_orcamento | Comprador (PuLP) |
 | registrar_retorno | aprendizado dos pesos |
 
+Provedor de LLM (`provedores.py`): basta definir UMA chave no terminal.
+
+| Provedor | Custo | Onde criar a chave | Variável |
+|---|---|---|---|
+| Google Gemini | cota grátis | aistudio.google.com/apikey | `GEMINI_API_KEY` |
+| Groq | cota grátis | console.groq.com/keys | `GROQ_API_KEY` |
+| Anthropic | pago | console.anthropic.com | `ANTHROPIC_API_KEY` |
+
+Para trocar o modelo: `export MODELO_ORQUESTRADOR=...`. Para forçar um provedor: `export LLM_PROVEDOR=groq`.
+
 Limites por construção: o Guardião lê a mensagem antes do LLM; não há ferramenta para remover
 restrição; receitas só saem do Avaliador; no máximo 8 ferramentas por mensagem. Cada decisão vai
 para `logs/decisoes.jsonl`.

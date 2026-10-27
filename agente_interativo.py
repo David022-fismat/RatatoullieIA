@@ -2,23 +2,22 @@
 Porta de entrada do agente: pergunta o perfil e o estoque, monta o cardápio e aprende com o retorno.
 
     python agente_interativo.py           # usa o Montador com a base de receitas (sem LLM)
-    python agente_interativo.py --llm     # usa o Montador com LLM (precisa de ANTHROPIC_API_KEY)
+    python agente_interativo.py --llm     # usa o Montador com LLM (chave do Gemini, Groq ou Anthropic)
     python agente_interativo.py --novo    # ignora o perfil salvo e pergunta tudo de novo
     python agente_interativo.py --chat    # conversa livre com o Orquestrador, que decide quais agentes chamar
-                               # (precisa de ANTHROPIC_API_KEY; veja orquestrador.py)
+                               # (chave do Gemini, Groq ou Anthropic; veja provedores.py)
 
 O perfil fica salvo em perfil.json, e os pesos aprendidos também, para a próxima vez.
 """
 import difflib
 import json
-import os
 import sys
 from dataclasses import asdict
 from pathlib import Path
 
 from agentes import Guardiao, LeitorDeNota, Perfil, _norm, carregar_base
 from avaliador import Avaliador
-from montador import Montador, llm_anthropic
+from montador import Montador
 from planejamento import aprender_com_feedback, planejar
 
 ARQ_PERFIL = Path(__file__).parent / "perfil.json"
@@ -131,21 +130,29 @@ def mostrar(res, ing, perfil, estoque):
 
 
 def chat():
-    if not os.getenv("ANTHROPIC_API_KEY"):
-        print("O modo conversa precisa de ANTHROPIC_API_KEY (export ANTHROPIC_API_KEY=...).")
+    from provedores import criar_cliente, funcao_texto, provedor_disponivel
+    provedor = provedor_disponivel()
+    if provedor is None:
+        print("O modo conversa precisa da chave de um LLM. Opções grátis:")
+        print("  Gemini: crie em aistudio.google.com/apikey e rode  export GEMINI_API_KEY=sua-chave")
+        print("  Groq:   crie em console.groq.com/keys e rode     export GROQ_API_KEY=sua-chave")
         print("Para ver o Orquestrador decidindo sem chave: python demo_orquestrador.py")
         return
-    try:
-        import anthropic  # noqa: F401
-    except ImportError:
-        print("Instale o SDK: pip install anthropic")
-        return
+    if provedor == "anthropic":
+        try:
+            import anthropic  # noqa: F401
+        except ImportError:
+            print("Instale o SDK: pip install anthropic")
+            return
     from orquestrador import Orquestrador, conversar
     if not ARQ_PERFIL.exists() or "--novo" in sys.argv:
         ing, _, _ = carregar_base()
         leitor_nomes.update({i: x["nome"] for i, x in ing.items()})
         salvar_perfil(montar_perfil(LeitorDeNota(ing), ing))
-    conversar(Orquestrador(montador_com_llm="--llm" in sys.argv))
+    cliente, modelo = criar_cliente(provedor)
+    print(f"(LLM: {provedor}, modelo {modelo})")
+    llm_montador = funcao_texto(provedor) if "--llm" in sys.argv else None
+    conversar(Orquestrador(cliente=cliente, modelo=modelo, llm_montador=llm_montador))
 
 
 def main():
@@ -169,11 +176,15 @@ def main():
     print("Entendi:", ", ".join(f"{ing[i]['nome']} {g} g" for i, g in estoque.items()) or "nada")
     n = perguntar_numero("Quantas refeições planejar", 5)
 
-    usar_llm = "--llm" in sys.argv
-    if usar_llm and not os.getenv("ANTHROPIC_API_KEY"):
-        print("Sem ANTHROPIC_API_KEY: usando a base de receitas.")
-        usar_llm = False
-    montador = Montador(ing, rec, guardiao, llm=llm_anthropic if usar_llm else None)
+    llm = None
+    if "--llm" in sys.argv:
+        from provedores import funcao_texto, provedor_disponivel
+        provedor = provedor_disponivel()
+        if provedor:
+            llm = funcao_texto(provedor)
+        else:
+            print("Sem chave de LLM (GEMINI_API_KEY, GROQ_API_KEY ou ANTHROPIC_API_KEY): usando a base.")
+    montador = Montador(ing, rec, guardiao, llm=llm)
 
     res = planejar(montador, avaliador, perfil, estoque, n=n)
     mostrar(res, ing, perfil, estoque)
