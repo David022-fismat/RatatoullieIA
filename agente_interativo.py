@@ -7,13 +7,14 @@ Porta de entrada do agente: pergunta o perfil e o estoque, monta o cardápio e a
 
 O perfil fica salvo em perfil.json, e os pesos aprendidos também, para a próxima vez.
 """
+import difflib
 import json
 import os
 import sys
 from dataclasses import asdict
 from pathlib import Path
 
-from agentes import Guardiao, LeitorDeNota, Perfil, carregar_base
+from agentes import Guardiao, LeitorDeNota, Perfil, _norm, carregar_base
 from avaliador import Avaliador
 from montador import Montador, llm_anthropic
 from planejamento import aprender_com_feedback, planejar
@@ -21,11 +22,29 @@ from planejamento import aprender_com_feedback, planejar
 ARQ_PERFIL = Path(__file__).parent / "perfil.json"
 RESTRICOES = ["vegetariano", "sem_lactose", "celiaco", "alergia_ovo", "sem_carne_vermelha"]
 GRAMAS_PADRAO = 500          # quando a pessoa só diz "tenho ovo", sem quantidade
+SEMELHANCA_MINIMA = 0.8      # texto digitado: mais rígido que o leitor da nota fiscal (0,6)
+
+
+def reconhecer(nome, leitor):
+    """Devolve (id, exato?) ou (None, False). Exato = nome/sinônimo igual ou palavra inteira contida."""
+    texto = _norm(nome)
+    if texto in leitor.vocab:
+        return leitor.vocab[texto], True
+    for voc, iid in leitor.vocab.items():
+        if f" {texto} " in f" {voc} " or f" {voc} " in f" {texto} ":   # "feijao" ~ "feijao carioca"
+            return iid, True
+    melhor = max(leitor.vocab, key=lambda v: difflib.SequenceMatcher(None, texto, v).ratio())
+    if difflib.SequenceMatcher(None, texto, melhor).ratio() >= SEMELHANCA_MINIMA:  # erro de digitação
+        return leitor.vocab[melhor], False
+    return None, False
 
 
 def perguntar(texto, padrao=""):
     r = input(f"{texto}" + (f" [{padrao}]" if padrao != "" else "") + ": ").strip()
     return r or str(padrao)
+
+
+leitor_nomes = {}
 
 
 def ler_ingredientes(texto, leitor):
@@ -40,9 +59,11 @@ def ler_ingredientes(texto, leitor):
             gramas, nome = int(ultimo), " ".join(palavras[:-1])
         else:
             gramas, nome = GRAMAS_PADRAO, parte
-        iid, conf = leitor.classificar(nome)
-        if iid and conf >= leitor.LIMIAR:
+        iid, exato = reconhecer(nome, leitor)
+        if iid:
             achados[iid] = achados.get(iid, 0) + gramas
+            if not exato:
+                print(f"  (entendi '{nome}' como {leitor_nomes[iid]})")
         else:
             duvidas.append(nome)
     return achados, duvidas
@@ -80,7 +101,7 @@ def salvar_perfil(p):
     ARQ_PERFIL.write_text(json.dumps(asdict(p), ensure_ascii=False, indent=1), encoding="utf-8")
 
 
-def mostrar(res, ing, avaliador, perfil):
+def mostrar(res, ing, perfil, estoque):
     print(f"\n{'=' * 70}\nCARDÁPIO ({res['status']})\n{'=' * 70}")
     for h in res["historico"]:
         extra = f" | rejeitadas: {'; '.join(h['motivos'])}" if h["motivos"] else ""
@@ -93,6 +114,8 @@ def mostrar(res, ing, avaliador, perfil):
         print(f"   Por quê: {x.explicacao}")
         itens = ", ".join(f"{ing[i['id']]['nome']} {i['gramas'] * fator:.0f} g" for i in r["ingredientes"])
         print(f"   Para {perfil.pessoas} pessoa(s): {itens}")
+        falta = [ing[i["id"]]["nome"] for i in r["ingredientes"] if estoque.get(i["id"], 0) < i["gramas"] * fator]
+        print(f"   Falta comprar: {', '.join(falta) if falta else 'nada, você tem tudo'}")
         print(f"   Por pessoa: {nut['kcal']:.0f} kcal, {nut['proteina_g']:.0f} g de proteína, "
               f"{nut['fibra_g']:.0f} g de fibra")
 
@@ -100,6 +123,7 @@ def mostrar(res, ing, avaliador, perfil):
 def main():
     ing, rec, restr = carregar_base()
     leitor, guardiao, avaliador = LeitorDeNota(ing), Guardiao(restr), Avaliador(ing, restr)
+    leitor_nomes.update({i: x["nome"] for i, x in ing.items()})
 
     perfil = carregar_perfil(leitor, ing)
     salvar_perfil(perfil)
@@ -107,6 +131,9 @@ def main():
     print("\n--- O que você tem em casa ---")
     texto = perguntar("Ingredientes e gramas (ex.: ovo 600, tomate, abobrinha 300g)")
     estoque, duvidas = ler_ingredientes(texto, leitor)
+    if perguntar("Tem o básico de despensa: óleo, alho, cebola e arroz? (s/n)", "s").lower().startswith("s"):
+        for i in ("oleo", "alho", "cebola", "arroz"):
+            estoque.setdefault(i, 1000)
     if duvidas:
         print(f"Não reconheci: {', '.join(duvidas)} (ficaram de fora)")
     print("Entendi:", ", ".join(f"{ing[i]['nome']} {g} g" for i, g in estoque.items()) or "nada")
@@ -119,7 +146,7 @@ def main():
     montador = Montador(ing, rec, guardiao, llm=llm_anthropic if usar_llm else None)
 
     res = planejar(montador, avaliador, perfil, estoque, n=n)
-    mostrar(res, ing, avaliador, perfil)
+    mostrar(res, ing, perfil, estoque)
     if not res["cardapio"]:
         print("\nNenhuma receita passou. Tente aumentar o tempo máximo ou tirar uma restrição.")
         return
@@ -130,7 +157,7 @@ def main():
         nomes = [x.receita["nome"] for x in res["cardapio"]]
         feitas = [nomes[int(k) - 1] for k in feitas_txt.replace(" ", "").split(",")
                   if k.isdigit() and 1 <= int(k) <= len(nomes)]
-        chaves = ("natural", "tem_vegetal", "gosto", "rapidez", "usa_estoque")
+        chaves = ("natural", "tem_vegetal", "gosto", "rapidez", "usa_estoque", "tem_em_casa")
         caracts = {x.receita["nome"]: {k: x.detalhes[k] for k in chaves} for x in res["cardapio"]}
         antes = dict(perfil.pesos)
         aprender_com_feedback(perfil, caracts, feitas)
