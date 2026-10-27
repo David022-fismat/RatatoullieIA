@@ -84,6 +84,7 @@ class Avaliador:
         gosto = (sum(i in perfil.gosta for i in itens) - sum(i in perfil.nao_gosta for i in itens))
         usa = sum(min(g, estoque.get(i, 0)) / (1 + self.ing[i]["dias_validade"] / 7)
                   for i, g in itens.items()) / total
+        tem = sum(min(g, estoque.get(i, 0)) for i, g in itens.items()) / total
         return {
             # Guia Alimentar: base in natura, poucos ultraprocessados, verdura/legume presente
             "natural": max(0.0, natural - ultra),
@@ -91,6 +92,8 @@ class Avaliador:
             "gosto": max(-1.0, min(1.0, gosto / 2)),
             "rapidez": 1 - min(r["tempo_min"], 60) / 60,
             "usa_estoque": min(1.0, usa * 2),
+            # fração (em gramas) da receita que a pessoa já tem: penaliza o que precisa comprar
+            "tem_em_casa": tem if estoque else 0.0,
         }
 
     def nutrientes_por_pessoa(self, r):
@@ -109,7 +112,8 @@ class Avaliador:
     def _explicar(self, c, pesos):
         frases = {"natural": "é baseada em comida in natura", "tem_vegetal": "tem verdura ou fruta",
                   "gosto": "tem o que você gosta", "rapidez": "é rápida",
-                  "usa_estoque": "usa o que já tem e vai estragar"}
+                  "usa_estoque": "usa o que já tem e vai estragar",
+                  "tem_em_casa": "você já tem quase tudo"}
         top = sorted(((pesos.get(k, 1) * v, k) for k, v in c.items()), reverse=True)[:2]
         return ", ".join(frases[k] for v, k in top if v > 0.2) or "equilibra os critérios"
 
