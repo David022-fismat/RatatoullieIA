@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import csv
 import difflib
+import re
 import unicodedata
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -138,7 +139,7 @@ class LeitorDeNota:
 # ----------------------------------------------------------------------------
 class Guardiao:
     CONDICOES_ENCAMINHAR = [
-        "renal", "rim", "diabet", "gestante", "gravida", "cancer", "oncolog",
+        "renal", r"(rim|rins)\b", "diabet", "gestante", "gravida", "cancer", "oncolog",
         "anorexia", "bulimia", "jejum", "emagrecer rapido", "cirurgia",
     ]
 
@@ -157,7 +158,8 @@ class Guardiao:
     def checar_mensagem(self, texto: str):
         t = _norm(texto)
         for c in self.CONDICOES_ENCAMINHAR:
-            if c in t:
+            # início de palavra: "rim" pega "rim"/"rins", mas não "primeira"
+            if re.search(r"\b" + c, t):
                 return ("Para essa condição eu não monto plano: o certo é um "
                         "nutricionista ou médico acompanhar. Posso ajudar com "
                         "orientações gerais do Guia Alimentar, se quiser.")

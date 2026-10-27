@@ -1,9 +1,11 @@
 """
 Porta de entrada do agente: pergunta o perfil e o estoque, monta o cardápio e aprende com o retorno.
 
-    python agente.py           # usa o Montador com a base de receitas (sem LLM)
-    python agente.py --llm     # usa o Montador com LLM (precisa de ANTHROPIC_API_KEY)
-    python agente.py --novo    # ignora o perfil salvo e pergunta tudo de novo
+    python agente_interativo.py           # usa o Montador com a base de receitas (sem LLM)
+    python agente_interativo.py --llm     # usa o Montador com LLM (precisa de ANTHROPIC_API_KEY)
+    python agente_interativo.py --novo    # ignora o perfil salvo e pergunta tudo de novo
+    python agente_interativo.py --chat    # conversa livre com o Orquestrador, que decide quais agentes chamar
+                               # (precisa de ANTHROPIC_API_KEY; veja orquestrador.py)
 
 O perfil fica salvo em perfil.json, e os pesos aprendidos também, para a próxima vez.
 """
@@ -44,6 +46,14 @@ def perguntar(texto, padrao=""):
     return r or str(padrao)
 
 
+def perguntar_numero(texto, padrao):
+    while True:
+        r = perguntar(texto, padrao)
+        if r.isdigit() and int(r) > 0:
+            return int(r)
+        print("  Digite um número inteiro, por exemplo 2.")
+
+
 leitor_nomes = {}
 
 
@@ -77,8 +87,8 @@ def montar_perfil(leitor, ing):
     escolha = perguntar("Números das suas restrições, separados por vírgula (Enter = nenhuma)")
     restricoes = [RESTRICOES[int(x) - 1] for x in escolha.replace(" ", "").split(",")
                   if x.isdigit() and 1 <= int(x) <= len(RESTRICOES)]
-    pessoas = int(perguntar("Quantas pessoas comem", 2))
-    tempo = int(perguntar("Tempo máximo para cozinhar, em minutos", 40))
+    pessoas = perguntar_numero("Quantas pessoas comem", 2)
+    tempo = perguntar_numero("Tempo máximo para cozinhar, em minutos", 40)
     regiao = perguntar("Região", "Brasil")
     gosta, _ = ler_ingredientes(perguntar("Ingredientes que você gosta (ex.: ovo, mandioca)"), leitor)
     nao_gosta, _ = ler_ingredientes(perguntar("Ingredientes que você NÃO gosta"), leitor)
@@ -120,7 +130,27 @@ def mostrar(res, ing, perfil, estoque):
               f"{nut['fibra_g']:.0f} g de fibra")
 
 
+def chat():
+    if not os.getenv("ANTHROPIC_API_KEY"):
+        print("O modo conversa precisa de ANTHROPIC_API_KEY (export ANTHROPIC_API_KEY=...).")
+        print("Para ver o Orquestrador decidindo sem chave: python demo_orquestrador.py")
+        return
+    try:
+        import anthropic  # noqa: F401
+    except ImportError:
+        print("Instale o SDK: pip install anthropic")
+        return
+    from orquestrador import Orquestrador, conversar
+    if not ARQ_PERFIL.exists() or "--novo" in sys.argv:
+        ing, _, _ = carregar_base()
+        leitor_nomes.update({i: x["nome"] for i, x in ing.items()})
+        salvar_perfil(montar_perfil(LeitorDeNota(ing), ing))
+    conversar(Orquestrador(montador_com_llm="--llm" in sys.argv))
+
+
 def main():
+    if "--chat" in sys.argv:
+        return chat()
     ing, rec, restr = carregar_base()
     leitor, guardiao, avaliador = LeitorDeNota(ing), Guardiao(restr), Avaliador(ing, restr)
     leitor_nomes.update({i: x["nome"] for i, x in ing.items()})
@@ -137,7 +167,7 @@ def main():
     if duvidas:
         print(f"Não reconheci: {', '.join(duvidas)} (ficaram de fora)")
     print("Entendi:", ", ".join(f"{ing[i]['nome']} {g} g" for i, g in estoque.items()) or "nada")
-    n = int(perguntar("Quantas refeições planejar", 5))
+    n = perguntar_numero("Quantas refeições planejar", 5)
 
     usar_llm = "--llm" in sys.argv
     if usar_llm and not os.getenv("ANTHROPIC_API_KEY"):

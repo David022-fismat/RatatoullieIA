@@ -35,7 +35,7 @@ PESO_UNIDADE = {   # trecho do texto do ingrediente -> gramas por unidade (o 1º
     "inhame grande": 400, "abobora pequena": 1000, "mamao verde": 1200, "caju grande": 150,
     "espiga de milho": 150, "chicoria": 300, "vinagreira": 250, "espinafre": 300,  # "maço"
 }
-PADRAO_SEM_REGRA: list[str] = []
+PADRAO_SEM_REGRA = []
 
 
 def norm(t):

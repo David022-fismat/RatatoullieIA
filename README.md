@@ -2,9 +2,30 @@
 
 ## Usar o agente
 
-    python agente.py           # pergunta perfil e estoque, mostra o cardápio e aprende com o retorno
-    python agente.py --llm     # mesmo, com o Montador usando LLM (precisa de ANTHROPIC_API_KEY)
-    python agente.py --novo    # refaz o perfil (fica salvo em perfil.json)
+    python agente_interativo.py           # pergunta perfil e estoque, mostra o cardápio e aprende com o retorno
+    python agente_interativo.py --llm     # mesmo, com o Montador usando LLM (precisa de ANTHROPIC_API_KEY)
+    python agente_interativo.py --novo    # refaz o perfil (fica salvo em perfil.json)
+    python agente_interativo.py --chat    # conversa livre: o Orquestrador (LLM) decide quais agentes chamar
+    python demo_orquestrador.py  # o Orquestrador decidindo, com LLM simulado (não precisa de chave)
+
+### Orquestrador (orquestrador.py)
+
+Agente com LLM e *tool calling*. A cada mensagem ele escolhe quais ferramentas chamar, olha o
+resultado e decide o próximo passo (atualizar o estoque, planejar, relaxar o tempo, montar a lista de
+compras, otimizar no orçamento, registrar o retorno). As ferramentas são os outros agentes:
+
+| Ferramenta | Agente |
+|---|---|
+| atualizar_estoque, ver_perfil_e_estoque | leitor de ingredientes + estado compartilhado |
+| atualizar_preferencias | perfil (só ADICIONA restrições) |
+| planejar_refeicoes | Montador + Avaliador (laço de rodadas) |
+| lista_de_compras | soma o que falta, com preço estimado |
+| planejar_com_orcamento | Comprador (PuLP) |
+| registrar_retorno | aprendizado dos pesos |
+
+Limites por construção: o Guardião lê a mensagem antes do LLM; não há ferramenta para remover
+restrição; receitas só saem do Avaliador; no máximo 8 ferramentas por mensagem. Cada decisão vai
+para `logs/decisoes.jsonl`.
 
 ## Demonstrações
 
