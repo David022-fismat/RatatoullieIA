@@ -36,9 +36,10 @@ class Resultado:
 
 
 class Avaliador:
-    def __init__(self, ingredientes: dict, restricoes: dict):
+    def __init__(self, ingredientes: dict, restricoes: dict, memoria=None):
         self.ing = ingredientes            # id -> linha de ingredientes.csv
         self.restricoes = restricoes       # nome -> conjunto de ids proibidos
+        self.memoria = memoria             # MemoriaSemana ou None (sem memória: como antes)
 
     # ------------------------------------------------------------ checagens
     def _formato(self, r):
@@ -113,7 +114,8 @@ class Avaliador:
         frases = {"natural": "é baseada em comida in natura", "tem_vegetal": "tem verdura ou fruta",
                   "gosto": "tem o que você gosta", "rapidez": "é rápida",
                   "usa_estoque": "usa o que já tem e vai estragar",
-                  "tem_em_casa": "você já tem quase tudo"}
+                  "tem_em_casa": "você já tem quase tudo",
+                  "novidade": "é diferente do que você viu esta semana"}
         top = sorted(((pesos.get(k, 1) * v, k) for k, v in c.items()), reverse=True)[:2]
         return ", ".join(frases[k] for v, k in top if v > 0.2) or "equilibra os critérios"
 
@@ -131,11 +133,25 @@ class Avaliador:
             return Resultado(r, False, motivos=motivos)
 
         c = self._caracteristicas(r, perfil, estoque)
+        parecida = None
+        if self.memoria is not None:                      # lembra o que já foi sugerido na semana
+            sim, entrada = self.memoria.mais_parecida(r)
+            c["novidade"] = 1.0 - sim
+            if sim >= 0.5:
+                parecida = {"nome": entrada["nome"], "data": entrada["data"], "semelhanca": round(sim, 2)}
         pesos = {**{k: 1.0 for k in c}, **perfil.pesos}
+        if "novidade" in c and "novidade" not in perfil.pesos:
+            from memoria import PESO_NOVIDADE
+            pesos["novidade"] = PESO_NOVIDADE
         nota = sum(pesos[k] * v for k, v in c.items())
-        detalhes = {**c, "nutrientes_por_pessoa": self.nutrientes_por_pessoa(r)}
-        return Resultado(r, True, nota=round(nota, 2), detalhes=detalhes,
-                         explicacao=self._explicar(c, pesos))
+        detalhes = {**c, "nutrientes_por_pessoa": self.nutrientes_por_pessoa(r), "parecida_com": parecida}
+        sem_historico = self.memoria is not None and not self.memoria.recentes()
+        explicacao = self._explicar({k: x for k, x in c.items() if not (sem_historico and k == "novidade")},
+                                    pesos)                # sem histórico, "é novidade" não explica nada
+        if parecida:
+            dia = "/".join(reversed(parecida["data"].split("-")[1:]))
+            explicacao += f" (perdeu pontos: parecida com '{parecida['nome']}', sugerida em {dia})"
+        return Resultado(r, True, nota=round(nota, 2), detalhes=detalhes, explicacao=explicacao)
 
     def avaliar_lote(self, receitas, perfil, estoque):
         """Devolve (aprovadas ordenadas pela nota, motivos para o Montador)."""

@@ -39,13 +39,15 @@ def provedor_disponivel():
     return "anthropic" if os.getenv("ANTHROPIC_API_KEY") else None
 
 
-def criar_cliente(provedor):
-    """Cliente com a interface cliente.messages.create(...) da Anthropic."""
+def criar_cliente(provedor, chave=None):
+    """Cliente com a interface cliente.messages.create(...) da Anthropic.
+    chave: opcional; se não vier, usa a variável de ambiente do provedor."""
     if provedor == "anthropic":
         import anthropic
-        return anthropic.Anthropic(), os.getenv("MODELO_ORQUESTRADOR", "claude-haiku-5-5")
+        cliente = anthropic.Anthropic(api_key=chave) if chave else anthropic.Anthropic()
+        return cliente, os.getenv("MODELO_ORQUESTRADOR", "claude-haiku-5-5")
     var, url, modelo = PROVEDORES[provedor]
-    chave = os.getenv(var)
+    chave = chave or os.getenv(var)
     if not chave:
         raise RuntimeError(f"Defina {var} para usar o provedor {provedor}.")
     return ClienteOpenAICompat(url, chave), os.getenv("MODELO_ORQUESTRADOR", modelo)

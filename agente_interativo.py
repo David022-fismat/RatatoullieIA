@@ -4,6 +4,7 @@ Porta de entrada do agente: pergunta o perfil e o estoque, monta o cardápio e a
     python agente_interativo.py           # usa o Montador com a base de receitas (sem LLM)
     python agente_interativo.py --llm     # usa o Montador com LLM (chave do Gemini, Groq ou Anthropic)
     python agente_interativo.py --novo    # ignora o perfil salvo e pergunta tudo de novo
+    python agente_interativo.py --esquecer  # apaga a memória da semana (o que já foi sugerido)
     python agente_interativo.py --chat    # conversa livre com o Orquestrador, que decide quais agentes chamar
                                # (chave do Gemini, Groq ou Anthropic; veja provedores.py)
 
@@ -17,6 +18,7 @@ from pathlib import Path
 
 from agentes import Guardiao, LeitorDeNota, Perfil, _norm, carregar_base
 from avaliador import Avaliador
+from memoria import PESO_NOVIDADE, MemoriaSemana
 from montador import Montador
 from planejamento import aprender_com_feedback, planejar
 
@@ -159,8 +161,13 @@ def main():
     if "--chat" in sys.argv:
         return chat()
     ing, rec, restr = carregar_base()
-    leitor, guardiao, avaliador = LeitorDeNota(ing), Guardiao(restr), Avaliador(ing, restr)
+    memoria = MemoriaSemana(ing)                       # o que já foi sugerido nos últimos 7 dias
+    leitor, guardiao = LeitorDeNota(ing), Guardiao(restr)
+    avaliador = Avaliador(ing, restr, memoria=memoria)
     leitor_nomes.update({i: x["nome"] for i, x in ing.items()})
+    if "--esquecer" in sys.argv:
+        memoria.limpar()
+        print("Memória da semana apagada.")
 
     perfil = carregar_perfil(leitor, ing)
     salvar_perfil(perfil)
@@ -188,6 +195,7 @@ def main():
 
     res = planejar(montador, avaliador, perfil, estoque, n=n)
     mostrar(res, ing, perfil, estoque)
+    memoria.registrar([x.receita for x in res["cardapio"]])
     if not res["cardapio"]:
         print("\nNenhuma receita passou. Tente aumentar o tempo máximo ou tirar uma restrição.")
         return
@@ -198,9 +206,10 @@ def main():
         nomes = [x.receita["nome"] for x in res["cardapio"]]
         feitas = [nomes[int(k) - 1] for k in feitas_txt.replace(" ", "").split(",")
                   if k.isdigit() and 1 <= int(k) <= len(nomes)]
-        chaves = ("natural", "tem_vegetal", "gosto", "rapidez", "usa_estoque", "tem_em_casa")
-        caracts = {x.receita["nome"]: {k: x.detalhes[k] for k in chaves} for x in res["cardapio"]}
-        antes = dict(perfil.pesos)
+        chaves = ("natural", "tem_vegetal", "gosto", "rapidez", "usa_estoque", "tem_em_casa", "novidade")
+        caracts = {x.receita["nome"]: {k: x.detalhes[k] for k in chaves if k in x.detalhes}
+                   for x in res["cardapio"]}
+        antes = {"novidade": PESO_NOVIDADE, **perfil.pesos}
         aprender_com_feedback(perfil, caracts, feitas)
         salvar_perfil(perfil)
         mudou = {k: f"{antes.get(k, 1.0):.2f} → {v:.2f}" for k, v in perfil.pesos.items()

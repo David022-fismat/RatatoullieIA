@@ -1,2 +1,3 @@
 pulp>=2.7,<3
 anthropic  # para o Orquestrador (--chat) e o Montador com LLM
+streamlit  # interface no navegador (app.py)

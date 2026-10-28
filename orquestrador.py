@@ -28,6 +28,7 @@ from pathlib import Path
 from agente_interativo import ARQ_PERFIL, RESTRICOES, reconhecer, salvar_perfil
 from agentes import Comprador, Estado, Guardiao, LeitorDeNota, Perfil, Planejador, carregar_base
 from avaliador import Avaliador
+from memoria import PESO_NOVIDADE, MemoriaSemana
 from montador import Montador
 from planejamento import aprender_com_feedback, planejar
 
@@ -35,7 +36,7 @@ RAIZ = Path(__file__).parent
 ARQ_ESTOQUE = RAIZ / "estoque.json"
 ARQ_LOG = RAIZ / "logs" / "decisoes.jsonl"
 MAX_PASSOS = 8
-CARACTERISTICAS = ("natural", "tem_vegetal", "gosto", "rapidez", "usa_estoque", "tem_em_casa")
+CARACTERISTICAS = ("natural", "tem_vegetal", "gosto", "rapidez", "usa_estoque", "tem_em_casa", "novidade")
 
 INSTRUCOES = """Você é o Orquestrador do RatatouilleIA, um assistente brasileiro de planejamento de refeições.
 Você conversa com a pessoa e DECIDE quais ferramentas chamar. Cada ferramenta é um agente do sistema.
@@ -53,6 +54,8 @@ Regras:
 - Se a pessoa disser o que fez ou não fez, registre o retorno para o sistema aprender.
 - Ingrediente que a ferramenta não reconhecer: avise a pessoa, não invente um equivalente.
 - Responda em português, curto, explicando POR QUE cada receita foi escolhida (use o campo "por_que").
+- O Avaliador lembra o que foi sugerido nos últimos 7 dias e tira pontos de receitas repetidas ou parecidas;
+  se o "por_que" disser que uma receita perdeu pontos por repetição, mencione isso.
 """
 
 FERRAMENTAS = [
@@ -110,11 +113,13 @@ FERRAMENTAS = [
 
 class Orquestrador:
     def __init__(self, cliente=None, modelo=None, llm_montador=None, perfil=None, estoque=None,
-                 salvar=True):
+                 salvar=True, memoria=None):
         self.ing, self.rec, restr = carregar_base()
         self.leitor = LeitorDeNota(self.ing)
         self.guardiao = Guardiao(restr)
-        self.avaliador = Avaliador(self.ing, restr)
+        # memória da semana: o Avaliador lembra o que já sugeriu e evita repetir
+        self.memoria = memoria if memoria is not None else MemoriaSemana(self.ing, salvar=salvar)
+        self.avaliador = Avaliador(self.ing, restr, memoria=self.memoria)
         self.llm_montador = llm_montador          # função prompt -> texto, ou None (modo base)
         self.comprador = Comprador(self.ing, Planejador(self.ing, self.rec, self.guardiao))
         self.cliente = cliente
@@ -159,7 +164,8 @@ class Orquestrador:
         return {"restricoes": p.restricoes, "pessoas": p.pessoas, "tempo_max_min": p.tempo_max_min,
                 "regiao": p.regiao, "gosta": [self._nome(i) for i in p.gosta if i in self.ing],
                 "nao_gosta": [self._nome(i) for i in p.nao_gosta if i in self.ing],
-                "estoque": {self._nome(i): g for i, g in self.estoque.items() if i in self.ing}}
+                "estoque": {self._nome(i): g for i, g in self.estoque.items() if i in self.ing},
+                "sugeridas_nos_ultimos_7_dias": [e["nome"] for e in self.memoria.recentes()]}
 
     def _ids(self, nomes):
         ok, nao = [], []
@@ -236,6 +242,7 @@ class Orquestrador:
         cardapio = cardapio[:n]
         self.ultimo_plano = cardapio
         self.sugeridas.update({x.receita["nome"]: x for x in cardapio})
+        self.memoria.registrar([x.receita for x in cardapio])      # o Avaliador vai lembrar
         return {"pedidas": n, "encontradas": len(cardapio),
                 "limite_de_tempo_usado": perfil.tempo_max_min,
                 "rodadas_montador_avaliador": len(res["historico"]),
@@ -279,9 +286,12 @@ class Orquestrador:
         if not self.sugeridas:
             return {"erro": "não há sugestões nesta conversa para avaliar"}
         # compara com TUDO o que foi sugerido na conversa (com 1 sugestão só, não haveria contraste)
-        caracts = {nome: {k: x.detalhes[k] for k in CARACTERISTICAS} for nome, x in self.sugeridas.items()}
+        caracts = {nome: {k: x.detalhes[k] for k in CARACTERISTICAS if k in x.detalhes}
+                   for nome, x in self.sugeridas.items()}
+        comuns = set.intersection(*(set(c) for c in caracts.values()))
+        caracts = {nome: {k: v for k, v in c.items() if k in comuns} for nome, c in caracts.items()}
         validas = [f for f in feitas if f in caracts]
-        antes = dict(self.perfil.pesos)
+        antes = {"novidade": PESO_NOVIDADE, **self.perfil.pesos}
         aprender_com_feedback(self.perfil, caracts, validas)
         self._persistir()
         return {"registradas": validas, "ignoradas": [f for f in feitas if f not in caracts],

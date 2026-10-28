@@ -1,6 +1,28 @@
 # Protótipo RatatouilleIA – agentes de planejamento de refeições
 
-## Usar o agente
+## Usar o agente no navegador (mais fácil)
+
+    pip install -r requirements.txt
+    streamlit run app.py
+
+Abre uma página com o perfil na barra lateral e três abas: **Planejar** (estoque → cardápio, "eu faria",
+lista de compras), **Conversa com o agente** (o Orquestrador com LLM; cole a chave grátis do Gemini na
+própria página) e **Memória da semana** (o que o Avaliador lembra, com um botão para simular os dias).
+
+Para publicar na internet e mandar o link para os mentores: entre em share.streamlit.io com a conta do
+GitHub, escolha este repositório e o arquivo `app.py`. Em *Advanced settings → Secrets*, coloque
+`GEMINI_API_KEY = "sua-chave"` para a conversa funcionar sem ninguém colar chave.
+
+### Memória da semana (memoria.py)
+
+O Avaliador lembra o que foi sugerido nos últimos 7 dias. Cada receita ganha a característica
+`novidade` = 1 − semelhança com a mais parecida da semana (mesma receita = 1; senão, sobreposição dos
+ingredientes principais). Ela entra na nota com peso 2 no começo, e o aprendizado ajusta esse peso.
+O Montador também vê a memória e propõe receitas novas primeiro. `python demo_memoria.py` mostra o
+mesmo pedido em 4 dias seguidos, sem e com memória. Sem memória, tudo funciona como antes (os
+experimentos não mudam). `python agente_interativo.py --esquecer` apaga a memória.
+
+## Usar o agente no terminal
 
     python agente_interativo.py           # pergunta perfil e estoque, mostra o cardápio e aprende com o retorno
     python agente_interativo.py --llm     # mesmo, com o Montador usando LLM (precisa de ANTHROPIC_API_KEY)

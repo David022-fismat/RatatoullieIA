@@ -73,7 +73,8 @@ class Montador:
         em_casa = ", ".join(f"{i} ({g:.0f} g)" for i, g in estoque.items() if g > 0) or "nada"
         pratos = [r for r in self.rec.values() if r.get("tipo", "prato") == "prato"]
         exemplos = [self._receita_base_para_json(r) for r in pratos[:2]]
-        evitar = sorted(feedback["rejeitadas"] | feedback["aprovadas"])
+        evitar = sorted(feedback["rejeitadas"] | feedback["aprovadas"]
+                        | {e["nome"] for e in feedback.get("recentes", [])})   # inclui as da semana
         motivos = "\n".join(f"- {m}" for m in feedback["motivos"]) or "- nenhum ainda"
         return f"""Você é o Montador de um sistema de planejamento de refeições brasileiras.
 Proponha {n} receitas caseiras, simples e variadas, para {perfil.pessoas} pessoa(s).
@@ -158,8 +159,13 @@ Responda APENAS com um array JSON, sem texto antes ou depois, neste formato:
                 continue
             total = sum(itens.values())
             cobertura = sum(min(g, estoque.get(i, 0)) for i, g in itens.items()) / total
-            candidatas.append((cobertura - 0.15 * n_trocas,          # prefere receitas originais
-                               self._receita_base_para_json(r, itens, nome)))
+            proposta = self._receita_base_para_json(r, itens, nome)
+            repeticao = 0.0
+            if feedback.get("recentes"):                 # já foi sugerida (ou algo parecido) esta semana?
+                from memoria import semelhanca
+                repeticao = max(semelhanca(proposta, e, self.ing) for e in feedback["recentes"])
+            candidatas.append((cobertura - 0.15 * n_trocas - 0.5 * repeticao,  # prefere originais e novas
+                               proposta))
         candidatas.sort(key=lambda t: -t[0])          # mais aproveitamento do estoque primeiro
         self.log.append(f"base propôs {min(n, len(candidatas))} receitas")
         return [c for _, c in candidatas[:n]]

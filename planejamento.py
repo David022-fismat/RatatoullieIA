@@ -14,11 +14,15 @@ ARQ_APROVADAS_LLM = Path(__file__).parent / "kb" / "aprovadas_llm.jsonl"
 
 def planejar(montador, avaliador, perfil, estoque, n=7, max_rodadas=3, salvar_aprovadas=True):
     feedback = {"motivos": [], "rejeitadas": set(), "aprovadas": set()}
+    memoria = getattr(avaliador, "memoria", None)
+    if memoria is not None:                       # o Montador também vê o que já foi sugerido na semana
+        feedback["recentes"] = memoria.recentes()
     aprovadas, historico = [], []
 
     for rodada in range(1, max_rodadas + 1):
         faltam = n - len(aprovadas)
-        propostas = montador.propor(perfil, estoque, feedback, n=faltam + 2)  # margem
+        margem = faltam + 2 if memoria is None else 2 * faltam + 3     # com memória, mais opções
+        propostas = montador.propor(perfil, estoque, feedback, n=margem)
         ok, motivos, todos = avaliador.avaliar_lote(propostas, perfil, estoque)
 
         for x in ok:
@@ -40,9 +44,27 @@ def planejar(montador, avaliador, perfil, estoque, n=7, max_rodadas=3, salvar_ap
             break
 
     aprovadas.sort(key=lambda x: -x.nota)
+    if memoria is not None:
+        aprovadas = _variar(aprovadas, avaliador, perfil)
     status = "completo" if len(aprovadas) >= n else f"faltaram {n - len(aprovadas)} receitas"
     return {"cardapio": aprovadas[:n], "status": status, "historico": historico,
             "log_montador": montador.log}
+
+
+def _variar(aprovadas, avaliador, perfil):
+    """Escolhe as receitas uma a uma, descontando a semelhança com as já escolhidas no mesmo cardápio
+    (evita dois cuscuz na mesma semana). Só roda quando o Avaliador tem memória."""
+    from memoria import PESO_NOVIDADE, semelhanca
+    peso = perfil.pesos.get("novidade", PESO_NOVIDADE)
+    restantes, escolhidas = list(aprovadas), []
+    while restantes:
+        def ajustada(x):
+            sim = max((semelhanca(x.receita, e.receita, avaliador.ing) for e in escolhidas), default=0.0)
+            return x.nota - peso * sim
+        melhor = max(restantes, key=ajustada)
+        escolhidas.append(melhor)
+        restantes.remove(melhor)
+    return escolhidas
 
 
 def aprender_com_feedback(perfil, caracteristicas, feitas, taxa=0.1, minimo=0.2, maximo=3.0):
@@ -57,9 +79,11 @@ def aprender_com_feedback(perfil, caracteristicas, feitas, taxa=0.1, minimo=0.2,
     """
     if not caracteristicas:
         return
+    from memoria import PESO_NOVIDADE
     chaves = next(iter(caracteristicas.values())).keys()
     media = {k: sum(c[k] for c in caracteristicas.values()) / len(caracteristicas) for k in chaves}
     for nome, c in caracteristicas.items():
         sinal = 1 if nome in feitas else -1
         for k in chaves:
-            perfil.pesos[k] = min(maximo, max(minimo, perfil.pesos.get(k, 1.0) + taxa * sinal * (c[k] - media[k])))
+            atual = perfil.pesos.get(k, PESO_NOVIDADE if k == "novidade" else 1.0)
+            perfil.pesos[k] = min(maximo, max(minimo, atual + taxa * sinal * (c[k] - media[k])))
