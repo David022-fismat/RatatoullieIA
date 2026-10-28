@@ -187,12 +187,20 @@ with aba_chat:
                                 st.code(f"{d['passo']}. {d['ferramenta']}({d['argumentos']}) -> {d['resultado']}")
                             else:
                                 st.code(d["decisao"])
+        seco = st.toggle("Modo teste: só mostrar qual ferramenta ele escolheria, sem executar")
         pedido = st.chat_input("Ex.: comprei frango e tomate, tô sem tempo, o que faço hoje?")
         if pedido:
             st.session_state.chat.append({"papel": "user", "texto": pedido})
             with st.spinner("O agente está decidindo..."):
                 try:
-                    resposta = orq.responder(pedido)
+                    if seco:
+                        escolhas = orq.decidir(pedido)
+                        resposta = "**[modo teste]** Escolheria: " + "; ".join(
+                            f"`{d['ferramenta']}({json.dumps(d['argumentos'], ensure_ascii=False)})`"
+                            for d in escolhas)
+                        orq.decisoes = []
+                    else:
+                        resposta = orq.responder(pedido)
                 except Exception as e:
                     resposta, orq.decisoes = f"Erro ao falar com o LLM: {e}", []
             st.session_state.chat.append({"papel": "assistant", "texto": resposta,

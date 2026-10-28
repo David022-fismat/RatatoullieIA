@@ -13,6 +13,20 @@ Para publicar na internet e mandar o link para os mentores: entre em share.strea
 GitHub, escolha este repositório e o arquivo `app.py`. Em *Advanced settings → Secrets*, coloque
 `GEMINI_API_KEY = "sua-chave"` para a conversa funcionar sem ninguém colar chave.
 
+### Benchmark do Orquestrador (modo seco)
+
+`Orquestrador.decidir(mensagem)` mostra qual ferramenta o LLM escolheria, com os argumentos, **sem
+executar nada** (não muda perfil, estoque nem memória). Usos:
+
+    python scripts/bench_orquestrador.py                 # roda os casos de bench/casos.json com o LLM da chave
+    python scripts/bench_orquestrador.py --repeticoes 3  # repete cada caso (o LLM varia)
+    python scripts/bench_orquestrador.py --simulado      # só para testar o script, sem chave
+
+Mostra, para cada mensagem, a ferramenta esperada e a escolhida, e calcula a taxa de acerto (só a
+ferramenta, e ferramenta + argumentos). Grava um CSV em `resultados/` com data e modelo, para comparar
+modelos e versões das instruções. No chat, o modo seco liga com `/seco` (terminal) ou com a chave
+"Modo teste" (app).
+
 ### Memória da semana (memoria.py)
 
 O Avaliador lembra o que foi sugerido nos últimos 7 dias. Cada receita ganha a característica
