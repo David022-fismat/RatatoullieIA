@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import json
 import os
+import time
 import urllib.error
 import urllib.request
 from types import SimpleNamespace as NS
@@ -118,18 +119,35 @@ class ClienteOpenAICompat:
         self.url, self.chave, self.timeout = url.rstrip("/"), chave, timeout
         self.messages = self                    # para funcionar como cliente.messages.create
 
+    ESPERAS = (2, 5, 10)        # segundos entre tentativas quando o provedor está sobrecarregado
+    TEMPORARIOS = {429, 500, 502, 503, 504}
+
     def _post(self, corpo):
-        req = urllib.request.Request(f"{self.url}/chat/completions", data=json.dumps(corpo).encode(),
-                                     headers={"Content-Type": "application/json",
-                                              "Authorization": f"Bearer {self.chave}"})
-        try:
-            with urllib.request.urlopen(req, timeout=self.timeout) as r:
-                return json.loads(r.read().decode())
-        except urllib.error.HTTPError as e:
-            detalhe = e.read().decode(errors="replace")[:300]
-            if e.code == 429:
-                raise RuntimeError("Limite da cota grátis atingido; espere um pouco e tente de novo.") from e
-            raise RuntimeError(f"Erro {e.code} do provedor: {detalhe}") from e
+        """Envia o pedido. Erro temporário (sobrecarga, limite por minuto, rede) -> espera e tenta de novo."""
+        dados = json.dumps(corpo).encode()
+        ultimo = None
+        for tentativa, espera in enumerate((0,) + self.ESPERAS):
+            if espera:
+                time.sleep(espera)
+            req = urllib.request.Request(f"{self.url}/chat/completions", data=dados,
+                                         headers={"Content-Type": "application/json",
+                                                  "Authorization": f"Bearer {self.chave}"})
+            try:
+                with urllib.request.urlopen(req, timeout=self.timeout) as r:
+                    return json.loads(r.read().decode())
+            except urllib.error.HTTPError as e:
+                detalhe = e.read().decode(errors="replace")[:300]
+                if e.code not in self.TEMPORARIOS:
+                    raise RuntimeError(f"Erro {e.code} do provedor: {detalhe}") from e
+                ultimo = e.code
+            except (urllib.error.URLError, TimeoutError, OSError) as e:      # rede instável
+                ultimo = type(e).__name__
+        if ultimo == 429:
+            raise RuntimeError("Limite da cota grátis atingido. Espere um minuto e tente de novo, "
+                               "ou use outro provedor (veja provedores.py).")
+        raise RuntimeError(f"O provedor está sobrecarregado agora (erro {ultimo}, mesmo depois de "
+                           f"{len(self.ESPERAS) + 1} tentativas). Tente de novo em alguns minutos, "
+                           "ou use o Groq: export GROQ_API_KEY=... e export LLM_PROVEDOR=groq.")
 
     def create(self, model, max_tokens, messages, system="", tools=None, **_):
         corpo = _para_openai(system, messages, tools)
