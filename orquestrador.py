@@ -314,6 +314,34 @@ class Orquestrador:
         return (f"\n\nEstado atual (já carregado, não precisa chamar ver_perfil_e_estoque para isto): "
                 f"{json.dumps(p, ensure_ascii=False)}")
 
+    def decidir(self, mensagem):
+        """Modo seco (para testes e benchmark): mostra o que o LLM DECIDIRIA fazer, sem executar nada.
+
+        Faz UMA chamada ao LLM com a conversa até aqui + a mensagem nova e devolve as ferramentas que ele
+        escolheu, com os argumentos. Não executa nenhuma ferramenta, não muda perfil, estoque nem memória,
+        e não guarda a mensagem no histórico. Só a primeira decisão: as seguintes dependeriam dos
+        resultados das ferramentas, que aqui não existem.
+
+        Devolve uma lista de {"ferramenta": nome, "argumentos": {...}}. Casos especiais:
+          [{"ferramenta": "guardiao"}]                  -> o Guardião bloquearia antes do LLM
+          [{"ferramenta": "nenhuma", "texto": "..."}]   -> o LLM responderia direto, sem ferramenta
+        """
+        if self.guardiao.checar_mensagem(mensagem):
+            return [{"ferramenta": "guardiao", "argumentos": {}}]
+        if self.cliente is None:
+            from provedores import criar_cliente, provedor_disponivel
+            self.cliente, self.modelo = criar_cliente(provedor_disponivel() or "anthropic")
+        mensagens = self.historico + [{"role": "user", "content": mensagem}]     # cópia: não altera a conversa
+        resp = self.cliente.messages.create(model=self.modelo, max_tokens=1500,
+                                            system=INSTRUCOES + self._contexto(),
+                                            tools=FERRAMENTAS, messages=mensagens)
+        blocos = [_bloco_para_dict(b) for b in resp.content]
+        chamadas = [{"ferramenta": b["name"], "argumentos": b["input"]} for b in blocos if b["type"] == "tool_use"]
+        if chamadas:
+            return chamadas
+        texto = "".join(b.get("text", "") for b in blocos if b["type"] == "text").strip()
+        return [{"ferramenta": "nenhuma", "argumentos": {}, "texto": texto}]
+
     def responder(self, mensagem):
         self.decisoes = []
         aviso = self.guardiao.checar_mensagem(mensagem)          # o Guardião fala antes do LLM
@@ -392,9 +420,9 @@ def mostrar_decisoes(decisoes):
             print(f"   [decisão] {d['decisao']}")
 
 
-def conversar(orq, mostrar=True):
+def conversar(orq, mostrar=True, seco=False):
     print("RatatouilleIA. Escreva o que precisa (ex.: 'comprei frango e tomate, o que faço hoje?').")
-    print("Comandos: /decisoes liga/desliga o rastro de decisões, /sair encerra.\n")
+    print("Comandos: /decisoes liga/desliga o rastro, /seco só mostra a escolha sem executar, /sair encerra.\n")
     while True:
         try:
             msg = input("você> ").strip()
@@ -408,6 +436,14 @@ def conversar(orq, mostrar=True):
         if msg == "/decisoes":
             mostrar = not mostrar
             print(f"   rastro de decisões {'ligado' if mostrar else 'desligado'}")
+            continue
+        if msg == "/seco":
+            seco = not seco
+            print(f"   modo teste (só mostra a escolha, não executa) {'ligado' if seco else 'desligado'}")
+            continue
+        if seco:
+            for d in orq.decidir(msg):
+                print(f"   [escolheria] {d['ferramenta']}({json.dumps(d['argumentos'], ensure_ascii=False)})")
             continue
         resposta = orq.responder(msg)
         if mostrar:
