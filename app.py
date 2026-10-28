@@ -174,7 +174,9 @@ with aba_chat:
             else:
                 orq.cliente, orq.modelo = criar_cliente(provedor)
         provedor = provedor or "gemini"
-        st.caption(f"LLM: {provedor}, modelo {orq.modelo}. Cada mensagem pode levar alguns segundos.")
+        ativo = getattr(orq.cliente, "modelo_ativo", None) or orq.modelo
+        st.caption(f"LLM: {provedor}, modelo {ativo}. Cada mensagem pode levar alguns segundos; "
+                   "se um modelo estiver sobrecarregado, o agente troca para um reserva sozinho.")
         for msg in st.session_state.chat:
             with st.chat_message(msg["papel"]):
                 st.write(msg["texto"])

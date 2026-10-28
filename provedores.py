@@ -27,6 +27,11 @@ PROVEDORES = {
                "gemini-3.8-flash"),
     "groq": ("GROQ_API_KEY", "https://api.groq.com/openai/v1", "openai/gpt-oss-120b"),
 }
+# Modelos reserva: se o principal estiver sobrecarregado (ou não existir na conta), tenta o próximo.
+RESERVAS = {
+    "gemini": ["gemini-3.5-flash", "gemini-3.5-flash-lite"],   # 2.5 não aceita contas novas
+    "groq": [],
+}
 
 
 def provedor_disponivel():
@@ -51,7 +56,8 @@ def criar_cliente(provedor, chave=None):
     chave = chave or os.getenv(var)
     if not chave:
         raise RuntimeError(f"Defina {var} para usar o provedor {provedor}.")
-    return ClienteOpenAICompat(url, chave), os.getenv("MODELO_ORQUESTRADOR", modelo)
+    return ClienteOpenAICompat(url, chave, reservas=RESERVAS.get(provedor, [])), \
+        os.getenv("MODELO_ORQUESTRADOR", modelo)
 
 
 def funcao_texto(provedor):
@@ -77,9 +83,15 @@ def _para_openai(system, messages, tools):
             saida.append({"role": m["role"], "content": c})
         elif m["role"] == "assistant":
             texto = "".join(b.get("text", "") for b in c if b["type"] == "text")
-            chamadas = [{"id": b["id"], "type": "function",
-                         "function": {"name": b["name"], "arguments": json.dumps(b["input"], ensure_ascii=False)}}
-                        for b in c if b["type"] == "tool_use"]
+            chamadas = []
+            for b in c:
+                if b["type"] != "tool_use":
+                    continue
+                chamada = {"id": b["id"], "type": "function",
+                           "function": {"name": b["name"], "arguments": json.dumps(b["input"], ensure_ascii=False)}}
+                if b.get("extra_content"):              # Gemini 3: devolve a "assinatura do raciocínio"
+                    chamada["extra_content"] = b["extra_content"]
+                chamadas.append(chamada)
             msg = {"role": "assistant", "content": texto or None}
             if chamadas:
                 msg["tool_calls"] = chamadas
@@ -108,18 +120,26 @@ def _da_openai(resposta):
             args = json.loads(c["function"].get("arguments") or "{}")
         except json.JSONDecodeError:
             args = {}
-        blocos.append(NS(type="tool_use", id=c.get("id") or f"chamada_{i}", name=c["function"]["name"],
-                         input=args))
+        bloco = NS(type="tool_use", id=c.get("id") or f"chamada_{i}", name=c["function"]["name"], input=args)
+        if c.get("extra_content"):                      # ex.: {"google": {"thought_signature": "..."}}
+            bloco.extra_content = c["extra_content"]    # precisa voltar igual no próximo pedido
+        blocos.append(bloco)
     parou = "tool_use" if any(b.type == "tool_use" for b in blocos) else "end_turn"
     return NS(content=blocos or [NS(type="text", text="")], stop_reason=parou)
 
 
+class ProvedorIndisponivel(RuntimeError):
+    """Erro temporário que não passou nem tentando de novo (ou modelo inexistente): vale trocar de modelo."""
+
+
 class ClienteOpenAICompat:
-    def __init__(self, url, chave, timeout=60):
+    def __init__(self, url, chave, timeout=60, reservas=()):
         self.url, self.chave, self.timeout = url.rstrip("/"), chave, timeout
+        self.reservas = list(reservas)
+        self.modelo_ativo = None                # último modelo que respondeu (pula os que falharam)
         self.messages = self                    # para funcionar como cliente.messages.create
 
-    ESPERAS = (2, 5, 10)        # segundos entre tentativas quando o provedor está sobrecarregado
+    ESPERAS = (2, 5)            # segundos entre tentativas quando o provedor está sobrecarregado
     TEMPORARIOS = {429, 500, 502, 503, 504}
 
     def _post(self, corpo):
@@ -137,19 +157,34 @@ class ClienteOpenAICompat:
                     return json.loads(r.read().decode())
             except urllib.error.HTTPError as e:
                 detalhe = e.read().decode(errors="replace")[:300]
+                if e.code == 404:                       # modelo não existe para esta chave
+                    raise ProvedorIndisponivel(f"modelo {corpo.get('model')} não encontrado") from e
                 if e.code not in self.TEMPORARIOS:
                     raise RuntimeError(f"Erro {e.code} do provedor: {detalhe}") from e
                 ultimo = e.code
             except (urllib.error.URLError, TimeoutError, OSError) as e:      # rede instável
                 ultimo = type(e).__name__
-        if ultimo == 429:
-            raise RuntimeError("Limite da cota grátis atingido. Espere um minuto e tente de novo, "
-                               "ou use outro provedor (veja provedores.py).")
-        raise RuntimeError(f"O provedor está sobrecarregado agora (erro {ultimo}, mesmo depois de "
-                           f"{len(self.ESPERAS) + 1} tentativas). Tente de novo em alguns minutos, "
-                           "ou use o Groq: export GROQ_API_KEY=... e export LLM_PROVEDOR=groq.")
+        raise ProvedorIndisponivel(f"erro {ultimo} em {corpo.get('model')} depois de "
+                                   f"{len(self.ESPERAS) + 1} tentativas")
 
     def create(self, model, max_tokens, messages, system="", tools=None, **_):
         corpo = _para_openai(system, messages, tools)
-        corpo.update({"model": model, "max_tokens": max_tokens})
-        return _da_openai(self._post(corpo))
+        corpo["max_tokens"] = max_tokens
+        candidatos = [model] + [m for m in self.reservas if m != model]
+        if self.modelo_ativo in candidatos:          # começa pelo que funcionou da última vez
+            candidatos.remove(self.modelo_ativo)
+            candidatos.insert(0, self.modelo_ativo)
+        falhas = []
+        for m in candidatos:
+            try:
+                resposta = self._post({**corpo, "model": m})
+                self.modelo_ativo = m
+                return _da_openai(resposta)
+            except ProvedorIndisponivel as e:
+                falhas.append(str(e))
+        if any("429" in f for f in falhas):
+            raise RuntimeError("Limite da cota grátis atingido em todos os modelos. Espere um minuto e "
+                               "tente de novo, ou use outro provedor (veja provedores.py).")
+        raise RuntimeError("Todos os modelos estão sobrecarregados agora (" + "; ".join(falhas) + "). "
+                           "Tente de novo em alguns minutos, ou use o Groq: "
+                           "export GROQ_API_KEY=... e export LLM_PROVEDOR=groq.")

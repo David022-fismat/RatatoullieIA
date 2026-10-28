@@ -357,7 +357,10 @@ def _bloco_para_dict(b):
     if isinstance(b, dict):
         return b
     if b.type == "tool_use":
-        return {"type": "tool_use", "id": b.id, "name": b.name, "input": b.input}
+        d = {"type": "tool_use", "id": b.id, "name": b.name, "input": b.input}
+        if getattr(b, "extra_content", None):     # só vem do Gemini/Groq; a Anthropic não usa
+            d["extra_content"] = b.extra_content
+        return d
     return {"type": "text", "text": getattr(b, "text", "")}
 
 
