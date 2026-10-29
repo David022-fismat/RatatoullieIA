@@ -2,8 +2,8 @@ import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 """Testa o Avaliador com receitas como as que o LLM devolveria, incluindo erros típicos."""
-from agentes import Perfil, carregar_base
-from avaliador import Avaliador
+from agents.agentes import Perfil, carregar_base
+from agents.avaliador import Avaliador
 
 ing, _, restr = carregar_base()
 av = Avaliador(ing, restr)

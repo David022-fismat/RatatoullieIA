@@ -19,10 +19,10 @@ from pathlib import Path
 RAIZ = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RAIZ))
 
-from agentes import Guardiao, Perfil, carregar_base  # noqa: E402
-from avaliador import Avaliador  # noqa: E402
-from montador import Montador  # noqa: E402
-from planejamento import aprender_com_feedback, planejar  # noqa: E402
+from agents.agentes import Guardiao, Perfil, carregar_base  # noqa: E402
+from agents.avaliador import Avaliador  # noqa: E402
+from agents.montador import Montador  # noqa: E402
+from agents.planejamento import aprender_com_feedback, planejar  # noqa: E402
 
 random.seed(42)
 ing, rec, restr = carregar_base()

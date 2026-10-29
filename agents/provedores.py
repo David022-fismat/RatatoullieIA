@@ -63,7 +63,7 @@ def criar_cliente(provedor, chave=None):
 def funcao_texto(provedor):
     """Função prompt -> texto, para o Montador no modo LLM."""
     if provedor == "anthropic":
-        from montador import llm_anthropic
+        from .montador import llm_anthropic
         return llm_anthropic
     cliente, modelo = criar_cliente(provedor)
 

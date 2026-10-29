@@ -17,9 +17,9 @@ from pathlib import Path
 RAIZ = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RAIZ))
 
-from agentes import Guardiao, Perfil, carregar_base  # noqa: E402
-from avaliador import Avaliador  # noqa: E402
-from montador import Montador, llm_anthropic  # noqa: E402
+from agents.agentes import Guardiao, Perfil, carregar_base  # noqa: E402
+from agents.avaliador import Avaliador  # noqa: E402
+from agents.montador import Montador, llm_anthropic  # noqa: E402
 
 LACUNAS = [   # o que falta na base -> restrições/tempo que a receita precisa respeitar
     {"lacuna": "rápida para quem mora sozinho (1 porção, até 20 min)", "porcoes": 1, "tempo": 20, "restricoes": []},

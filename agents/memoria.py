@@ -19,7 +19,8 @@ import json
 from datetime import date, timedelta
 from pathlib import Path
 
-ARQ_MEMORIA = Path(__file__).parent / "memoria_semana.json"
+RAIZ = Path(__file__).resolve().parent.parent      # pasta principal do projeto
+ARQ_MEMORIA = RAIZ / "memoria_semana.json"
 CATEGORIAS_IGNORADAS = {"tempero", "gordura"}      # cebola, alho, óleo não tornam pratos "parecidos"
 PESO_NOVIDADE = 2.0   # peso inicial: repetir na mesma semana pesa o dobro dos outros critérios (o aprendizado ajusta)
 

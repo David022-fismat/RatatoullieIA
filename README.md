@@ -1,5 +1,20 @@
 # Protótipo RatatouilleIA – agentes de planejamento de refeições
 
+## Organização das pastas
+
+| Pasta | O que tem |
+|---|---|
+| `agents/` | os agentes: `agentes.py` (perfil, Guardião, Leitor de nota, Comprador), `montador.py`, `avaliador.py`, `planejamento.py` (laço e aprendizado), `memoria.py`, `orquestrador.py`, `provedores.py` (Gemini, Groq, Anthropic) |
+| `layout/` | as interfaces: `app.py` (navegador) e `agente_interativo.py` (perguntas no terminal e `--chat`) |
+| `demos/` | demonstrações de cada parte, com dados fixos: `python demos/demo_orquestrador.py` |
+| `scripts/` | montar a base, gerar receitas com LLM e rodar os experimentos |
+| `kb/`, `fontes/`, `resultados/` | base de conhecimento gerada, fontes originais e resultados dos experimentos |
+| `app.py` | só chama `layout/app.py` (é o arquivo que o Streamlit Cloud procura) |
+
+Os arquivos de uso pessoal (`perfil.json`, `estoque.json`, `memoria_semana.json`, `logs/`) ficam na pasta
+principal e não vão para o GitHub. Dentro de `agents/`, os arquivos se importam com `from .modulo import ...`;
+de fora, com `from agents.modulo import ...`.
+
 ## Usar o agente no navegador (mais fácil)
 
     pip install -r requirements.txt
@@ -13,24 +28,24 @@ Para publicar na internet e mandar o link para os mentores: entre em share.strea
 GitHub, escolha este repositório e o arquivo `app.py`. Em *Advanced settings → Secrets*, coloque
 `GEMINI_API_KEY = "sua-chave"` para a conversa funcionar sem ninguém colar chave.
 
-### Memória da semana (memoria.py)
+### Memória da semana (agents/memoria.py)
 
 O Avaliador lembra o que foi sugerido nos últimos 7 dias. Cada receita ganha a característica
 `novidade` = 1 − semelhança com a mais parecida da semana (mesma receita = 1; senão, sobreposição dos
 ingredientes principais). Ela entra na nota com peso 2 no começo, e o aprendizado ajusta esse peso.
-O Montador também vê a memória e propõe receitas novas primeiro. `python demo_memoria.py` mostra o
+O Montador também vê a memória e propõe receitas novas primeiro. `python demos/demo_memoria.py` mostra o
 mesmo pedido em 4 dias seguidos, sem e com memória. Sem memória, tudo funciona como antes (os
-experimentos não mudam). `python agente_interativo.py --esquecer` apaga a memória.
+experimentos não mudam). `python layout/agente_interativo.py --esquecer` apaga a memória.
 
 ## Usar o agente no terminal
 
-    python agente_interativo.py           # pergunta perfil e estoque, mostra o cardápio e aprende com o retorno
-    python agente_interativo.py --llm     # mesmo, com o Montador usando LLM (precisa de ANTHROPIC_API_KEY)
-    python agente_interativo.py --novo    # refaz o perfil (fica salvo em perfil.json)
-    python agente_interativo.py --chat    # conversa livre: o Orquestrador (LLM) decide quais agentes chamar
-    python demo_orquestrador.py  # o Orquestrador decidindo, com LLM simulado (não precisa de chave)
+    python layout/agente_interativo.py           # pergunta perfil e estoque, mostra o cardápio e aprende com o retorno
+    python layout/agente_interativo.py --llm     # mesmo, com o Montador usando LLM (precisa de ANTHROPIC_API_KEY)
+    python layout/agente_interativo.py --novo    # refaz o perfil (fica salvo em perfil.json)
+    python layout/agente_interativo.py --chat    # conversa livre: o Orquestrador (LLM) decide quais agentes chamar
+    python demos/demo_orquestrador.py  # o Orquestrador decidindo, com LLM simulado (não precisa de chave)
 
-### Orquestrador (orquestrador.py)
+### Orquestrador (agents/orquestrador.py)
 
 Agente com LLM e *tool calling*. A cada mensagem ele escolhe quais ferramentas chamar, olha o
 resultado e decide o próximo passo (atualizar o estoque, planejar, relaxar o tempo, montar a lista de
@@ -45,7 +60,7 @@ compras, otimizar no orçamento, registrar o retorno). As ferramentas são os ou
 | planejar_com_orcamento | Comprador (PuLP) |
 | registrar_retorno | aprendizado dos pesos |
 
-Provedor de LLM (`provedores.py`): basta definir UMA chave no terminal.
+Provedor de LLM (`agents/provedores.py`): basta definir UMA chave no terminal.
 
 | Provedor | Custo | Onde criar a chave | Variável |
 |---|---|---|---|
@@ -62,10 +77,10 @@ para `logs/decisoes.jsonl`.
 ## Demonstrações
 
     pip install -r requirements.txt
-    python demo_montador_avaliador.py        # Montador + Avaliador (base e LLM simulado)
-    python demo_montador_avaliador.py --llm  # LLM real (precisa de ANTHROPIC_API_KEY)
-    python demo_avaliador.py                 # só o Avaliador
-    python demo.py                           # protótipo inicial (Leitor, Planejador, Comprador)
+    python demos/demo_montador_avaliador.py        # Montador + Avaliador (base e LLM simulado)
+    python demos/demo_montador_avaliador.py --llm  # LLM real (precisa de ANTHROPIC_API_KEY)
+    python demos/demo_avaliador.py                 # só o Avaliador
+    python demos/demo.py                           # protótipo inicial (Leitor, Planejador, Comprador)
 
 ## Base de conhecimento (kb/)
 
@@ -100,7 +115,7 @@ O script gera `kb/RELATORIO_BASE.md` com contagens, divergências encontradas e 
 
 | Arquivo | Papel |
 |---|---|
-| montador.py | propõe receitas (LLM ou base + substituições) |
-| avaliador.py | valida, pontua e calcula nutrientes (TACO) |
-| planejamento.py | laço de rodadas entre os dois |
-| agentes.py | Leitor de nota, Guardião, Planejador, Comprador (protótipo inicial) |
+| agents/montador.py | propõe receitas (LLM ou base + substituições) |
+| agents/avaliador.py | valida, pontua e calcula nutrientes (TACO) |
+| agents/planejamento.py | laço de rodadas entre os dois |
+| agents/agentes.py | Leitor de nota, Guardião, Planejador, Comprador (protótipo inicial) |

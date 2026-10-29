@@ -1,7 +1,7 @@
 """
 Interface no navegador do RatatouilleIA.
 
-    streamlit run app.py
+    streamlit run app.py          (ou: streamlit run layout/app.py)
 
 Abre uma página no navegador com:
   - o perfil na barra lateral;
@@ -16,10 +16,13 @@ from datetime import date, timedelta
 
 import streamlit as st
 
-from agente_interativo import ARQ_PERFIL, RESTRICOES, salvar_perfil
-from agentes import Perfil
-from memoria import MemoriaSemana
-from orquestrador import Orquestrador
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))   # pasta principal do projeto
+
+from agents.agentes import ARQ_PERFIL, RESTRICOES, Perfil, salvar_perfil  # noqa: E402
+from agents.memoria import MemoriaSemana  # noqa: E402
+from agents.orquestrador import Orquestrador  # noqa: E402
 
 st.set_page_config(page_title="RatatouilleIA", page_icon="🍲", layout="wide")
 
@@ -157,7 +160,7 @@ with aba_plan:
 
 # ------------------------------------------------------------------ aba: conversa
 with aba_chat:
-    from provedores import criar_cliente, provedor_disponivel
+    from agents.provedores import criar_cliente, provedor_disponivel
     provedor = provedor_disponivel()
     if provedor is None and not st.session_state.get("chave_gemini"):
         st.info("Para conversar, cole uma chave grátis do Gemini (aistudio.google.com/apikey). "
@@ -187,20 +190,12 @@ with aba_chat:
                                 st.code(f"{d['passo']}. {d['ferramenta']}({d['argumentos']}) -> {d['resultado']}")
                             else:
                                 st.code(d["decisao"])
-        seco = st.toggle("Modo teste: só mostrar qual ferramenta ele escolheria, sem executar")
         pedido = st.chat_input("Ex.: comprei frango e tomate, tô sem tempo, o que faço hoje?")
         if pedido:
             st.session_state.chat.append({"papel": "user", "texto": pedido})
             with st.spinner("O agente está decidindo..."):
                 try:
-                    if seco:
-                        escolhas = orq.decidir(pedido)
-                        resposta = "**[modo teste]** Escolheria: " + "; ".join(
-                            f"`{d['ferramenta']}({json.dumps(d['argumentos'], ensure_ascii=False)})`"
-                            for d in escolhas)
-                        orq.decisoes = []
-                    else:
-                        resposta = orq.responder(pedido)
+                    resposta = orq.responder(pedido)
                 except Exception as e:
                     resposta, orq.decisoes = f"Erro ao falar com o LLM: {e}", []
             st.session_state.chat.append({"papel": "assistant", "texto": resposta,

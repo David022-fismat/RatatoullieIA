@@ -10,10 +10,10 @@ Demonstração dos agentes Montador e Avaliador trabalhando juntos.
 import json
 import sys
 
-from agentes import Guardiao, Perfil, carregar_base
-from avaliador import Avaliador
-from montador import Montador, llm_anthropic
-from planejamento import planejar
+from agents.agentes import Guardiao, Perfil, carregar_base
+from agents.avaliador import Avaliador
+from agents.montador import Montador, llm_anthropic
+from agents.planejamento import planejar
 
 ing, rec, restr = carregar_base()
 guardiao = Guardiao(restr)

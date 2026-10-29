@@ -17,12 +17,14 @@ import csv
 import difflib
 import re
 import unicodedata
-from dataclasses import dataclass, field
+import json
+from dataclasses import asdict, dataclass, field
 from pathlib import Path
 
 import pulp
 
-KB = Path(__file__).parent / "kb"
+RAIZ = Path(__file__).resolve().parent.parent      # pasta principal do projeto
+KB = RAIZ / "kb"
 
 
 # ----------------------------------------------------------------------------
@@ -328,3 +330,30 @@ class Orquestrador:
         if "cozinh" in m or "faco" in m or "fazer" in m:
             return self.o_que_cozinhar(estado)
         return "Posso sugerir o que cozinhar com o que você tem ou montar uma lista dentro do orçamento."
+
+
+# ----------------------------------------------------------------------------
+# Perfil salvo e reconhecimento de nomes digitados (usados pelo Orquestrador e pela interface)
+# ----------------------------------------------------------------------------
+ARQ_PERFIL = RAIZ / "perfil.json"
+RESTRICOES = ["vegetariano", "sem_lactose", "celiaco", "alergia_ovo", "sem_carne_vermelha"]
+SEMELHANCA_MINIMA = 0.8      # texto digitado: mais rígido que o leitor da nota fiscal (0,6)
+
+
+def reconhecer(nome, leitor):
+    """Devolve (id, exato?) ou (None, False). Exato = nome/sinônimo igual ou palavra inteira contida."""
+    texto = _norm(nome)
+    if texto in leitor.vocab:
+        return leitor.vocab[texto], True
+    for voc, iid in leitor.vocab.items():
+        if f" {texto} " in f" {voc} " or f" {voc} " in f" {texto} ":   # "feijao" ~ "feijao carioca"
+            return iid, True
+    melhor = max(leitor.vocab, key=lambda v: difflib.SequenceMatcher(None, texto, v).ratio())
+    if difflib.SequenceMatcher(None, texto, melhor).ratio() >= SEMELHANCA_MINIMA:  # erro de digitação
+        return leitor.vocab[melhor], False
+    return None, False
+
+
+def salvar_perfil(p):
+    p.pesos = {k: round(v, 3) for k, v in p.pesos.items()}
+    ARQ_PERFIL.write_text(json.dumps(asdict(p), ensure_ascii=False, indent=1), encoding="utf-8")

@@ -12,11 +12,11 @@ Não mexe no seu perfil nem na sua memória (tudo aqui fica só na memória do p
 """
 from datetime import date, timedelta
 
-from agentes import Guardiao, Perfil, carregar_base
-from avaliador import Avaliador
-from memoria import MemoriaSemana
-from montador import Montador
-from planejamento import planejar
+from agents.agentes import Guardiao, Perfil, carregar_base
+from agents.avaliador import Avaliador
+from agents.memoria import MemoriaSemana
+from agents.montador import Montador
+from agents.planejamento import planejar
 
 ing, rec, restr = carregar_base()
 guardiao = Guardiao(restr)

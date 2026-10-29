@@ -17,7 +17,8 @@ import os
 import re
 from pathlib import Path
 
-KB = Path(__file__).parent / "kb"
+RAIZ = Path(__file__).resolve().parent.parent      # pasta principal do projeto
+KB = RAIZ / "kb"
 
 
 def carregar_substituicoes():
@@ -162,7 +163,7 @@ Responda APENAS com um array JSON, sem texto antes ou depois, neste formato:
             proposta = self._receita_base_para_json(r, itens, nome)
             repeticao = 0.0
             if feedback.get("recentes"):                 # já foi sugerida (ou algo parecido) esta semana?
-                from memoria import semelhanca
+                from .memoria import semelhanca
                 repeticao = max(semelhanca(proposta, e, self.ing) for e in feedback["recentes"])
             candidatas.append((cobertura - 0.15 * n_trocas - 0.5 * repeticao,  # prefere originais e novas
                                proposta))

@@ -141,7 +141,7 @@ class Avaliador:
                 parecida = {"nome": entrada["nome"], "data": entrada["data"], "semelhanca": round(sim, 2)}
         pesos = {**{k: 1.0 for k in c}, **perfil.pesos}
         if "novidade" in c and "novidade" not in perfil.pesos:
-            from memoria import PESO_NOVIDADE
+            from .memoria import PESO_NOVIDADE
             pesos["novidade"] = PESO_NOVIDADE
         nota = sum(pesos[k] * v for k, v in c.items())
         detalhes = {**c, "nutrientes_por_pessoa": self.nutrientes_por_pessoa(r), "parecida_com": parecida}

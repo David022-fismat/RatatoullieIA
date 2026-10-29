@@ -16,8 +16,8 @@ import json
 import sys
 from types import SimpleNamespace as NS
 
-from agentes import Perfil
-from orquestrador import Orquestrador, mostrar_decisoes
+from agents.agentes import Perfil
+from agents.orquestrador import Orquestrador, mostrar_decisoes
 
 
 class LLMSimulado:

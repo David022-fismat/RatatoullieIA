@@ -9,7 +9,8 @@ Laço entre Montador e Avaliador.
 import json
 from pathlib import Path
 
-ARQ_APROVADAS_LLM = Path(__file__).parent / "kb" / "aprovadas_llm.jsonl"
+RAIZ = Path(__file__).resolve().parent.parent      # pasta principal do projeto
+ARQ_APROVADAS_LLM = RAIZ / "kb" / "aprovadas_llm.jsonl"
 
 
 def planejar(montador, avaliador, perfil, estoque, n=7, max_rodadas=3, salvar_aprovadas=True):
@@ -54,7 +55,7 @@ def planejar(montador, avaliador, perfil, estoque, n=7, max_rodadas=3, salvar_ap
 def _variar(aprovadas, avaliador, perfil):
     """Escolhe as receitas uma a uma, descontando a semelhança com as já escolhidas no mesmo cardápio
     (evita dois cuscuz na mesma semana). Só roda quando o Avaliador tem memória."""
-    from memoria import PESO_NOVIDADE, semelhanca
+    from .memoria import PESO_NOVIDADE, semelhanca
     peso = perfil.pesos.get("novidade", PESO_NOVIDADE)
     restantes, escolhidas = list(aprovadas), []
     while restantes:
@@ -79,7 +80,7 @@ def aprender_com_feedback(perfil, caracteristicas, feitas, taxa=0.1, minimo=0.2,
     """
     if not caracteristicas:
         return
-    from memoria import PESO_NOVIDADE
+    from .memoria import PESO_NOVIDADE
     chaves = next(iter(caracteristicas.values())).keys()
     media = {k: sum(c[k] for c in caracteristicas.values()) / len(caracteristicas) for k in chaves}
     for nome, c in caracteristicas.items():

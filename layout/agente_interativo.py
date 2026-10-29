@@ -1,45 +1,28 @@
 """
 Porta de entrada do agente: pergunta o perfil e o estoque, monta o cardápio e aprende com o retorno.
 
-    python agente_interativo.py           # usa o Montador com a base de receitas (sem LLM)
-    python agente_interativo.py --llm     # usa o Montador com LLM (chave do Gemini, Groq ou Anthropic)
-    python agente_interativo.py --novo    # ignora o perfil salvo e pergunta tudo de novo
-    python agente_interativo.py --esquecer  # apaga a memória da semana (o que já foi sugerido)
-    python agente_interativo.py --chat    # conversa livre com o Orquestrador, que decide quais agentes chamar
-                               # (chave do Gemini, Groq ou Anthropic; veja provedores.py)
+    python layout/agente_interativo.py           # usa o Montador com a base de receitas (sem LLM)
+    python layout/agente_interativo.py --llm     # usa o Montador com LLM (chave do Gemini, Groq ou Anthropic)
+    python layout/agente_interativo.py --novo    # ignora o perfil salvo e pergunta tudo de novo
+    python layout/agente_interativo.py --esquecer  # apaga a memória da semana (o que já foi sugerido)
+    python layout/agente_interativo.py --chat    # conversa livre com o Orquestrador, que decide quais agentes chamar
+                               # (chave do Gemini, Groq ou Anthropic; veja agents/provedores.py)
 
 O perfil fica salvo em perfil.json, e os pesos aprendidos também, para a próxima vez.
 """
-import difflib
 import json
 import sys
-from dataclasses import asdict
 from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))   # pasta principal do projeto
 
-from agentes import Guardiao, LeitorDeNota, Perfil, _norm, carregar_base
-from avaliador import Avaliador
-from memoria import PESO_NOVIDADE, MemoriaSemana
-from montador import Montador
-from planejamento import aprender_com_feedback, planejar
+from agents.agentes import (ARQ_PERFIL, RESTRICOES, Guardiao, LeitorDeNota, Perfil,  # noqa: E402
+                            carregar_base, reconhecer, salvar_perfil)
+from agents.avaliador import Avaliador  # noqa: E402
+from agents.memoria import PESO_NOVIDADE, MemoriaSemana  # noqa: E402
+from agents.montador import Montador  # noqa: E402
+from agents.planejamento import aprender_com_feedback, planejar  # noqa: E402
 
-ARQ_PERFIL = Path(__file__).parent / "perfil.json"
-RESTRICOES = ["vegetariano", "sem_lactose", "celiaco", "alergia_ovo", "sem_carne_vermelha"]
 GRAMAS_PADRAO = 500          # quando a pessoa só diz "tenho ovo", sem quantidade
-SEMELHANCA_MINIMA = 0.8      # texto digitado: mais rígido que o leitor da nota fiscal (0,6)
-
-
-def reconhecer(nome, leitor):
-    """Devolve (id, exato?) ou (None, False). Exato = nome/sinônimo igual ou palavra inteira contida."""
-    texto = _norm(nome)
-    if texto in leitor.vocab:
-        return leitor.vocab[texto], True
-    for voc, iid in leitor.vocab.items():
-        if f" {texto} " in f" {voc} " or f" {voc} " in f" {texto} ":   # "feijao" ~ "feijao carioca"
-            return iid, True
-    melhor = max(leitor.vocab, key=lambda v: difflib.SequenceMatcher(None, texto, v).ratio())
-    if difflib.SequenceMatcher(None, texto, melhor).ratio() >= SEMELHANCA_MINIMA:  # erro de digitação
-        return leitor.vocab[melhor], False
-    return None, False
 
 
 def perguntar(texto, padrao=""):
@@ -107,11 +90,6 @@ def carregar_perfil(leitor, ing):
     return montar_perfil(leitor, ing)
 
 
-def salvar_perfil(p):
-    p.pesos = {k: round(v, 3) for k, v in p.pesos.items()}
-    ARQ_PERFIL.write_text(json.dumps(asdict(p), ensure_ascii=False, indent=1), encoding="utf-8")
-
-
 def mostrar(res, ing, perfil, estoque):
     print(f"\n{'=' * 70}\nCARDÁPIO ({res['status']})\n{'=' * 70}")
     for h in res["historico"]:
@@ -132,7 +110,7 @@ def mostrar(res, ing, perfil, estoque):
 
 
 def chat():
-    from provedores import criar_cliente, funcao_texto, provedor_disponivel
+    from agents.provedores import criar_cliente, funcao_texto, provedor_disponivel
     provedor = provedor_disponivel()
     if provedor is None:
         print("O modo conversa precisa da chave de um LLM. Opções grátis:")
@@ -146,7 +124,7 @@ def chat():
         except ImportError:
             print("Instale o SDK: pip install anthropic")
             return
-    from orquestrador import Orquestrador, conversar
+    from agents.orquestrador import Orquestrador, conversar
     if not ARQ_PERFIL.exists() or "--novo" in sys.argv:
         ing, _, _ = carregar_base()
         leitor_nomes.update({i: x["nome"] for i, x in ing.items()})
@@ -185,7 +163,7 @@ def main():
 
     llm = None
     if "--llm" in sys.argv:
-        from provedores import funcao_texto, provedor_disponivel
+        from agents.provedores import funcao_texto, provedor_disponivel
         provedor = provedor_disponivel()
         if provedor:
             llm = funcao_texto(provedor)
