@@ -87,6 +87,8 @@ REGRAS OBRIGATÓRIAS
 - Priorize o que já está em casa: {em_casa}.
 - Região do usuário: {perfil.regiao}. Ingredientes de que gosta: {', '.join(perfil.gosta) or 'não informado'}.
 - Não repita estas receitas: {', '.join(evitar) or 'nenhuma'}.
+- REGRA OBRIGATÓRIA DE DESPENSA: considere sempre disponíveis cebola (id `cebola`), alho (id `alho`) e óleo de soja (id `oleo`), mesmo que não apareçam no estoque informado. Pode usá-los nas receitas sem tratá-los como itens faltantes.
+- Considere também sal e pimenta disponíveis; como não fazem parte do catálogo, mencione-os somente no campo `preparo` e nunca na lista estruturada de ingredientes.
 
 PROBLEMAS DAS RODADAS ANTERIORES (corrija):
 {motivos}
