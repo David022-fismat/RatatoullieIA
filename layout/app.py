@@ -132,6 +132,9 @@ with aba_plan:
                 st.write(f"**Por quê:** {r['por_que']}")
                 st.write("**Ingredientes:** " + ", ".join(f"{i} {g} g" for i, g in r["ingredientes"].items()))
                 st.write("**Falta comprar:** " + (", ".join(r["falta_comprar"]) or "nada, você tem tudo"))
+                if r.get("preparo"):
+                    with st.expander("Modo de preparo"):
+                        st.text(r["preparo"])
                 if st.checkbox("Eu faria esta", key=f"fiz_{k}_{r['nome']}"):
                     feitas.append(r["nome"])
         b1, b2, b3 = st.columns(3)

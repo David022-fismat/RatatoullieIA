@@ -224,7 +224,7 @@ class Orquestrador:
         nut = x.detalhes["nutrientes_por_pessoa"]
         return {"nome": r["nome"], "tempo_min": r["tempo_min"], "nota": x.nota, "por_que": x.explicacao,
                 "ingredientes": {self._nome(i["id"]): round(i["gramas"] * fator) for i in r["ingredientes"]},
-                "falta_comprar": falta,
+                "falta_comprar": falta, "preparo": r.get("preparo", ""),
                 "por_pessoa": {"kcal": nut["kcal"], "proteina_g": nut["proteina_g"], "fibra_g": nut["fibra_g"]}}
 
     def planejar_refeicoes(self, n, tempo_max_min_hoje=None, so_com_o_que_tem=False):

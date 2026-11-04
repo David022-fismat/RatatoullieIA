@@ -91,6 +91,7 @@ A base é GERADA a partir de `fontes/`. Não edite `kb/` à mão: edite as fonte
 | Arquivo em fontes/ | Origem |
 |---|---|
 | receitas_ministerio.csv | 15 receitas de *Na Cozinha com as Frutas, Legumes e Verduras* (Ministério da Saúde/UFMG, 2016, licença CC BY-NC-SA 4.0) e 10 de *Preparações Regionais Saudáveis* (Ministério da Saúde, 2010), em medidas caseiras |
+| receitas_ms_texto.csv | as **124 receitas completas** (ingredientes em texto + **modo de preparo**) dos dois livros do Ministério, extraídas dos PDFs por `scripts/extrair_livros_ms.py` |
 | receitas_llm.csv | receitas geradas por IA para lacunas da base, aprovadas pelo Avaliador; coluna `revisado_pelo_grupo` |
 | lote_inicial_llm.json | o lote inicial de receitas de IA (gerado pelo Claude), antes da validação |
 | taco_food.csv, taco_nutrients.csv | TACO 4ª ed. (NEPA/Unicamp), via repositório github.com/raulfdm/taco-api |
@@ -110,6 +111,23 @@ Revisem, troquem para `sim` e rodem `python scripts/construir_base.py`. Antes da
 usem `INCLUIR_LLM_NAO_REVISADAS = False` no script para só entrar o que foi revisado.
 
 O script gera `kb/RELATORIO_BASE.md` com contagens, divergências encontradas e pendências.
+
+### Modo de preparo e base de texto do RAG
+
+- `kb/receitas.csv` tem a coluna `preparo`. O app mostra o modo de preparo de cada receita do cardápio
+  (botão "Modo de preparo"), e o Orquestrador recebe o texto para responder "como faço?".
+- `kb/receitas_rag.csv` é a base de **texto** para o RAG: toda receita com modo de preparo (124 dos
+  livros + as do LLM). A coluna `id_base` diz quais também estão na base operacional (com gramas);
+  as outras servem só de referência para a LLM (ainda não têm ingredientes em gramas).
+- Receitas do grupo ainda sem preparo: escrevam na coluna `preparo` de `fontes/receitas_grupo.csv`.
+- Para refazer a extração dos PDFs (opcional, o CSV já vem pronto):
+
+      pip install pdfplumber
+      python scripts/extrair_livros_ms.py Na_cozinha....pdf preparacoes_regionais....pdf
+
+Por que não fazer scraping de sites de receitas: o texto do modo de preparo é obra autoral (Lei
+9.610/98, sem exceção para mineração de texto) e os termos de uso desses sites costumam proibir coleta
+automatizada. Os livros do Ministério são públicos e alinhados ao Guia Alimentar.
 
 ## Arquivos dos agentes
 

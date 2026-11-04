@@ -4,20 +4,26 @@ Constrói a base de conhecimento ampliada (kb/) a partir das fontes (fontes/).
 Fontes (base padrão = grupo + Ministério da Saúde + receitas do LLM):
   - fontes/receitas_ministerio.csv : "Na Cozinha com as Frutas, Legumes e Verduras" (MS/UFMG, 2016,
                                       CC BY-NC-SA 4.0) e "Preparações Regionais Saudáveis" (MS, 2010)
+  - fontes/receitas_ms_texto.csv   : as 124 receitas COMPLETAS dos dois livros (ingredientes em texto
+                                      + modo de preparo), extraídas por scripts/extrair_livros_ms.py
   - fontes/receitas_llm.csv        : receitas geradas pelo LLM para lacunas, com coluna de revisão
   - fontes/taco_food.csv + taco_nutrients.csv : TACO 4ª ed. (NEPA/Unicamp), via repositório taco-api
   - fontes/*_grupo.csv : receitas e ingredientes que o grupo já tinha
   - (desligadas por padrão) merenda: transcricao_bh_2013.csv e cardapios/pratos_campinas.csv
 
 Saídas (sobrescreve): kb/ingredientes.csv, kb/receitas.csv, kb/receita_ingrediente.csv,
-kb/restricoes.csv, kb/substituicoes.csv e kb/RELATORIO_BASE.md
+kb/restricoes.csv, kb/substituicoes.csv, kb/receitas_rag.csv e kb/RELATORIO_BASE.md
+
+  kb/receitas.csv ganha a coluna "preparo" (modo de preparo). kb/receitas_rag.csv é a base de TEXTO
+  para o RAG: toda receita que tem modo de preparo (as 124 dos livros + as do LLM), mesmo as que ainda
+  não estão na base operacional (sem gramas por ingrediente); a coluna id_base diz quais estão.
 
 Rodar de novo é seguro: tudo é refeito a partir de fontes/.
 """
 import csv
 import re
 import unicodedata
-from collections import defaultdict
+from collections import Counter, defaultdict
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parent.parent
@@ -242,9 +248,9 @@ def ler_csv(caminho, delim=","):
         return list(csv.DictReader(f, delimiter=delim))
 
 
-def escrever_csv(caminho, campos, linhas):
+def escrever_csv(caminho, campos, linhas, fim_de_linha="\r\n"):
     with open(caminho, "w", encoding="utf-8", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=campos)
+        w = csv.DictWriter(f, fieldnames=campos, lineterminator=fim_de_linha)
         w.writeheader()
         w.writerows(linhas)
 
@@ -346,17 +352,21 @@ def main():
             return 50
         return 30
 
-    def adicionar(rid, nome, itens, tipo, fonte, frequencia, regiao="Sudeste", fator=FATOR_ADULTO):
+    def adicionar(rid, nome, itens, tipo, fonte, frequencia, regiao="Sudeste", fator=FATOR_ADULTO,
+                  preparo=""):
         tags = [t for t, proib in RESTRICOES.items() if not set(itens) & set(proib)]
         linhas_rec.append({"id": rid, "nome": nome, "regiao": regiao, "refeicao": "almoco|jantar",
                            "tempo_min": tempo_estimado(nome), "porcoes": PORCOES, "tags": "|".join(tags),
-                           "tipo": tipo, "fonte": fonte, "frequencia_campinas": frequencia})
+                           "tipo": tipo, "fonte": fonte, "frequencia_campinas": frequencia,
+                           "preparo": preparo})
         for iid, g in itens.items():
             linhas_ri.append({"receita": rid, "ingrediente": iid, "gramas": round(g * fator * PORCOES)})
 
     # ---------- receitas do Ministério da Saúde (medidas caseiras -> gramas)
     from medidas import PADRAO_SEM_REGRA, gramas, norm as norm_m, quantidade
     problemas_ms, mapa_ms = [], []
+    textos_ms = ler_csv(FONTES / "receitas_ms_texto.csv")      # receitas completas dos livros
+    texto_por_nome = {norm(t["nome"]): t for t in textos_ms}
     if INCLUIR_MINISTERIO:
         por_receita = defaultdict(list)
         for l in ler_csv(FONTES / "receitas_ministerio.csv", delim=";"):
@@ -387,8 +397,14 @@ def main():
             else:
                 porcoes = rend
             escala = PORCOES / porcoes
+            texto = texto_por_nome.get(norm(nome))
+            if texto is None:
+                problemas_ms.append(f"{nome}: modo de preparo não encontrado em receitas_ms_texto.csv")
+            else:
+                texto["id_base"] = f"ms{k:02d}"
             adicionar(f"ms{k:02d}", nome, {i: g * escala / PORCOES for i, g in itens.items()},
-                      r0["tipo"], FONTES_MINISTERIO[r0["fonte"]], 0, r0["regiao"], fator=1.0)
+                      r0["tipo"], FONTES_MINISTERIO[r0["fonte"]], 0, r0["regiao"], fator=1.0,
+                      preparo=texto["preparo"] if texto else "")
             mapa_ms.append((nome, r0["regiao"], r0["fonte"], r0["tipo"], round(total * escala / PORCOES)))
 
     # ---------- receitas do LLM (lacunas), só as que passaram no Avaliador
@@ -407,7 +423,7 @@ def main():
                       {l["ingrediente"]: float(l["gramas"]) * escala / PORCOES for l in linhas_r},
                       "prato", "Gerada por IA (Claude) para lacuna: " + r0["lacuna"]
                       + ("; revisada pelo grupo" if revisada else "; PENDENTE de revisão do grupo"),
-                      0, r0["regiao"], fator=1.0)
+                      0, r0["regiao"], fator=1.0, preparo=r0.get("preparo", ""))
             linhas_rec[-1]["tempo_min"] = r0["tempo_min"]
             mapa_llm.append((nome, r0["lacuna"], "sim" if revisada else "pendente"))
 
@@ -436,8 +452,32 @@ def main():
                           REGIAO.get(nome_rec, "Sudeste"))
     escrever_csv(KB / "receitas.csv",
                  ["id", "nome", "regiao", "refeicao", "tempo_min", "porcoes", "tags", "tipo", "fonte",
-                  "frequencia_campinas"], linhas_rec)
+                  "frequencia_campinas", "preparo"], linhas_rec)
     escrever_csv(KB / "receita_ingrediente.csv", ["receita", "ingrediente", "gramas"], linhas_ri)
+
+    # ---------- base de texto para o RAG: tudo que tem modo de preparo
+    nome_ing = {i: v[0] for i, v in INGREDIENTES.items()}
+    gramas_por_rec = defaultdict(list)
+    for l in linhas_ri:
+        gramas_por_rec[l["receita"]].append(f"{l['gramas']} g de {nome_ing[l['ingrediente']]}")
+    linhas_rag = []
+    for t in textos_ms:
+        linhas_rag.append({"id": t["id"], "id_base": t.get("id_base", ""), "nome": t["nome"],
+                           "fonte": FONTES_MINISTERIO[t["livro"]] + f", p. {t['pagina_pdf']} do PDF",
+                           "regiao": t["regiao"], "tipo": t["tipo"], "rendimento": t["rendimento"],
+                           "ingredientes": t["ingredientes"], "preparo": t["preparo"],
+                           "observacoes": t["observacoes"], "kcal_porcao": t["kcal_porcao"]})
+    for r in linhas_rec:
+        if r["id"].startswith("ia") and r["preparo"]:
+            linhas_rag.append({"id": r["id"], "id_base": r["id"], "nome": r["nome"], "fonte": r["fonte"],
+                               "regiao": r["regiao"], "tipo": r["tipo"],
+                               "rendimento": f"{r['porcoes']} porções",
+                               "ingredientes": " | ".join(gramas_por_rec[r["id"]]),
+                               "preparo": r["preparo"], "observacoes": "", "kcal_porcao": ""})
+    escrever_csv(KB / "receitas_rag.csv",
+                 ["id", "id_base", "nome", "fonte", "regiao", "tipo", "rendimento", "ingredientes", "preparo",
+                  "observacoes", "kcal_porcao"], linhas_rag, fim_de_linha="\n")
+    sem_preparo = [r["nome"] for r in linhas_rec if not r["preparo"]]
 
     # ---------- restrições e substituições
     escrever_csv(KB / "restricoes.csv", ["restricao", "tipo", "ingredientes_excluidos"],
@@ -476,10 +516,20 @@ def main():
             "## Receitas geradas pelo LLM", "",
             "| Receita | Lacuna que cobre | Revisada pelo grupo |", "|---|---|---|",
             *([f"| {n} | {lac} | {s} |" for n, lac, s in mapa_llm] or ["| - | - | - |"]), "",
+            "## Modo de preparo e base de texto do RAG (kb/receitas_rag.csv)", "",
+            f"- Receitas da base operacional com modo de preparo: "
+            f"{len(linhas_rec) - len(sem_preparo)} de {len(linhas_rec)}",
+            f"- Sem modo de preparo (o grupo precisa escrever): {', '.join(sem_preparo) or 'nenhuma'}",
+            f"- Base de texto do RAG: {len(linhas_rag)} receitas "
+            f"({sum(1 for l in linhas_rag if l['id_base'])} também na base operacional)",
+            "- Por tipo: " + ", ".join(f"{t} {c}" for t, c in
+                                       sorted(Counter(l["tipo"] for l in linhas_rag).items(),
+                                              key=lambda x: -x[1])), "",
             "## Conversão de medidas caseiras: avisos", "",
             *([f"- {x}" for x in problemas_ms + sorted(set(PADRAO_SEM_REGRA))] or ["- nenhum"]), "",
             "## Ingredientes sem correspondência na TACO", "", *[f"- {i}" for i in sem_taco], "",
             "## Pendências para o grupo", "",
+            "- Escrever o modo de preparo das receitas do grupo (coluna preparo em fontes/receitas_grupo.csv).",
             "- Revisar as receitas do LLM e marcar revisado_pelo_grupo=sim em fontes/receitas_llm.csv;"
             " antes da entrega, usar INCLUIR_LLM_NAO_REVISADAS = False.",
             "- Medidas caseiras viraram gramas por valores de referência aproximados (scripts/medidas.py);"
