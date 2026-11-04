@@ -54,6 +54,8 @@ Regras:
 - Se a pessoa disser o que fez ou não fez, registre o retorno para o sistema aprender.
 - Ingrediente que a ferramenta não reconhecer: avise a pessoa, não invente um equivalente.
 - Responda em português, curto, explicando POR QUE cada receita foi escolhida (use o campo "por_que").
+- O app mostra, abaixo da sua resposta, o modo de preparo e um link de vídeos do YouTube de cada receita
+  sugerida: não copie o preparo inteiro nem invente links. Se a pessoa perguntar como fazer uma receita, explique usando o campo "preparo".
 - O Avaliador lembra o que foi sugerido nos últimos 7 dias e tira pontos de receitas repetidas ou parecidas;
   se o "por_que" disser que uma receita perdeu pontos por repetição, mencione isso.
 """
@@ -130,6 +132,7 @@ class Orquestrador:
         self.ultimo_plano = []          # Resultados do Avaliador do último planejar_refeicoes
         self.sugeridas = {}             # tudo o que foi sugerido na conversa: nome -> Resultado
         self.historico = []             # mensagens da conversa (memória de curto prazo)
+        self.preparos = {}              # nome -> modo de preparo das receitas sugeridas nesta mensagem
         self.decisoes = []              # decisões do último turno (para mostrar e auditar)
 
     # ------------------------------------------------------------------ persistência
@@ -224,7 +227,7 @@ class Orquestrador:
         nut = x.detalhes["nutrientes_por_pessoa"]
         return {"nome": r["nome"], "tempo_min": r["tempo_min"], "nota": x.nota, "por_que": x.explicacao,
                 "ingredientes": {self._nome(i["id"]): round(i["gramas"] * fator) for i in r["ingredientes"]},
-                "falta_comprar": falta,
+                "falta_comprar": falta, "preparo": r.get("preparo", ""),
                 "por_pessoa": {"kcal": nut["kcal"], "proteina_g": nut["proteina_g"], "fibra_g": nut["fibra_g"]}}
 
     def planejar_refeicoes(self, n, tempo_max_min_hoje=None, so_com_o_que_tem=False):
@@ -243,6 +246,7 @@ class Orquestrador:
         self.ultimo_plano = cardapio
         self.sugeridas.update({x.receita["nome"]: x for x in cardapio})
         self.memoria.registrar([x.receita for x in cardapio])      # o Avaliador vai lembrar
+        self.preparos.update({x.receita["nome"]: x.receita.get("preparo", "") for x in cardapio})
         return {"pedidas": n, "encontradas": len(cardapio),
                 "limite_de_tempo_usado": perfil.tempo_max_min,
                 "rodadas_montador_avaliador": len(res["historico"]),
@@ -276,6 +280,7 @@ class Orquestrador:
         if res is None:
             return {"cabe_no_orcamento": False,
                     "sugestao": "diminuir o número de refeições ou aumentar o orçamento"}
+        self.preparos.update({self.rec[k]["nome"]: self.rec[k].get("preparo", "") for k, _ in res["semana"]})
         return {"cabe_no_orcamento": True, "total_reais": round(res["total"], 2),
                 "refeicoes": [{"receita": self.rec[k]["nome"], "vezes": n} for k, n in res["semana"]],
                 "comprar": [{"item": self._nome(i), "embalagens": n,
@@ -315,7 +320,7 @@ class Orquestrador:
                 f"{json.dumps(p, ensure_ascii=False)}")
 
     def responder(self, mensagem):
-        self.decisoes = []
+        self.decisoes, self.preparos = [], {}
         aviso = self.guardiao.checar_mensagem(mensagem)          # o Guardião fala antes do LLM
         if aviso:
             self.decisoes.append({"passo": 0, "decisao": "Guardião bloqueou (condição de saúde)"})

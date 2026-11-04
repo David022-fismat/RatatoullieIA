@@ -54,6 +54,13 @@
 | Baião de dois simples | regional nordestina do dia a dia | pendente |
 | Cuscuz nordestino com ovo e legumes | regional nordestina do dia a dia | pendente |
 
+## Modo de preparo e base de texto do RAG (kb/receitas_rag.csv)
+
+- Receitas da base operacional com modo de preparo: 38 de 50
+- Sem modo de preparo (o grupo precisa escrever): arroz feijão e ovo, cuscuz com ovo, frango grelhado com legumes, macarrão à bolonhesa, escondidinho de mandioca com carne, omelete de abobrinha, feijão preto com couve e arroz, sardinha com batata e salada, sopa de legumes, macaxeira cozida com queijo, pão com ovo e banana, frango desfiado com purê
+- Base de texto do RAG: 137 receitas (38 também na base operacional)
+- Por tipo: prato 35, bebida 24, sobremesa 21, lanche 17, molho 16, salada 11, acompanhamento 11, base 2
+
 ## Conversão de medidas caseiras: avisos
 
 - Virado de Quiabo: sem rendimento; estimadas 2 porções (250 g cada)
@@ -69,6 +76,7 @@
 
 ## Pendências para o grupo
 
+- Escrever o modo de preparo das receitas do grupo (coluna preparo em fontes/receitas_grupo.csv).
 - Revisar as receitas do LLM e marcar revisado_pelo_grupo=sim em fontes/receitas_llm.csv; antes da entrega, usar INCLUIR_LLM_NAO_REVISADAS = False.
 - Medidas caseiras viraram gramas por valores de referência aproximados (scripts/medidas.py); refinar com a tabela de medidas referidas do IBGE (POF 2008-2009).
 - As receitas do Ministério não informam tempo de preparo: foi estimado por tipo de prato.

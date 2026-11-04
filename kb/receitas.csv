@@ -1,51 +1,105 @@
-id,nome,regiao,refeicao,tempo_min,porcoes,tags,tipo,fonte,frequencia_campinas
-r01,arroz feijão e ovo,Brasil,almoco|jantar,30,2,vegetariano|sem_lactose|rapido,prato,grupo,0
-r02,cuscuz com ovo,Nordeste,cafe|jantar,15,2,vegetariano|sem_lactose|rapido,prato,grupo,0
-r03,frango grelhado com legumes,Brasil,almoco|jantar,35,2,sem_lactose,prato,grupo,0
-r04,macarrão à bolonhesa,Sudeste,almoco|jantar,30,2,sem_lactose,prato,grupo,0
-r05,escondidinho de mandioca com carne,Nordeste,almoco|jantar,60,2,,prato,grupo,0
-r06,omelete de abobrinha,Brasil,cafe|jantar,15,2,vegetariano|sem_lactose|rapido,prato,grupo,0
-r07,feijão preto com couve e arroz,Sudeste,almoco|jantar,40,2,vegetariano|sem_lactose,prato,grupo,0
-r08,sardinha com batata e salada,Brasil,almoco|jantar,25,2,sem_lactose|rapido,prato,grupo,0
-r09,sopa de legumes,Sul,jantar,40,2,vegetariano|sem_lactose,prato,grupo,0
-r10,macaxeira cozida com queijo,Nordeste,cafe|jantar,25,2,vegetariano,prato,grupo,0
-r11,pão com ovo e banana,Brasil,cafe,10,2,vegetariano|sem_lactose|rapido,prato,grupo,0
-r12,frango desfiado com purê,Sul,almoco|jantar,45,2,,prato,grupo,0
-ms01,Farofa de Legumes,Brasil,almoco|jantar,30,2,vegetariano|sem_lactose|alergia_ovo|celiaco|sem_carne_vermelha,acompanhamento,"Na Cozinha com as Frutas, Legumes e Verduras (Ministério da Saúde/UFMG, 2016, CC BY-NC-SA 4.0)",0
-ms02,Purê de Legumes,Brasil,almoco|jantar,30,2,vegetariano|alergia_ovo|celiaco|sem_carne_vermelha,acompanhamento,"Na Cozinha com as Frutas, Legumes e Verduras (Ministério da Saúde/UFMG, 2016, CC BY-NC-SA 4.0)",0
-ms03,Suflê de Chuchu,Brasil,almoco|jantar,50,2,vegetariano|celiaco|sem_carne_vermelha,prato,"Na Cozinha com as Frutas, Legumes e Verduras (Ministério da Saúde/UFMG, 2016, CC BY-NC-SA 4.0)",0
-ms04,Bolinho Assado de Chuchu,Brasil,almoco|jantar,50,2,vegetariano|sem_carne_vermelha,prato,"Na Cozinha com as Frutas, Legumes e Verduras (Ministério da Saúde/UFMG, 2016, CC BY-NC-SA 4.0)",0
-ms05,Mamão Verde Refogado,Brasil,almoco|jantar,30,2,vegetariano|sem_lactose|alergia_ovo|celiaco|sem_carne_vermelha,acompanhamento,"Na Cozinha com as Frutas, Legumes e Verduras (Ministério da Saúde/UFMG, 2016, CC BY-NC-SA 4.0)",0
-ms06,Kibe de Forno com Abóbora,Brasil,almoco|jantar,50,2,vegetariano|alergia_ovo|sem_carne_vermelha,prato,"Na Cozinha com as Frutas, Legumes e Verduras (Ministério da Saúde/UFMG, 2016, CC BY-NC-SA 4.0)",0
-ms07,Charuto de Repolho,Brasil,almoco|jantar,50,2,sem_lactose|alergia_ovo,prato,"Na Cozinha com as Frutas, Legumes e Verduras (Ministério da Saúde/UFMG, 2016, CC BY-NC-SA 4.0)",0
-ms08,Panqueca Verde,Brasil,almoco|jantar,50,2,vegetariano|sem_carne_vermelha,prato,"Na Cozinha com as Frutas, Legumes e Verduras (Ministério da Saúde/UFMG, 2016, CC BY-NC-SA 4.0)",0
-ms09,Trouxinha de Couve com Carne Moída e Angu,Sudeste,almoco|jantar,50,2,sem_lactose|alergia_ovo|celiaco,prato,"Na Cozinha com as Frutas, Legumes e Verduras (Ministério da Saúde/UFMG, 2016, CC BY-NC-SA 4.0)",0
-ms10,Rocambole de Moranga com Batata,Brasil,almoco|jantar,50,2,sem_carne_vermelha,prato,"Na Cozinha com as Frutas, Legumes e Verduras (Ministério da Saúde/UFMG, 2016, CC BY-NC-SA 4.0)",0
-ms11,Torta de Tomate,Brasil,almoco|jantar,50,2,vegetariano|sem_carne_vermelha,prato,"Na Cozinha com as Frutas, Legumes e Verduras (Ministério da Saúde/UFMG, 2016, CC BY-NC-SA 4.0)",0
-ms12,Almôndega com Jiló,Sudeste,almoco|jantar,30,2,sem_lactose|alergia_ovo,prato,"Na Cozinha com as Frutas, Legumes e Verduras (Ministério da Saúde/UFMG, 2016, CC BY-NC-SA 4.0)",0
-ms13,Torta de Arroz com Recheio de Tomate,Brasil,almoco|jantar,50,2,vegetariano|sem_carne_vermelha,prato,"Na Cozinha com as Frutas, Legumes e Verduras (Ministério da Saúde/UFMG, 2016, CC BY-NC-SA 4.0)",0
-ms14,Suflê de Cenoura,Brasil,almoco|jantar,50,2,vegetariano|sem_carne_vermelha,prato,"Na Cozinha com as Frutas, Legumes e Verduras (Ministério da Saúde/UFMG, 2016, CC BY-NC-SA 4.0)",0
-ms15,Virado de Quiabo,Sudeste,almoco|jantar,30,2,vegetariano|sem_lactose|alergia_ovo|celiaco|sem_carne_vermelha,prato,"Na Cozinha com as Frutas, Legumes e Verduras (Ministério da Saúde/UFMG, 2016, CC BY-NC-SA 4.0)",0
-ms16,Arroz com Pupunha,Norte,almoco|jantar,30,2,vegetariano|sem_lactose|alergia_ovo|celiaco|sem_carne_vermelha,acompanhamento,"Preparações Regionais Saudáveis (Ministério da Saúde, 2010)",0
-ms17,Caldeirada de Peixe com Chicória,Norte,almoco|jantar,50,2,sem_lactose|celiaco|sem_carne_vermelha,prato,"Preparações Regionais Saudáveis (Ministério da Saúde, 2010)",0
-ms18,Galinhada com Pequi,Centro-Oeste,almoco|jantar,50,2,sem_lactose|alergia_ovo|celiaco|sem_carne_vermelha,prato,"Preparações Regionais Saudáveis (Ministério da Saúde, 2010)",0
-ms19,Cozidão Maranhense,Nordeste,almoco|jantar,50,2,sem_lactose|alergia_ovo|celiaco,prato,"Preparações Regionais Saudáveis (Ministério da Saúde, 2010)",0
-ms20,Refogado de Carne com Palma,Nordeste,almoco|jantar,30,2,sem_lactose|alergia_ovo|celiaco,prato,"Preparações Regionais Saudáveis (Ministério da Saúde, 2010)",0
-ms21,Vatapá de Inhame,Nordeste,almoco|jantar,30,2,sem_lactose|alergia_ovo|celiaco|sem_carne_vermelha,acompanhamento,"Preparações Regionais Saudáveis (Ministério da Saúde, 2010)",0
-ms22,Arroz com Fibra de Caju,Nordeste,almoco|jantar,30,2,vegetariano|sem_lactose|alergia_ovo|celiaco|sem_carne_vermelha,acompanhamento,"Preparações Regionais Saudáveis (Ministério da Saúde, 2010)",0
-ms23,Fígado com Jiló,Sudeste,almoco|jantar,30,2,alergia_ovo|celiaco,prato,"Preparações Regionais Saudáveis (Ministério da Saúde, 2010)",0
-ms24,Angu com Espinafre,Sudeste,almoco|jantar,30,2,vegetariano|sem_lactose|alergia_ovo|celiaco|sem_carne_vermelha,acompanhamento,"Preparações Regionais Saudáveis (Ministério da Saúde, 2010)",0
-ms25,Virado de Vagem,Sudeste,almoco|jantar,30,2,vegetariano|alergia_ovo|celiaco|sem_carne_vermelha,acompanhamento,"Preparações Regionais Saudáveis (Ministério da Saúde, 2010)",0
-ia01,Cuscuz com ovo mexido e tomate,Nordeste,almoco|jantar,15,2,vegetariano|sem_lactose|celiaco|sem_carne_vermelha,prato,"Gerada por IA (Claude) para lacuna: rápida para quem mora sozinho (1 porção, até 20 min); PENDENTE de revisão do grupo",0
-ia02,Macarrão com sardinha e tomate,Brasil,almoco|jantar,20,2,sem_lactose|alergia_ovo|sem_carne_vermelha,prato,"Gerada por IA (Claude) para lacuna: rápida para quem mora sozinho (1 porção, até 20 min); PENDENTE de revisão do grupo",0
-ia03,Frango em cubos com abobrinha,Brasil,almoco|jantar,20,2,sem_lactose|alergia_ovo|celiaco|sem_carne_vermelha,prato,"Gerada por IA (Claude) para lacuna: rápida para quem mora sozinho (1 porção, até 20 min); PENDENTE de revisão do grupo",0
-ia04,Feijão preto com abóbora e couve,Sudeste,almoco|jantar,45,2,vegetariano|sem_lactose|alergia_ovo|celiaco|sem_carne_vermelha,prato,Gerada por IA (Claude) para lacuna: vegetariana com leguminosa; PENDENTE de revisão do grupo,0
-ia05,Grão-de-bico refogado com tomate e espinafre,Brasil,almoco|jantar,45,2,vegetariano|sem_lactose|alergia_ovo|celiaco|sem_carne_vermelha,prato,Gerada por IA (Claude) para lacuna: vegetariana com leguminosa; PENDENTE de revisão do grupo,0
-ia06,Escondidinho de mandioca com feijão,Nordeste,almoco|jantar,50,2,vegetariano|alergia_ovo|celiaco|sem_carne_vermelha,prato,Gerada por IA (Claude) para lacuna: vegetariana com leguminosa; PENDENTE de revisão do grupo,0
-ia07,Carne moída com legumes,Brasil,almoco|jantar,35,2,sem_lactose|alergia_ovo|celiaco,prato,Gerada por IA (Claude) para lacuna: marmita para a semana que congela bem (4 porções); PENDENTE de revisão do grupo,0
-ia08,Frango desfiado com milho e cenoura,Brasil,almoco|jantar,45,2,sem_lactose|alergia_ovo|celiaco|sem_carne_vermelha,prato,Gerada por IA (Claude) para lacuna: marmita para a semana que congela bem (4 porções); PENDENTE de revisão do grupo,0
-ia09,Polenta mole com molho de carne moída,Sul,almoco|jantar,30,2,sem_lactose|alergia_ovo|celiaco,prato,Gerada por IA (Claude) para lacuna: baixo custo; PENDENTE de revisão do grupo,0
-ia10,Sopa de feijão com macarrão,Sudeste,almoco|jantar,40,2,vegetariano|sem_lactose|alergia_ovo|sem_carne_vermelha,prato,Gerada por IA (Claude) para lacuna: baixo custo; PENDENTE de revisão do grupo,0
-ia11,Peixe assado com batata e tomate,Brasil,almoco|jantar,40,2,sem_lactose|alergia_ovo|celiaco|sem_carne_vermelha,prato,Gerada por IA (Claude) para lacuna: sem lactose e sem glúten; PENDENTE de revisão do grupo,0
-ia12,Baião de dois simples,Nordeste,almoco|jantar,40,2,vegetariano|alergia_ovo|celiaco|sem_carne_vermelha,prato,Gerada por IA (Claude) para lacuna: regional nordestina do dia a dia; PENDENTE de revisão do grupo,0
-ia13,Cuscuz nordestino com ovo e legumes,Nordeste,almoco|jantar,20,2,vegetariano|sem_lactose|celiaco|sem_carne_vermelha,prato,Gerada por IA (Claude) para lacuna: regional nordestina do dia a dia; PENDENTE de revisão do grupo,0
+id,nome,regiao,refeicao,tempo_min,porcoes,tags,tipo,fonte,frequencia_campinas,preparo
+r01,arroz feijão e ovo,Brasil,almoco|jantar,30,2,vegetariano|sem_lactose|rapido,prato,grupo,0,
+r02,cuscuz com ovo,Nordeste,cafe|jantar,15,2,vegetariano|sem_lactose|rapido,prato,grupo,0,
+r03,frango grelhado com legumes,Brasil,almoco|jantar,35,2,sem_lactose,prato,grupo,0,
+r04,macarrão à bolonhesa,Sudeste,almoco|jantar,30,2,sem_lactose,prato,grupo,0,
+r05,escondidinho de mandioca com carne,Nordeste,almoco|jantar,60,2,,prato,grupo,0,
+r06,omelete de abobrinha,Brasil,cafe|jantar,15,2,vegetariano|sem_lactose|rapido,prato,grupo,0,
+r07,feijão preto com couve e arroz,Sudeste,almoco|jantar,40,2,vegetariano|sem_lactose,prato,grupo,0,
+r08,sardinha com batata e salada,Brasil,almoco|jantar,25,2,sem_lactose|rapido,prato,grupo,0,
+r09,sopa de legumes,Sul,jantar,40,2,vegetariano|sem_lactose,prato,grupo,0,
+r10,macaxeira cozida com queijo,Nordeste,cafe|jantar,25,2,vegetariano,prato,grupo,0,
+r11,pão com ovo e banana,Brasil,cafe,10,2,vegetariano|sem_lactose|rapido,prato,grupo,0,
+r12,frango desfiado com purê,Sul,almoco|jantar,45,2,,prato,grupo,0,
+ms01,Farofa de Legumes,Brasil,almoco|jantar,30,2,vegetariano|sem_lactose|alergia_ovo|celiaco|sem_carne_vermelha,acompanhamento,"Na Cozinha com as Frutas, Legumes e Verduras (Ministério da Saúde/UFMG, 2016, CC BY-NC-SA 4.0)",0,"Aqueça o óleo em uma frigideira grande por 2 minutos em fogo alto e doure a cebola. Junte a cenoura e deixe refogar por mais 5 minutos. Misture a abobrinha, as azeitonas e refogue até que todos os legumes estejam macios. Apague o fogo, acrescente a farinha, o cheiro-verde, o sal e misture bem. Sirva acompanhando um lombo assado ou um frango grelhado."
+ms02,Purê de Legumes,Brasil,almoco|jantar,30,2,vegetariano|alergia_ovo|celiaco|sem_carne_vermelha,acompanhamento,"Na Cozinha com as Frutas, Legumes e Verduras (Ministério da Saúde/UFMG, 2016, CC BY-NC-SA 4.0)",0,"Levar o legume amassado para refogar em uma panela com o óleo, o sal e o alho. Deixar refogar e posteriormente acrescentar o leite aos poucos até que se obtenha a consistência desejada"
+ms03,Suflê de Chuchu,Brasil,almoco|jantar,50,2,vegetariano|celiaco|sem_carne_vermelha,prato,"Na Cozinha com as Frutas, Legumes e Verduras (Ministério da Saúde/UFMG, 2016, CC BY-NC-SA 4.0)",0,"Bater as claras em neve e reservar. Colocar os demais ingredientes no liquidificador, e bater bem. Depois misturar as claras em neve delicadamente. Untar um pirex com manteiga e colocar a mistura. Levar ao forno pré-aquecido. Colocar o palitinho para verificar se está seco e dourado em cima."
+ms04,Bolinho Assado de Chuchu,Brasil,almoco|jantar,50,2,vegetariano|sem_carne_vermelha,prato,"Na Cozinha com as Frutas, Legumes e Verduras (Ministério da Saúde/UFMG, 2016, CC BY-NC-SA 4.0)",0,"Cozinhar o chuchu e escorrer bem toda a água. Colocar em um prato fundo e amassar com um garfo. Acrescentar os demais ingredientes e sempre amassar tudo com o garfo. Por fim, acrescentar as claras em neve e a cebolinha. Com o auxílio de uma colher, separar porçõezinhas da massa e colocar em uma assadeira untada. Levar ao forno bem quente e deixar até os bolinhos ficarem dourados."
+ms05,Mamão Verde Refogado,Brasil,almoco|jantar,30,2,vegetariano|sem_lactose|alergia_ovo|celiaco|sem_carne_vermelha,acompanhamento,"Na Cozinha com as Frutas, Legumes e Verduras (Ministério da Saúde/UFMG, 2016, CC BY-NC-SA 4.0)",0,"Descascar e picar o mamão em cubos médios. Dourar o alho no óleo, adicionar o mamão e refogar. Se necessário, acrescentar um pouco de água para finalizar o cozimento. Pode-se acrescentar cheiro-verde."
+ms06,Kibe de Forno com Abóbora,Brasil,almoco|jantar,50,2,vegetariano|alergia_ovo|sem_carne_vermelha,prato,"Na Cozinha com as Frutas, Legumes e Verduras (Ministério da Saúde/UFMG, 2016, CC BY-NC-SA 4.0)",0,"Misturar o purê de abóbora com os outros ingredientes. Reservar o queijo, a manteiga e a farinha de rosca para a montagem. Untar a assadeira com manteiga e montar o quibe em camadas: massa – queijo – massa. Espalhar o restante da manteiga por cima e cobrir toda a massa com farinha de rosca para ficar uma casquinha crocante."
+ms07,Charuto de Repolho,Brasil,almoco|jantar,50,2,sem_lactose|alergia_ovo,prato,"Na Cozinha com as Frutas, Legumes e Verduras (Ministério da Saúde/UFMG, 2016, CC BY-NC-SA 4.0)",0,"Separar as folhas do repolho tirando a parte do meio (talo). Colocar as folhas para cozinhar um pouco em água fervendo até que elas fiquem macias, reservar. Em uma vasilha misturar a carne moída, a cebola picada, o alho amassado, o sal, a pimenta picada, o pimentão picado e o arroz cru. Amassar bem até que todos os ingredientes estejam bem misturados. Abrir a folha em uma superfície e colocar a mistura, enrolar como se fosse um rocambole. Em uma panela fazer o molho e colocar os charutos sobre o molho. Colocar a água até que estejam cobertos. Cozinhar por, mais ou menos, 30 minutos sem mexer."
+ms08,Panqueca Verde,Brasil,almoco|jantar,50,2,vegetariano|sem_carne_vermelha,prato,"Na Cozinha com as Frutas, Legumes e Verduras (Ministério da Saúde/UFMG, 2016, CC BY-NC-SA 4.0)",0,"Bater todos os ingredientes no liquidificador. É necessário branquear as folhas para diminuir o sabor acentuado. Recheios: A gosto. Pode ser de carne moída, de frango, de queijo, de tomate com queijo e manjericão. Colocar, também, os folhosos refogados com a carne do recheio."
+ms09,Trouxinha de Couve com Carne Moída e Angu,Sudeste,almoco|jantar,50,2,sem_lactose|alergia_ovo|celiaco,prato,"Na Cozinha com as Frutas, Legumes e Verduras (Ministério da Saúde/UFMG, 2016, CC BY-NC-SA 4.0)",0,"RECHEIO:
+Refogar a carne no óleo com alho, acrescentar a cebola picada e deixar refogar mais um pouco, reservar.
+ANGU:
+Derreter o fubá em ½ litro de água fria. Acrescentar na água quente e mexer bem para não formar grumos. Cozinhar até formar uma casca no fundo.
+MONTAGEM:
+Colocar a folha de couve branqueada sobre tigelas pequenas e redondas. Colocar a carne de um lado e o angu do outro. Fechar com o restante da folha que sobrou. Levar a geladeira. Virar a tigela para tirar a trouxinha em um pirex, e levar para aquecer ao forno."
+ms10,Rocambole de Moranga com Batata,Brasil,almoco|jantar,50,2,sem_carne_vermelha,prato,"Na Cozinha com as Frutas, Legumes e Verduras (Ministério da Saúde/UFMG, 2016, CC BY-NC-SA 4.0)",0,"Acrescentar os ovos já batidos ao queijo ralado, à manteiga, ao sal, às batatas e às morangas cozidas e amassadas, e misturar. Acrescentar a farinha de trigo e misturar, por fim o fermento químico. A consistência da massa é mais dura, tipo um purê bem concentrado. Levar para assar em tabuleiro untado e enfarinhado. Virar o tabuleiro em cima de um plástico ou de um pano de prato umedecido. Colocar o recheio e depois enrolar. Adicionar queijo por cima e levar para assar.
+RECHEIO:
+Limpar o peito de frango retirar a pele e gorduras aparentes. Cortar em pedaços e reservar. Colocar o óleo na panela com o alho amassado e deixar dourar, acrescentar os pedaços do frango. Refogar até secar a água da carne e o frango começar a dourar. Acrescentar a cebola picada em cubos pequenos e deixar refogar mais um pouco. Acrescentar a água até cobrir os pedaços. Cozinhar até secar toda a água. Esfriar para, em seguida, desfiar. Fazer o molho da sua preferência, ao sugo ou o molho bechamel."
+ms11,Torta de Tomate,Brasil,almoco|jantar,50,2,vegetariano|sem_carne_vermelha,prato,"Na Cozinha com as Frutas, Legumes e Verduras (Ministério da Saúde/UFMG, 2016, CC BY-NC-SA 4.0)",0,"MASSA:
+Misturar a farinha de trigo, o sal e a manteiga até ficar com a consistência de uma farofa grossa. Juntar o ovo e amassar bem. Se necessário acrescentar mais farinha ou um pouco de leite para dar o ponto. Fazer uma bola com a massa, enrolar em filme plástico e levar à geladeira por 20 minutos para descansar.
+RECHEIO:
+Refogar a cebola no azeite. Dispor os tomates e as cebolas na frigideira lado a lado. Regar com o azeite e por fim jogar o queijo ralado. Com um rolo, abrir a massa com um diâmetro maior que o da frigideira e cubrir os tomates. Assar e depois desenformar a torta. Virar de ponta-cabeça para que a massa fique no fundo e os tomates na superfície. Decore com folhas de manjericão fresco e sirva em seguida."
+ms12,Almôndega com Jiló,Sudeste,almoco|jantar,30,2,sem_lactose|alergia_ovo,prato,"Na Cozinha com as Frutas, Legumes e Verduras (Ministério da Saúde/UFMG, 2016, CC BY-NC-SA 4.0)",0,Misturar todos os ingredientes e fazer bolinhas. Levar ao forno para assar.
+ms13,Torta de Arroz com Recheio de Tomate,Brasil,almoco|jantar,50,2,vegetariano|sem_carne_vermelha,prato,"Na Cozinha com as Frutas, Legumes e Verduras (Ministério da Saúde/UFMG, 2016, CC BY-NC-SA 4.0)",0,"Refogar as cebolas no óleo com o alho amassado. Acrescentar os tomates e refogar um pouco, reservar. Bater todos os ingredientes da massa no liquidificador. Untar um tabuleiro médio e colocar metade da massa. Por cima dispor o recheio e o queijo por cima e, por fim, o restante da massa. Levar ao forno para assar."
+ms14,Suflê de Cenoura,Brasil,almoco|jantar,50,2,vegetariano|sem_carne_vermelha,prato,"Na Cozinha com as Frutas, Legumes e Verduras (Ministério da Saúde/UFMG, 2016, CC BY-NC-SA 4.0)",0,"Derreter a manteiga, juntar a farinha e o sal. Deixar cozinhar um pouco e depois adicionar o leite aos poucos. Cozinhar lentamente até engrossar, mexer sem parar. Bater as gemas, e juntar à mistura de leite e aos poucos, adicionar a cenoura e o cheiro-verde e mexer bem. Esfriar. Bater as claras em neve firme e acrescentar à mistura. Colocar tudo em uma forma untada e levar para assar."
+ms15,Virado de Quiabo,Sudeste,almoco|jantar,30,2,vegetariano|sem_lactose|alergia_ovo|celiaco|sem_carne_vermelha,prato,"Na Cozinha com as Frutas, Legumes e Verduras (Ministério da Saúde/UFMG, 2016, CC BY-NC-SA 4.0)",0,"Refogar no óleo com alho e sal o quiabo. Adicionar um pouco de água e deixar cozinhar até ficar macio. Acrescentar a cebola e deixar refogar um pouco adicionar o tomate, o arroz e a farinha. Misturar tudo e, por fim, acrescentar o cheiro-verde."
+ms16,Arroz com Pupunha,Norte,almoco|jantar,30,2,vegetariano|sem_lactose|alergia_ovo|celiaco|sem_carne_vermelha,acompanhamento,"Preparações Regionais Saudáveis (Ministério da Saúde, 2010)",0,"1. Adicionar o óleo à panela aquecida e acrescentar o alho;
+2. Juntar o arroz e refogar;
+3. Quando o arroz estiver branco opaco, acrescentar a água fervente e o sal;
+4. Tampar a panela e deixar cozinhar;
+5. Enquanto o arroz cozinha, descascar a pupunha e retirar as lascas, desprezando a casca e o caroço;
+6. Quando a água secar, misturar com a pupunha cortado em pequenos cubos ao arroz."
+ms17,Caldeirada de Peixe com Chicória,Norte,almoco|jantar,50,2,sem_lactose|celiaco|sem_carne_vermelha,prato,"Preparações Regionais Saudáveis (Ministério da Saúde, 2010)",0,"1. Limpar o peixe, temperar com vinagre e reservar;
+2. Lavar e limpar os vegetais;
+3. Descascar a cenoura e a batata, cortando em pedaços grandes (5cm);
+4. Cortar o pimentão e o tomate em pedaços grandes (5cm X 3cm) e desprezar o talo e a semente;
+5. Dispor em uma panela, camadas de tomate, pimentão, peixe, cenoura e batata;
+6. Adicionar o sal, o azeite, o colorau e a água;
+7. Cozinhar por 20 minutos e adicionar a chicória picada e o ovo cozido e descascado."
+ms18,Galinhada com Pequi,Centro-Oeste,almoco|jantar,50,2,sem_lactose|alergia_ovo|celiaco|sem_carne_vermelha,prato,"Preparações Regionais Saudáveis (Ministério da Saúde, 2010)",0,"1. Trinchar o frango.
+2. Temperá-lo com sal e assar em forno médio por 30min.
+3. Lavar o pequi e cozinhar em água fervente por 20min. Reserve esta água.
+4. Em uma panela, dourar o frango.
+5. Acrescentar a cebola e o alho.
+6. Adicionar o arroz e cozinhá-lo com a água do pequi.
+7. Por último, adicionar o sal e o louro e cozinhar por 40min ou até que o arroz fique macio."
+ms19,Cozidão Maranhense,Nordeste,almoco|jantar,50,2,sem_lactose|alergia_ovo|celiaco,prato,"Preparações Regionais Saudáveis (Ministério da Saúde, 2010)",0,"1. Refogar todos os temperos (cebola, alho, tomate, pimentão cortados em pequenos cubos e o sal e pimenta) com o óleo.
+2. Acrescentar a carne em cubos e a água e cozinhar por 15 minutos.
+3. Adicionar os vegetais cortados em cubos, iniciando do mais duro aos mais macios e cozinhar por mais 10 minutos com o louro e o colorau.
+4. Juntar o João Gomes e a vinagreira já escaldados ao final."
+ms20,Refogado de Carne com Palma,Nordeste,almoco|jantar,30,2,sem_lactose|alergia_ovo|celiaco,prato,"Preparações Regionais Saudáveis (Ministério da Saúde, 2010)",0,"1. Cortar a palma ao meio, com a ajuda de uma faca amolada, retire o centro macio da palma, apoiando-a na tábua (essa parte externa é muito fibrosa!).
+2. Refogar os temperos (cebola, alho e pimentão) com o óleo de soja e acrescentar a carne moída, a pimenta de cheiro e o colorau.
+3. Cozinhar por cerca de 15 minutos.
+4. Acrescentar a palma cortada em cubos, cubra com água e cozinhe por mais 20 minutos.
+5. Finalizar com o coentro a cebolinha e os tomates em cubos."
+ms21,Vatapá de Inhame,Nordeste,almoco|jantar,30,2,sem_lactose|alergia_ovo|celiaco|sem_carne_vermelha,acompanhamento,"Preparações Regionais Saudáveis (Ministério da Saúde, 2010)",0,"1. Deixar o camarão seco de molho para reduzir o sal, em água gelada por cerca de 30 minutos, trocando a água por 3 vezes.
+2. Refogar a cebola, o alho e a pimenta de cheiro picados em pequenos cubos no azeite de dendê.
+3. Acrescentar o camarão seco.
+4. Cozinhar o inhame em água na panela de pressão por 15 minutos. Reserve.
+5. Levar o refogado ao liquidificador com o inhame, o amendoim, a castanha e o gengibre picado em pequenos cubos.
+5. Acrescentar um pouco da água do cozimento do inhame se necessário.
+6. Retornar o creme para a panela, aquecer e servir em seguida."
+ms22,Arroz com Fibra de Caju,Nordeste,almoco|jantar,30,2,vegetariano|sem_lactose|alergia_ovo|celiaco|sem_carne_vermelha,acompanhamento,"Preparações Regionais Saudáveis (Ministério da Saúde, 2010)",0,"1. Refogar a cebola, o alho e a fibra de caju no óleo.
+2. Acrescentar o arroz e refogar por aproximadamente 30 segundos, mexendo sempre.
+3. Acrescentar a água, o sal, a pimenta e a folha de louro.
+4. Cozinhar até que absorva toda a água e cozinhe o grão. OBS: Esta receita aproveita a fibra do caju depois de feito um suco da fruta. A medida utilizada foi a de reaproveitamento no dia, podendo ser alterada para qualquer quantidade, desde que não prejudique o preparo."
+ms23,Fígado com Jiló,Sudeste,almoco|jantar,30,2,alergia_ovo|celiaco,prato,"Preparações Regionais Saudáveis (Ministério da Saúde, 2010)",0,"1. Separar todos os ingredientes.
+2. Colocar o fígado cortado em iscas no leite com o sal por 30 minutos.
+3. Escorrer.
+4. Em uma panela, refogar a cebola, o alho, o fígado, o jiló e a água.
+5. Cozinhar por 25 minutos."
+ms24,Angu com Espinafre,Sudeste,almoco|jantar,30,2,vegetariano|sem_lactose|alergia_ovo|celiaco|sem_carne_vermelha,acompanhamento,"Preparações Regionais Saudáveis (Ministério da Saúde, 2010)",0,"1. Separar todos os ingredientes.
+2. Bater o milho com água e reservar.
+3. Refogar a cebola no óleo com a cebola, acrescentar o espinafre.
+4. Colocar o milho batido e cozinhar em fogo baixo, mexendo sempre, por 12 minutos."
+ms25,Virado de Vagem,Sudeste,almoco|jantar,30,2,vegetariano|alergia_ovo|celiaco|sem_carne_vermelha,acompanhamento,"Preparações Regionais Saudáveis (Ministério da Saúde, 2010)",0,"1. Separar todos os ingredientes;
+2. Cortar a vagem em rodelas e picar a cebola e o alho;
+3. Em uma panela, levar ao fogo a manteiga para derreter com o óleo, acrescentar a cebola e o alho, deixar refogar por 1 minuto;
+4. Acrescentar a vagem e refogar, acrescentar a água e deixar cozinhar;
+5. Quando a vagem estiver macia, acrescentar o sal e a farinha de milho, mexendo sempre por 10 minutos."
+ia01,Cuscuz com ovo mexido e tomate,Nordeste,almoco|jantar,15,2,vegetariano|sem_lactose|celiaco|sem_carne_vermelha,prato,"Gerada por IA (Claude) para lacuna: rápida para quem mora sozinho (1 porção, até 20 min); PENDENTE de revisão do grupo",0,"Hidrate o flocão com água e sal e cozinhe no vapor por 8 min. Refogue a cebola no óleo, junte o tomate e os ovos batidos e mexa até firmar. Sirva sobre o cuscuz."
+ia02,Macarrão com sardinha e tomate,Brasil,almoco|jantar,20,2,sem_lactose|alergia_ovo|sem_carne_vermelha,prato,"Gerada por IA (Claude) para lacuna: rápida para quem mora sozinho (1 porção, até 20 min); PENDENTE de revisão do grupo",0,"Cozinhe o macarrão. Refogue alho e cebola, junte o tomate picado por 5 min e a sardinha escorrida em pedaços. Misture ao macarrão."
+ia03,Frango em cubos com abobrinha,Brasil,almoco|jantar,20,2,sem_lactose|alergia_ovo|celiaco|sem_carne_vermelha,prato,"Gerada por IA (Claude) para lacuna: rápida para quem mora sozinho (1 porção, até 20 min); PENDENTE de revisão do grupo",0,Doure o frango em cubos no óleo com alho. Junte a cebola e a abobrinha em cubos e refogue até ficar macia.
+ia04,Feijão preto com abóbora e couve,Sudeste,almoco|jantar,45,2,vegetariano|sem_lactose|alergia_ovo|celiaco|sem_carne_vermelha,prato,Gerada por IA (Claude) para lacuna: vegetariana com leguminosa; PENDENTE de revisão do grupo,0,"Cozinhe o feijão na pressão. Refogue cebola e alho, junte a abóbora em cubos e o feijão com caldo e cozinhe até a abóbora amaciar. Finalize com a couve fatiada."
+ia05,Grão-de-bico refogado com tomate e espinafre,Brasil,almoco|jantar,45,2,vegetariano|sem_lactose|alergia_ovo|celiaco|sem_carne_vermelha,prato,Gerada por IA (Claude) para lacuna: vegetariana com leguminosa; PENDENTE de revisão do grupo,0,"Cozinhe o grão-de-bico na pressão. Refogue cebola e alho no azeite, junte o tomate até desmanchar, o grão-de-bico e por fim o espinafre."
+ia06,Escondidinho de mandioca com feijão,Nordeste,almoco|jantar,50,2,vegetariano|alergia_ovo|celiaco|sem_carne_vermelha,prato,Gerada por IA (Claude) para lacuna: vegetariana com leguminosa; PENDENTE de revisão do grupo,0,Cozinhe e amasse a mandioca com o leite. Refogue o feijão cozido com cebola e alho até engrossar. Monte em camadas e leve ao forno por 15 min.
+ia07,Carne moída com legumes,Brasil,almoco|jantar,35,2,sem_lactose|alergia_ovo|celiaco,prato,Gerada por IA (Claude) para lacuna: marmita para a semana que congela bem (4 porções); PENDENTE de revisão do grupo,0,Doure a carne no óleo com cebola e alho. Junte cenoura e abobrinha em cubos e o tomate picado; cozinhe tampado por 15 min. Divida em potes e congele.
+ia08,Frango desfiado com milho e cenoura,Brasil,almoco|jantar,45,2,sem_lactose|alergia_ovo|celiaco|sem_carne_vermelha,prato,Gerada por IA (Claude) para lacuna: marmita para a semana que congela bem (4 porções); PENDENTE de revisão do grupo,0,"Cozinhe e desfie o frango. Refogue cebola e alho, junte tomate, cenoura ralada, milho e o frango; cozinhe por 10 min. Congela bem em porções."
+ia09,Polenta mole com molho de carne moída,Sul,almoco|jantar,30,2,sem_lactose|alergia_ovo|celiaco,prato,Gerada por IA (Claude) para lacuna: baixo custo; PENDENTE de revisão do grupo,0,"Cozinhe o fubá em água com sal, mexendo, por 15 min. À parte, refogue a carne com cebola e alho e junte o tomate até formar molho. Sirva o molho sobre a polenta."
+ia10,Sopa de feijão com macarrão,Sudeste,almoco|jantar,40,2,vegetariano|sem_lactose|alergia_ovo|sem_carne_vermelha,prato,Gerada por IA (Claude) para lacuna: baixo custo; PENDENTE de revisão do grupo,0,"Bata parte do feijão cozido com o caldo. Refogue cebola e alho, junte o feijão, a cenoura em cubos e água; ferva e acrescente o macarrão até cozinhar."
+ia11,Peixe assado com batata e tomate,Brasil,almoco|jantar,40,2,sem_lactose|alergia_ovo|celiaco|sem_carne_vermelha,prato,Gerada por IA (Claude) para lacuna: sem lactose e sem glúten; PENDENTE de revisão do grupo,0,"Tempere o peixe com limão e alho. Arrume batatas em rodelas finas, cebola e tomate numa assadeira com azeite, coloque o peixe por cima e asse a 200 °C por 30 min."
+ia12,Baião de dois simples,Nordeste,almoco|jantar,40,2,vegetariano|alergia_ovo|celiaco|sem_carne_vermelha,prato,Gerada por IA (Claude) para lacuna: regional nordestina do dia a dia; PENDENTE de revisão do grupo,0,"Refogue cebola e alho, junte o arroz e o feijão já cozido com um pouco do caldo e cozinhe até o arroz ficar pronto. Finalize com o queijo em cubos."
+ia13,Cuscuz nordestino com ovo e legumes,Nordeste,almoco|jantar,20,2,vegetariano|sem_lactose|celiaco|sem_carne_vermelha,prato,Gerada por IA (Claude) para lacuna: regional nordestina do dia a dia; PENDENTE de revisão do grupo,0,"Misture o flocão hidratado com a cenoura ralada e cozinhe no vapor. Refogue cebola e tomate, junte os ovos mexidos e sirva com o cuscuz."

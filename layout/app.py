@@ -12,6 +12,8 @@ Tudo fica na sessão do navegador; só o botão "Salvar perfil" grava perfil.jso
 """
 import json
 import os
+import re
+from urllib.parse import quote_plus
 from datetime import date, timedelta
 
 import streamlit as st
@@ -33,6 +35,21 @@ for var in ("GEMINI_API_KEY", "GROQ_API_KEY", "ANTHROPIC_API_KEY"):
             os.environ[var] = st.secrets[var]
     except Exception:          # sem arquivo de secrets
         pass
+
+
+# ------------------------------------------------------------------ vídeos (só um link de busca)
+def link_youtube(nome):
+    """Link de BUSCA no YouTube pelo nome da receita: não copia conteúdo de ninguém, não precisa de
+    API nem de chave. '(adaptada: ...)' sai do nome para a busca achar o prato original."""
+    base = re.sub(r"\s*\(adaptada:.*\)\s*$", "", nome).strip()
+    return "https://www.youtube.com/results?search_query=" + quote_plus(f"{base} receita")
+
+
+AVISO_VIDEO = "os vídeos podem usar ingredientes diferentes: confira as suas restrições"
+
+
+def mostrar_video(nome):
+    st.markdown(f"[🎥 Ver vídeos no YouTube]({link_youtube(nome)}) · _{AVISO_VIDEO}_")
 
 
 # ------------------------------------------------------------------ estado da sessão
@@ -132,6 +149,10 @@ with aba_plan:
                 st.write(f"**Por quê:** {r['por_que']}")
                 st.write("**Ingredientes:** " + ", ".join(f"{i} {g} g" for i, g in r["ingredientes"].items()))
                 st.write("**Falta comprar:** " + (", ".join(r["falta_comprar"]) or "nada, você tem tudo"))
+                if r.get("preparo"):
+                    with st.expander("Modo de preparo"):
+                        st.text(r["preparo"])
+                mostrar_video(r["nome"])
                 if st.checkbox("Eu faria esta", key=f"fiz_{k}_{r['nome']}"):
                     feitas.append(r["nome"])
         b1, b2, b3 = st.columns(3)
@@ -183,6 +204,13 @@ with aba_chat:
         for msg in st.session_state.chat:
             with st.chat_message(msg["papel"]):
                 st.write(msg["texto"])
+                for nome, preparo in msg.get("preparos", {}).items():
+                    with st.expander(f"Como fazer: {nome}"):   # vem da base, não depende do LLM
+                        if preparo:
+                            st.text(preparo)
+                        else:
+                            st.caption("Esta receita ainda não tem modo de preparo escrito na base.")
+                        mostrar_video(nome)
                 if msg.get("decisoes"):
                     with st.expander("Decisões do agente"):
                         for d in msg["decisoes"]:
@@ -197,9 +225,10 @@ with aba_chat:
                 try:
                     resposta = orq.responder(pedido)
                 except Exception as e:
-                    resposta, orq.decisoes = f"Erro ao falar com o LLM: {e}", []
+                    resposta, orq.decisoes, orq.preparos = f"Erro ao falar com o LLM: {e}", [], {}
             st.session_state.chat.append({"papel": "assistant", "texto": resposta,
-                                          "decisoes": list(orq.decisoes)})
+                                          "decisoes": list(orq.decisoes),
+                                          "preparos": dict(getattr(orq, "preparos", {}))})
             st.rerun()
 
 # ------------------------------------------------------------------ aba: memória

@@ -73,7 +73,8 @@ class Montador:
                              for i in permitidos)
         em_casa = ", ".join(f"{i} ({g:.0f} g)" for i, g in estoque.items() if g > 0) or "nada"
         pratos = [r for r in self.rec.values() if r.get("tipo", "prato") == "prato"]
-        exemplos = [self._receita_base_para_json(r) for r in pratos[:2]]
+        com_preparo = [r for r in pratos if r.get("preparo")]   # exemplos ensinam o formato do preparo
+        exemplos = [self._receita_base_para_json(r) for r in (com_preparo or pratos)[:2]]
         evitar = sorted(feedback["rejeitadas"] | feedback["aprovadas"]
                         | {e["nome"] for e in feedback.get("recentes", [])})   # inclui as da semana
         motivos = "\n".join(f"- {m}" for m in feedback["motivos"]) or "- nenhum ainda"
@@ -116,7 +117,7 @@ Responda APENAS com um array JSON, sem texto antes ou depois, neste formato:
     # ======================================================== modo base (sem LLM)
     def _receita_base_para_json(self, r, itens=None, nome=None):
         return {"nome": nome or r["nome"], "porcoes": int(r["porcoes"]),
-                "tempo_min": r["tempo_min"], "preparo": "",
+                "tempo_min": r["tempo_min"], "preparo": r.get("preparo", ""),
                 "ingredientes": [{"id": i, "gramas": g} for i, g in (itens or r["itens"]).items()],
                 "origem": "base"}
 
