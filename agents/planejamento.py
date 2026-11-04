@@ -13,8 +13,9 @@ RAIZ = Path(__file__).resolve().parent.parent      # pasta principal do projeto
 ARQ_APROVADAS_LLM = RAIZ / "kb" / "aprovadas_llm.jsonl"
 
 
-def planejar(montador, avaliador, perfil, estoque, n=7, max_rodadas=3, salvar_aprovadas=True):
-    feedback = {"motivos": [], "rejeitadas": set(), "aprovadas": set()}
+def planejar(montador, avaliador, perfil, estoque, n=7, max_rodadas=3, salvar_aprovadas=True, evitar=()):
+    """evitar: nomes que não devem voltar (ex.: opções já mostradas quando a pessoa pede outras)."""
+    feedback = {"motivos": [], "rejeitadas": set(evitar), "aprovadas": set()}
     memoria = getattr(avaliador, "memoria", None)
     if memoria is not None:                       # o Montador também vê o que já foi sugerido na semana
         feedback["recentes"] = memoria.recentes()
@@ -27,7 +28,7 @@ def planejar(montador, avaliador, perfil, estoque, n=7, max_rodadas=3, salvar_ap
         ok, motivos, todos = avaliador.avaliar_lote(propostas, perfil, estoque)
 
         for x in ok:
-            if x.receita["nome"] not in feedback["aprovadas"]:
+            if x.receita["nome"] not in feedback["aprovadas"] and x.receita["nome"] not in evitar:
                 aprovadas.append(x)
                 feedback["aprovadas"].add(x.receita["nome"])
                 if salvar_aprovadas and x.receita.get("origem") == "llm":   # alimenta a base

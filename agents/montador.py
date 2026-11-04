@@ -86,7 +86,7 @@ REGRAS OBRIGATÓRIAS
 {catalogo}
 - Tempo de preparo de no máximo {perfil.tempo_max_min} minutos.
 - Quantidades em gramas, realistas para {perfil.pessoas} pessoa(s).
-- Priorize o que já está em casa: {em_casa}.
+{f"- Priorize o que já está em casa: {em_casa}." + chr(10) if estoque else ""}- As receitas são OPÇÕES para a pessoa escolher: devem ser diferentes entre si (proteínas e estilos variados).
 - Região do usuário: {perfil.regiao}. Ingredientes de que gosta: {', '.join(perfil.gosta) or 'não informado'}.
 - Não repita estas receitas: {', '.join(evitar) or 'nenhuma'}.
 
@@ -146,6 +146,24 @@ Responda APENAS com um array JSON, sem texto antes ou depois, neste formato:
         nome = r["nome"] + (f" (adaptada: {', '.join(trocas)})" if trocas else "")
         return itens, nome, len(trocas)
 
+    def _proteina_principal(self, itens):
+        """O que define o prato para fins de variedade: a proteína/leguminosa com mais gramas."""
+        prot = {i: g for i, g in itens.items() if self.ing[i]["categoria"] in ("proteina", "leguminosa")}
+        return max(prot, key=prot.get) if prot else "sem_proteina"
+
+    def _variadas(self, candidatas, n):
+        """Escolhe n opções diferentes entre si: primeiro uma por proteína principal (frango, ovo,
+        feijão...), na ordem da pontuação; depois completa com as melhores restantes."""
+        escolhidas, vistas = [], set()
+        for pontos, proposta, chave in candidatas:
+            if chave not in vistas:
+                escolhidas.append(proposta)
+                vistas.add(chave)
+            if len(escolhidas) == n:
+                return escolhidas
+        resto = [p for _, p, _ in candidatas if p not in escolhidas]
+        return escolhidas + resto[:n - len(escolhidas)]
+
     def _propor_base(self, perfil, estoque, feedback, n):
         candidatas = []
         for r in self.rec.values():
@@ -166,8 +184,15 @@ Responda APENAS com um array JSON, sem texto antes ou depois, neste formato:
             if feedback.get("recentes"):                 # já foi sugerida (ou algo parecido) esta semana?
                 from .memoria import semelhanca
                 repeticao = max(semelhanca(proposta, e, self.ing) for e in feedback["recentes"])
-            candidatas.append((cobertura - 0.15 * n_trocas - 0.5 * repeticao,  # prefere originais e novas
-                               proposta))
-        candidatas.sort(key=lambda t: -t[0])          # mais aproveitamento do estoque primeiro
-        self.log.append(f"base propôs {min(n, len(candidatas))} receitas")
-        return [c for _, c in candidatas[:n]]
+            # sem estoque (opções de refeição), a ordem vem do perfil: gosto, região, rapidez
+            gosto = sum(i in perfil.gosta for i in itens) / max(1, len(itens))
+            regiao = 1.0 if r.get("regiao") == perfil.regiao else 0.0
+            rapidez = 1 - min(int(r["tempo_min"]), 60) / 60
+            tem_preparo = 1.0 if r.get("preparo") else 0.0     # opção que a pessoa consegue fazer
+            pontos = (cobertura - 0.15 * n_trocas - 0.5 * repeticao   # prefere originais e novas
+                      + 0.3 * gosto + 0.2 * regiao + 0.2 * rapidez + 0.1 * tem_preparo)
+            candidatas.append((pontos, proposta, self._proteina_principal(itens)))
+        candidatas.sort(key=lambda t: -t[0])
+        escolhidas = self._variadas(candidatas, n)
+        self.log.append(f"base propôs {len(escolhidas)} receitas")
+        return escolhidas

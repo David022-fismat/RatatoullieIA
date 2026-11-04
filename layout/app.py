@@ -80,11 +80,15 @@ with st.sidebar:
     if "w_restr" not in st.session_state:          # valores iniciais dos campos, só na 1ª vez
         st.session_state.update({"w_restr": list(p.restricoes), "w_pessoas": int(p.pessoas),
                                  "w_tempo": int(p.tempo_max_min),
+                                 "w_regiao": p.regiao if p.regiao in ("Norte", "Nordeste", "Centro-Oeste",
+                                                                      "Sudeste", "Sul") else "Brasil",
                                  "w_gosta": [nomes[i] for i in p.gosta if i in nomes],
                                  "w_nao": [nomes[i] for i in p.nao_gosta if i in nomes]})
     p.restricoes = st.multiselect("Restrições (regras de segurança)", RESTRICOES, key="w_restr")
     p.pessoas = st.number_input("Pessoas", 1, 12, key="w_pessoas")
     p.tempo_max_min = st.slider("Tempo máximo (min)", 10, 120, step=5, key="w_tempo")
+    regioes = ["Brasil", "Norte", "Nordeste", "Centro-Oeste", "Sudeste", "Sul"]
+    p.regiao = st.selectbox("Região", regioes, key="w_regiao")
     gosta = st.multiselect("Gosta de", sorted(por_nome), key="w_gosta")
     nao_gosta = st.multiselect("Não gosta de", sorted(por_nome), key="w_nao")
     p.gosta, p.nao_gosta = [por_nome[n] for n in gosta], [por_nome[n] for n in nao_gosta]
@@ -92,44 +96,35 @@ with st.sidebar:
         salvar_perfil(p)
         st.success("Perfil salvo em perfil.json")
     with st.expander("Pesos que o agente aprendeu"):
-        st.caption("Quanto cada critério pesa na nota. Mudam com o retorno 'eu faria'.")
-        st.bar_chart({k: round(v, 2) for k, v in p.pesos.items() if k != "regiao"})
+        st.caption("Quanto cada critério pesa na nota. Mudam a cada opção que você escolhe.")
+        st.bar_chart({k: round(v, 2) for k, v in p.pesos.items()
+                      if k not in ("regiao", "usa_estoque", "tem_em_casa")})
 
 st.title("RatatouilleIA")
 st.caption(f"Dia simulado: {orq.memoria.hoje.strftime('%d/%m/%Y')}")
 aba_plan, aba_chat, aba_mem = st.tabs(["Planejar", "Conversa com o agente", "Memória da semana"])
 
-# ------------------------------------------------------------------ aba: planejar
-with aba_plan:
-    c1, c2 = st.columns([3, 1])
-    texto = c1.text_input("O que você tem em casa? (ex.: ovo 600, tomate, abobrinha 300g)",
-                          value=", ".join(f"{nomes[i]} {g:.0f}" for i, g in orq.estoque.items()
-                                          if i not in ("oleo", "alho", "cebola", "arroz")))
-    n = c2.number_input("Refeições", 1, 14, 3)
-    despensa = st.checkbox("Tenho o básico de despensa (óleo, alho, cebola, arroz)", value=True)
+# ------------------------------------------------------------------ aba: planejar (opções)
+def pedir_opcoes(outras=False):
+    with st.spinner("Montador propondo, Avaliador avaliando..."):
+        st.session_state.plano = orq.opcoes_de_refeicao(n=int(st.session_state.get("w_n", 4)),
+                                                        outras_opcoes=outras)
+    st.session_state.escolha = None
 
-    if st.button("Montar cardápio", type="primary"):
-        orq.estoque = {}
-        itens = []
-        for parte in filter(None, (x.strip() for x in texto.split(","))):
-            palavras = parte.split()
-            ultimo = palavras[-1].lower().rstrip("g")
-            if ultimo.isdigit() and len(palavras) > 1:
-                itens.append({"nome": " ".join(palavras[:-1]), "gramas": int(ultimo)})
-            else:
-                itens.append({"nome": parte})
-        if despensa:
-            itens += [{"nome": x, "gramas": 1000} for x in ("óleo de soja", "alho", "cebola", "arroz branco")]
-        lido = orq.atualizar_estoque(adicionar=itens)
-        if lido["nao_existem_na_base"]:
-            st.warning("Não reconheci: " + ", ".join(lido["nao_existem_na_base"]) + " (ficou de fora)")
-        with st.spinner("Montador propondo, Avaliador avaliando..."):
-            st.session_state.plano = orq.planejar_refeicoes(n=int(n))
-        st.session_state.retorno = None
+
+with aba_plan:
+    c1, c2 = st.columns([1, 3])
+    c1.number_input("Quantas opções", 2, 8, 4, key="w_n")
+    c2.write("")
+    c2.caption("O sistema mostra opções diferentes entre si, respeitando o seu perfil. "
+               "Escolha uma: ele aprende com a sua escolha e lembra dela durante a semana.")
+    if st.button("Me dê opções de refeição", type="primary"):
+        pedir_opcoes()
 
     plano = st.session_state.plano
     if plano:
-        st.subheader(f"Cardápio: {plano['encontradas']} de {plano['pedidas']} receitas")
+        escolha = st.session_state.get("escolha")
+        st.subheader(f"{plano['encontradas']} opções")
         with st.expander("Como o Montador e o Avaliador chegaram aqui"):
             st.write(f"Rodadas do laço Montador ↔ Avaliador: {plano['rodadas_montador_avaliador']}")
             if plano["motivos_de_rejeicao"]:
@@ -138,46 +133,38 @@ with aba_plan:
                     st.write(f"- {m}")
             else:
                 st.write("Nenhuma receita rejeitada.")
-        feitas = []
-        for k, r in enumerate(plano["receitas"]):
+        for r in plano["opcoes"]:
+            escolhida = bool(escolha) and escolha["escolhida"] == r["nome"]
             with st.container(border=True):
                 a, b, c, d = st.columns([4, 1, 1, 1])
-                a.markdown(f"**{r['nome']}**")
+                a.markdown(f"**{r['numero']}. {r['nome']}**" + ("  ✅ escolhida" if escolhida else ""))
                 b.metric("Tempo", f"{r['tempo_min']} min")
                 c.metric("Nota", f"{r['nota']:.2f}")
                 d.metric("kcal/pessoa", f"{r['por_pessoa']['kcal']:.0f}")
                 st.write(f"**Por quê:** {r['por_que']}")
                 st.write("**Ingredientes:** " + ", ".join(f"{i} {g} g" for i, g in r["ingredientes"].items()))
-                st.write("**Falta comprar:** " + (", ".join(r["falta_comprar"]) or "nada, você tem tudo"))
                 if r.get("preparo"):
-                    with st.expander("Modo de preparo"):
+                    with st.expander("Modo de preparo", expanded=escolhida):
                         st.text(r["preparo"])
                 mostrar_video(r["nome"])
-                if st.checkbox("Eu faria esta", key=f"fiz_{k}_{r['nome']}"):
-                    feitas.append(r["nome"])
-        b1, b2, b3 = st.columns(3)
-        if b1.button("Registrar retorno (o agente aprende)"):
-            st.session_state.retorno = orq.registrar_retorno(feitas)
-        if b2.button("Lista de compras"):
-            lista = orq.lista_de_compras()
-            st.session_state.lista = lista
-        if b3.button("Avançar 1 dia e planejar de novo"):
-            st.session_state.dia += 1
-            st.session_state.retorno = None
-            orq.memoria.hoje = date.today() + timedelta(days=st.session_state.dia)
-            st.session_state.plano = orq.planejar_refeicoes(n=int(n))
+                if not escolha and st.button("Quero esta", key=f"quero_{r['numero']}_{r['nome']}"):
+                    st.session_state.escolha = orq.escolher_receita(r["nome"])
+                    st.rerun()
+        if escolha:
+            mud = escolha.get("pesos_que_mudaram", {})
+            aprendeu = ("; pesos que mudaram: " + ", ".join(f"{k} {a} → {b}" for k, (a, b) in mud.items())
+                        if mud else "")
+            st.success(f"Boa escolha: {escolha['escolhida']}. O agente aprendeu com ela{aprendeu}. "
+                       "Ela entra na memória da semana, para não repetir.")
+        b1, b2 = st.columns(2)
+        if b1.button("Outras opções"):
+            pedir_opcoes(outras=True)
             st.rerun()
-        if st.session_state.get("retorno"):
-            mud = st.session_state.retorno.get("pesos_que_mudaram", {})
-            st.info("Pesos ajustados: " + (", ".join(f"{k}: {a} → {b}" for k, (a, b) in mud.items())
-                                           or "nenhuma mudança"))
-        if st.session_state.get("lista"):
-            lista = st.session_state.lista
-            if "itens" in lista:
-                st.write(f"**Lista de compras** (estimativa R$ {lista['total_estimado_reais']:.2f}; "
-                         "preços estimados pelo grupo)")
-                st.table([{"item": x["item"], "embalagens": x["embalagens"],
-                           "R$": f"{x['custo_estimado']:.2f}"} for x in lista["itens"]])
+        if b2.button("Avançar 1 dia e pedir opções de novo"):
+            st.session_state.dia += 1
+            orq.memoria.hoje = date.today() + timedelta(days=st.session_state.dia)
+            pedir_opcoes()
+            st.rerun()
 
 # ------------------------------------------------------------------ aba: conversa
 with aba_chat:
@@ -233,8 +220,8 @@ with aba_chat:
 
 # ------------------------------------------------------------------ aba: memória
 with aba_mem:
-    st.write("O Avaliador lembra o que foi sugerido nos últimos 7 dias e tira pontos do que se repete. "
-             "Use 'Avançar 1 dia' para ver o cardápio mudar com o mesmo pedido.")
+    st.write("O Avaliador lembra o que você escolheu nos últimos 7 dias e tira pontos do que se repete. "
+             "Use 'Avançar 1 dia' para ver as opções mudarem com o mesmo pedido.")
     m1, m2, m3 = st.columns(3)
     if m1.button("Avançar 1 dia"):
         st.session_state.dia += 1
@@ -250,4 +237,4 @@ with aba_mem:
         st.table([{"dia": "/".join(reversed(e["data"].split("-")[1:])), "receita": e["nome"]}
                   for e in reversed(recentes)])
     else:
-        st.write("Nada sugerido nos últimos 7 dias.")
+        st.write("Nada escolhido nos últimos 7 dias.")

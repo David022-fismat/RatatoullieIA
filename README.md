@@ -20,8 +20,9 @@ de fora, com `from agents.modulo import ...`.
     pip install -r requirements.txt
     streamlit run app.py
 
-Abre uma página com o perfil na barra lateral e três abas: **Planejar** (estoque → cardápio, "eu faria",
-lista de compras), **Conversa com o agente** (o Orquestrador com LLM; cole a chave grátis do Gemini na
+Abre uma página com o perfil na barra lateral e três abas: **Planejar** (o sistema mostra opções de
+refeição diferentes entre si; a pessoa clica em "Quero esta" e o agente aprende com a escolha),
+**Conversa com o agente** (o Orquestrador com LLM; cole a chave grátis do Gemini na
 própria página) e **Memória da semana** (o que o Avaliador lembra, com um botão para simular os dias).
 
 Para publicar na internet e mandar o link para os mentores: entre em share.streamlit.io com a conta do
@@ -30,7 +31,7 @@ GitHub, escolha este repositório e o arquivo `app.py`. Em *Advanced settings �
 
 ### Memória da semana (agents/memoria.py)
 
-O Avaliador lembra o que foi sugerido nos últimos 7 dias. Cada receita ganha a característica
+O Avaliador lembra o que a pessoa escolheu nos últimos 7 dias. Cada receita ganha a característica
 `novidade` = 1 − semelhança com a mais parecida da semana (mesma receita = 1; senão, sobreposição dos
 ingredientes principais). Ela entra na nota com peso 2 no começo, e o aprendizado ajusta esse peso.
 O Montador também vê a memória e propõe receitas novas primeiro. `python demos/demo_memoria.py` mostra o
@@ -48,17 +49,18 @@ experimentos não mudam). `python layout/agente_interativo.py --esquecer` apaga 
 ### Orquestrador (agents/orquestrador.py)
 
 Agente com LLM e *tool calling*. A cada mensagem ele escolhe quais ferramentas chamar, olha o
-resultado e decide o próximo passo (atualizar o estoque, planejar, relaxar o tempo, montar a lista de
-compras, otimizar no orçamento, registrar o retorno). As ferramentas são os outros agentes:
+resultado e decide o próximo passo (oferecer opções, relaxar o tempo, mostrar outras opções, registrar a
+escolha). As ferramentas são os outros agentes:
 
 | Ferramenta | Agente |
 |---|---|
-| atualizar_estoque, ver_perfil_e_estoque | leitor de ingredientes + estado compartilhado |
+| ver_perfil | perfil + memória da semana |
 | atualizar_preferencias | perfil (só ADICIONA restrições) |
-| planejar_refeicoes | Montador + Avaliador (laço de rodadas) |
-| lista_de_compras | soma o que falta, com preço estimado |
-| planejar_com_orcamento | Comprador (PuLP) |
-| registrar_retorno | aprendizado dos pesos |
+| opcoes_de_refeicao | Montador + Avaliador (laço de rodadas), com opções variadas (uma por proteína principal) |
+| escolher_receita | aprendizado dos pesos (escolhida × outras opções) + memória da semana |
+
+O fluxo é por **opções**: não é preciso informar o que tem em casa. O Comprador (orçamento) e o leitor de
+estoque continuam em `agents/agentes.py`, mas não são mais ferramentas do Orquestrador.
 
 Provedor de LLM (`agents/provedores.py`): basta definir UMA chave no terminal.
 

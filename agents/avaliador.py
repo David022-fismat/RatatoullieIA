@@ -86,16 +86,18 @@ class Avaliador:
         usa = sum(min(g, estoque.get(i, 0)) / (1 + self.ing[i]["dias_validade"] / 7)
                   for i, g in itens.items()) / total
         tem = sum(min(g, estoque.get(i, 0)) for i, g in itens.items()) / total
-        return {
+        c = {
             # Guia Alimentar: base in natura, poucos ultraprocessados, verdura/legume presente
             "natural": max(0.0, natural - ultra),
             "tem_vegetal": 1.0 if cats & {"hortalica", "fruta"} else 0.0,
             "gosto": max(-1.0, min(1.0, gosto / 2)),
             "rapidez": 1 - min(r["tempo_min"], 60) / 60,
-            "usa_estoque": min(1.0, usa * 2),
-            # fração (em gramas) da receita que a pessoa já tem: penaliza o que precisa comprar
-            "tem_em_casa": tem if estoque else 0.0,
         }
+        if estoque:   # só quando a pessoa informou o que tem em casa (no app, o fluxo é por opções)
+            c["usa_estoque"] = min(1.0, usa * 2)
+            # fração (em gramas) da receita que a pessoa já tem: penaliza o que precisa comprar
+            c["tem_em_casa"] = tem
+        return c
 
     def nutrientes_por_pessoa(self, r):
         """Soma os nutrientes da TACO (por 100 g) de cada ingrediente e divide pelas porções."""
