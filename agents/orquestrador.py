@@ -21,6 +21,7 @@ Cada decisão fica registrada em logs/decisoes.jsonl (explicabilidade e auditori
 from __future__ import annotations
 
 import json
+import re
 import time
 from pathlib import Path
 
@@ -109,6 +110,7 @@ class Orquestrador:
         self.historico = []             # mensagens da conversa (memória de curto prazo)
         self.preparos = {}              # nome -> modo de preparo das receitas sugeridas nesta mensagem
         self.decisoes = []              # decisões do último turno (para mostrar e auditar)
+        self._substituidor = None       # mapa SOM da TBCA, carregado na primeira troca pedida
 
     # ------------------------------------------------------------------ persistência
     def _carregar_perfil(self):
@@ -221,6 +223,62 @@ class Orquestrador:
                 "pesos_que_mudaram": {k: [round(antes.get(k, 1.0), 2), round(v, 2)]
                                       for k, v in self.perfil.pesos.items()
                                       if abs(v - antes.get(k, 1.0)) > 0.005}}
+
+    # ------------------------------------------------------------------ troca de ingrediente (mapa SOM)
+    def substitutos(self, ingrediente_id, n=5, so_na_base=True):
+        """Substitutos de um ingrediente pelo mapa SOM da TBCA (agents/substituidor.py), respeitando as
+        restrições e os 'não gosta' do perfil. so_na_base=True: só o que existe na base do app."""
+        if self._substituidor is None:
+            from .substituidor import Substituidor
+            self._substituidor = Substituidor()
+        evitar = [self._nome(i) for i in self.perfil.nao_gosta if i in self.ing]
+        res = self._substituidor.substituir(self._nome(ingrediente_id), n=3 * n, restricoes=self.perfil.restricoes,
+                                            evitar=evitar, id_app=ingrediente_id, so_na_base=so_na_base)
+        if "erro" in res:
+            return res
+        bons, vistos = [], set()
+        for x in res["substitutos"]:
+            ids = [i for i in x["na_base_do_app"] if i in self.ing and i != ingrediente_id and i not in vistos]
+            if so_na_base and not ids:
+                continue                            # sem ingrediente novo do app (ou repetido): pula
+            vistos.update(ids)
+            x["id_app"] = ids[0] if ids else None
+            x["nome_app"] = self._nome(ids[0]) if ids else None
+            bons.append(x)
+        res["substitutos"] = bons[:n]
+        return res
+
+    def trocar_na_opcao(self, nome_receita, ingrediente_id, novo_id):
+        """Troca um ingrediente numa das opções mostradas e passa a receita de novo pelo Avaliador.
+        A quantidade nova dá as MESMAS calorias da antiga (kcal por 100 g da base do app)."""
+        pos = next((k for k, x in enumerate(self.ultimo_plano) if x.receita["nome"] == nome_receita), None)
+        if pos is None:
+            return {"erro": "essa receita não está entre as opções mostradas"}
+        r = self.ultimo_plano[pos].receita
+        kcal = lambda i: float(self.ing[i].get("kcal_100g") or 0)
+        novos, trocou = [], None
+        for item in r["ingredientes"]:
+            if item["id"] == ingrediente_id and trocou is None:
+                g = item["gramas"] * kcal(ingrediente_id) / kcal(novo_id) if kcal(novo_id) > 0 else item["gramas"]
+                trocou = {"de": self._nome(ingrediente_id), "para": self._nome(novo_id),
+                          "gramas_antes": round(item["gramas"]), "gramas_depois": round(g)}
+                item = {**item, "id": novo_id, "gramas": round(g)}
+            novos.append(item)
+        if trocou is None:
+            return {"erro": f"{self._nome(ingrediente_id)} não está nessa receita"}
+        juntos = {}                                   # se o novo já estava na receita, soma as quantidades
+        for item in novos:
+            juntos[item["id"]] = {**item, "gramas": juntos.get(item["id"], {"gramas": 0})["gramas"] + item["gramas"]}
+        base = re.sub(r"\s*\(troca:.*\)$", "", r["nome"])
+        nova = {**r, "ingredientes": list(juntos.values()),
+                "nome": f"{base} (troca: {trocou['para']} no lugar de {trocou['de']})"}
+        res = self.avaliador.avaliar(nova, self.perfil, self.estoque)
+        if not res.aprovada:
+            return {"erro": "o Avaliador não aprovou a troca", "motivos": res.motivos, "troca": trocou}
+        self.ultimo_plano[pos] = res
+        self.mostradas.add(nova["nome"])
+        self.preparos[nova["nome"]] = nova.get("preparo", "")
+        return {"troca": trocou, "opcao": self._receita_saida(res, pos + 1)}
 
     def executar(self, nome, argumentos):
         """Ponte entre a decisão do LLM e o código. Erros voltam para o LLM decidir o que fazer."""

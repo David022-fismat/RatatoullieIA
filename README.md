@@ -76,6 +76,35 @@ Limites por construção: o Guardião lê a mensagem antes do LLM; não há ferr
 restrição; receitas só saem do Avaliador; no máximo 8 ferramentas por mensagem. Cada decisão vai
 para `logs/decisoes.jsonl`.
 
+### Substituir um ingrediente (mapa SOM da TBCA)
+
+Na aba **Planejar**, cada opção tem o painel **🔄 Substituir um ingrediente**:
+
+1. a pessoa escolhe o ingrediente e clica em **Achar substitutos**;
+2. o Substituidor (`agents/substituidor.py`) acha a **gaveta** do ingrediente no mapa SOM 10×10 treinado com os
+   2.556 **alimentos** da **TBCA** (37 nutrientes por 100 g, normalizados por Min-Max; as 3.112 receitas da
+   TBCA ficam de fora) e ordena os outros alimentos
+   pela distância entre as gavetas (no empate, pela distância entre os nutrientes);
+3. ficam só os do mesmo grupo do prato (proteína pode virar leguminosa), que existem na base do app e que
+   respeitam as restrições (alérgenos e dietas da TBCA) e os "não gosta" do perfil;
+4. ao clicar em **Trocar**, a receita troca o ingrediente por uma quantidade com as **mesmas calorias** e
+   volta para o **Avaliador**, que aprova (e recalcula a nota) ou explica por que não aprovou.
+
+| Arquivo | O que é |
+|---|---|
+| fontes/TBCA_dados_modelo.xlsx | TBCA tratada: nutrientes limpos e normalizados, NOVA, Nutri-Score, alérgenos e dietas |
+| scripts/limpar_receitas_tbca.py | tira as receitas (salada, sopa, sanduíche, papa, "c/ batata"...) → lista do que saiu em `kb/som/tbca_receitas_removidas.csv` |
+| scripts/ligar_ingredientes_tbca.py | liga os ingredientes do app aos alimentos da TBCA → `kb/som/ingrediente_tbca.csv` (revisar) |
+| scripts/preparar_tbca_som.py | só alimentos, Min-Max refeito sem as receitas → `kb/som/tbca_som.csv` e `kb/som/parametros_minmax.csv` |
+| scripts/treinar_som.py | treina o mapa → `kb/som/som_tbca.npz` (precisa de `pip install minisom openpyxl scikit-learn`) |
+| scripts/atualizar_som.py | roda os quatro scripts acima, na ordem |
+| agents/substituidor.py | usa o mapa salvo; o app precisa só de numpy e pandas |
+| agents/orquestrador.py | `substitutos()` e `trocar_na_opcao()` |
+
+O mapa já vem treinado. Para refazer tudo: `python scripts/atualizar_som.py`. Se uma regra de receita tirar
+um alimento que deveria ficar, ajuste `limpar_receitas_tbca.py` e confira `kb/som/tbca_receitas_removidas.csv`.
+Os nutrientes das receitas (Avaliador) continuam vindo de `kb/ingredientes.csv`; a TBCA entra na substituição.
+
 ## Demonstrações
 
     pip install -r requirements.txt
@@ -83,6 +112,7 @@ para `logs/decisoes.jsonl`.
     python demos/demo_montador_avaliador.py --llm  # LLM real (precisa de ANTHROPIC_API_KEY)
     python demos/demo_avaliador.py                 # só o Avaliador
     python demos/demo.py                           # protótipo inicial (Leitor, Planejador, Comprador)
+    python demos/demo_substituicao.py              # mapa SOM direto (ex.: python demos/demo_substituicao.py carne --vegetariano)
 
 ## Base de conhecimento (kb/)
 

@@ -110,6 +110,56 @@ def pedir_opcoes(outras=False):
         st.session_state.plano = orq.opcoes_de_refeicao(n=int(st.session_state.get("w_n", 4)),
                                                         outras_opcoes=outras)
     st.session_state.escolha = None
+    for k in [k for k in st.session_state if str(k).startswith(("subs_", "aviso_subs_"))]:
+        del st.session_state[k]                    # substitutos eram das opções antigas
+
+
+def painel_substituicao(r):
+    """Botão de troca de ingrediente: passa pelo mapa SOM da TBCA (agents/substituidor.py) e, se a pessoa
+    escolher um substituto, a receita volta para o Avaliador com a troca."""
+    chave = f"subs_{r['numero']}"
+    aviso = st.session_state.pop(f"aviso_{chave}", None)          # resultado da última troca
+    if aviso:
+        (st.warning if "não aprovou" in aviso else st.success)(aviso)
+    with st.expander("🔄 Substituir um ingrediente (mapa nutricional SOM)", expanded=chave in st.session_state):
+        s1, s2 = st.columns([3, 1])
+        item = s1.selectbox("Qual ingrediente trocar?", list(r["ingredientes"]), key=f"sel_{chave}")
+        s2.write("")
+        if s2.button("Achar substitutos", key=f"btn_{chave}"):
+            with st.spinner("Procurando no mapa SOM..."):
+                st.session_state[chave] = {"item": item, "res": orq.substitutos(por_nome[item], n=4)}
+        achado = st.session_state.get(chave)
+        if not achado or achado["item"] != item:
+            st.caption("O mapa agrupa alimentos de perfil nutricional parecido. Os substitutos respeitam as suas "
+                       "restrições e o que você não gosta.")
+            return
+        res = achado["res"]
+        if "erro" in res:
+            st.warning(f"{res['erro']}. {res.get('dica', '')}")
+            return
+        p = res["por_100g"]
+        st.caption(f"{item} → na TBCA: {res['alimento']} (gaveta {res['gaveta_no_mapa']} do mapa; "
+                   f"{p['kcal']} kcal e {p['proteina_g']} g de proteína por 100 g)")
+        if not res["substitutos"]:
+            st.info("O mapa não achou substituto na base do app que respeite o seu perfil.")
+        for k, x in enumerate(res["substitutos"]):
+            q = x["por_100g"]
+            t1, t2 = st.columns([4, 1])
+            t1.markdown(f"**{x['nome_app']}** · _{x['nome']}_  \n{x['motivo']} · {q['kcal']} kcal, "
+                        f"{q['proteina_g']} g de proteína por 100 g")
+            if t2.button("Trocar", key=f"trocar_{chave}_{k}"):
+                out = orq.trocar_na_opcao(r["nome"], por_nome[item], x["id_app"])
+                if "erro" in out:
+                    st.session_state[f"aviso_{chave}"] = f"{out['erro']}: {'; '.join(out.get('motivos', []))}"
+                else:
+                    t = out["troca"]
+                    st.session_state.plano["opcoes"][r["numero"] - 1] = {**out["opcao"], "numero": r["numero"]}
+                    st.session_state[f"aviso_{chave}"] = (f"Trocado: {t['de']} {t['gramas_antes']} g → "
+                                                          f"{t['para']} {t['gramas_depois']} g (mesmas calorias). "
+                                                          "O Avaliador aprovou e recalculou a nota. O modo de preparo "
+                                                          "ainda cita o ingrediente original.")
+                    st.session_state.pop(chave, None)
+                st.rerun()
 
 
 with aba_plan:
@@ -143,6 +193,8 @@ with aba_plan:
                 d.metric("kcal/pessoa", f"{r['por_pessoa']['kcal']:.0f}")
                 st.write(f"**Por quê:** {r['por_que']}")
                 st.write("**Ingredientes:** " + ", ".join(f"{i} {g} g" for i, g in r["ingredientes"].items()))
+                if not escolha:
+                    painel_substituicao(r)
                 if r.get("preparo"):
                     with st.expander("Modo de preparo", expanded=escolhida):
                         st.text(r["preparo"])
