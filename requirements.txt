@@ -4,3 +4,4 @@ streamlit  # interface no navegador (app.py)
 numpy
 pandas
 # minisom openpyxl scikit-learn   # só para refazer o mapa (scripts/atualizar_som.py)
+# pytest                         # testes: python -m pytest tests -q

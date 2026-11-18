@@ -8,6 +8,10 @@
 | `layout/` | as interfaces: `app.py` (navegador) e `agente_interativo.py` (perguntas no terminal e `--chat`) |
 | `demos/` | demonstrações de cada parte, com dados fixos: `python demos/demo_orquestrador.py` |
 | `scripts/` | montar a base, gerar receitas com LLM e rodar os experimentos |
+| `servicos/` | APIs HTTP: `api_dri.py` (calculadora DRI) |
+| `mocks/` | ambientes do Mockoon que imitam as APIs: `dri.json` |
+| `tests/` | testes automáticos: `python -m pytest tests -q` |
+| `docs/` | explicações longas (ex.: `avaliador_bandit_explicado.pdf`) |
 | `kb/`, `fontes/`, `resultados/` | base de conhecimento gerada, fontes originais e resultados dos experimentos |
 | `app.py` | só chama `layout/app.py` (é o arquivo que o Streamlit Cloud procura) |
 
@@ -105,6 +109,78 @@ O mapa já vem treinado. Para refazer tudo: `python scripts/atualizar_som.py`. S
 um alimento que deveria ficar, ajuste `limpar_receitas_tbca.py` e confira `kb/som/tbca_receitas_removidas.csv`.
 Os nutrientes das receitas (Avaliador) continuam vindo de `kb/ingredientes.csv`; a TBCA entra na substituição.
 
+## Cronograma por ingredientes (sem receitas)
+
+Para cada refeição do dia, o agente mostra **3 opções**. Cada opção é um prato montado com ingredientes, um de
+cada grupo, com as **gramas calculadas para bater as metas da calculadora DRI**. A pessoa escolhe uma, e o
+Avaliador aprende com isso.
+
+| refeição | grupos de cada opção |
+|---|---|
+| café da manhã, lanche | carboidrato + proteína (laticínio, ovo, frios) + fruta |
+| almoço, jantar | proteína + carboidrato + leguminosa (feijão) + legumes + fruta |
+
+    calculadora DRI (API ou Mockoon) -> Montador -> Avaliador -> 3 opções -> escolha -> o bandit aprende
+
+| Arquivo | O que faz |
+|---|---|
+| agents/calculadora_dri.py | metas do dia e de cada refeição para adultos: energia pelas equações EER de 2023 (as da calculadora DRI do USDA), proteína, carboidrato, gordura, fibra, sódio e água pelas DRI. Menores de 19 anos, gestantes e lactantes são encaminhados a um profissional |
+| servicos/api_dri.py | a calculadora como API HTTP (`POST /dri`, `GET /saude`), só com a biblioteca padrão |
+| mocks/dri.json | o **Mockoon** imitando essa API, com cenários de teste (gerado por `scripts/gerar_mock_dri.py`) |
+| agents/cliente_dri.py | como o Montador pede as metas: chama a API em `DRI_API_URL`; se ela cair, calcula localmente |
+| kb/cronograma/despensa.csv | os alimentos que se combinam, por região, refeição e grupo: os mais comidos na POF 2017–2018, com a porção típica, e os nutrientes da TBCA sem receitas (gerado por `scripts/preparar_despensa.py`) |
+| agents/montador_ingredientes.py | todas as combinações da refeição, com as gramas ajustadas à energia e à proteína da meta |
+| agents/avaliador_ingredientes.py | trava (restrições, não gosta, sódio), nota de bem-estar e bandit (LinUCB) que escolhe as 3 opções e aprende com a escolha. O método está explicado em `docs/avaliador_bandit_explicado.pdf` |
+| agents/cronograma.py | junta tudo: `Cronograma(...).dia()` e `.escolher(refeicao, posicao)` |
+
+### Rodar
+
+    pip install -r requirements.txt
+    npx @mockoon/cli start --data mocks/dri.json      # terminal 1: o mock da API DRI na porta 3001
+    python demos/demo_cronograma.py                   # terminal 2
+    python demos/demo_cronograma.py --regiao Sul --restricoes vegetariano --nao-gosta tomate
+    python demos/demo_cronograma.py --aprender        # 20 almoços simulados: o que o bandit aprende
+
+No lugar do mock, dá para subir a calculadora de verdade na mesma porta: `python -m servicos.api_dri`.
+Sem nenhuma das duas, use `--local`.
+
+### Mockoon
+
+O Mockoon serve uma API falsa a partir de um arquivo. O `mocks/dri.json` responde como a API da calculadora
+DRI, para quem trabalha no Montador, no Avaliador ou na interface não depender da calculadora real estar no ar.
+
+* **No aplicativo (Mockoon Desktop):** *Open environment* → `mocks/dri.json` → *Start*. As rotas, as respostas
+  e as regras de cada cenário aparecem na tela.
+* **No terminal:** `npx @mockoon/cli start --data mocks/dri.json` (precisa do Node.js).
+
+| pedido | resposta do mock |
+|---|---|
+| `GET /saude` | 200 `{"status": "ok"}` |
+| `POST /dri` com `"sexo": "F"` | 200, metas de uma mulher de exemplo (30 anos, 163 cm, 62 kg, pouco ativa) |
+| `POST /dri` com outro sexo | 200, metas de um homem de exemplo (35 anos, 175 cm, 78 kg, pouco ativo) |
+| `POST /dri` com idade até 18, `gestante` ou `amamentando` | 422, encaminhamento a um profissional |
+| `POST /dri` sem algum campo obrigatório | 422, campos faltando |
+| cabeçalho `X-Cenario: erro` | 500 (o cliente calcula as metas localmente) |
+| cabeçalho `X-Cenario: lento` | resposta depois de 8 s (o cliente desiste em 5 s e calcula localmente) |
+
+As metas do mock são **fixas**: servem para testar o fluxo, não para a pessoa real. As respostas de sucesso
+são geradas pela calculadora de verdade, então o formato é sempre o mesmo da API. Se o formato mudar, rode
+`python scripts/gerar_mock_dri.py` de novo.
+
+Corpo do `POST /dri`:
+
+    {"sexo": "F", "idade": 30, "altura_cm": 163, "peso_kg": 62, "atividade": "pouco_ativo",
+     "gestante": false, "amamentando": false}
+
+`atividade`: `inativo`, `pouco_ativo`, `ativo` ou `muito_ativo`.
+
+### Testes
+
+    pip install pytest
+    python -m pytest tests -q
+
+Com o Mockoon (ou a API) no ar, o teste do contrato também roda; sem, ele é pulado.
+
 ## Demonstrações
 
     pip install -r requirements.txt
@@ -112,6 +188,7 @@ Os nutrientes das receitas (Avaliador) continuam vindo de `kb/ingredientes.csv`;
     python demos/demo_montador_avaliador.py --llm  # LLM real (precisa de ANTHROPIC_API_KEY)
     python demos/demo_avaliador.py                 # só o Avaliador
     python demos/demo.py                           # protótipo inicial (Leitor, Planejador, Comprador)
+    python demos/demo_cronograma.py                # cronograma por ingredientes (ver acima)
     python demos/demo_substituicao.py              # mapa SOM direto (ex.: python demos/demo_substituicao.py carne --vegetariano)
 
 ## Base de conhecimento (kb/)

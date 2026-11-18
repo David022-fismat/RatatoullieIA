@@ -1,0 +1,808 @@
+regiao,refeicao,grupo,codigo,vezes,porcao_g,rank,descricao,grupo_tbca,energia_kcal,proteina_g,carboidrato_total_g,lipidios_g,fibra_g,sodio_mg,nova,nutriscore,id_base,alergeno_gluten,alergeno_leite,alergeno_ovos,alergeno_peixes,alergeno_crustaceos,alergeno_amendoim,alergeno_soja,alergeno_castanhas_nozes,dieta_vegetariano,dieta_vegano,dieta_sem_gluten,dieta_sem_lactose
+Brasil,almoco,carboidrato,C0209A,63273,100.0,1.0,"Arroz, polido, cozido, c/ óleo, cebola e alho, c/ sal",base (cereal/tubérculo),138.0,2.4,29.1,1.59,1.27,189.0,1,B,arroz,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,almoco,carboidrato,C0834A,10585,105.0,2.0,"Macarrão, trigo, cozido, drenado, s/ óleo, c/ sal",base (cereal/tubérculo),125.0,3.54,26.9,0.57,0.91,189.0,1,B,,1,0,0,0,0,0,0,0,1,1,0,1
+Brasil,almoco,carboidrato,C0089B,2491,35.0,3.0,"Mandioca, farofa, temperada, c/ sal",base (cereal/tubérculo),396.0,2.06,80.3,9.12,7.82,574.0,1,C,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,almoco,carboidrato,C0908B,1351,200.0,4.0,"Mandioca (aipim, macaxeira), s/ casca, cozida, drenada, s/ óleo, c/ sal, Manihot esculenta Crantz.",base (cereal/tubérculo),120.0,0.64,29.7,0.24,1.77,128.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,almoco,carboidrato,C0211A,1339,125.0,5.0,"Arroz, integral, cozido, c/ óleo, cebola e alho, c/ sal",base (cereal/tubérculo),116.0,2.46,23.0,2.03,2.14,188.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,almoco,carboidrato,C0118B,1150,110.0,6.0,"Batata, inglesa, frita (c/ óleo de soja), c/ sal, Solanum tuberosum L.",base (cereal/tubérculo),248.0,4.04,32.7,11.9,3.16,189.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,almoco,carboidrato,C0143A,1069,120.0,7.0,"Milho, polenta/fubá, cozido, c/ sal",base (cereal/tubérculo),104.0,2.25,23.0,0.69,1.74,429.0,1,C,fuba,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,almoco,carboidrato,C0117B,873,90.0,8.0,"Batata, inglesa, s/ casca, cozida, drenada, s/ óleo, c/ sal, Solanum tuberosum L.",base (cereal/tubérculo),52.0,1.33,12.2,0.05,1.46,190.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,almoco,carboidrato,C0190A,764,40.0,9.0,"Cuscuz de milho, cozido, c/ sal",base (cereal/tubérculo),112.0,2.16,25.3,0.68,2.05,247.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,almoco,carboidrato,C0315B,523,90.0,10.0,"Batata, inglesa, s/ casca, cozida, drenada, c/ óleo de soja, c/ sal, Solanum tuberosum L.",base (cereal/tubérculo),94.0,1.26,11.6,5.02,1.39,189.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,almoco,fruta,C0006C,1147,75.0,1.0,"Banana, in natura, Musa spp.",fruta,109.0,1.27,26.7,0.19,2.24,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,almoco,fruta,C0017C,572,180.0,2.0,"Laranja, in natura, Citrus spp.",fruta,45.0,0.9,10.8,0.24,2.02,0.53,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,almoco,fruta,C0027C,266,200.0,3.0,"Melancia, polpa, in natura, Citrullus spp.",fruta,29.0,0.7,6.52,0.05,0.13,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,almoco,fruta,C0025C,215,140.0,4.0,"Manga, polpa, in natura, Mangifera indica L.",fruta,64.0,0.53,16.0,0.31,2.14,0.92,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,almoco,fruta,C0002C,148,150.0,5.0,"Abacaxi, polpa, in natura, Ananas comosus L.",fruta,50.0,0.68,11.6,0.33,1.12,2.84,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,almoco,fruta,C0023C,146,150.0,6.0,"Maçã, c/ casca, in natura, Malus spp.",fruta,64.0,0.29,15.7,0.49,2.07,0.66,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,almoco,fruta,C0024C,137,170.0,7.0,"Mamão, polpa, in natura, Carica papaya L.",fruta,44.0,0.57,10.7,0.25,1.83,2.44,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,almoco,fruta,C0032C,95,135.0,8.0,"Tangerina, Ponkã, in natura, Citrus reticulata",fruta,40.0,0.85,9.54,0.07,0.94,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,almoco,fruta,C0107C,72,100.0,9.0,"Banana, da terra, assada, s/ adição de ingredientes, Musa acuminata Colla x Musa balbisiana Colla",fruta,165.0,1.69,39.7,0.28,1.8,0.0,1,C,,0,1,0,0,0,0,0,0,1,0,1,0
+Brasil,almoco,fruta,C0062C,68,55.0,10.0,"Limão, cravo, in natura, Citrus limoniaI Osbeck",fruta,22.0,0.32,5.25,0.0,0.0,0.0,1,A,limao,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,almoco,legumes,C0009B,3338,25.0,1.0,"Alface, crua, Lactuca sativa L.",verdura/legume,9.0,1.08,1.79,0.12,1.87,4.2,1,A,alface,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,almoco,legumes,C0035B,2952,60.0,2.0,"Tomate, cru, Lycopersicon esculentum",verdura/legume,18.0,1.04,3.82,0.17,1.6,3.13,1,A,tomate,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,almoco,legumes,C0033B,1016,50.0,3.0,"Repolho, cru, Brassica oleracea L.",verdura/legume,20.0,1.12,4.42,0.14,1.92,3.32,1,A,repolho,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,almoco,legumes,C0145B,653,40.0,4.0,"Couve, manteiga, refogada (c/ óleo, cebola e alho), c/ sal, Brassica oleracea var. Acephala",verdura/legume,83.0,2.03,7.07,6.41,5.59,138.0,1,A,,0,1,0,0,0,0,0,0,1,0,1,0
+Brasil,almoco,legumes,C0030B,647,35.0,5.0,"Pepino, c/ casca, cru, Cucumis sativus l.",verdura/legume,10.0,0.7,2.23,0.09,1.04,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,almoco,legumes,C0912B,501,45.0,6.0,"Beterraba, cozida, drenada, s/ óleo, c/ sal, Beta vulgaris L.",verdura/legume,27.0,1.22,6.27,0.09,2.03,147.0,1,A,beterraba,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,almoco,legumes,C0166B,451,70.0,7.0,"Abóbora, moranga, s/ casca, s/ semente, cozida, drenada, s/ óleo, c/ sal",verdura/legume,17.0,1.21,3.98,0.14,2.41,127.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,almoco,legumes,C0020B,439,40.0,8.0,"Cenoura, s/ casca, crua, Daucus carota L.",verdura/legume,31.0,1.12,7.55,0.21,2.98,11.1,1,A,cenoura,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,almoco,legumes,C0226B,398,70.0,9.0,"Abóbora, moranga, s/ casca, s/ semente, cozida, drenada, c/ óleo de soja, c/ sal",verdura/legume,38.0,1.18,3.89,2.52,2.36,127.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,almoco,legumes,C0913B,368,35.0,10.0,"Cenoura, s/ casca, cozida, drenada, s/ óleo, c/ sal, Daucus carota L.",verdura/legume,17.0,0.54,4.3,0.19,2.17,132.0,1,A,cenoura,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,almoco,leguminosa,C0091T,47956,140.0,1.0,"Feijão, carioca, cozido (50% grão e 50% caldo), c/ óleo, cebola e alho, c/ sal, Phaseolus vulgaris L.",leguminosa,79.0,4.69,14.6,1.72,6.84,190.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,almoco,leguminosa,C0100T,4247,140.0,2.0,"Feijão, fradinho, cozido (50% grão e 50% caldo), c/ óleo, cebola e alho, c/ sal, Vigna unguiculata (L.) Walp.",leguminosa,74.0,4.99,12.9,1.82,7.23,189.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,almoco,leguminosa,C0085T,187,140.0,3.0,"Fava, grão, seco, cozida, drenada, s/ óleo, c/ sal, Vicia faba L.",leguminosa,108.0,9.05,20.5,0.49,7.42,194.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,almoco,leguminosa,C0120T,168,225.0,4.0,"Lentilha, cozida, c/ toucinho defumado (bacon), c/ óleo, cebola e alho, c/ sal",leguminosa,163.0,8.97,17.5,7.59,5.63,212.0,4,A,,0,0,0,0,0,0,0,0,0,0,1,1
+Brasil,almoco,leguminosa,C0078T,113,110.0,5.0,"Lentilha, cozida, drenada, c/ óleo, cebola e alho, c/ sal, Lens culinaris",leguminosa,107.0,7.04,19.2,1.63,6.22,189.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,almoco,leguminosa,C0169T,78,80.0,6.0,"Soja, proteína, texturizada, hidratada (c/ caldo de legumes), refogada, c/ óleo, cebola e alho, c/ sal",leguminosa,185.0,23.2,21.8,1.53,4.51,424.0,1,A,,0,0,0,0,0,0,1,0,1,1,1,1
+Brasil,almoco,leguminosa,C0106T,44,45.0,7.0,"Grão de bico, cozido, dreando, s/ óleo, c/ sal, Cicer arietinum L.",leguminosa,114.0,7.48,20.7,1.84,7.42,196.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,almoco,leguminosa,C0082T,32,140.0,8.0,"Feijão, guandu, grão, seco, cozido (50% grão e 50% caldo), s/ óleo, cebola e alho, c/ sal, Cajanus cajan",leguminosa,89.0,6.76,19.6,0.65,5.83,188.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,almoco,leguminosa,C0074T,21,70.0,9.0,"Ervilha, grão, seca, partida, cozida, drenada, s/ óleo, c/ sal, Pisum sativum L.",leguminosa,115.0,7.7,22.2,0.5,4.36,260.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,almoco,proteina,C0732F,5717,70.0,1.0,"Carne, boi, de segunda (acém, capa de contrafilé, costela, músculo, paleta, peito), cozida/grelhada/assada, s/ óleo, c/ sal, Bos taurus",proteína animal,254.0,28.4,0.0,15.7,0.0,385.0,1,D,,0,0,0,0,0,0,0,0,0,0,1,1
+Brasil,almoco,proteina,C0720F,5674,110.0,2.0,"Carne, frango, inteiro, refogada (c/ óleo, cebola e alho), c/ sal (média de amostras c/ e s/ pele), Gallus gallus",proteína animal,236.0,23.9,0.74,15.2,0.13,267.0,1,C,,0,0,0,0,0,0,0,0,0,0,1,1
+Brasil,almoco,proteina,C0716F,4348,110.0,3.0,"Carne, frango, inteiro, s/ pele, frita (c/ óleo de soja), c/ sal, Gallus gallus",proteína animal,236.0,25.7,0.0,14.8,0.0,244.0,1,B,,0,0,0,0,0,0,0,0,0,0,1,1
+Brasil,almoco,proteina,C0714F,4341,110.0,4.0,"Carne, frango, inteiro, s/ pele, grelhada/assada, s/ óleo, c/ sal, Gallus gallus",proteína animal,179.0,27.9,0.0,7.47,0.0,249.0,1,B,,0,0,0,0,0,0,0,0,0,0,1,1
+Brasil,almoco,proteina,C0634F,4240,90.0,5.0,"Carne, boi, patinho, s/ gordura, frita (c/ óleo de soja), c/ sal, Bos taurus",proteína animal,263.0,32.9,0.0,14.7,0.0,234.0,1,C,,0,0,0,0,0,0,0,0,0,0,1,1
+Brasil,almoco,proteina,C0733F,4196,75.0,6.0,"Carne, boi, de segunda (acém, paleta, peito), frita (c/ óleo de soja), c/ sal, Bos taurus",proteína animal,291.0,23.9,0.0,21.7,0.0,369.0,1,D,,0,0,0,0,0,0,0,0,0,0,1,1
+Brasil,almoco,proteina,C0028J,2533,50.0,7.0,"Ovo, galinha, inteiro, frito (c/ óleo de soja), c/ sal",proteína animal,233.0,15.5,1.19,18.5,0.0,353.0,1,C,,0,0,1,0,0,0,0,0,1,0,1,1
+Brasil,almoco,proteina,C0713F,2274,110.0,8.0,"Carne, frango, caipira, inteiro, cozida, s/ óleo, c/ sal (média de amostras c/ e s/ pele), Gallus gallus",proteína animal,206.0,26.7,0.0,11.1,0.0,234.0,1,B,,0,0,0,0,0,0,0,0,0,0,1,1
+Brasil,almoco,proteina,C0708F,2035,185.0,9.0,"Carne, porco, pernil, frita (c/ óleo de soja), c/ sal, Sus ssp",proteína animal,304.0,29.4,0.0,20.7,0.0,236.0,1,C,,0,0,0,0,0,0,0,0,0,0,1,1
+Brasil,almoco,proteina,C0230F,1628,110.0,10.0,"Carne, frango, peito, s/ pele, grelhada, s/ gordura, s/ óleo, c/ sal, Gallus gallus",proteína animal,149.0,31.8,0.0,2.46,0.0,249.0,1,A,,0,0,0,0,0,0,0,0,0,0,1,1
+Brasil,cafe_da_manha,carboidrato,C0002A,26027,70.0,1.0,"Pão francês, trigo, branco, de padaria (médias de diferentes amostras)",base (cereal/tubérculo),300.0,9.83,61.6,2.12,2.61,681.0,3,C,,1,0,0,0,0,0,0,0,1,1,0,1
+Brasil,cafe_da_manha,carboidrato,C0190A,4422,135.0,2.0,"Cuscuz de milho, cozido, c/ sal",base (cereal/tubérculo),112.0,2.16,25.3,0.68,2.05,247.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,cafe_da_manha,carboidrato,C0906B,2048,70.0,3.0,"Tapioca, sem manteiga, sem recheio",base (cereal/tubérculo),289.0,0.36,71.9,0.0,0.2,1.31,1,C,,0,1,0,0,0,0,0,0,1,0,1,0
+Brasil,cafe_da_manha,carboidrato,C0155A,1513,50.0,4.0,"Pão, trigo, integral, forma (média de diferentes marcas)",base (cereal/tubérculo),249.0,10.5,48.6,2.54,5.29,495.0,4,A,pao_forma,1,0,0,0,0,0,0,0,1,1,0,1
+Brasil,cafe_da_manha,carboidrato,C0160A,1050,50.0,5.0,"Pão, trigo, sovado",base (cereal/tubérculo),300.0,8.4,61.5,2.84,2.43,430.0,3,B,,1,0,0,0,0,0,0,0,1,1,0,1
+Brasil,cafe_da_manha,carboidrato,C0003A,937,50.0,6.0,"Pão, trigo, branco, forma, tradicional (média de diferentes marcas)",base (cereal/tubérculo),260.0,9.53,51.5,2.41,2.68,860.0,4,C,pao_forma,1,0,0,0,0,0,0,0,1,1,0,1
+Brasil,cafe_da_manha,carboidrato,C0169A,874,15.0,7.0,"Torrada, trigo, tradicional",base (cereal/tubérculo),395.0,11.5,73.6,6.39,1.28,912.0,1,D,,1,0,0,0,0,0,0,0,1,1,0,1
+Brasil,cafe_da_manha,carboidrato,C0209A,468,100.0,8.0,"Arroz, polido, cozido, c/ óleo, cebola e alho, c/ sal",base (cereal/tubérculo),138.0,2.4,29.1,1.59,1.27,189.0,1,B,arroz,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,cafe_da_manha,carboidrato,C0908B,418,200.0,9.0,"Mandioca (aipim, macaxeira), s/ casca, cozida, drenada, s/ óleo, c/ sal, Manihot esculenta Crantz.",base (cereal/tubérculo),120.0,0.64,29.7,0.24,1.77,128.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,cafe_da_manha,carboidrato,C0146A,217,70.0,10.0,"Pão, milho, forma",base (cereal/tubérculo),278.0,8.3,56.4,3.11,4.3,506.0,4,A,,1,0,0,0,0,0,0,0,1,1,0,1
+Brasil,cafe_da_manha,fruta,C0006C,2391,75.0,1.0,"Banana, in natura, Musa spp.",fruta,109.0,1.27,26.7,0.19,2.24,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,cafe_da_manha,fruta,C0024C,1115,170.0,2.0,"Mamão, polpa, in natura, Carica papaya L.",fruta,44.0,0.57,10.7,0.25,1.83,2.44,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,cafe_da_manha,fruta,C0023C,500,150.0,3.0,"Maçã, c/ casca, in natura, Malus spp.",fruta,64.0,0.29,15.7,0.49,2.07,0.66,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,cafe_da_manha,fruta,C0107C,416,100.0,4.0,"Banana, da terra, assada, s/ adição de ingredientes, Musa acuminata Colla x Musa balbisiana Colla",fruta,165.0,1.69,39.7,0.28,1.8,0.0,1,C,,0,1,0,0,0,0,0,0,1,0,1,0
+Brasil,cafe_da_manha,fruta,C0028C,266,90.0,5.0,"Melão, polpa, in natura, Cucumis melo",fruta,24.0,0.61,5.7,0.15,1.22,8.96,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,cafe_da_manha,fruta,C0017C,167,180.0,6.0,"Laranja, in natura, Citrus spp.",fruta,45.0,0.9,10.8,0.24,2.02,0.53,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,cafe_da_manha,fruta,C0025C,118,140.0,7.0,"Manga, polpa, in natura, Mangifera indica L.",fruta,64.0,0.53,16.0,0.31,2.14,0.92,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,cafe_da_manha,fruta,C0027C,111,200.0,8.0,"Melancia, polpa, in natura, Citrullus spp.",fruta,29.0,0.7,6.52,0.05,0.13,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,cafe_da_manha,fruta,C0001C,88,215.0,9.0,"Abacate, polpa, in natura, Persea americana Mill",fruta,76.0,1.15,5.84,6.21,4.03,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,cafe_da_manha,fruta,C0033C,86,100.0,10.0,"Uva, in natura, Vitis vinifera L.",fruta,57.0,0.55,13.7,0.2,0.93,3.96,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,cafe_da_manha,proteina,C0043G,2346,200.0,1.0,"Leite, vaca, integral, fluído",laticínio,64.0,2.93,5.92,3.23,0.0,63.8,1,B,leite,0,1,0,0,0,0,0,0,1,0,1,0
+Brasil,cafe_da_manha,proteina,C0034G,2335,240.0,2.0,"Leite, vaca, c/ chocolate, Toddynho",laticínio,85.0,2.0,13.9,2.4,0.0,65.0,4,C,,0,1,0,0,0,0,0,0,1,0,1,0
+Brasil,cafe_da_manha,proteina,C0028J,1861,50.0,3.0,"Ovo, galinha, inteiro, frito (c/ óleo de soja), c/ sal",proteína animal,233.0,15.5,1.19,18.5,0.0,353.0,1,C,,0,0,1,0,0,0,0,0,1,0,1,1
+Brasil,cafe_da_manha,proteina,C0059G,1412,20.0,4.0,"Queijo, muçarela (média de diferentes amostras)",laticínio,320.0,23.8,1.97,24.1,0.0,506.0,3,D,mussarela,0,1,0,0,0,0,0,0,1,0,1,0
+Brasil,cafe_da_manha,proteina,C0056G,725,45.0,5.0,"Queijo, minas, padrão (média de diferentes amostras)",laticínio,295.0,20.4,7.54,20.4,0.0,665.0,3,D,,0,1,0,0,0,0,0,0,1,0,1,0
+Brasil,cafe_da_manha,proteina,C0048G,690,90.0,6.0,"Queijo, coalho",laticínio,335.0,23.7,1.94,25.9,0.0,526.0,3,D,,0,1,0,0,0,0,0,0,1,0,1,0
+Brasil,cafe_da_manha,proteina,C0023J,634,90.0,7.0,"Ovo, galinha, inteiro, cozido, c/ sal",proteína animal,125.0,10.3,1.38,8.66,0.0,315.0,1,B,ovo,0,0,1,0,0,0,0,0,1,0,1,1
+Brasil,cafe_da_manha,proteina,C0066G,618,15.0,8.0,"Queijo, requeijão (média de diferentes amostras)",laticínio,281.0,9.91,3.03,25.5,0.0,608.0,4,D,,0,1,0,0,0,0,0,0,1,0,1,0
+Brasil,cafe_da_manha,proteina,C0193F,594,15.0,9.0,Mortadela,proteína animal,269.0,13.7,16.1,16.6,0.0,1354.0,4,D,,0,0,0,0,0,0,0,0,0,0,1,1
+Brasil,cafe_da_manha,proteina,C0247F,555,15.0,10.0,"Presunto, porco, cozido, c/ capa de gordura (média de diferentes amostras)",proteína animal,127.0,15.2,1.05,6.83,0.0,1044.0,4,D,,0,0,0,0,0,0,0,0,0,0,1,1
+Brasil,jantar,carboidrato,C0209A,31952,90.0,1.0,"Arroz, polido, cozido, c/ óleo, cebola e alho, c/ sal",base (cereal/tubérculo),138.0,2.4,29.1,1.59,1.27,189.0,1,B,arroz,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,jantar,carboidrato,C0190A,4120,95.0,2.0,"Cuscuz de milho, cozido, c/ sal",base (cereal/tubérculo),112.0,2.16,25.3,0.68,2.05,247.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,jantar,carboidrato,C0002A,4033,70.0,3.0,"Pão francês, trigo, branco, de padaria (médias de diferentes amostras)",base (cereal/tubérculo),300.0,9.83,61.6,2.12,2.61,681.0,3,C,,1,0,0,0,0,0,0,0,1,1,0,1
+Brasil,jantar,carboidrato,C0834A,3852,105.0,4.0,"Macarrão, trigo, cozido, drenado, s/ óleo, c/ sal",base (cereal/tubérculo),125.0,3.54,26.9,0.57,0.91,189.0,1,B,,1,0,0,0,0,0,0,0,1,1,0,1
+Brasil,jantar,carboidrato,C0908B,1639,200.0,5.0,"Mandioca (aipim, macaxeira), s/ casca, cozida, drenada, s/ óleo, c/ sal, Manihot esculenta Crantz.",base (cereal/tubérculo),120.0,0.64,29.7,0.24,1.77,128.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,jantar,carboidrato,C0089B,930,35.0,6.0,"Mandioca, farofa, temperada, c/ sal",base (cereal/tubérculo),396.0,2.06,80.3,9.12,7.82,574.0,1,C,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,jantar,carboidrato,C0407A,805,320.0,7.0,"Macarrão, trigo, instantâneo, c/ tempero, cozido, drenado (preparado conforme a embalagem)",base (cereal/tubérculo),154.0,3.17,22.5,6.21,2.02,545.0,1,C,,1,0,0,0,0,0,0,0,1,1,0,1
+Brasil,jantar,carboidrato,C0143A,711,120.0,8.0,"Milho, polenta/fubá, cozido, c/ sal",base (cereal/tubérculo),104.0,2.25,23.0,0.69,1.74,429.0,1,C,fuba,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,jantar,carboidrato,C0118B,579,110.0,9.0,"Batata, inglesa, frita (c/ óleo de soja), c/ sal, Solanum tuberosum L.",base (cereal/tubérculo),248.0,4.04,32.7,11.9,3.16,189.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,jantar,carboidrato,C0343B,553,90.0,10.0,"Inhame, s/ casca, cozido, drenado, s/ óleo, c/ sal, Colocasia esculenta",base (cereal/tubérculo),89.0,2.28,20.4,0.14,1.6,187.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,jantar,fruta,C0006C,730,75.0,1.0,"Banana, in natura, Musa spp.",fruta,109.0,1.27,26.7,0.19,2.24,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,jantar,fruta,C0023C,258,150.0,2.0,"Maçã, c/ casca, in natura, Malus spp.",fruta,64.0,0.29,15.7,0.49,2.07,0.66,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,jantar,fruta,C0107C,207,100.0,3.0,"Banana, da terra, assada, s/ adição de ingredientes, Musa acuminata Colla x Musa balbisiana Colla",fruta,165.0,1.69,39.7,0.28,1.8,0.0,1,C,,0,1,0,0,0,0,0,0,1,0,1,0
+Brasil,jantar,fruta,C0017C,177,180.0,4.0,"Laranja, in natura, Citrus spp.",fruta,45.0,0.9,10.8,0.24,2.02,0.53,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,jantar,fruta,C0024C,150,170.0,5.0,"Mamão, polpa, in natura, Carica papaya L.",fruta,44.0,0.57,10.7,0.25,1.83,2.44,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,jantar,fruta,C0027C,93,200.0,6.0,"Melancia, polpa, in natura, Citrullus spp.",fruta,29.0,0.7,6.52,0.05,0.13,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,jantar,fruta,C0025C,61,140.0,7.0,"Manga, polpa, in natura, Mangifera indica L.",fruta,64.0,0.53,16.0,0.31,2.14,0.92,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,jantar,fruta,C0028C,57,90.0,8.0,"Melão, polpa, in natura, Cucumis melo",fruta,24.0,0.61,5.7,0.15,1.22,8.96,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,jantar,fruta,C0032C,49,135.0,9.0,"Tangerina, Ponkã, in natura, Citrus reticulata",fruta,40.0,0.85,9.54,0.07,0.94,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,jantar,fruta,C0002C,43,150.0,10.0,"Abacaxi, polpa, in natura, Ananas comosus L.",fruta,50.0,0.68,11.6,0.33,1.12,2.84,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,jantar,legumes,C0009B,1202,25.0,1.0,"Alface, crua, Lactuca sativa L.",verdura/legume,9.0,1.08,1.79,0.12,1.87,4.2,1,A,alface,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,jantar,legumes,C0035B,1131,60.0,2.0,"Tomate, cru, Lycopersicon esculentum",verdura/legume,18.0,1.04,3.82,0.17,1.6,3.13,1,A,tomate,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,jantar,legumes,C0033B,365,70.0,3.0,"Repolho, cru, Brassica oleracea L.",verdura/legume,20.0,1.12,4.42,0.14,1.92,3.32,1,A,repolho,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,jantar,legumes,C0145B,310,40.0,4.0,"Couve, manteiga, refogada (c/ óleo, cebola e alho), c/ sal, Brassica oleracea var. Acephala",verdura/legume,83.0,2.03,7.07,6.41,5.59,138.0,1,A,,0,1,0,0,0,0,0,0,1,0,1,0
+Brasil,jantar,legumes,C0226B,239,70.0,5.0,"Abóbora, moranga, s/ casca, s/ semente, cozida, drenada, c/ óleo de soja, c/ sal",verdura/legume,38.0,1.18,3.89,2.52,2.36,127.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,jantar,legumes,C0030B,227,35.0,6.0,"Pepino, c/ casca, cru, Cucumis sativus l.",verdura/legume,10.0,0.7,2.23,0.09,1.04,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,jantar,legumes,C0166B,224,70.0,7.0,"Abóbora, moranga, s/ casca, s/ semente, cozida, drenada, s/ óleo, c/ sal",verdura/legume,17.0,1.21,3.98,0.14,2.41,127.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,jantar,legumes,C0153B,162,60.0,8.0,"Abobrinha, italiana, c/ casca, refogada (c/ óleo, cebola e alho), c/ sal",verdura/legume,26.0,1.07,4.19,0.82,1.38,130.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,jantar,legumes,C0912B,152,45.0,9.0,"Beterraba, cozida, drenada, s/ óleo, c/ sal, Beta vulgaris L.",verdura/legume,27.0,1.22,6.27,0.09,2.03,147.0,1,A,beterraba,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,jantar,legumes,C0023B,143,40.0,10.0,"Couve, crua, Brassica oleracea var. Acephala",verdura/legume,28.0,2.87,4.33,0.55,3.12,9.09,1,A,couve,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,jantar,leguminosa,C0091T,21294,140.0,1.0,"Feijão, carioca, cozido (50% grão e 50% caldo), c/ óleo, cebola e alho, c/ sal, Phaseolus vulgaris L.",leguminosa,79.0,4.69,14.6,1.72,6.84,190.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,jantar,leguminosa,C0100T,1617,140.0,2.0,"Feijão, fradinho, cozido (50% grão e 50% caldo), c/ óleo, cebola e alho, c/ sal, Vigna unguiculata (L.) Walp.",leguminosa,74.0,4.99,12.9,1.82,7.23,189.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,jantar,leguminosa,C0120T,102,225.0,3.0,"Lentilha, cozida, c/ toucinho defumado (bacon), c/ óleo, cebola e alho, c/ sal",leguminosa,163.0,8.97,17.5,7.59,5.63,212.0,4,A,,0,0,0,0,0,0,0,0,0,0,1,1
+Brasil,jantar,leguminosa,C0085T,72,85.0,4.0,"Fava, grão, seco, cozida, drenada, s/ óleo, c/ sal, Vicia faba L.",leguminosa,108.0,9.05,20.5,0.49,7.42,194.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,jantar,leguminosa,C0078T,49,160.0,5.0,"Lentilha, cozida, drenada, c/ óleo, cebola e alho, c/ sal, Lens culinaris",leguminosa,107.0,7.04,19.2,1.63,6.22,189.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,jantar,leguminosa,C0169T,30,80.0,6.0,"Soja, proteína, texturizada, hidratada (c/ caldo de legumes), refogada, c/ óleo, cebola e alho, c/ sal",leguminosa,185.0,23.2,21.8,1.53,4.51,424.0,1,A,,0,0,0,0,0,0,1,0,1,1,1,1
+Brasil,jantar,proteina,C0028J,3623,50.0,1.0,"Ovo, galinha, inteiro, frito (c/ óleo de soja), c/ sal",proteína animal,233.0,15.5,1.19,18.5,0.0,353.0,1,C,,0,0,1,0,0,0,0,0,1,0,1,1
+Brasil,jantar,proteina,C0720F,3008,110.0,2.0,"Carne, frango, inteiro, refogada (c/ óleo, cebola e alho), c/ sal (média de amostras c/ e s/ pele), Gallus gallus",proteína animal,236.0,23.9,0.74,15.2,0.13,267.0,1,C,,0,0,0,0,0,0,0,0,0,0,1,1
+Brasil,jantar,proteina,C0732F,2651,70.0,3.0,"Carne, boi, de segunda (acém, capa de contrafilé, costela, músculo, paleta, peito), cozida/grelhada/assada, s/ óleo, c/ sal, Bos taurus",proteína animal,254.0,28.4,0.0,15.7,0.0,385.0,1,D,,0,0,0,0,0,0,0,0,0,0,1,1
+Brasil,jantar,proteina,C0716F,2583,110.0,4.0,"Carne, frango, inteiro, s/ pele, frita (c/ óleo de soja), c/ sal, Gallus gallus",proteína animal,236.0,25.7,0.0,14.8,0.0,244.0,1,B,,0,0,0,0,0,0,0,0,0,0,1,1
+Brasil,jantar,proteina,C0733F,2493,75.0,5.0,"Carne, boi, de segunda (acém, paleta, peito), frita (c/ óleo de soja), c/ sal, Bos taurus",proteína animal,291.0,23.9,0.0,21.7,0.0,369.0,1,D,,0,0,0,0,0,0,0,0,0,0,1,1
+Brasil,jantar,proteina,C0634F,2043,90.0,6.0,"Carne, boi, patinho, s/ gordura, frita (c/ óleo de soja), c/ sal, Bos taurus",proteína animal,263.0,32.9,0.0,14.7,0.0,234.0,1,C,,0,0,0,0,0,0,0,0,0,0,1,1
+Brasil,jantar,proteina,C0714F,1960,110.0,7.0,"Carne, frango, inteiro, s/ pele, grelhada/assada, s/ óleo, c/ sal, Gallus gallus",proteína animal,179.0,27.9,0.0,7.47,0.0,249.0,1,B,,0,0,0,0,0,0,0,0,0,0,1,1
+Brasil,jantar,proteina,C0766F,1377,50.0,8.0,"Linguiça, frango/porco, fresca, frita (c/ óleo de soja), c/ sal",proteína animal,256.0,19.3,0.0,19.8,0.0,1576.0,4,D,,0,0,0,0,0,0,0,0,0,0,1,1
+Brasil,jantar,proteina,C0708F,1312,185.0,9.0,"Carne, porco, pernil, frita (c/ óleo de soja), c/ sal, Sus ssp",proteína animal,304.0,29.4,0.0,20.7,0.0,236.0,1,C,,0,0,0,0,0,0,0,0,0,0,1,1
+Brasil,jantar,proteina,C0713F,1090,110.0,10.0,"Carne, frango, caipira, inteiro, cozida, s/ óleo, c/ sal (média de amostras c/ e s/ pele), Gallus gallus",proteína animal,206.0,26.7,0.0,11.1,0.0,234.0,1,B,,0,0,0,0,0,0,0,0,0,0,1,1
+Brasil,lanche,carboidrato,C0002A,7923,70.0,1.0,"Pão francês, trigo, branco, de padaria (médias de diferentes amostras)",base (cereal/tubérculo),300.0,9.83,61.6,2.12,2.61,681.0,3,C,,1,0,0,0,0,0,0,0,1,1,0,1
+Brasil,lanche,carboidrato,C0832A,1335,20.0,2.0,"Milho, pipoca, preparada, c/ óleo de soja, c/ açúcar",base (cereal/tubérculo),432.0,8.97,73.1,14.3,12.9,5.13,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,lanche,carboidrato,C0906B,628,70.0,3.0,"Tapioca, sem manteiga, sem recheio",base (cereal/tubérculo),289.0,0.36,71.9,0.0,0.2,1.31,1,C,,0,1,0,0,0,0,0,0,1,0,1,0
+Brasil,lanche,carboidrato,C0209A,547,90.0,4.0,"Arroz, polido, cozido, c/ óleo, cebola e alho, c/ sal",base (cereal/tubérculo),138.0,2.4,29.1,1.59,1.27,189.0,1,B,arroz,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,lanche,carboidrato,C0169A,473,15.0,5.0,"Torrada, trigo, tradicional",base (cereal/tubérculo),395.0,11.5,73.6,6.39,1.28,912.0,1,D,,1,0,0,0,0,0,0,0,1,1,0,1
+Brasil,lanche,carboidrato,C0155A,442,50.0,6.0,"Pão, trigo, integral, forma (média de diferentes marcas)",base (cereal/tubérculo),249.0,10.5,48.6,2.54,5.29,495.0,4,A,pao_forma,1,0,0,0,0,0,0,0,1,1,0,1
+Brasil,lanche,carboidrato,C0160A,422,25.0,7.0,"Pão, trigo, sovado",base (cereal/tubérculo),300.0,8.4,61.5,2.84,2.43,430.0,3,B,,1,0,0,0,0,0,0,0,1,1,0,1
+Brasil,lanche,carboidrato,C0212A,417,85.0,8.0,"Salgadinho, snack, extrusado de milho",base (cereal/tubérculo),546.0,6.17,57.3,33.4,4.0,514.0,4,D,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,lanche,carboidrato,C0190A,383,135.0,9.0,"Cuscuz de milho, cozido, c/ sal",base (cereal/tubérculo),112.0,2.16,25.3,0.68,2.05,247.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,lanche,carboidrato,C0003A,321,50.0,10.0,"Pão, trigo, branco, forma, tradicional (média de diferentes marcas)",base (cereal/tubérculo),260.0,9.53,51.5,2.41,2.68,860.0,4,C,pao_forma,1,0,0,0,0,0,0,0,1,1,0,1
+Brasil,lanche,fruta,C0006C,6239,75.0,1.0,"Banana, in natura, Musa spp.",fruta,109.0,1.27,26.7,0.19,2.24,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,lanche,fruta,C0023C,2740,150.0,2.0,"Maçã, c/ casca, in natura, Malus spp.",fruta,64.0,0.29,15.7,0.49,2.07,0.66,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,lanche,fruta,C0017C,1913,180.0,3.0,"Laranja, in natura, Citrus spp.",fruta,45.0,0.9,10.8,0.24,2.02,0.53,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,lanche,fruta,C0025C,1179,140.0,4.0,"Manga, polpa, in natura, Mangifera indica L.",fruta,64.0,0.53,16.0,0.31,2.14,0.92,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,lanche,fruta,C0027C,906,200.0,5.0,"Melancia, polpa, in natura, Citrullus spp.",fruta,29.0,0.7,6.52,0.05,0.13,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,lanche,fruta,C0024C,842,170.0,6.0,"Mamão, polpa, in natura, Carica papaya L.",fruta,44.0,0.57,10.7,0.25,1.83,2.44,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,lanche,fruta,C0032C,722,135.0,7.0,"Tangerina, Ponkã, in natura, Citrus reticulata",fruta,40.0,0.85,9.54,0.07,0.94,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,lanche,fruta,C0033C,394,170.0,8.0,"Uva, in natura, Vitis vinifera L.",fruta,57.0,0.55,13.7,0.2,0.93,3.96,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,lanche,fruta,C0014C,345,170.0,9.0,"Goiaba, inteira, in natura, Psidium guajava L.",fruta,50.0,0.86,13.4,0.53,5.78,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,lanche,fruta,C0028C,339,90.0,10.0,"Melão, polpa, in natura, Cucumis melo",fruta,24.0,0.61,5.7,0.15,1.22,8.96,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Brasil,lanche,proteina,C0034G,1292,200.0,1.0,"Leite, vaca, c/ chocolate, Toddynho",laticínio,85.0,2.0,13.9,2.4,0.0,65.0,4,C,,0,1,0,0,0,0,0,0,1,0,1,0
+Brasil,lanche,proteina,C0043G,1199,200.0,2.0,"Leite, vaca, integral, fluído",laticínio,64.0,2.93,5.92,3.23,0.0,63.8,1,B,leite,0,1,0,0,0,0,0,0,1,0,1,0
+Brasil,lanche,proteina,C0011G,957,200.0,3.0,"Iogurte, integral (média de diferentes sabores)",laticínio,75.0,3.12,10.9,2.17,0.23,55.7,4,B,,0,1,0,0,0,0,0,0,1,0,1,0
+Brasil,lanche,proteina,C0059G,456,20.0,4.0,"Queijo, muçarela (média de diferentes amostras)",laticínio,320.0,23.8,1.97,24.1,0.0,506.0,3,D,mussarela,0,1,0,0,0,0,0,0,1,0,1,0
+Brasil,lanche,proteina,C0056G,316,45.0,5.0,"Queijo, minas, padrão (média de diferentes amostras)",laticínio,295.0,20.4,7.54,20.4,0.0,665.0,3,D,,0,1,0,0,0,0,0,0,1,0,1,0
+Brasil,lanche,proteina,C0020G,248,200.0,6.0,"Iogurte, natural (média de diferentes amostras)",laticínio,57.0,4.02,4.76,2.43,0.0,47.7,1,B,,0,1,0,0,0,0,0,0,1,0,1,0
+Brasil,lanche,proteina,C0066G,217,15.0,7.0,"Queijo, requeijão (média de diferentes amostras)",laticínio,281.0,9.91,3.03,25.5,0.0,608.0,4,D,,0,1,0,0,0,0,0,0,1,0,1,0
+Brasil,lanche,proteina,C0028J,208,50.0,8.0,"Ovo, galinha, inteiro, frito (c/ óleo de soja), c/ sal",proteína animal,233.0,15.5,1.19,18.5,0.0,353.0,1,C,,0,0,1,0,0,0,0,0,1,0,1,1
+Brasil,lanche,proteina,C0247F,202,15.0,9.0,"Presunto, porco, cozido, c/ capa de gordura (média de diferentes amostras)",proteína animal,127.0,15.2,1.05,6.83,0.0,1044.0,4,D,,0,0,0,0,0,0,0,0,0,0,1,1
+Brasil,lanche,proteina,C0193F,201,15.0,10.0,Mortadela,proteína animal,269.0,13.7,16.1,16.6,0.0,1354.0,4,D,,0,0,0,0,0,0,0,0,0,0,1,1
+Centro-Oeste,almoco,carboidrato,C0209A,8352,100.0,1.0,"Arroz, polido, cozido, c/ óleo, cebola e alho, c/ sal",base (cereal/tubérculo),138.0,2.4,29.1,1.59,1.27,189.0,1,B,arroz,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,almoco,carboidrato,C0834A,552,105.0,2.0,"Macarrão, trigo, cozido, drenado, s/ óleo, c/ sal",base (cereal/tubérculo),125.0,3.54,26.9,0.57,0.91,189.0,1,B,,1,0,0,0,0,0,0,0,1,1,0,1
+Centro-Oeste,almoco,carboidrato,C0908B,433,200.0,3.0,"Mandioca (aipim, macaxeira), s/ casca, cozida, drenada, s/ óleo, c/ sal, Manihot esculenta Crantz.",base (cereal/tubérculo),120.0,0.64,29.7,0.24,1.77,128.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,almoco,carboidrato,C0089B,134,35.0,4.0,"Mandioca, farofa, temperada, c/ sal",base (cereal/tubérculo),396.0,2.06,80.3,9.12,7.82,574.0,1,C,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,almoco,carboidrato,C0118B,134,110.0,5.0,"Batata, inglesa, frita (c/ óleo de soja), c/ sal, Solanum tuberosum L.",base (cereal/tubérculo),248.0,4.04,32.7,11.9,3.16,189.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,almoco,carboidrato,C0211A,130,125.0,6.0,"Arroz, integral, cozido, c/ óleo, cebola e alho, c/ sal",base (cereal/tubérculo),116.0,2.46,23.0,2.03,2.14,188.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,almoco,carboidrato,C0117B,101,80.0,7.0,"Batata, inglesa, s/ casca, cozida, drenada, s/ óleo, c/ sal, Solanum tuberosum L.",base (cereal/tubérculo),52.0,1.33,12.2,0.05,1.46,190.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,almoco,carboidrato,C0143A,62,105.0,8.0,"Milho, polenta/fubá, cozido, c/ sal",base (cereal/tubérculo),104.0,2.25,23.0,0.69,1.74,429.0,1,C,fuba,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,almoco,carboidrato,C0315B,53,80.0,9.0,"Batata, inglesa, s/ casca, cozida, drenada, c/ óleo de soja, c/ sal, Solanum tuberosum L.",base (cereal/tubérculo),94.0,1.26,11.6,5.02,1.39,189.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,almoco,carboidrato,C0909B,48,160.0,10.0,"Mandioca (aipim, macaxeira), frita, c/ sal, Manihot esculenta Crantz.",base (cereal/tubérculo),303.0,1.38,50.1,11.2,1.86,136.0,1,C,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,almoco,fruta,C0006C,169,75.0,1.0,"Banana, in natura, Musa spp.",fruta,109.0,1.27,26.7,0.19,2.24,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,almoco,fruta,C0017C,68,180.0,2.0,"Laranja, in natura, Citrus spp.",fruta,45.0,0.9,10.8,0.24,2.02,0.53,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,almoco,fruta,C0023C,20,150.0,3.0,"Maçã, c/ casca, in natura, Malus spp.",fruta,64.0,0.29,15.7,0.49,2.07,0.66,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,almoco,fruta,C0025C,20,90.0,4.0,"Manga, polpa, in natura, Mangifera indica L.",fruta,64.0,0.53,16.0,0.31,2.14,0.92,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,almoco,fruta,C0027C,20,200.0,5.0,"Melancia, polpa, in natura, Citrullus spp.",fruta,29.0,0.7,6.52,0.05,0.13,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,almoco,legumes,C0035B,528,60.0,1.0,"Tomate, cru, Lycopersicon esculentum",verdura/legume,18.0,1.04,3.82,0.17,1.6,3.13,1,A,tomate,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,almoco,legumes,C0009B,502,25.0,2.0,"Alface, crua, Lactuca sativa L.",verdura/legume,9.0,1.08,1.79,0.12,1.87,4.2,1,A,alface,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,almoco,legumes,C0033B,205,70.0,3.0,"Repolho, cru, Brassica oleracea L.",verdura/legume,20.0,1.12,4.42,0.14,1.92,3.32,1,A,repolho,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,almoco,legumes,C0226B,113,70.0,4.0,"Abóbora, moranga, s/ casca, s/ semente, cozida, drenada, c/ óleo de soja, c/ sal",verdura/legume,38.0,1.18,3.89,2.52,2.36,127.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,almoco,legumes,C0153B,106,70.0,5.0,"Abobrinha, italiana, c/ casca, refogada (c/ óleo, cebola e alho), c/ sal",verdura/legume,26.0,1.07,4.19,0.82,1.38,130.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,almoco,legumes,C0200B,101,50.0,6.0,"Quiabo, c/ casca, refogado (c/ óleo, cebola e alho), c/ sal, Hibiscus esculentus L.",verdura/legume,32.0,1.39,4.99,1.35,2.99,128.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,almoco,legumes,C0030B,94,35.0,7.0,"Pepino, c/ casca, cru, Cucumis sativus l.",verdura/legume,10.0,0.7,2.23,0.09,1.04,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,almoco,legumes,C0166B,87,70.0,8.0,"Abóbora, moranga, s/ casca, s/ semente, cozida, drenada, s/ óleo, c/ sal",verdura/legume,17.0,1.21,3.98,0.14,2.41,127.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,almoco,legumes,C0912B,74,40.0,9.0,"Beterraba, cozida, drenada, s/ óleo, c/ sal, Beta vulgaris L.",verdura/legume,27.0,1.22,6.27,0.09,2.03,147.0,1,A,beterraba,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,almoco,legumes,C0081B,62,25.0,10.0,"Rúcula, crua, Eruca sativa L.",verdura/legume,17.0,2.48,2.72,0.12,2.43,6.71,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,almoco,leguminosa,C0091T,7230,140.0,1.0,"Feijão, carioca, cozido (50% grão e 50% caldo), c/ óleo, cebola e alho, c/ sal, Phaseolus vulgaris L.",leguminosa,79.0,4.69,14.6,1.72,6.84,190.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,almoco,leguminosa,C0100T,98,140.0,2.0,"Feijão, fradinho, cozido (50% grão e 50% caldo), c/ óleo, cebola e alho, c/ sal, Vigna unguiculata (L.) Walp.",leguminosa,74.0,4.99,12.9,1.82,7.23,189.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,almoco,proteina,C0634F,924,90.0,1.0,"Carne, boi, patinho, s/ gordura, frita (c/ óleo de soja), c/ sal, Bos taurus",proteína animal,263.0,32.9,0.0,14.7,0.0,234.0,1,C,,0,0,0,0,0,0,0,0,0,0,1,1
+Centro-Oeste,almoco,proteina,C0733F,843,90.0,2.0,"Carne, boi, de segunda (acém, paleta, peito), frita (c/ óleo de soja), c/ sal, Bos taurus",proteína animal,291.0,23.9,0.0,21.7,0.0,369.0,1,D,,0,0,0,0,0,0,0,0,0,0,1,1
+Centro-Oeste,almoco,proteina,C0732F,637,105.0,3.0,"Carne, boi, de segunda (acém, capa de contrafilé, costela, músculo, paleta, peito), cozida/grelhada/assada, s/ óleo, c/ sal, Bos taurus",proteína animal,254.0,28.4,0.0,15.7,0.0,385.0,1,D,,0,0,0,0,0,0,0,0,0,0,1,1
+Centro-Oeste,almoco,proteina,C0716F,564,110.0,4.0,"Carne, frango, inteiro, s/ pele, frita (c/ óleo de soja), c/ sal, Gallus gallus",proteína animal,236.0,25.7,0.0,14.8,0.0,244.0,1,B,,0,0,0,0,0,0,0,0,0,0,1,1
+Centro-Oeste,almoco,proteina,C0708F,529,280.0,5.0,"Carne, porco, pernil, frita (c/ óleo de soja), c/ sal, Sus ssp",proteína animal,304.0,29.4,0.0,20.7,0.0,236.0,1,C,,0,0,0,0,0,0,0,0,0,0,1,1
+Centro-Oeste,almoco,proteina,C0720F,429,110.0,6.0,"Carne, frango, inteiro, refogada (c/ óleo, cebola e alho), c/ sal (média de amostras c/ e s/ pele), Gallus gallus",proteína animal,236.0,23.9,0.74,15.2,0.13,267.0,1,C,,0,0,0,0,0,0,0,0,0,0,1,1
+Centro-Oeste,almoco,proteina,C0028J,297,50.0,7.0,"Ovo, galinha, inteiro, frito (c/ óleo de soja), c/ sal",proteína animal,233.0,15.5,1.19,18.5,0.0,353.0,1,C,,0,0,1,0,0,0,0,0,1,0,1,1
+Centro-Oeste,almoco,proteina,C0638F,292,100.0,8.0,"Carne, bovina, patinho, s/ gordura, refogada (c/ óleo, cebola e alho), c/ sal, Bos taurus",proteína animal,164.0,27.8,0.74,5.58,0.13,243.0,1,B,,0,0,0,0,0,0,0,0,0,0,1,1
+Centro-Oeste,almoco,proteina,C0714F,289,110.0,9.0,"Carne, frango, inteiro, s/ pele, grelhada/assada, s/ óleo, c/ sal, Gallus gallus",proteína animal,179.0,27.9,0.0,7.47,0.0,249.0,1,B,,0,0,0,0,0,0,0,0,0,0,1,1
+Centro-Oeste,almoco,proteina,C0766F,224,40.0,10.0,"Linguiça, frango/porco, fresca, frita (c/ óleo de soja), c/ sal",proteína animal,256.0,19.3,0.0,19.8,0.0,1576.0,4,D,,0,0,0,0,0,0,0,0,0,0,1,1
+Centro-Oeste,cafe_da_manha,carboidrato,C0002A,2515,70.0,1.0,"Pão francês, trigo, branco, de padaria (médias de diferentes amostras)",base (cereal/tubérculo),300.0,9.83,61.6,2.12,2.61,681.0,3,C,,1,0,0,0,0,0,0,0,1,1,0,1
+Centro-Oeste,cafe_da_manha,carboidrato,C0190A,186,50.0,2.0,"Cuscuz de milho, cozido, c/ sal",base (cereal/tubérculo),112.0,2.16,25.3,0.68,2.05,247.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,cafe_da_manha,carboidrato,C0155A,162,50.0,3.0,"Pão, trigo, integral, forma (média de diferentes marcas)",base (cereal/tubérculo),249.0,10.5,48.6,2.54,5.29,495.0,4,A,pao_forma,1,0,0,0,0,0,0,0,1,1,0,1
+Centro-Oeste,cafe_da_manha,carboidrato,C0160A,155,25.0,4.0,"Pão, trigo, sovado",base (cereal/tubérculo),300.0,8.4,61.5,2.84,2.43,430.0,3,B,,1,0,0,0,0,0,0,0,1,1,0,1
+Centro-Oeste,cafe_da_manha,carboidrato,C0906B,146,70.0,5.0,"Tapioca, sem manteiga, sem recheio",base (cereal/tubérculo),289.0,0.36,71.9,0.0,0.2,1.31,1,C,,0,1,0,0,0,0,0,0,1,0,1,0
+Centro-Oeste,cafe_da_manha,carboidrato,C0209A,100,100.0,6.0,"Arroz, polido, cozido, c/ óleo, cebola e alho, c/ sal",base (cereal/tubérculo),138.0,2.4,29.1,1.59,1.27,189.0,1,B,arroz,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,cafe_da_manha,carboidrato,C0003A,85,50.0,7.0,"Pão, trigo, branco, forma, tradicional (média de diferentes marcas)",base (cereal/tubérculo),260.0,9.53,51.5,2.41,2.68,860.0,4,C,pao_forma,1,0,0,0,0,0,0,0,1,1,0,1
+Centro-Oeste,cafe_da_manha,carboidrato,C0169A,63,15.0,8.0,"Torrada, trigo, tradicional",base (cereal/tubérculo),395.0,11.5,73.6,6.39,1.28,912.0,1,D,,1,0,0,0,0,0,0,0,1,1,0,1
+Centro-Oeste,cafe_da_manha,carboidrato,C0148A,31,35.0,9.0,"Pão, trigo, bisnaguinha",base (cereal/tubérculo),315.0,7.31,59.5,6.03,3.2,218.0,4,A,,1,0,0,0,0,0,0,0,1,1,0,1
+Centro-Oeste,cafe_da_manha,carboidrato,C0147A,30,50.0,10.0,"Pão, trigo, leite, industrializado (média de diferentes marcas)",base (cereal/tubérculo),284.0,8.15,53.9,4.63,2.97,199.0,4,A,,1,1,0,0,0,0,0,0,1,0,0,0
+Centro-Oeste,cafe_da_manha,fruta,C0006C,248,75.0,1.0,"Banana, in natura, Musa spp.",fruta,109.0,1.27,26.7,0.19,2.24,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,cafe_da_manha,fruta,C0024C,123,170.0,2.0,"Mamão, polpa, in natura, Carica papaya L.",fruta,44.0,0.57,10.7,0.25,1.83,2.44,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,cafe_da_manha,fruta,C0023C,60,150.0,3.0,"Maçã, c/ casca, in natura, Malus spp.",fruta,64.0,0.29,15.7,0.49,2.07,0.66,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,cafe_da_manha,fruta,C0028C,42,90.0,4.0,"Melão, polpa, in natura, Cucumis melo",fruta,24.0,0.61,5.7,0.15,1.22,8.96,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,cafe_da_manha,proteina,C0043G,524,200.0,1.0,"Leite, vaca, integral, fluído",laticínio,64.0,2.93,5.92,3.23,0.0,63.8,1,B,leite,0,1,0,0,0,0,0,0,1,0,1,0
+Centro-Oeste,cafe_da_manha,proteina,C0034G,442,240.0,2.0,"Leite, vaca, c/ chocolate, Toddynho",laticínio,85.0,2.0,13.9,2.4,0.0,65.0,4,C,,0,1,0,0,0,0,0,0,1,0,1,0
+Centro-Oeste,cafe_da_manha,proteina,C0059G,178,20.0,3.0,"Queijo, muçarela (média de diferentes amostras)",laticínio,320.0,23.8,1.97,24.1,0.0,506.0,3,D,mussarela,0,1,0,0,0,0,0,0,1,0,1,0
+Centro-Oeste,cafe_da_manha,proteina,C0028J,120,50.0,4.0,"Ovo, galinha, inteiro, frito (c/ óleo de soja), c/ sal",proteína animal,233.0,15.5,1.19,18.5,0.0,353.0,1,C,,0,0,1,0,0,0,0,0,1,0,1,1
+Centro-Oeste,cafe_da_manha,proteina,C0056G,119,45.0,5.0,"Queijo, minas, padrão (média de diferentes amostras)",laticínio,295.0,20.4,7.54,20.4,0.0,665.0,3,D,,0,1,0,0,0,0,0,0,1,0,1,0
+Centro-Oeste,cafe_da_manha,proteina,C0023J,64,90.0,6.0,"Ovo, galinha, inteiro, cozido, c/ sal",proteína animal,125.0,10.3,1.38,8.66,0.0,315.0,1,B,ovo,0,0,1,0,0,0,0,0,1,0,1,1
+Centro-Oeste,cafe_da_manha,proteina,C0066G,63,15.0,7.0,"Queijo, requeijão (média de diferentes amostras)",laticínio,281.0,9.91,3.03,25.5,0.0,608.0,4,D,,0,1,0,0,0,0,0,0,1,0,1,0
+Centro-Oeste,cafe_da_manha,proteina,C0011G,56,200.0,8.0,"Iogurte, integral (média de diferentes sabores)",laticínio,75.0,3.12,10.9,2.17,0.23,55.7,4,B,,0,1,0,0,0,0,0,0,1,0,1,0
+Centro-Oeste,cafe_da_manha,proteina,C0193F,54,15.0,9.0,Mortadela,proteína animal,269.0,13.7,16.1,16.6,0.0,1354.0,4,D,,0,0,0,0,0,0,0,0,0,0,1,1
+Centro-Oeste,cafe_da_manha,proteina,C0247F,51,15.0,10.0,"Presunto, porco, cozido, c/ capa de gordura (média de diferentes amostras)",proteína animal,127.0,15.2,1.05,6.83,0.0,1044.0,4,D,,0,0,0,0,0,0,0,0,0,0,1,1
+Centro-Oeste,jantar,carboidrato,C0209A,5301,100.0,1.0,"Arroz, polido, cozido, c/ óleo, cebola e alho, c/ sal",base (cereal/tubérculo),138.0,2.4,29.1,1.59,1.27,189.0,1,B,arroz,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,jantar,carboidrato,C0834A,353,105.0,2.0,"Macarrão, trigo, cozido, drenado, s/ óleo, c/ sal",base (cereal/tubérculo),125.0,3.54,26.9,0.57,0.91,189.0,1,B,,1,0,0,0,0,0,0,0,1,1,0,1
+Centro-Oeste,jantar,carboidrato,C0908B,245,200.0,3.0,"Mandioca (aipim, macaxeira), s/ casca, cozida, drenada, s/ óleo, c/ sal, Manihot esculenta Crantz.",base (cereal/tubérculo),120.0,0.64,29.7,0.24,1.77,128.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,jantar,carboidrato,C0002A,147,70.0,4.0,"Pão francês, trigo, branco, de padaria (médias de diferentes amostras)",base (cereal/tubérculo),300.0,9.83,61.6,2.12,2.61,681.0,3,C,,1,0,0,0,0,0,0,0,1,1,0,1
+Centro-Oeste,jantar,carboidrato,C0407A,107,320.0,5.0,"Macarrão, trigo, instantâneo, c/ tempero, cozido, drenado (preparado conforme a embalagem)",base (cereal/tubérculo),154.0,3.17,22.5,6.21,2.02,545.0,1,C,,1,0,0,0,0,0,0,0,1,1,0,1
+Centro-Oeste,jantar,carboidrato,C0118B,87,110.0,6.0,"Batata, inglesa, frita (c/ óleo de soja), c/ sal, Solanum tuberosum L.",base (cereal/tubérculo),248.0,4.04,32.7,11.9,3.16,189.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,jantar,carboidrato,C0089B,79,35.0,7.0,"Mandioca, farofa, temperada, c/ sal",base (cereal/tubérculo),396.0,2.06,80.3,9.12,7.82,574.0,1,C,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,jantar,carboidrato,C0190A,51,40.0,8.0,"Cuscuz de milho, cozido, c/ sal",base (cereal/tubérculo),112.0,2.16,25.3,0.68,2.05,247.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,jantar,carboidrato,C0211A,50,125.0,9.0,"Arroz, integral, cozido, c/ óleo, cebola e alho, c/ sal",base (cereal/tubérculo),116.0,2.46,23.0,2.03,2.14,188.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,jantar,carboidrato,C0143A,41,105.0,10.0,"Milho, polenta/fubá, cozido, c/ sal",base (cereal/tubérculo),104.0,2.25,23.0,0.69,1.74,429.0,1,C,fuba,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,jantar,fruta,C0006C,113,75.0,1.0,"Banana, in natura, Musa spp.",fruta,109.0,1.27,26.7,0.19,2.24,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,jantar,fruta,C0017C,36,180.0,2.0,"Laranja, in natura, Citrus spp.",fruta,45.0,0.9,10.8,0.24,2.02,0.53,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,jantar,fruta,C0023C,30,150.0,3.0,"Maçã, c/ casca, in natura, Malus spp.",fruta,64.0,0.29,15.7,0.49,2.07,0.66,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,jantar,fruta,C0024C,20,310.0,4.0,"Mamão, polpa, in natura, Carica papaya L.",fruta,44.0,0.57,10.7,0.25,1.83,2.44,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,jantar,legumes,C0035B,240,60.0,1.0,"Tomate, cru, Lycopersicon esculentum",verdura/legume,18.0,1.04,3.82,0.17,1.6,3.13,1,A,tomate,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,jantar,legumes,C0009B,193,25.0,2.0,"Alface, crua, Lactuca sativa L.",verdura/legume,9.0,1.08,1.79,0.12,1.87,4.2,1,A,alface,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,jantar,legumes,C0033B,103,70.0,3.0,"Repolho, cru, Brassica oleracea L.",verdura/legume,20.0,1.12,4.42,0.14,1.92,3.32,1,A,repolho,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,jantar,legumes,C0226B,67,70.0,4.0,"Abóbora, moranga, s/ casca, s/ semente, cozida, drenada, c/ óleo de soja, c/ sal",verdura/legume,38.0,1.18,3.89,2.52,2.36,127.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,jantar,legumes,C0153B,57,60.0,5.0,"Abobrinha, italiana, c/ casca, refogada (c/ óleo, cebola e alho), c/ sal",verdura/legume,26.0,1.07,4.19,0.82,1.38,130.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,jantar,legumes,C0166B,50,70.0,6.0,"Abóbora, moranga, s/ casca, s/ semente, cozida, drenada, s/ óleo, c/ sal",verdura/legume,17.0,1.21,3.98,0.14,2.41,127.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,jantar,legumes,C0200B,44,50.0,7.0,"Quiabo, c/ casca, refogado (c/ óleo, cebola e alho), c/ sal, Hibiscus esculentus L.",verdura/legume,32.0,1.39,4.99,1.35,2.99,128.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,jantar,legumes,C0123B,36,60.0,8.0,"Pão, de queijo, industrializado, assado",verdura/legume,381.0,7.18,35.6,23.4,0.61,804.0,4,C,,1,1,0,0,0,0,0,0,1,0,0,0
+Centro-Oeste,jantar,legumes,C0151B,35,70.0,9.0,"Abóbora, moranga, refogada (c/ óleo, cebola e alho), c/ sal",verdura/legume,30.0,0.39,5.98,0.8,1.55,130.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,jantar,legumes,C0023B,34,40.0,10.0,"Couve, crua, Brassica oleracea var. Acephala",verdura/legume,28.0,2.87,4.33,0.55,3.12,9.09,1,A,couve,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,jantar,leguminosa,C0091T,4349,140.0,1.0,"Feijão, carioca, cozido (50% grão e 50% caldo), c/ óleo, cebola e alho, c/ sal, Phaseolus vulgaris L.",leguminosa,79.0,4.69,14.6,1.72,6.84,190.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,jantar,leguminosa,C0100T,52,140.0,2.0,"Feijão, fradinho, cozido (50% grão e 50% caldo), c/ óleo, cebola e alho, c/ sal, Vigna unguiculata (L.) Walp.",leguminosa,74.0,4.99,12.9,1.82,7.23,189.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,jantar,proteina,C0733F,529,90.0,1.0,"Carne, boi, de segunda (acém, paleta, peito), frita (c/ óleo de soja), c/ sal, Bos taurus",proteína animal,291.0,23.9,0.0,21.7,0.0,369.0,1,D,,0,0,0,0,0,0,0,0,0,0,1,1
+Centro-Oeste,jantar,proteina,C0634F,495,90.0,2.0,"Carne, boi, patinho, s/ gordura, frita (c/ óleo de soja), c/ sal, Bos taurus",proteína animal,263.0,32.9,0.0,14.7,0.0,234.0,1,C,,0,0,0,0,0,0,0,0,0,0,1,1
+Centro-Oeste,jantar,proteina,C0028J,401,50.0,3.0,"Ovo, galinha, inteiro, frito (c/ óleo de soja), c/ sal",proteína animal,233.0,15.5,1.19,18.5,0.0,353.0,1,C,,0,0,1,0,0,0,0,0,1,0,1,1
+Centro-Oeste,jantar,proteina,C0708F,392,185.0,4.0,"Carne, porco, pernil, frita (c/ óleo de soja), c/ sal, Sus ssp",proteína animal,304.0,29.4,0.0,20.7,0.0,236.0,1,C,,0,0,0,0,0,0,0,0,0,0,1,1
+Centro-Oeste,jantar,proteina,C0732F,369,75.0,5.0,"Carne, boi, de segunda (acém, capa de contrafilé, costela, músculo, paleta, peito), cozida/grelhada/assada, s/ óleo, c/ sal, Bos taurus",proteína animal,254.0,28.4,0.0,15.7,0.0,385.0,1,D,,0,0,0,0,0,0,0,0,0,0,1,1
+Centro-Oeste,jantar,proteina,C0716F,357,110.0,6.0,"Carne, frango, inteiro, s/ pele, frita (c/ óleo de soja), c/ sal, Gallus gallus",proteína animal,236.0,25.7,0.0,14.8,0.0,244.0,1,B,,0,0,0,0,0,0,0,0,0,0,1,1
+Centro-Oeste,jantar,proteina,C0720F,249,110.0,7.0,"Carne, frango, inteiro, refogada (c/ óleo, cebola e alho), c/ sal (média de amostras c/ e s/ pele), Gallus gallus",proteína animal,236.0,23.9,0.74,15.2,0.13,267.0,1,C,,0,0,0,0,0,0,0,0,0,0,1,1
+Centro-Oeste,jantar,proteina,C0638F,193,70.0,8.0,"Carne, bovina, patinho, s/ gordura, refogada (c/ óleo, cebola e alho), c/ sal, Bos taurus",proteína animal,164.0,27.8,0.74,5.58,0.13,243.0,1,B,,0,0,0,0,0,0,0,0,0,0,1,1
+Centro-Oeste,jantar,proteina,C0766F,184,30.0,9.0,"Linguiça, frango/porco, fresca, frita (c/ óleo de soja), c/ sal",proteína animal,256.0,19.3,0.0,19.8,0.0,1576.0,4,D,,0,0,0,0,0,0,0,0,0,0,1,1
+Centro-Oeste,jantar,proteina,C0245F,176,65.0,10.0,"Carne, boi, acém, moída, refogada (c/ óleo, cebola e alho), c/ sal",proteína animal,213.0,25.5,0.71,12.1,0.13,263.0,1,C,,0,0,0,0,0,0,0,0,0,0,1,1
+Centro-Oeste,lanche,carboidrato,C0002A,766,70.0,1.0,"Pão francês, trigo, branco, de padaria (médias de diferentes amostras)",base (cereal/tubérculo),300.0,9.83,61.6,2.12,2.61,681.0,3,C,,1,0,0,0,0,0,0,0,1,1,0,1
+Centro-Oeste,lanche,carboidrato,C0832A,162,20.0,2.0,"Milho, pipoca, preparada, c/ óleo de soja, c/ açúcar",base (cereal/tubérculo),432.0,8.97,73.1,14.3,12.9,5.13,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,lanche,carboidrato,C0209A,85,100.0,3.0,"Arroz, polido, cozido, c/ óleo, cebola e alho, c/ sal",base (cereal/tubérculo),138.0,2.4,29.1,1.59,1.27,189.0,1,B,arroz,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,lanche,carboidrato,C0160A,59,40.0,4.0,"Pão, trigo, sovado",base (cereal/tubérculo),300.0,8.4,61.5,2.84,2.43,430.0,3,B,,1,0,0,0,0,0,0,0,1,1,0,1
+Centro-Oeste,lanche,carboidrato,C0190A,57,40.0,5.0,"Cuscuz de milho, cozido, c/ sal",base (cereal/tubérculo),112.0,2.16,25.3,0.68,2.05,247.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,lanche,carboidrato,C0212A,50,85.0,6.0,"Salgadinho, snack, extrusado de milho",base (cereal/tubérculo),546.0,6.17,57.3,33.4,4.0,514.0,4,D,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,lanche,carboidrato,C0906B,50,70.0,7.0,"Tapioca, sem manteiga, sem recheio",base (cereal/tubérculo),289.0,0.36,71.9,0.0,0.2,1.31,1,C,,0,1,0,0,0,0,0,0,1,0,1,0
+Centro-Oeste,lanche,carboidrato,C0169A,45,25.0,8.0,"Torrada, trigo, tradicional",base (cereal/tubérculo),395.0,11.5,73.6,6.39,1.28,912.0,1,D,,1,0,0,0,0,0,0,0,1,1,0,1
+Centro-Oeste,lanche,carboidrato,C0155A,41,50.0,9.0,"Pão, trigo, integral, forma (média de diferentes marcas)",base (cereal/tubérculo),249.0,10.5,48.6,2.54,5.29,495.0,4,A,pao_forma,1,0,0,0,0,0,0,0,1,1,0,1
+Centro-Oeste,lanche,carboidrato,C0003A,27,50.0,10.0,"Pão, trigo, branco, forma, tradicional (média de diferentes marcas)",base (cereal/tubérculo),260.0,9.53,51.5,2.41,2.68,860.0,4,C,pao_forma,1,0,0,0,0,0,0,0,1,1,0,1
+Centro-Oeste,lanche,fruta,C0006C,651,75.0,1.0,"Banana, in natura, Musa spp.",fruta,109.0,1.27,26.7,0.19,2.24,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,lanche,fruta,C0023C,290,150.0,2.0,"Maçã, c/ casca, in natura, Malus spp.",fruta,64.0,0.29,15.7,0.49,2.07,0.66,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,lanche,fruta,C0017C,206,180.0,3.0,"Laranja, in natura, Citrus spp.",fruta,45.0,0.9,10.8,0.24,2.02,0.53,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,lanche,fruta,C0025C,135,140.0,4.0,"Manga, polpa, in natura, Mangifera indica L.",fruta,64.0,0.53,16.0,0.31,2.14,0.92,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,lanche,fruta,C0027C,126,200.0,5.0,"Melancia, polpa, in natura, Citrullus spp.",fruta,29.0,0.7,6.52,0.05,0.13,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,lanche,fruta,C0032C,84,135.0,6.0,"Tangerina, Ponkã, in natura, Citrus reticulata",fruta,40.0,0.85,9.54,0.07,0.94,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,lanche,fruta,C0024C,81,170.0,7.0,"Mamão, polpa, in natura, Carica papaya L.",fruta,44.0,0.57,10.7,0.25,1.83,2.44,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,lanche,fruta,C0014C,59,170.0,8.0,"Goiaba, inteira, in natura, Psidium guajava L.",fruta,50.0,0.86,13.4,0.53,5.78,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,lanche,fruta,C0030C,44,130.0,9.0,"Pera, c/ casca, in natura, Pyrus communis",fruta,54.0,0.4,14.0,0.23,3.0,0.49,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,lanche,fruta,C0028C,38,90.0,10.0,"Melão, polpa, in natura, Cucumis melo",fruta,24.0,0.61,5.7,0.15,1.22,8.96,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Centro-Oeste,lanche,proteina,C0043G,264,200.0,1.0,"Leite, vaca, integral, fluído",laticínio,64.0,2.93,5.92,3.23,0.0,63.8,1,B,leite,0,1,0,0,0,0,0,0,1,0,1,0
+Centro-Oeste,lanche,proteina,C0034G,174,240.0,2.0,"Leite, vaca, c/ chocolate, Toddynho",laticínio,85.0,2.0,13.9,2.4,0.0,65.0,4,C,,0,1,0,0,0,0,0,0,1,0,1,0
+Centro-Oeste,lanche,proteina,C0011G,112,170.0,3.0,"Iogurte, integral (média de diferentes sabores)",laticínio,75.0,3.12,10.9,2.17,0.23,55.7,4,B,,0,1,0,0,0,0,0,0,1,0,1,0
+Centro-Oeste,lanche,proteina,C0056G,69,45.0,4.0,"Queijo, minas, padrão (média de diferentes amostras)",laticínio,295.0,20.4,7.54,20.4,0.0,665.0,3,D,,0,1,0,0,0,0,0,0,1,0,1,0
+Centro-Oeste,lanche,proteina,C0059G,64,20.0,5.0,"Queijo, muçarela (média de diferentes amostras)",laticínio,320.0,23.8,1.97,24.1,0.0,506.0,3,D,mussarela,0,1,0,0,0,0,0,0,1,0,1,0
+Centro-Oeste,lanche,proteina,C0028J,29,50.0,6.0,"Ovo, galinha, inteiro, frito (c/ óleo de soja), c/ sal",proteína animal,233.0,15.5,1.19,18.5,0.0,353.0,1,C,,0,0,1,0,0,0,0,0,1,0,1,1
+Centro-Oeste,lanche,proteina,C0066G,27,15.0,7.0,"Queijo, requeijão (média de diferentes amostras)",laticínio,281.0,9.91,3.03,25.5,0.0,608.0,4,D,,0,1,0,0,0,0,0,0,1,0,1,0
+Centro-Oeste,lanche,proteina,C0193F,21,15.0,8.0,Mortadela,proteína animal,269.0,13.7,16.1,16.6,0.0,1354.0,4,D,,0,0,0,0,0,0,0,0,0,0,1,1
+Nordeste,almoco,carboidrato,C0209A,22623,110.0,1.0,"Arroz, polido, cozido, c/ óleo, cebola e alho, c/ sal",base (cereal/tubérculo),138.0,2.4,29.1,1.59,1.27,189.0,1,B,arroz,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,almoco,carboidrato,C0834A,5664,105.0,2.0,"Macarrão, trigo, cozido, drenado, s/ óleo, c/ sal",base (cereal/tubérculo),125.0,3.54,26.9,0.57,0.91,189.0,1,B,,1,0,0,0,0,0,0,0,1,1,0,1
+Nordeste,almoco,carboidrato,C0089B,919,30.0,3.0,"Mandioca, farofa, temperada, c/ sal",base (cereal/tubérculo),396.0,2.06,80.3,9.12,7.82,574.0,1,C,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,almoco,carboidrato,C0190A,731,40.0,4.0,"Cuscuz de milho, cozido, c/ sal",base (cereal/tubérculo),112.0,2.16,25.3,0.68,2.05,247.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,almoco,carboidrato,C0211A,481,125.0,5.0,"Arroz, integral, cozido, c/ óleo, cebola e alho, c/ sal",base (cereal/tubérculo),116.0,2.46,23.0,2.03,2.14,188.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,almoco,carboidrato,C0908B,141,130.0,6.0,"Mandioca (aipim, macaxeira), s/ casca, cozida, drenada, s/ óleo, c/ sal, Manihot esculenta Crantz.",base (cereal/tubérculo),120.0,0.64,29.7,0.24,1.77,128.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,almoco,carboidrato,C0117B,125,70.0,7.0,"Batata, inglesa, s/ casca, cozida, drenada, s/ óleo, c/ sal, Solanum tuberosum L.",base (cereal/tubérculo),52.0,1.33,12.2,0.05,1.46,190.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,almoco,carboidrato,C0118B,119,110.0,8.0,"Batata, inglesa, frita (c/ óleo de soja), c/ sal, Solanum tuberosum L.",base (cereal/tubérculo),248.0,4.04,32.7,11.9,3.16,189.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,almoco,carboidrato,C0214A,86,105.0,9.0,"Macarrão, trigo, c/ ovos, c/ alho e óleo, c/ sal",base (cereal/tubérculo),179.0,3.64,25.8,7.05,0.95,190.0,1,B,,1,0,1,0,0,0,0,0,1,0,0,1
+Nordeste,almoco,carboidrato,C0002A,73,70.0,10.0,"Pão francês, trigo, branco, de padaria (médias de diferentes amostras)",base (cereal/tubérculo),300.0,9.83,61.6,2.12,2.61,681.0,3,C,,1,0,0,0,0,0,0,0,1,1,0,1
+Nordeste,almoco,fruta,C0006C,515,75.0,1.0,"Banana, in natura, Musa spp.",fruta,109.0,1.27,26.7,0.19,2.24,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,almoco,fruta,C0017C,215,180.0,2.0,"Laranja, in natura, Citrus spp.",fruta,45.0,0.9,10.8,0.24,2.02,0.53,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,almoco,fruta,C0027C,150,200.0,3.0,"Melancia, polpa, in natura, Citrullus spp.",fruta,29.0,0.7,6.52,0.05,0.13,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,almoco,fruta,C0025C,141,140.0,4.0,"Manga, polpa, in natura, Mangifera indica L.",fruta,64.0,0.53,16.0,0.31,2.14,0.92,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,almoco,fruta,C0002C,89,150.0,5.0,"Abacaxi, polpa, in natura, Ananas comosus L.",fruta,50.0,0.68,11.6,0.33,1.12,2.84,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,almoco,fruta,C0024C,38,170.0,6.0,"Mamão, polpa, in natura, Carica papaya L.",fruta,44.0,0.57,10.7,0.25,1.83,2.44,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,almoco,fruta,C0023C,32,150.0,7.0,"Maçã, c/ casca, in natura, Malus spp.",fruta,64.0,0.29,15.7,0.49,2.07,0.66,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,almoco,fruta,C0028C,31,90.0,8.0,"Melão, polpa, in natura, Cucumis melo",fruta,24.0,0.61,5.7,0.15,1.22,8.96,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,almoco,fruta,C0032C,27,135.0,9.0,"Tangerina, Ponkã, in natura, Citrus reticulata",fruta,40.0,0.85,9.54,0.07,0.94,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,almoco,fruta,C0107C,26,100.0,10.0,"Banana, da terra, assada, s/ adição de ingredientes, Musa acuminata Colla x Musa balbisiana Colla",fruta,165.0,1.69,39.7,0.28,1.8,0.0,1,C,,0,1,0,0,0,0,0,0,1,0,1,0
+Nordeste,almoco,legumes,C0035B,545,45.0,1.0,"Tomate, cru, Lycopersicon esculentum",verdura/legume,18.0,1.04,3.82,0.17,1.6,3.13,1,A,tomate,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,almoco,legumes,C0009B,316,20.0,2.0,"Alface, crua, Lactuca sativa L.",verdura/legume,9.0,1.08,1.79,0.12,1.87,4.2,1,A,alface,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,almoco,legumes,C0030B,140,10.0,3.0,"Pepino, c/ casca, cru, Cucumis sativus l.",verdura/legume,10.0,0.7,2.23,0.09,1.04,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,almoco,legumes,C0166B,114,70.0,4.0,"Abóbora, moranga, s/ casca, s/ semente, cozida, drenada, s/ óleo, c/ sal",verdura/legume,17.0,1.21,3.98,0.14,2.41,127.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,almoco,legumes,C0033B,87,70.0,5.0,"Repolho, cru, Brassica oleracea L.",verdura/legume,20.0,1.12,4.42,0.14,1.92,3.32,1,A,repolho,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,almoco,legumes,C0913B,80,35.0,6.0,"Cenoura, s/ casca, cozida, drenada, s/ óleo, c/ sal, Daucus carota L.",verdura/legume,17.0,0.54,4.3,0.19,2.17,132.0,1,A,cenoura,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,almoco,legumes,C0018B,69,20.0,7.0,"Cebola, branca, crua, Allium cepa L.",verdura/legume,41.0,1.76,9.21,0.13,2.04,0.62,1,A,cebola,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,almoco,legumes,C0226B,69,100.0,8.0,"Abóbora, moranga, s/ casca, s/ semente, cozida, drenada, c/ óleo de soja, c/ sal",verdura/legume,38.0,1.18,3.89,2.52,2.36,127.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,almoco,legumes,C0020B,60,25.0,9.0,"Cenoura, s/ casca, crua, Daucus carota L.",verdura/legume,31.0,1.12,7.55,0.21,2.98,11.1,1,A,cenoura,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,almoco,legumes,C0912B,52,40.0,10.0,"Beterraba, cozida, drenada, s/ óleo, c/ sal, Beta vulgaris L.",verdura/legume,27.0,1.22,6.27,0.09,2.03,147.0,1,A,beterraba,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,almoco,leguminosa,C0091T,16365,140.0,1.0,"Feijão, carioca, cozido (50% grão e 50% caldo), c/ óleo, cebola e alho, c/ sal, Phaseolus vulgaris L.",leguminosa,79.0,4.69,14.6,1.72,6.84,190.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,almoco,leguminosa,C0100T,3815,140.0,2.0,"Feijão, fradinho, cozido (50% grão e 50% caldo), c/ óleo, cebola e alho, c/ sal, Vigna unguiculata (L.) Walp.",leguminosa,74.0,4.99,12.9,1.82,7.23,189.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,almoco,leguminosa,C0085T,166,140.0,3.0,"Fava, grão, seco, cozida, drenada, s/ óleo, c/ sal, Vicia faba L.",leguminosa,108.0,9.05,20.5,0.49,7.42,194.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,almoco,leguminosa,C0169T,41,80.0,4.0,"Soja, proteína, texturizada, hidratada (c/ caldo de legumes), refogada, c/ óleo, cebola e alho, c/ sal",leguminosa,185.0,23.2,21.8,1.53,4.51,424.0,1,A,,0,0,0,0,0,0,1,0,1,1,1,1
+Nordeste,almoco,leguminosa,C0082T,25,140.0,5.0,"Feijão, guandu, grão, seco, cozido (50% grão e 50% caldo), s/ óleo, cebola e alho, c/ sal, Cajanus cajan",leguminosa,89.0,6.76,19.6,0.65,5.83,188.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,almoco,proteina,C0732F,2874,70.0,1.0,"Carne, boi, de segunda (acém, capa de contrafilé, costela, músculo, paleta, peito), cozida/grelhada/assada, s/ óleo, c/ sal, Bos taurus",proteína animal,254.0,28.4,0.0,15.7,0.0,385.0,1,D,,0,0,0,0,0,0,0,0,0,0,1,1
+Nordeste,almoco,proteina,C0720F,2714,110.0,2.0,"Carne, frango, inteiro, refogada (c/ óleo, cebola e alho), c/ sal (média de amostras c/ e s/ pele), Gallus gallus",proteína animal,236.0,23.9,0.74,15.2,0.13,267.0,1,C,,0,0,0,0,0,0,0,0,0,0,1,1
+Nordeste,almoco,proteina,C0714F,2493,110.0,3.0,"Carne, frango, inteiro, s/ pele, grelhada/assada, s/ óleo, c/ sal, Gallus gallus",proteína animal,179.0,27.9,0.0,7.47,0.0,249.0,1,B,,0,0,0,0,0,0,0,0,0,0,1,1
+Nordeste,almoco,proteina,C0716F,1672,110.0,4.0,"Carne, frango, inteiro, s/ pele, frita (c/ óleo de soja), c/ sal, Gallus gallus",proteína animal,236.0,25.7,0.0,14.8,0.0,244.0,1,B,,0,0,0,0,0,0,0,0,0,0,1,1
+Nordeste,almoco,proteina,C0713F,1551,110.0,5.0,"Carne, frango, caipira, inteiro, cozida, s/ óleo, c/ sal (média de amostras c/ e s/ pele), Gallus gallus",proteína animal,206.0,26.7,0.0,11.1,0.0,234.0,1,B,,0,0,0,0,0,0,0,0,0,0,1,1
+Nordeste,almoco,proteina,C0733F,1520,70.0,6.0,"Carne, boi, de segunda (acém, paleta, peito), frita (c/ óleo de soja), c/ sal, Bos taurus",proteína animal,291.0,23.9,0.0,21.7,0.0,369.0,1,D,,0,0,0,0,0,0,0,0,0,0,1,1
+Nordeste,almoco,proteina,C0028J,730,50.0,7.0,"Ovo, galinha, inteiro, frito (c/ óleo de soja), c/ sal",proteína animal,233.0,15.5,1.19,18.5,0.0,353.0,1,C,,0,0,1,0,0,0,0,0,1,0,1,1
+Nordeste,almoco,proteina,C0634F,591,90.0,8.0,"Carne, boi, patinho, s/ gordura, frita (c/ óleo de soja), c/ sal, Bos taurus",proteína animal,263.0,32.9,0.0,14.7,0.0,234.0,1,C,,0,0,0,0,0,0,0,0,0,0,1,1
+Nordeste,almoco,proteina,C0230F,561,180.0,9.0,"Carne, frango, peito, s/ pele, grelhada, s/ gordura, s/ óleo, c/ sal, Gallus gallus",proteína animal,149.0,31.8,0.0,2.46,0.0,249.0,1,A,,0,0,0,0,0,0,0,0,0,0,1,1
+Nordeste,almoco,proteina,C0220E,537,180.0,10.0,"Peixe, água salgada, filé/posta, frito (c/ óleo de soja), c/ sal (média de várias espécies)",proteína animal,142.0,17.9,0.0,7.84,0.0,89.5,1,A,,0,0,0,1,0,0,0,0,0,0,1,1
+Nordeste,cafe_da_manha,carboidrato,C0002A,8815,70.0,1.0,"Pão francês, trigo, branco, de padaria (médias de diferentes amostras)",base (cereal/tubérculo),300.0,9.83,61.6,2.12,2.61,681.0,3,C,,1,0,0,0,0,0,0,0,1,1,0,1
+Nordeste,cafe_da_manha,carboidrato,C0190A,3704,135.0,2.0,"Cuscuz de milho, cozido, c/ sal",base (cereal/tubérculo),112.0,2.16,25.3,0.68,2.05,247.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,cafe_da_manha,carboidrato,C0906B,1112,70.0,3.0,"Tapioca, sem manteiga, sem recheio",base (cereal/tubérculo),289.0,0.36,71.9,0.0,0.2,1.31,1,C,,0,1,0,0,0,0,0,0,1,0,1,0
+Nordeste,cafe_da_manha,carboidrato,C0908B,330,200.0,4.0,"Mandioca (aipim, macaxeira), s/ casca, cozida, drenada, s/ óleo, c/ sal, Manihot esculenta Crantz.",base (cereal/tubérculo),120.0,0.64,29.7,0.24,1.77,128.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,cafe_da_manha,carboidrato,C0155A,316,50.0,5.0,"Pão, trigo, integral, forma (média de diferentes marcas)",base (cereal/tubérculo),249.0,10.5,48.6,2.54,5.29,495.0,4,A,pao_forma,1,0,0,0,0,0,0,0,1,1,0,1
+Nordeste,cafe_da_manha,carboidrato,C0169A,199,15.0,6.0,"Torrada, trigo, tradicional",base (cereal/tubérculo),395.0,11.5,73.6,6.39,1.28,912.0,1,D,,1,0,0,0,0,0,0,0,1,1,0,1
+Nordeste,cafe_da_manha,carboidrato,C0343B,135,60.0,7.0,"Inhame, s/ casca, cozido, drenado, s/ óleo, c/ sal, Colocasia esculenta",base (cereal/tubérculo),89.0,2.28,20.4,0.14,1.6,187.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,cafe_da_manha,carboidrato,C0209A,130,100.0,8.0,"Arroz, polido, cozido, c/ óleo, cebola e alho, c/ sal",base (cereal/tubérculo),138.0,2.4,29.1,1.59,1.27,189.0,1,B,arroz,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,cafe_da_manha,carboidrato,C0003A,80,50.0,9.0,"Pão, trigo, branco, forma, tradicional (média de diferentes marcas)",base (cereal/tubérculo),260.0,9.53,51.5,2.41,2.68,860.0,4,C,pao_forma,1,0,0,0,0,0,0,0,1,1,0,1
+Nordeste,cafe_da_manha,carboidrato,C0021A,74,30.0,10.0,"Aveia, crua (média de diferentes tipos), Avena sativa",base (cereal/tubérculo),382.0,15.4,65.3,8.7,9.74,4.63,1,A,,1,0,0,0,0,0,0,0,1,1,0,1
+Nordeste,cafe_da_manha,fruta,C0006C,728,75.0,1.0,"Banana, in natura, Musa spp.",fruta,109.0,1.27,26.7,0.19,2.24,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,cafe_da_manha,fruta,C0024C,434,170.0,2.0,"Mamão, polpa, in natura, Carica papaya L.",fruta,44.0,0.57,10.7,0.25,1.83,2.44,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,cafe_da_manha,fruta,C0107C,275,100.0,3.0,"Banana, da terra, assada, s/ adição de ingredientes, Musa acuminata Colla x Musa balbisiana Colla",fruta,165.0,1.69,39.7,0.28,1.8,0.0,1,C,,0,1,0,0,0,0,0,0,1,0,1,0
+Nordeste,cafe_da_manha,fruta,C0028C,130,90.0,4.0,"Melão, polpa, in natura, Cucumis melo",fruta,24.0,0.61,5.7,0.15,1.22,8.96,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,cafe_da_manha,fruta,C0023C,127,150.0,5.0,"Maçã, c/ casca, in natura, Malus spp.",fruta,64.0,0.29,15.7,0.49,2.07,0.66,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,cafe_da_manha,fruta,C0027C,61,200.0,6.0,"Melancia, polpa, in natura, Citrullus spp.",fruta,29.0,0.7,6.52,0.05,0.13,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,cafe_da_manha,fruta,C0025C,49,140.0,7.0,"Manga, polpa, in natura, Mangifera indica L.",fruta,64.0,0.53,16.0,0.31,2.14,0.92,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,cafe_da_manha,fruta,C0017C,48,180.0,8.0,"Laranja, in natura, Citrus spp.",fruta,45.0,0.9,10.8,0.24,2.02,0.53,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,cafe_da_manha,fruta,C0033C,45,100.0,9.0,"Uva, in natura, Vitis vinifera L.",fruta,57.0,0.55,13.7,0.2,0.93,3.96,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,cafe_da_manha,fruta,C0002C,34,140.0,10.0,"Abacaxi, polpa, in natura, Ananas comosus L.",fruta,50.0,0.68,11.6,0.33,1.12,2.84,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,cafe_da_manha,proteina,C0028J,1409,50.0,1.0,"Ovo, galinha, inteiro, frito (c/ óleo de soja), c/ sal",proteína animal,233.0,15.5,1.19,18.5,0.0,353.0,1,C,,0,0,1,0,0,0,0,0,1,0,1,1
+Nordeste,cafe_da_manha,proteina,C0048G,639,90.0,2.0,"Queijo, coalho",laticínio,335.0,23.7,1.94,25.9,0.0,526.0,3,D,,0,1,0,0,0,0,0,0,1,0,1,0
+Nordeste,cafe_da_manha,proteina,C0043G,583,200.0,3.0,"Leite, vaca, integral, fluído",laticínio,64.0,2.93,5.92,3.23,0.0,63.8,1,B,leite,0,1,0,0,0,0,0,0,1,0,1,0
+Nordeste,cafe_da_manha,proteina,C0034G,454,240.0,4.0,"Leite, vaca, c/ chocolate, Toddynho",laticínio,85.0,2.0,13.9,2.4,0.0,65.0,4,C,,0,1,0,0,0,0,0,0,1,0,1,0
+Nordeste,cafe_da_manha,proteina,C0027J,345,50.0,5.0,"Ovo, galinha, mexido, c/ margarina, c/ sal",proteína animal,167.0,11.9,2.25,12.2,0.0,358.0,4,C,,0,0,1,0,0,0,0,0,1,0,1,1
+Nordeste,cafe_da_manha,proteina,C0023J,343,90.0,6.0,"Ovo, galinha, inteiro, cozido, c/ sal",proteína animal,125.0,10.3,1.38,8.66,0.0,315.0,1,B,ovo,0,0,1,0,0,0,0,0,1,0,1,1
+Nordeste,cafe_da_manha,proteina,C0059G,316,20.0,7.0,"Queijo, muçarela (média de diferentes amostras)",laticínio,320.0,23.8,1.97,24.1,0.0,506.0,3,D,mussarela,0,1,0,0,0,0,0,0,1,0,1,0
+Nordeste,cafe_da_manha,proteina,C0193F,187,30.0,8.0,Mortadela,proteína animal,269.0,13.7,16.1,16.6,0.0,1354.0,4,D,,0,0,0,0,0,0,0,0,0,0,1,1
+Nordeste,cafe_da_manha,proteina,C0039G,184,30.0,9.0,"Leite, vaca, integral, em pó (média de várias amostras)",laticínio,498.0,26.0,39.0,26.4,0.0,321.0,1,E,leite_po,0,1,0,0,0,0,0,0,1,0,1,0
+Nordeste,cafe_da_manha,proteina,C0011G,177,200.0,10.0,"Iogurte, integral (média de diferentes sabores)",laticínio,75.0,3.12,10.9,2.17,0.23,55.7,4,B,,0,1,0,0,0,0,0,0,1,0,1,0
+Nordeste,jantar,carboidrato,C0209A,7926,125.0,1.0,"Arroz, polido, cozido, c/ óleo, cebola e alho, c/ sal",base (cereal/tubérculo),138.0,2.4,29.1,1.59,1.27,189.0,1,B,arroz,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,jantar,carboidrato,C0190A,3982,95.0,2.0,"Cuscuz de milho, cozido, c/ sal",base (cereal/tubérculo),112.0,2.16,25.3,0.68,2.05,247.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,jantar,carboidrato,C0002A,2250,70.0,3.0,"Pão francês, trigo, branco, de padaria (médias de diferentes amostras)",base (cereal/tubérculo),300.0,9.83,61.6,2.12,2.61,681.0,3,C,,1,0,0,0,0,0,0,0,1,1,0,1
+Nordeste,jantar,carboidrato,C0834A,1200,105.0,4.0,"Macarrão, trigo, cozido, drenado, s/ óleo, c/ sal",base (cereal/tubérculo),125.0,3.54,26.9,0.57,0.91,189.0,1,B,,1,0,0,0,0,0,0,0,1,1,0,1
+Nordeste,jantar,carboidrato,C0908B,1069,200.0,5.0,"Mandioca (aipim, macaxeira), s/ casca, cozida, drenada, s/ óleo, c/ sal, Manihot esculenta Crantz.",base (cereal/tubérculo),120.0,0.64,29.7,0.24,1.77,128.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,jantar,carboidrato,C0343B,503,90.0,6.0,"Inhame, s/ casca, cozido, drenado, s/ óleo, c/ sal, Colocasia esculenta",base (cereal/tubérculo),89.0,2.28,20.4,0.14,1.6,187.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,jantar,carboidrato,C0407A,270,320.0,7.0,"Macarrão, trigo, instantâneo, c/ tempero, cozido, drenado (preparado conforme a embalagem)",base (cereal/tubérculo),154.0,3.17,22.5,6.21,2.02,545.0,1,C,,1,0,0,0,0,0,0,0,1,1,0,1
+Nordeste,jantar,carboidrato,C0089B,256,35.0,8.0,"Mandioca, farofa, temperada, c/ sal",base (cereal/tubérculo),396.0,2.06,80.3,9.12,7.82,574.0,1,C,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,jantar,carboidrato,C0906B,243,70.0,9.0,"Tapioca, sem manteiga, sem recheio",base (cereal/tubérculo),289.0,0.36,71.9,0.0,0.2,1.31,1,C,,0,1,0,0,0,0,0,0,1,0,1,0
+Nordeste,jantar,carboidrato,C0155A,151,50.0,10.0,"Pão, trigo, integral, forma (média de diferentes marcas)",base (cereal/tubérculo),249.0,10.5,48.6,2.54,5.29,495.0,4,A,pao_forma,1,0,0,0,0,0,0,0,1,1,0,1
+Nordeste,jantar,fruta,C0006C,224,75.0,1.0,"Banana, in natura, Musa spp.",fruta,109.0,1.27,26.7,0.19,2.24,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,jantar,fruta,C0107C,168,100.0,2.0,"Banana, da terra, assada, s/ adição de ingredientes, Musa acuminata Colla x Musa balbisiana Colla",fruta,165.0,1.69,39.7,0.28,1.8,0.0,1,C,,0,1,0,0,0,0,0,0,1,0,1,0
+Nordeste,jantar,fruta,C0023C,58,150.0,3.0,"Maçã, c/ casca, in natura, Malus spp.",fruta,64.0,0.29,15.7,0.49,2.07,0.66,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,jantar,fruta,C0017C,43,180.0,4.0,"Laranja, in natura, Citrus spp.",fruta,45.0,0.9,10.8,0.24,2.02,0.53,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,jantar,fruta,C0024C,36,170.0,5.0,"Mamão, polpa, in natura, Carica papaya L.",fruta,44.0,0.57,10.7,0.25,1.83,2.44,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,jantar,fruta,C0027C,21,200.0,6.0,"Melancia, polpa, in natura, Citrullus spp.",fruta,29.0,0.7,6.52,0.05,0.13,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,jantar,legumes,C0035B,140,50.0,1.0,"Tomate, cru, Lycopersicon esculentum",verdura/legume,18.0,1.04,3.82,0.17,1.6,3.13,1,A,tomate,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,jantar,legumes,C0009B,85,20.0,2.0,"Alface, crua, Lactuca sativa L.",verdura/legume,9.0,1.08,1.79,0.12,1.87,4.2,1,A,alface,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,jantar,legumes,C0166B,65,100.0,3.0,"Abóbora, moranga, s/ casca, s/ semente, cozida, drenada, s/ óleo, c/ sal",verdura/legume,17.0,1.21,3.98,0.14,2.41,127.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,jantar,legumes,C0226B,36,100.0,4.0,"Abóbora, moranga, s/ casca, s/ semente, cozida, drenada, c/ óleo de soja, c/ sal",verdura/legume,38.0,1.18,3.89,2.52,2.36,127.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,jantar,legumes,C0228B,23,70.0,5.0,"Abóbora, pescoço, s/ casca, s/ semente, cozida, drenada, s/ óleo, c/ sal",verdura/legume,26.0,0.73,6.65,0.13,2.5,128.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,jantar,legumes,C0123B,22,40.0,6.0,"Pão, de queijo, industrializado, assado",verdura/legume,381.0,7.18,35.6,23.4,0.61,804.0,4,C,,1,1,0,0,0,0,0,0,1,0,0,0
+Nordeste,jantar,leguminosa,C0091T,3798,140.0,1.0,"Feijão, carioca, cozido (50% grão e 50% caldo), c/ óleo, cebola e alho, c/ sal, Phaseolus vulgaris L.",leguminosa,79.0,4.69,14.6,1.72,6.84,190.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,jantar,leguminosa,C0100T,1392,140.0,2.0,"Feijão, fradinho, cozido (50% grão e 50% caldo), c/ óleo, cebola e alho, c/ sal, Vigna unguiculata (L.) Walp.",leguminosa,74.0,4.99,12.9,1.82,7.23,189.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,jantar,leguminosa,C0085T,61,70.0,3.0,"Fava, grão, seco, cozida, drenada, s/ óleo, c/ sal, Vicia faba L.",leguminosa,108.0,9.05,20.5,0.49,7.42,194.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,jantar,proteina,C0028J,1717,50.0,1.0,"Ovo, galinha, inteiro, frito (c/ óleo de soja), c/ sal",proteína animal,233.0,15.5,1.19,18.5,0.0,353.0,1,C,,0,0,1,0,0,0,0,0,1,0,1,1
+Nordeste,jantar,proteina,C0720F,1276,110.0,2.0,"Carne, frango, inteiro, refogada (c/ óleo, cebola e alho), c/ sal (média de amostras c/ e s/ pele), Gallus gallus",proteína animal,236.0,23.9,0.74,15.2,0.13,267.0,1,C,,0,0,0,0,0,0,0,0,0,0,1,1
+Nordeste,jantar,proteina,C0732F,1187,70.0,3.0,"Carne, boi, de segunda (acém, capa de contrafilé, costela, músculo, paleta, peito), cozida/grelhada/assada, s/ óleo, c/ sal, Bos taurus",proteína animal,254.0,28.4,0.0,15.7,0.0,385.0,1,D,,0,0,0,0,0,0,0,0,0,0,1,1
+Nordeste,jantar,proteina,C0714F,1048,110.0,4.0,"Carne, frango, inteiro, s/ pele, grelhada/assada, s/ óleo, c/ sal, Gallus gallus",proteína animal,179.0,27.9,0.0,7.47,0.0,249.0,1,B,,0,0,0,0,0,0,0,0,0,0,1,1
+Nordeste,jantar,proteina,C0733F,838,70.0,5.0,"Carne, boi, de segunda (acém, paleta, peito), frita (c/ óleo de soja), c/ sal, Bos taurus",proteína animal,291.0,23.9,0.0,21.7,0.0,369.0,1,D,,0,0,0,0,0,0,0,0,0,0,1,1
+Nordeste,jantar,proteina,C0716F,827,110.0,6.0,"Carne, frango, inteiro, s/ pele, frita (c/ óleo de soja), c/ sal, Gallus gallus",proteína animal,236.0,25.7,0.0,14.8,0.0,244.0,1,B,,0,0,0,0,0,0,0,0,0,0,1,1
+Nordeste,jantar,proteina,C0713F,651,110.0,7.0,"Carne, frango, caipira, inteiro, cozida, s/ óleo, c/ sal (média de amostras c/ e s/ pele), Gallus gallus",proteína animal,206.0,26.7,0.0,11.1,0.0,234.0,1,B,,0,0,0,0,0,0,0,0,0,0,1,1
+Nordeste,jantar,proteina,C0085F,419,65.0,8.0,"Carne, boi, seca, cozida, s/ óleo, Bos taurus",proteína animal,302.0,26.7,0.0,21.7,0.0,1943.0,1,E,,0,0,0,0,0,0,0,0,0,0,1,1
+Nordeste,jantar,proteina,C0023J,395,90.0,9.0,"Ovo, galinha, inteiro, cozido, c/ sal",proteína animal,125.0,10.3,1.38,8.66,0.0,315.0,1,B,ovo,0,0,1,0,0,0,0,0,1,0,1,1
+Nordeste,jantar,proteina,C0766F,371,60.0,10.0,"Linguiça, frango/porco, fresca, frita (c/ óleo de soja), c/ sal",proteína animal,256.0,19.3,0.0,19.8,0.0,1576.0,4,D,,0,0,0,0,0,0,0,0,0,0,1,1
+Nordeste,lanche,carboidrato,C0002A,1685,70.0,1.0,"Pão francês, trigo, branco, de padaria (médias de diferentes amostras)",base (cereal/tubérculo),300.0,9.83,61.6,2.12,2.61,681.0,3,C,,1,0,0,0,0,0,0,0,1,1,0,1
+Nordeste,lanche,carboidrato,C0832A,596,20.0,2.0,"Milho, pipoca, preparada, c/ óleo de soja, c/ açúcar",base (cereal/tubérculo),432.0,8.97,73.1,14.3,12.9,5.13,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,lanche,carboidrato,C0906B,355,70.0,3.0,"Tapioca, sem manteiga, sem recheio",base (cereal/tubérculo),289.0,0.36,71.9,0.0,0.2,1.31,1,C,,0,1,0,0,0,0,0,0,1,0,1,0
+Nordeste,lanche,carboidrato,C0190A,219,135.0,4.0,"Cuscuz de milho, cozido, c/ sal",base (cereal/tubérculo),112.0,2.16,25.3,0.68,2.05,247.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,lanche,carboidrato,C0212A,209,85.0,5.0,"Salgadinho, snack, extrusado de milho",base (cereal/tubérculo),546.0,6.17,57.3,33.4,4.0,514.0,4,D,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,lanche,carboidrato,C0209A,171,100.0,6.0,"Arroz, polido, cozido, c/ óleo, cebola e alho, c/ sal",base (cereal/tubérculo),138.0,2.4,29.1,1.59,1.27,189.0,1,B,arroz,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,lanche,carboidrato,C0177A,111,100.0,7.0,"Milho, verde, grão, cozido, drenado, c/ sal, Zea mays",base (cereal/tubérculo),129.0,6.13,26.6,0.57,3.65,188.0,1,A,milho_espiga,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,lanche,carboidrato,C0169A,91,15.0,8.0,"Torrada, trigo, tradicional",base (cereal/tubérculo),395.0,11.5,73.6,6.39,1.28,912.0,1,D,,1,0,0,0,0,0,0,0,1,1,0,1
+Nordeste,lanche,carboidrato,C0082A,61,25.0,9.0,"Cereais, barra (média de diferentes sabores)",base (cereal/tubérculo),396.0,6.25,76.1,8.53,5.25,498.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,lanche,carboidrato,C0407A,52,320.0,10.0,"Macarrão, trigo, instantâneo, c/ tempero, cozido, drenado (preparado conforme a embalagem)",base (cereal/tubérculo),154.0,3.17,22.5,6.21,2.02,545.0,1,C,,1,0,0,0,0,0,0,0,1,1,0,1
+Nordeste,lanche,fruta,C0006C,2433,75.0,1.0,"Banana, in natura, Musa spp.",fruta,109.0,1.27,26.7,0.19,2.24,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,lanche,fruta,C0023C,1032,150.0,2.0,"Maçã, c/ casca, in natura, Malus spp.",fruta,64.0,0.29,15.7,0.49,2.07,0.66,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,lanche,fruta,C0017C,762,180.0,3.0,"Laranja, in natura, Citrus spp.",fruta,45.0,0.9,10.8,0.24,2.02,0.53,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,lanche,fruta,C0025C,625,140.0,4.0,"Manga, polpa, in natura, Mangifera indica L.",fruta,64.0,0.53,16.0,0.31,2.14,0.92,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,lanche,fruta,C0027C,443,200.0,5.0,"Melancia, polpa, in natura, Citrullus spp.",fruta,29.0,0.7,6.52,0.05,0.13,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,lanche,fruta,C0024C,374,170.0,6.0,"Mamão, polpa, in natura, Carica papaya L.",fruta,44.0,0.57,10.7,0.25,1.83,2.44,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,lanche,fruta,C0033C,220,100.0,7.0,"Uva, in natura, Vitis vinifera L.",fruta,57.0,0.55,13.7,0.2,0.93,3.96,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,lanche,fruta,C0028C,200,90.0,8.0,"Melão, polpa, in natura, Cucumis melo",fruta,24.0,0.61,5.7,0.15,1.22,8.96,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,lanche,fruta,C0014C,170,170.0,9.0,"Goiaba, inteira, in natura, Psidium guajava L.",fruta,50.0,0.86,13.4,0.53,5.78,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,lanche,fruta,C0032C,129,135.0,10.0,"Tangerina, Ponkã, in natura, Citrus reticulata",fruta,40.0,0.85,9.54,0.07,0.94,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Nordeste,lanche,proteina,C0011G,338,200.0,1.0,"Iogurte, integral (média de diferentes sabores)",laticínio,75.0,3.12,10.9,2.17,0.23,55.7,4,B,,0,1,0,0,0,0,0,0,1,0,1,0
+Nordeste,lanche,proteina,C0034G,322,200.0,2.0,"Leite, vaca, c/ chocolate, Toddynho",laticínio,85.0,2.0,13.9,2.4,0.0,65.0,4,C,,0,1,0,0,0,0,0,0,1,0,1,0
+Nordeste,lanche,proteina,C0043G,272,200.0,3.0,"Leite, vaca, integral, fluído",laticínio,64.0,2.93,5.92,3.23,0.0,63.8,1,B,leite,0,1,0,0,0,0,0,0,1,0,1,0
+Nordeste,lanche,proteina,C0039G,105,30.0,4.0,"Leite, vaca, integral, em pó (média de várias amostras)",laticínio,498.0,26.0,39.0,26.4,0.0,321.0,1,E,leite_po,0,1,0,0,0,0,0,0,1,0,1,0
+Nordeste,lanche,proteina,C0020G,93,200.0,5.0,"Iogurte, natural (média de diferentes amostras)",laticínio,57.0,4.02,4.76,2.43,0.0,47.7,1,B,,0,1,0,0,0,0,0,0,1,0,1,0
+Nordeste,lanche,proteina,C0048G,87,45.0,6.0,"Queijo, coalho",laticínio,335.0,23.7,1.94,25.9,0.0,526.0,3,D,,0,1,0,0,0,0,0,0,1,0,1,0
+Nordeste,lanche,proteina,C0028J,68,50.0,7.0,"Ovo, galinha, inteiro, frito (c/ óleo de soja), c/ sal",proteína animal,233.0,15.5,1.19,18.5,0.0,353.0,1,C,,0,0,1,0,0,0,0,0,1,0,1,1
+Nordeste,lanche,proteina,C0023J,53,90.0,8.0,"Ovo, galinha, inteiro, cozido, c/ sal",proteína animal,125.0,10.3,1.38,8.66,0.0,315.0,1,B,ovo,0,0,1,0,0,0,0,0,1,0,1,1
+Nordeste,lanche,proteina,C0059G,50,20.0,9.0,"Queijo, muçarela (média de diferentes amostras)",laticínio,320.0,23.8,1.97,24.1,0.0,506.0,3,D,mussarela,0,1,0,0,0,0,0,0,1,0,1,0
+Nordeste,lanche,proteina,C0036G,37,200.0,10.0,"Leite, vaca, desnatado, fluído (média de diferentes amostras)",laticínio,37.0,3.12,5.14,0.4,0.0,51.1,1,B,,0,1,0,0,0,0,0,0,1,0,1,0
+Norte,almoco,carboidrato,C0209A,9206,125.0,1.0,"Arroz, polido, cozido, c/ óleo, cebola e alho, c/ sal",base (cereal/tubérculo),138.0,2.4,29.1,1.59,1.27,189.0,1,B,arroz,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,almoco,carboidrato,C0834A,1494,105.0,2.0,"Macarrão, trigo, cozido, drenado, s/ óleo, c/ sal",base (cereal/tubérculo),125.0,3.54,26.9,0.57,0.91,189.0,1,B,,1,0,0,0,0,0,0,0,1,1,0,1
+Norte,almoco,carboidrato,C0089B,559,35.0,3.0,"Mandioca, farofa, temperada, c/ sal",base (cereal/tubérculo),396.0,2.06,80.3,9.12,7.82,574.0,1,C,,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,almoco,carboidrato,C0211A,119,125.0,4.0,"Arroz, integral, cozido, c/ óleo, cebola e alho, c/ sal",base (cereal/tubérculo),116.0,2.46,23.0,2.03,2.14,188.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,almoco,carboidrato,C0908B,98,200.0,5.0,"Mandioca (aipim, macaxeira), s/ casca, cozida, drenada, s/ óleo, c/ sal, Manihot esculenta Crantz.",base (cereal/tubérculo),120.0,0.64,29.7,0.24,1.77,128.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,almoco,carboidrato,C0214A,60,110.0,6.0,"Macarrão, trigo, c/ ovos, c/ alho e óleo, c/ sal",base (cereal/tubérculo),179.0,3.64,25.8,7.05,0.95,190.0,1,B,,1,0,1,0,0,0,0,0,1,0,0,1
+Norte,almoco,carboidrato,C0118B,49,110.0,7.0,"Batata, inglesa, frita (c/ óleo de soja), c/ sal, Solanum tuberosum L.",base (cereal/tubérculo),248.0,4.04,32.7,11.9,3.16,189.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,almoco,carboidrato,C0143A,47,60.0,8.0,"Milho, polenta/fubá, cozido, c/ sal",base (cereal/tubérculo),104.0,2.25,23.0,0.69,1.74,429.0,1,C,fuba,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,almoco,carboidrato,C0002A,42,70.0,9.0,"Pão francês, trigo, branco, de padaria (médias de diferentes amostras)",base (cereal/tubérculo),300.0,9.83,61.6,2.12,2.61,681.0,3,C,,1,0,0,0,0,0,0,0,1,1,0,1
+Norte,almoco,carboidrato,C0117B,26,80.0,10.0,"Batata, inglesa, s/ casca, cozida, drenada, s/ óleo, c/ sal, Solanum tuberosum L.",base (cereal/tubérculo),52.0,1.33,12.2,0.05,1.46,190.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,almoco,fruta,C0006C,164,75.0,1.0,"Banana, in natura, Musa spp.",fruta,109.0,1.27,26.7,0.19,2.24,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,almoco,fruta,C0027C,38,200.0,2.0,"Melancia, polpa, in natura, Citrullus spp.",fruta,29.0,0.7,6.52,0.05,0.13,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,almoco,fruta,C0017C,22,270.0,3.0,"Laranja, in natura, Citrus spp.",fruta,45.0,0.9,10.8,0.24,2.02,0.53,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,almoco,fruta,C0107C,20,100.0,4.0,"Banana, da terra, assada, s/ adição de ingredientes, Musa acuminata Colla x Musa balbisiana Colla",fruta,165.0,1.69,39.7,0.28,1.8,0.0,1,C,,0,1,0,0,0,0,0,0,1,0,1,0
+Norte,almoco,legumes,C0035B,149,60.0,1.0,"Tomate, cru, Lycopersicon esculentum",verdura/legume,18.0,1.04,3.82,0.17,1.6,3.13,1,A,tomate,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,almoco,legumes,C0009B,117,25.0,2.0,"Alface, crua, Lactuca sativa L.",verdura/legume,9.0,1.08,1.79,0.12,1.87,4.2,1,A,alface,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,almoco,legumes,C0023B,37,40.0,3.0,"Couve, crua, Brassica oleracea var. Acephala",verdura/legume,28.0,2.87,4.33,0.55,3.12,9.09,1,A,couve,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,almoco,legumes,C0151B,31,70.0,4.0,"Abóbora, moranga, refogada (c/ óleo, cebola e alho), c/ sal",verdura/legume,30.0,0.39,5.98,0.8,1.55,130.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,almoco,legumes,C0200B,31,80.0,5.0,"Quiabo, c/ casca, refogado (c/ óleo, cebola e alho), c/ sal, Hibiscus esculentus L.",verdura/legume,32.0,1.39,4.99,1.35,2.99,128.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,almoco,legumes,C0030B,30,25.0,6.0,"Pepino, c/ casca, cru, Cucumis sativus l.",verdura/legume,10.0,0.7,2.23,0.09,1.04,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,almoco,legumes,C0033B,30,40.0,7.0,"Repolho, cru, Brassica oleracea L.",verdura/legume,20.0,1.12,4.42,0.14,1.92,3.32,1,A,repolho,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,almoco,legumes,C0166B,26,70.0,8.0,"Abóbora, moranga, s/ casca, s/ semente, cozida, drenada, s/ óleo, c/ sal",verdura/legume,17.0,1.21,3.98,0.14,2.41,127.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,almoco,leguminosa,C0091T,5249,140.0,1.0,"Feijão, carioca, cozido (50% grão e 50% caldo), c/ óleo, cebola e alho, c/ sal, Phaseolus vulgaris L.",leguminosa,79.0,4.69,14.6,1.72,6.84,190.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,almoco,leguminosa,C0100T,295,140.0,2.0,"Feijão, fradinho, cozido (50% grão e 50% caldo), c/ óleo, cebola e alho, c/ sal, Vigna unguiculata (L.) Walp.",leguminosa,74.0,4.99,12.9,1.82,7.23,189.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,almoco,leguminosa,C0120T,26,340.0,3.0,"Lentilha, cozida, c/ toucinho defumado (bacon), c/ óleo, cebola e alho, c/ sal",leguminosa,163.0,8.97,17.5,7.59,5.63,212.0,4,A,,0,0,0,0,0,0,0,0,0,0,1,1
+Norte,almoco,proteina,C0720F,1012,110.0,1.0,"Carne, frango, inteiro, refogada (c/ óleo, cebola e alho), c/ sal (média de amostras c/ e s/ pele), Gallus gallus",proteína animal,236.0,23.9,0.74,15.2,0.13,267.0,1,C,,0,0,0,0,0,0,0,0,0,0,1,1
+Norte,almoco,proteina,C0634F,934,90.0,2.0,"Carne, boi, patinho, s/ gordura, frita (c/ óleo de soja), c/ sal, Bos taurus",proteína animal,263.0,32.9,0.0,14.7,0.0,234.0,1,C,,0,0,0,0,0,0,0,0,0,0,1,1
+Norte,almoco,proteina,C0716F,713,110.0,3.0,"Carne, frango, inteiro, s/ pele, frita (c/ óleo de soja), c/ sal, Gallus gallus",proteína animal,236.0,25.7,0.0,14.8,0.0,244.0,1,B,,0,0,0,0,0,0,0,0,0,0,1,1
+Norte,almoco,proteina,C0732F,667,75.0,4.0,"Carne, boi, de segunda (acém, capa de contrafilé, costela, músculo, paleta, peito), cozida/grelhada/assada, s/ óleo, c/ sal, Bos taurus",proteína animal,254.0,28.4,0.0,15.7,0.0,385.0,1,D,,0,0,0,0,0,0,0,0,0,0,1,1
+Norte,almoco,proteina,C0733F,621,75.0,5.0,"Carne, boi, de segunda (acém, paleta, peito), frita (c/ óleo de soja), c/ sal, Bos taurus",proteína animal,291.0,23.9,0.0,21.7,0.0,369.0,1,D,,0,0,0,0,0,0,0,0,0,0,1,1
+Norte,almoco,proteina,C0714F,508,110.0,6.0,"Carne, frango, inteiro, s/ pele, grelhada/assada, s/ óleo, c/ sal, Gallus gallus",proteína animal,179.0,27.9,0.0,7.47,0.0,249.0,1,B,,0,0,0,0,0,0,0,0,0,0,1,1
+Norte,almoco,proteina,C0713F,321,110.0,7.0,"Carne, frango, caipira, inteiro, cozida, s/ óleo, c/ sal (média de amostras c/ e s/ pele), Gallus gallus",proteína animal,206.0,26.7,0.0,11.1,0.0,234.0,1,B,,0,0,0,0,0,0,0,0,0,0,1,1
+Norte,almoco,proteina,C0028J,263,100.0,8.0,"Ovo, galinha, inteiro, frito (c/ óleo de soja), c/ sal",proteína animal,233.0,15.5,1.19,18.5,0.0,353.0,1,C,,0,0,1,0,0,0,0,0,1,0,1,1
+Norte,almoco,proteina,C0220E,261,180.0,9.0,"Peixe, água salgada, filé/posta, frito (c/ óleo de soja), c/ sal (média de várias espécies)",proteína animal,142.0,17.9,0.0,7.84,0.0,89.5,1,A,,0,0,0,1,0,0,0,0,0,0,1,1
+Norte,almoco,proteina,C0245F,190,100.0,10.0,"Carne, boi, acém, moída, refogada (c/ óleo, cebola e alho), c/ sal",proteína animal,213.0,25.5,0.71,12.1,0.13,263.0,1,C,,0,0,0,0,0,0,0,0,0,0,1,1
+Norte,cafe_da_manha,carboidrato,C0002A,4185,70.0,1.0,"Pão francês, trigo, branco, de padaria (médias de diferentes amostras)",base (cereal/tubérculo),300.0,9.83,61.6,2.12,2.61,681.0,3,C,,1,0,0,0,0,0,0,0,1,1,0,1
+Norte,cafe_da_manha,carboidrato,C0906B,622,70.0,2.0,"Tapioca, sem manteiga, sem recheio",base (cereal/tubérculo),289.0,0.36,71.9,0.0,0.2,1.31,1,C,,0,1,0,0,0,0,0,0,1,0,1,0
+Norte,cafe_da_manha,carboidrato,C0190A,486,45.0,3.0,"Cuscuz de milho, cozido, c/ sal",base (cereal/tubérculo),112.0,2.16,25.3,0.68,2.05,247.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,cafe_da_manha,carboidrato,C0160A,214,50.0,4.0,"Pão, trigo, sovado",base (cereal/tubérculo),300.0,8.4,61.5,2.84,2.43,430.0,3,B,,1,0,0,0,0,0,0,0,1,1,0,1
+Norte,cafe_da_manha,carboidrato,C0169A,195,25.0,5.0,"Torrada, trigo, tradicional",base (cereal/tubérculo),395.0,11.5,73.6,6.39,1.28,912.0,1,D,,1,0,0,0,0,0,0,0,1,1,0,1
+Norte,cafe_da_manha,carboidrato,C0209A,93,100.0,6.0,"Arroz, polido, cozido, c/ óleo, cebola e alho, c/ sal",base (cereal/tubérculo),138.0,2.4,29.1,1.59,1.27,189.0,1,B,arroz,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,cafe_da_manha,carboidrato,C0004A,85,70.0,7.0,"Pão, trigo, branco, hamburguer/hot dog/leite, de padaria (média de diferentes tipos)",base (cereal/tubérculo),292.0,9.39,56.2,3.87,2.84,413.0,4,B,,1,1,0,0,0,0,0,0,0,0,0,0
+Norte,cafe_da_manha,carboidrato,C0155A,64,50.0,8.0,"Pão, trigo, integral, forma (média de diferentes marcas)",base (cereal/tubérculo),249.0,10.5,48.6,2.54,5.29,495.0,4,A,pao_forma,1,0,0,0,0,0,0,0,1,1,0,1
+Norte,cafe_da_manha,carboidrato,C0908B,47,200.0,9.0,"Mandioca (aipim, macaxeira), s/ casca, cozida, drenada, s/ óleo, c/ sal, Manihot esculenta Crantz.",base (cereal/tubérculo),120.0,0.64,29.7,0.24,1.77,128.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,cafe_da_manha,carboidrato,C0003A,40,50.0,10.0,"Pão, trigo, branco, forma, tradicional (média de diferentes marcas)",base (cereal/tubérculo),260.0,9.53,51.5,2.41,2.68,860.0,4,C,pao_forma,1,0,0,0,0,0,0,0,1,1,0,1
+Norte,cafe_da_manha,fruta,C0006C,141,75.0,1.0,"Banana, in natura, Musa spp.",fruta,109.0,1.27,26.7,0.19,2.24,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,cafe_da_manha,fruta,C0024C,85,170.0,2.0,"Mamão, polpa, in natura, Carica papaya L.",fruta,44.0,0.57,10.7,0.25,1.83,2.44,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,cafe_da_manha,fruta,C0088C,57,25.0,3.0,"Tucumã, in natura, Astrocaryum vulgare",fruta,261.0,2.09,26.5,19.1,12.7,3.89,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,cafe_da_manha,fruta,C0107C,42,85.0,4.0,"Banana, da terra, assada, s/ adição de ingredientes, Musa acuminata Colla x Musa balbisiana Colla",fruta,165.0,1.69,39.7,0.28,1.8,0.0,1,C,,0,1,0,0,0,0,0,0,1,0,1,0
+Norte,cafe_da_manha,fruta,C0023C,40,150.0,5.0,"Maçã, c/ casca, in natura, Malus spp.",fruta,64.0,0.29,15.7,0.49,2.07,0.66,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,cafe_da_manha,fruta,C0028C,28,90.0,6.0,"Melão, polpa, in natura, Cucumis melo",fruta,24.0,0.61,5.7,0.15,1.22,8.96,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,cafe_da_manha,proteina,C0043G,219,200.0,1.0,"Leite, vaca, integral, fluído",laticínio,64.0,2.93,5.92,3.23,0.0,63.8,1,B,leite,0,1,0,0,0,0,0,0,1,0,1,0
+Norte,cafe_da_manha,proteina,C0034G,213,200.0,2.0,"Leite, vaca, c/ chocolate, Toddynho",laticínio,85.0,2.0,13.9,2.4,0.0,65.0,4,C,,0,1,0,0,0,0,0,0,1,0,1,0
+Norte,cafe_da_manha,proteina,C0028J,137,50.0,3.0,"Ovo, galinha, inteiro, frito (c/ óleo de soja), c/ sal",proteína animal,233.0,15.5,1.19,18.5,0.0,353.0,1,C,,0,0,1,0,0,0,0,0,1,0,1,1
+Norte,cafe_da_manha,proteina,C0039G,75,25.0,4.0,"Leite, vaca, integral, em pó (média de várias amostras)",laticínio,498.0,26.0,39.0,26.4,0.0,321.0,1,E,leite_po,0,1,0,0,0,0,0,0,1,0,1,0
+Norte,cafe_da_manha,proteina,C0059G,71,20.0,5.0,"Queijo, muçarela (média de diferentes amostras)",laticínio,320.0,23.8,1.97,24.1,0.0,506.0,3,D,mussarela,0,1,0,0,0,0,0,0,1,0,1,0
+Norte,cafe_da_manha,proteina,C0027J,56,50.0,6.0,"Ovo, galinha, mexido, c/ margarina, c/ sal",proteína animal,167.0,11.9,2.25,12.2,0.0,358.0,4,C,,0,0,1,0,0,0,0,0,1,0,1,1
+Norte,cafe_da_manha,proteina,C0023J,43,90.0,7.0,"Ovo, galinha, inteiro, cozido, c/ sal",proteína animal,125.0,10.3,1.38,8.66,0.0,315.0,1,B,ovo,0,0,1,0,0,0,0,0,1,0,1,1
+Norte,cafe_da_manha,proteina,C0064G,40,15.0,8.0,"Queijo, prato",laticínio,346.0,24.2,0.2,27.6,0.0,550.0,3,D,,0,1,0,0,0,0,0,0,1,0,1,0
+Norte,cafe_da_manha,proteina,C0247F,38,15.0,9.0,"Presunto, porco, cozido, c/ capa de gordura (média de diferentes amostras)",proteína animal,127.0,15.2,1.05,6.83,0.0,1044.0,4,D,,0,0,0,0,0,0,0,0,0,0,1,1
+Norte,cafe_da_manha,proteina,C0011G,35,200.0,10.0,"Iogurte, integral (média de diferentes sabores)",laticínio,75.0,3.12,10.9,2.17,0.23,55.7,4,B,,0,1,0,0,0,0,0,0,1,0,1,0
+Norte,jantar,carboidrato,C0209A,5210,100.0,1.0,"Arroz, polido, cozido, c/ óleo, cebola e alho, c/ sal",base (cereal/tubérculo),138.0,2.4,29.1,1.59,1.27,189.0,1,B,arroz,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,jantar,carboidrato,C0834A,611,105.0,2.0,"Macarrão, trigo, cozido, drenado, s/ óleo, c/ sal",base (cereal/tubérculo),125.0,3.54,26.9,0.57,0.91,189.0,1,B,,1,0,0,0,0,0,0,0,1,1,0,1
+Norte,jantar,carboidrato,C0089B,289,45.0,3.0,"Mandioca, farofa, temperada, c/ sal",base (cereal/tubérculo),396.0,2.06,80.3,9.12,7.82,574.0,1,C,,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,jantar,carboidrato,C0002A,252,70.0,4.0,"Pão francês, trigo, branco, de padaria (médias de diferentes amostras)",base (cereal/tubérculo),300.0,9.83,61.6,2.12,2.61,681.0,3,C,,1,0,0,0,0,0,0,0,1,1,0,1
+Norte,jantar,carboidrato,C0407A,162,320.0,5.0,"Macarrão, trigo, instantâneo, c/ tempero, cozido, drenado (preparado conforme a embalagem)",base (cereal/tubérculo),154.0,3.17,22.5,6.21,2.02,545.0,1,C,,1,0,0,0,0,0,0,0,1,1,0,1
+Norte,jantar,carboidrato,C0908B,70,200.0,6.0,"Mandioca (aipim, macaxeira), s/ casca, cozida, drenada, s/ óleo, c/ sal, Manihot esculenta Crantz.",base (cereal/tubérculo),120.0,0.64,29.7,0.24,1.77,128.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,jantar,carboidrato,C0190A,52,135.0,7.0,"Cuscuz de milho, cozido, c/ sal",base (cereal/tubérculo),112.0,2.16,25.3,0.68,2.05,247.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,jantar,carboidrato,C0012A,49,195.0,8.0,"Arroz, creme, cozido, s/ tempero, Orysa sativa L.",base (cereal/tubérculo),76.0,0.14,21.6,0.28,0.0,13.2,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,jantar,carboidrato,C0906B,41,70.0,9.0,"Tapioca, sem manteiga, sem recheio",base (cereal/tubérculo),289.0,0.36,71.9,0.0,0.2,1.31,1,C,,0,1,0,0,0,0,0,0,1,0,1,0
+Norte,jantar,carboidrato,C0143A,33,70.0,10.0,"Milho, polenta/fubá, cozido, c/ sal",base (cereal/tubérculo),104.0,2.25,23.0,0.69,1.74,429.0,1,C,fuba,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,jantar,fruta,C0006C,99,75.0,1.0,"Banana, in natura, Musa spp.",fruta,109.0,1.27,26.7,0.19,2.24,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,jantar,fruta,C0023C,31,150.0,2.0,"Maçã, c/ casca, in natura, Malus spp.",fruta,64.0,0.29,15.7,0.49,2.07,0.66,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,jantar,fruta,C0027C,23,200.0,3.0,"Melancia, polpa, in natura, Citrullus spp.",fruta,29.0,0.7,6.52,0.05,0.13,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,jantar,fruta,C0024C,21,170.0,4.0,"Mamão, polpa, in natura, Carica papaya L.",fruta,44.0,0.57,10.7,0.25,1.83,2.44,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,jantar,legumes,C0035B,70,60.0,1.0,"Tomate, cru, Lycopersicon esculentum",verdura/legume,18.0,1.04,3.82,0.17,1.6,3.13,1,A,tomate,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,jantar,legumes,C0009B,37,25.0,2.0,"Alface, crua, Lactuca sativa L.",verdura/legume,9.0,1.08,1.79,0.12,1.87,4.2,1,A,alface,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,jantar,legumes,C0023B,24,60.0,3.0,"Couve, crua, Brassica oleracea var. Acephala",verdura/legume,28.0,2.87,4.33,0.55,3.12,9.09,1,A,couve,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,jantar,leguminosa,C0091T,2228,140.0,1.0,"Feijão, carioca, cozido (50% grão e 50% caldo), c/ óleo, cebola e alho, c/ sal, Phaseolus vulgaris L.",leguminosa,79.0,4.69,14.6,1.72,6.84,190.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,jantar,leguminosa,C0100T,157,140.0,2.0,"Feijão, fradinho, cozido (50% grão e 50% caldo), c/ óleo, cebola e alho, c/ sal, Vigna unguiculata (L.) Walp.",leguminosa,74.0,4.99,12.9,1.82,7.23,189.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,jantar,proteina,C0720F,614,110.0,1.0,"Carne, frango, inteiro, refogada (c/ óleo, cebola e alho), c/ sal (média de amostras c/ e s/ pele), Gallus gallus",proteína animal,236.0,23.9,0.74,15.2,0.13,267.0,1,C,,0,0,0,0,0,0,0,0,0,0,1,1
+Norte,jantar,proteina,C0716F,493,110.0,2.0,"Carne, frango, inteiro, s/ pele, frita (c/ óleo de soja), c/ sal, Gallus gallus",proteína animal,236.0,25.7,0.0,14.8,0.0,244.0,1,B,,0,0,0,0,0,0,0,0,0,0,1,1
+Norte,jantar,proteina,C0028J,448,100.0,3.0,"Ovo, galinha, inteiro, frito (c/ óleo de soja), c/ sal",proteína animal,233.0,15.5,1.19,18.5,0.0,353.0,1,C,,0,0,1,0,0,0,0,0,1,0,1,1
+Norte,jantar,proteina,C0634F,385,90.0,4.0,"Carne, boi, patinho, s/ gordura, frita (c/ óleo de soja), c/ sal, Bos taurus",proteína animal,263.0,32.9,0.0,14.7,0.0,234.0,1,C,,0,0,0,0,0,0,0,0,0,0,1,1
+Norte,jantar,proteina,C0733F,382,75.0,5.0,"Carne, boi, de segunda (acém, paleta, peito), frita (c/ óleo de soja), c/ sal, Bos taurus",proteína animal,291.0,23.9,0.0,21.7,0.0,369.0,1,D,,0,0,0,0,0,0,0,0,0,0,1,1
+Norte,jantar,proteina,C0732F,354,70.0,6.0,"Carne, boi, de segunda (acém, capa de contrafilé, costela, músculo, paleta, peito), cozida/grelhada/assada, s/ óleo, c/ sal, Bos taurus",proteína animal,254.0,28.4,0.0,15.7,0.0,385.0,1,D,,0,0,0,0,0,0,0,0,0,0,1,1
+Norte,jantar,proteina,C0714F,252,110.0,7.0,"Carne, frango, inteiro, s/ pele, grelhada/assada, s/ óleo, c/ sal, Gallus gallus",proteína animal,179.0,27.9,0.0,7.47,0.0,249.0,1,B,,0,0,0,0,0,0,0,0,0,0,1,1
+Norte,jantar,proteina,C0713F,206,110.0,8.0,"Carne, frango, caipira, inteiro, cozida, s/ óleo, c/ sal (média de amostras c/ e s/ pele), Gallus gallus",proteína animal,206.0,26.7,0.0,11.1,0.0,234.0,1,B,,0,0,0,0,0,0,0,0,0,0,1,1
+Norte,jantar,proteina,C0220E,168,180.0,9.0,"Peixe, água salgada, filé/posta, frito (c/ óleo de soja), c/ sal (média de várias espécies)",proteína animal,142.0,17.9,0.0,7.84,0.0,89.5,1,A,,0,0,0,1,0,0,0,0,0,0,1,1
+Norte,jantar,proteina,C0766F,156,60.0,10.0,"Linguiça, frango/porco, fresca, frita (c/ óleo de soja), c/ sal",proteína animal,256.0,19.3,0.0,19.8,0.0,1576.0,4,D,,0,0,0,0,0,0,0,0,0,0,1,1
+Norte,lanche,carboidrato,C0002A,1027,70.0,1.0,"Pão francês, trigo, branco, de padaria (médias de diferentes amostras)",base (cereal/tubérculo),300.0,9.83,61.6,2.12,2.61,681.0,3,C,,1,0,0,0,0,0,0,0,1,1,0,1
+Norte,lanche,carboidrato,C0906B,160,70.0,2.0,"Tapioca, sem manteiga, sem recheio",base (cereal/tubérculo),289.0,0.36,71.9,0.0,0.2,1.31,1,C,,0,1,0,0,0,0,0,0,1,0,1,0
+Norte,lanche,carboidrato,C0209A,134,90.0,3.0,"Arroz, polido, cozido, c/ óleo, cebola e alho, c/ sal",base (cereal/tubérculo),138.0,2.4,29.1,1.59,1.27,189.0,1,B,arroz,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,lanche,carboidrato,C0832A,107,20.0,4.0,"Milho, pipoca, preparada, c/ óleo de soja, c/ açúcar",base (cereal/tubérculo),432.0,8.97,73.1,14.3,12.9,5.13,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,lanche,carboidrato,C0169A,99,25.0,5.0,"Torrada, trigo, tradicional",base (cereal/tubérculo),395.0,11.5,73.6,6.39,1.28,912.0,1,D,,1,0,0,0,0,0,0,0,1,1,0,1
+Norte,lanche,carboidrato,C0190A,90,135.0,6.0,"Cuscuz de milho, cozido, c/ sal",base (cereal/tubérculo),112.0,2.16,25.3,0.68,2.05,247.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,lanche,carboidrato,C0012A,77,230.0,7.0,"Arroz, creme, cozido, s/ tempero, Orysa sativa L.",base (cereal/tubérculo),76.0,0.14,21.6,0.28,0.0,13.2,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,lanche,carboidrato,C0160A,52,50.0,8.0,"Pão, trigo, sovado",base (cereal/tubérculo),300.0,8.4,61.5,2.84,2.43,430.0,3,B,,1,0,0,0,0,0,0,0,1,1,0,1
+Norte,lanche,carboidrato,C0212A,47,85.0,9.0,"Salgadinho, snack, extrusado de milho",base (cereal/tubérculo),546.0,6.17,57.3,33.4,4.0,514.0,4,D,,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,lanche,carboidrato,C0004A,34,70.0,10.0,"Pão, trigo, branco, hamburguer/hot dog/leite, de padaria (média de diferentes tipos)",base (cereal/tubérculo),292.0,9.39,56.2,3.87,2.84,413.0,4,B,,1,1,0,0,0,0,0,0,0,0,0,0
+Norte,lanche,fruta,C0006C,503,130.0,1.0,"Banana, in natura, Musa spp.",fruta,109.0,1.27,26.7,0.19,2.24,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,lanche,fruta,C0023C,226,150.0,2.0,"Maçã, c/ casca, in natura, Malus spp.",fruta,64.0,0.29,15.7,0.49,2.07,0.66,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,lanche,fruta,C0017C,194,360.0,3.0,"Laranja, in natura, Citrus spp.",fruta,45.0,0.9,10.8,0.24,2.02,0.53,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,lanche,fruta,C0025C,142,280.0,4.0,"Manga, polpa, in natura, Mangifera indica L.",fruta,64.0,0.53,16.0,0.31,2.14,0.92,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,lanche,fruta,C0027C,127,200.0,5.0,"Melancia, polpa, in natura, Citrullus spp.",fruta,29.0,0.7,6.52,0.05,0.13,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,lanche,fruta,C0024C,103,170.0,6.0,"Mamão, polpa, in natura, Carica papaya L.",fruta,44.0,0.57,10.7,0.25,1.83,2.44,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,lanche,fruta,C0088C,60,25.0,7.0,"Tucumã, in natura, Astrocaryum vulgare",fruta,261.0,2.09,26.5,19.1,12.7,3.89,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,lanche,fruta,C0032C,52,135.0,8.0,"Tangerina, Ponkã, in natura, Citrus reticulata",fruta,40.0,0.85,9.54,0.07,0.94,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,lanche,fruta,C0001C,34,430.0,9.0,"Abacate, polpa, in natura, Persea americana Mill",fruta,76.0,1.15,5.84,6.21,4.03,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Norte,lanche,fruta,C0107C,31,100.0,10.0,"Banana, da terra, assada, s/ adição de ingredientes, Musa acuminata Colla x Musa balbisiana Colla",fruta,165.0,1.69,39.7,0.28,1.8,0.0,1,C,,0,1,0,0,0,0,0,0,1,0,1,0
+Norte,lanche,proteina,C0034G,103,200.0,1.0,"Leite, vaca, c/ chocolate, Toddynho",laticínio,85.0,2.0,13.9,2.4,0.0,65.0,4,C,,0,1,0,0,0,0,0,0,1,0,1,0
+Norte,lanche,proteina,C0011G,88,200.0,2.0,"Iogurte, integral (média de diferentes sabores)",laticínio,75.0,3.12,10.9,2.17,0.23,55.7,4,B,,0,1,0,0,0,0,0,0,1,0,1,0
+Norte,lanche,proteina,C0043G,75,200.0,3.0,"Leite, vaca, integral, fluído",laticínio,64.0,2.93,5.92,3.23,0.0,63.8,1,B,leite,0,1,0,0,0,0,0,0,1,0,1,0
+Norte,lanche,proteina,C0028J,50,100.0,4.0,"Ovo, galinha, inteiro, frito (c/ óleo de soja), c/ sal",proteína animal,233.0,15.5,1.19,18.5,0.0,353.0,1,C,,0,0,1,0,0,0,0,0,1,0,1,1
+Norte,lanche,proteina,C0039G,41,25.0,5.0,"Leite, vaca, integral, em pó (média de várias amostras)",laticínio,498.0,26.0,39.0,26.4,0.0,321.0,1,E,leite_po,0,1,0,0,0,0,0,0,1,0,1,0
+Norte,lanche,proteina,C0059G,37,20.0,6.0,"Queijo, muçarela (média de diferentes amostras)",laticínio,320.0,23.8,1.97,24.1,0.0,506.0,3,D,mussarela,0,1,0,0,0,0,0,0,1,0,1,0
+Norte,lanche,proteina,C0020G,32,200.0,7.0,"Iogurte, natural (média de diferentes amostras)",laticínio,57.0,4.02,4.76,2.43,0.0,47.7,1,B,,0,1,0,0,0,0,0,0,1,0,1,0
+Sudeste,almoco,carboidrato,C0209A,16120,90.0,1.0,"Arroz, polido, cozido, c/ óleo, cebola e alho, c/ sal",base (cereal/tubérculo),138.0,2.4,29.1,1.59,1.27,189.0,1,B,arroz,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,almoco,carboidrato,C0834A,1620,105.0,2.0,"Macarrão, trigo, cozido, drenado, s/ óleo, c/ sal",base (cereal/tubérculo),125.0,3.54,26.9,0.57,0.91,189.0,1,B,,1,0,0,0,0,0,0,0,1,1,0,1
+Sudeste,almoco,carboidrato,C0089B,650,35.0,3.0,"Mandioca, farofa, temperada, c/ sal",base (cereal/tubérculo),396.0,2.06,80.3,9.12,7.82,574.0,1,C,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,almoco,carboidrato,C0143A,611,120.0,4.0,"Milho, polenta/fubá, cozido, c/ sal",base (cereal/tubérculo),104.0,2.25,23.0,0.69,1.74,429.0,1,C,fuba,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,almoco,carboidrato,C0118B,601,110.0,5.0,"Batata, inglesa, frita (c/ óleo de soja), c/ sal, Solanum tuberosum L.",base (cereal/tubérculo),248.0,4.04,32.7,11.9,3.16,189.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,almoco,carboidrato,C0211A,395,125.0,6.0,"Arroz, integral, cozido, c/ óleo, cebola e alho, c/ sal",base (cereal/tubérculo),116.0,2.46,23.0,2.03,2.14,188.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,almoco,carboidrato,C0117B,307,90.0,7.0,"Batata, inglesa, s/ casca, cozida, drenada, s/ óleo, c/ sal, Solanum tuberosum L.",base (cereal/tubérculo),52.0,1.33,12.2,0.05,1.46,190.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,almoco,carboidrato,C0315B,258,90.0,8.0,"Batata, inglesa, s/ casca, cozida, drenada, c/ óleo de soja, c/ sal, Solanum tuberosum L.",base (cereal/tubérculo),94.0,1.26,11.6,5.02,1.39,189.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,almoco,carboidrato,C0049B,165,25.0,9.0,"Batata, chips, frita, c/ sal, Solanum tuberosum L.",base (cereal/tubérculo),542.0,5.44,51.5,35.8,4.0,624.0,4,D,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,almoco,carboidrato,C0908B,120,200.0,10.0,"Mandioca (aipim, macaxeira), s/ casca, cozida, drenada, s/ óleo, c/ sal, Manihot esculenta Crantz.",base (cereal/tubérculo),120.0,0.64,29.7,0.24,1.77,128.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,almoco,fruta,C0006C,246,75.0,1.0,"Banana, in natura, Musa spp.",fruta,109.0,1.27,26.7,0.19,2.24,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,almoco,fruta,C0017C,191,180.0,2.0,"Laranja, in natura, Citrus spp.",fruta,45.0,0.9,10.8,0.24,2.02,0.53,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,almoco,fruta,C0023C,61,150.0,3.0,"Maçã, c/ casca, in natura, Malus spp.",fruta,64.0,0.29,15.7,0.49,2.07,0.66,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,almoco,fruta,C0024C,41,155.0,4.0,"Mamão, polpa, in natura, Carica papaya L.",fruta,44.0,0.57,10.7,0.25,1.83,2.44,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,almoco,fruta,C0027C,40,200.0,5.0,"Melancia, polpa, in natura, Citrullus spp.",fruta,29.0,0.7,6.52,0.05,0.13,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,almoco,fruta,C0025C,29,140.0,6.0,"Manga, polpa, in natura, Mangifera indica L.",fruta,64.0,0.53,16.0,0.31,2.14,0.92,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,almoco,fruta,C0032C,24,135.0,7.0,"Tangerina, Ponkã, in natura, Citrus reticulata",fruta,40.0,0.85,9.54,0.07,0.94,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,almoco,fruta,C0002C,22,75.0,8.0,"Abacaxi, polpa, in natura, Ananas comosus L.",fruta,50.0,0.68,11.6,0.33,1.12,2.84,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,almoco,legumes,C0009B,1199,25.0,1.0,"Alface, crua, Lactuca sativa L.",verdura/legume,9.0,1.08,1.79,0.12,1.87,4.2,1,A,alface,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,almoco,legumes,C0035B,979,60.0,2.0,"Tomate, cru, Lycopersicon esculentum",verdura/legume,18.0,1.04,3.82,0.17,1.6,3.13,1,A,tomate,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,almoco,legumes,C0145B,476,40.0,3.0,"Couve, manteiga, refogada (c/ óleo, cebola e alho), c/ sal, Brassica oleracea var. Acephala",verdura/legume,83.0,2.03,7.07,6.41,5.59,138.0,1,A,,0,1,0,0,0,0,0,0,1,0,1,0
+Sudeste,almoco,legumes,C0226B,191,70.0,4.0,"Abóbora, moranga, s/ casca, s/ semente, cozida, drenada, c/ óleo de soja, c/ sal",verdura/legume,38.0,1.18,3.89,2.52,2.36,127.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,almoco,legumes,C0033B,189,70.0,5.0,"Repolho, cru, Brassica oleracea L.",verdura/legume,20.0,1.12,4.42,0.14,1.92,3.32,1,A,repolho,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,almoco,legumes,C0020B,183,40.0,6.0,"Cenoura, s/ casca, crua, Daucus carota L.",verdura/legume,31.0,1.12,7.55,0.21,2.98,11.1,1,A,cenoura,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,almoco,legumes,C0030B,182,35.0,7.0,"Pepino, c/ casca, cru, Cucumis sativus l.",verdura/legume,10.0,0.7,2.23,0.09,1.04,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,almoco,legumes,C0166B,173,70.0,8.0,"Abóbora, moranga, s/ casca, s/ semente, cozida, drenada, s/ óleo, c/ sal",verdura/legume,17.0,1.21,3.98,0.14,2.41,127.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,almoco,legumes,C0023B,167,40.0,9.0,"Couve, crua, Brassica oleracea var. Acephala",verdura/legume,28.0,2.87,4.33,0.55,3.12,9.09,1,A,couve,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,almoco,legumes,C0912B,154,45.0,10.0,"Beterraba, cozida, drenada, s/ óleo, c/ sal, Beta vulgaris L.",verdura/legume,27.0,1.22,6.27,0.09,2.03,147.0,1,A,beterraba,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,almoco,leguminosa,C0091T,14150,140.0,1.0,"Feijão, carioca, cozido (50% grão e 50% caldo), c/ óleo, cebola e alho, c/ sal, Phaseolus vulgaris L.",leguminosa,79.0,4.69,14.6,1.72,6.84,190.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,almoco,leguminosa,C0120T,23,225.0,2.0,"Lentilha, cozida, c/ toucinho defumado (bacon), c/ óleo, cebola e alho, c/ sal",leguminosa,163.0,8.97,17.5,7.59,5.63,212.0,4,A,,0,0,0,0,0,0,0,0,0,0,1,1
+Sudeste,almoco,leguminosa,C0100T,21,140.0,3.0,"Feijão, fradinho, cozido (50% grão e 50% caldo), c/ óleo, cebola e alho, c/ sal, Vigna unguiculata (L.) Walp.",leguminosa,74.0,4.99,12.9,1.82,7.23,189.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,almoco,leguminosa,C0169T,20,75.0,4.0,"Soja, proteína, texturizada, hidratada (c/ caldo de legumes), refogada, c/ óleo, cebola e alho, c/ sal",leguminosa,185.0,23.2,21.8,1.53,4.51,424.0,1,A,,0,0,0,0,0,0,1,0,1,1,1,1
+Sudeste,almoco,proteina,C0634F,1242,90.0,1.0,"Carne, boi, patinho, s/ gordura, frita (c/ óleo de soja), c/ sal, Bos taurus",proteína animal,263.0,32.9,0.0,14.7,0.0,234.0,1,C,,0,0,0,0,0,0,0,0,0,0,1,1
+Sudeste,almoco,proteina,C0720F,999,100.0,2.0,"Carne, frango, inteiro, refogada (c/ óleo, cebola e alho), c/ sal (média de amostras c/ e s/ pele), Gallus gallus",proteína animal,236.0,23.9,0.74,15.2,0.13,267.0,1,C,,0,0,0,0,0,0,0,0,0,0,1,1
+Sudeste,almoco,proteina,C0716F,900,100.0,3.0,"Carne, frango, inteiro, s/ pele, frita (c/ óleo de soja), c/ sal, Gallus gallus",proteína animal,236.0,25.7,0.0,14.8,0.0,244.0,1,B,,0,0,0,0,0,0,0,0,0,0,1,1
+Sudeste,almoco,proteina,C0028J,887,50.0,4.0,"Ovo, galinha, inteiro, frito (c/ óleo de soja), c/ sal",proteína animal,233.0,15.5,1.19,18.5,0.0,353.0,1,C,,0,0,1,0,0,0,0,0,1,0,1,1
+Sudeste,almoco,proteina,C0766F,764,50.0,5.0,"Linguiça, frango/porco, fresca, frita (c/ óleo de soja), c/ sal",proteína animal,256.0,19.3,0.0,19.8,0.0,1576.0,4,D,,0,0,0,0,0,0,0,0,0,0,1,1
+Sudeste,almoco,proteina,C0237F,759,100.0,6.0,"Carne, frango, peito, s/ pele, frita (c/ óleo de soja), c/ sal",proteína animal,187.0,30.3,0.0,7.33,0.0,227.0,1,B,,0,0,0,0,0,0,0,0,0,0,1,1
+Sudeste,almoco,proteina,C0732F,747,75.0,7.0,"Carne, boi, de segunda (acém, capa de contrafilé, costela, músculo, paleta, peito), cozida/grelhada/assada, s/ óleo, c/ sal, Bos taurus",proteína animal,254.0,28.4,0.0,15.7,0.0,385.0,1,D,,0,0,0,0,0,0,0,0,0,0,1,1
+Sudeste,almoco,proteina,C0733F,732,90.0,8.0,"Carne, boi, de segunda (acém, paleta, peito), frita (c/ óleo de soja), c/ sal, Bos taurus",proteína animal,291.0,23.9,0.0,21.7,0.0,369.0,1,D,,0,0,0,0,0,0,0,0,0,0,1,1
+Sudeste,almoco,proteina,C0714F,700,100.0,9.0,"Carne, frango, inteiro, s/ pele, grelhada/assada, s/ óleo, c/ sal, Gallus gallus",proteína animal,179.0,27.9,0.0,7.47,0.0,249.0,1,B,,0,0,0,0,0,0,0,0,0,0,1,1
+Sudeste,almoco,proteina,C0230F,690,100.0,10.0,"Carne, frango, peito, s/ pele, grelhada, s/ gordura, s/ óleo, c/ sal, Gallus gallus",proteína animal,149.0,31.8,0.0,2.46,0.0,249.0,1,A,,0,0,0,0,0,0,0,0,0,0,1,1
+Sudeste,cafe_da_manha,carboidrato,C0002A,7140,70.0,1.0,"Pão francês, trigo, branco, de padaria (médias de diferentes amostras)",base (cereal/tubérculo),300.0,9.83,61.6,2.12,2.61,681.0,3,C,,1,0,0,0,0,0,0,0,1,1,0,1
+Sudeste,cafe_da_manha,carboidrato,C0155A,531,50.0,2.0,"Pão, trigo, integral, forma (média de diferentes marcas)",base (cereal/tubérculo),249.0,10.5,48.6,2.54,5.29,495.0,4,A,pao_forma,1,0,0,0,0,0,0,0,1,1,0,1
+Sudeste,cafe_da_manha,carboidrato,C0003A,455,50.0,3.0,"Pão, trigo, branco, forma, tradicional (média de diferentes marcas)",base (cereal/tubérculo),260.0,9.53,51.5,2.41,2.68,860.0,4,C,pao_forma,1,0,0,0,0,0,0,0,1,1,0,1
+Sudeste,cafe_da_manha,carboidrato,C0169A,274,15.0,4.0,"Torrada, trigo, tradicional",base (cereal/tubérculo),395.0,11.5,73.6,6.39,1.28,912.0,1,D,,1,0,0,0,0,0,0,0,1,1,0,1
+Sudeste,cafe_da_manha,carboidrato,C0160A,171,25.0,5.0,"Pão, trigo, sovado",base (cereal/tubérculo),300.0,8.4,61.5,2.84,2.43,430.0,3,B,,1,0,0,0,0,0,0,0,1,1,0,1
+Sudeste,cafe_da_manha,carboidrato,C0906B,144,70.0,6.0,"Tapioca, sem manteiga, sem recheio",base (cereal/tubérculo),289.0,0.36,71.9,0.0,0.2,1.31,1,C,,0,1,0,0,0,0,0,0,1,0,1,0
+Sudeste,cafe_da_manha,carboidrato,C0148A,110,35.0,7.0,"Pão, trigo, bisnaguinha",base (cereal/tubérculo),315.0,7.31,59.5,6.03,3.2,218.0,4,A,,1,0,0,0,0,0,0,0,1,1,0,1
+Sudeste,cafe_da_manha,carboidrato,C0209A,95,90.0,8.0,"Arroz, polido, cozido, c/ óleo, cebola e alho, c/ sal",base (cereal/tubérculo),138.0,2.4,29.1,1.59,1.27,189.0,1,B,arroz,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,cafe_da_manha,carboidrato,C0170A,84,15.0,9.0,"Torrada, trigo, integral, Bauducco",base (cereal/tubérculo),398.0,13.0,71.0,7.0,0.7,721.0,4,D,,1,0,0,0,0,0,0,0,1,1,0,1
+Sudeste,cafe_da_manha,carboidrato,C0021A,50,30.0,10.0,"Aveia, crua (média de diferentes tipos), Avena sativa",base (cereal/tubérculo),382.0,15.4,65.3,8.7,9.74,4.63,1,A,,1,0,0,0,0,0,0,0,1,1,0,1
+Sudeste,cafe_da_manha,fruta,C0006C,671,75.0,1.0,"Banana, in natura, Musa spp.",fruta,109.0,1.27,26.7,0.19,2.24,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,cafe_da_manha,fruta,C0024C,262,170.0,2.0,"Mamão, polpa, in natura, Carica papaya L.",fruta,44.0,0.57,10.7,0.25,1.83,2.44,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,cafe_da_manha,fruta,C0023C,165,150.0,3.0,"Maçã, c/ casca, in natura, Malus spp.",fruta,64.0,0.29,15.7,0.49,2.07,0.66,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,cafe_da_manha,fruta,C0107C,56,100.0,4.0,"Banana, da terra, assada, s/ adição de ingredientes, Musa acuminata Colla x Musa balbisiana Colla",fruta,165.0,1.69,39.7,0.28,1.8,0.0,1,C,,0,1,0,0,0,0,0,0,1,0,1,0
+Sudeste,cafe_da_manha,fruta,C0028C,43,90.0,5.0,"Melão, polpa, in natura, Cucumis melo",fruta,24.0,0.61,5.7,0.15,1.22,8.96,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,cafe_da_manha,fruta,C0017C,41,180.0,6.0,"Laranja, in natura, Citrus spp.",fruta,45.0,0.9,10.8,0.24,2.02,0.53,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,cafe_da_manha,fruta,C0025C,29,140.0,7.0,"Manga, polpa, in natura, Mangifera indica L.",fruta,64.0,0.53,16.0,0.31,2.14,0.92,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,cafe_da_manha,fruta,C0032C,26,135.0,8.0,"Tangerina, Ponkã, in natura, Citrus reticulata",fruta,40.0,0.85,9.54,0.07,0.94,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,cafe_da_manha,fruta,C0030C,24,130.0,9.0,"Pera, c/ casca, in natura, Pyrus communis",fruta,54.0,0.4,14.0,0.23,3.0,0.49,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,cafe_da_manha,proteina,C0034G,960,240.0,1.0,"Leite, vaca, c/ chocolate, Toddynho",laticínio,85.0,2.0,13.9,2.4,0.0,65.0,4,C,,0,1,0,0,0,0,0,0,1,0,1,0
+Sudeste,cafe_da_manha,proteina,C0043G,789,200.0,2.0,"Leite, vaca, integral, fluído",laticínio,64.0,2.93,5.92,3.23,0.0,63.8,1,B,leite,0,1,0,0,0,0,0,0,1,0,1,0
+Sudeste,cafe_da_manha,proteina,C0056G,546,45.0,3.0,"Queijo, minas, padrão (média de diferentes amostras)",laticínio,295.0,20.4,7.54,20.4,0.0,665.0,3,D,,0,1,0,0,0,0,0,0,1,0,1,0
+Sudeste,cafe_da_manha,proteina,C0059G,319,20.0,4.0,"Queijo, muçarela (média de diferentes amostras)",laticínio,320.0,23.8,1.97,24.1,0.0,506.0,3,D,mussarela,0,1,0,0,0,0,0,0,1,0,1,0
+Sudeste,cafe_da_manha,proteina,C0066G,309,15.0,5.0,"Queijo, requeijão (média de diferentes amostras)",laticínio,281.0,9.91,3.03,25.5,0.0,608.0,4,D,,0,1,0,0,0,0,0,0,1,0,1,0
+Sudeste,cafe_da_manha,proteina,C0011G,178,170.0,6.0,"Iogurte, integral (média de diferentes sabores)",laticínio,75.0,3.12,10.9,2.17,0.23,55.7,4,B,,0,1,0,0,0,0,0,0,1,0,1,0
+Sudeste,cafe_da_manha,proteina,C0247F,131,15.0,7.0,"Presunto, porco, cozido, c/ capa de gordura (média de diferentes amostras)",proteína animal,127.0,15.2,1.05,6.83,0.0,1044.0,4,D,,0,0,0,0,0,0,0,0,0,0,1,1
+Sudeste,cafe_da_manha,proteina,C0023J,111,90.0,8.0,"Ovo, galinha, inteiro, cozido, c/ sal",proteína animal,125.0,10.3,1.38,8.66,0.0,315.0,1,B,ovo,0,0,1,0,0,0,0,0,1,0,1,1
+Sudeste,cafe_da_manha,proteina,C0064G,111,15.0,9.0,"Queijo, prato",laticínio,346.0,24.2,0.2,27.6,0.0,550.0,3,D,,0,1,0,0,0,0,0,0,1,0,1,0
+Sudeste,cafe_da_manha,proteina,C0193F,96,30.0,10.0,Mortadela,proteína animal,269.0,13.7,16.1,16.6,0.0,1354.0,4,D,,0,0,0,0,0,0,0,0,0,0,1,1
+Sudeste,jantar,carboidrato,C0209A,10284,90.0,1.0,"Arroz, polido, cozido, c/ óleo, cebola e alho, c/ sal",base (cereal/tubérculo),138.0,2.4,29.1,1.59,1.27,189.0,1,B,arroz,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,jantar,carboidrato,C0834A,1145,105.0,2.0,"Macarrão, trigo, cozido, drenado, s/ óleo, c/ sal",base (cereal/tubérculo),125.0,3.54,26.9,0.57,0.91,189.0,1,B,,1,0,0,0,0,0,0,0,1,1,0,1
+Sudeste,jantar,carboidrato,C0143A,380,105.0,3.0,"Milho, polenta/fubá, cozido, c/ sal",base (cereal/tubérculo),104.0,2.25,23.0,0.69,1.74,429.0,1,C,fuba,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,jantar,carboidrato,C0002A,344,70.0,4.0,"Pão francês, trigo, branco, de padaria (médias de diferentes amostras)",base (cereal/tubérculo),300.0,9.83,61.6,2.12,2.61,681.0,3,C,,1,0,0,0,0,0,0,0,1,1,0,1
+Sudeste,jantar,carboidrato,C0118B,293,110.0,5.0,"Batata, inglesa, frita (c/ óleo de soja), c/ sal, Solanum tuberosum L.",base (cereal/tubérculo),248.0,4.04,32.7,11.9,3.16,189.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,jantar,carboidrato,C0089B,244,40.0,6.0,"Mandioca, farofa, temperada, c/ sal",base (cereal/tubérculo),396.0,2.06,80.3,9.12,7.82,574.0,1,C,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,jantar,carboidrato,C0407A,176,320.0,7.0,"Macarrão, trigo, instantâneo, c/ tempero, cozido, drenado (preparado conforme a embalagem)",base (cereal/tubérculo),154.0,3.17,22.5,6.21,2.02,545.0,1,C,,1,0,0,0,0,0,0,0,1,1,0,1
+Sudeste,jantar,carboidrato,C0315B,175,90.0,8.0,"Batata, inglesa, s/ casca, cozida, drenada, c/ óleo de soja, c/ sal, Solanum tuberosum L.",base (cereal/tubérculo),94.0,1.26,11.6,5.02,1.39,189.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,jantar,carboidrato,C0211A,159,125.0,9.0,"Arroz, integral, cozido, c/ óleo, cebola e alho, c/ sal",base (cereal/tubérculo),116.0,2.46,23.0,2.03,2.14,188.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,jantar,carboidrato,C0117B,139,90.0,10.0,"Batata, inglesa, s/ casca, cozida, drenada, s/ óleo, c/ sal, Solanum tuberosum L.",base (cereal/tubérculo),52.0,1.33,12.2,0.05,1.46,190.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,jantar,fruta,C0006C,185,75.0,1.0,"Banana, in natura, Musa spp.",fruta,109.0,1.27,26.7,0.19,2.24,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,jantar,fruta,C0023C,74,150.0,2.0,"Maçã, c/ casca, in natura, Malus spp.",fruta,64.0,0.29,15.7,0.49,2.07,0.66,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,jantar,fruta,C0017C,58,180.0,3.0,"Laranja, in natura, Citrus spp.",fruta,45.0,0.9,10.8,0.24,2.02,0.53,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,jantar,fruta,C0024C,27,170.0,4.0,"Mamão, polpa, in natura, Carica papaya L.",fruta,44.0,0.57,10.7,0.25,1.83,2.44,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,jantar,fruta,C0027C,20,200.0,5.0,"Melancia, polpa, in natura, Citrullus spp.",fruta,29.0,0.7,6.52,0.05,0.13,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,jantar,fruta,C0107C,20,100.0,6.0,"Banana, da terra, assada, s/ adição de ingredientes, Musa acuminata Colla x Musa balbisiana Colla",fruta,165.0,1.69,39.7,0.28,1.8,0.0,1,C,,0,1,0,0,0,0,0,0,1,0,1,0
+Sudeste,jantar,legumes,C0009B,574,25.0,1.0,"Alface, crua, Lactuca sativa L.",verdura/legume,9.0,1.08,1.79,0.12,1.87,4.2,1,A,alface,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,jantar,legumes,C0035B,469,50.0,2.0,"Tomate, cru, Lycopersicon esculentum",verdura/legume,18.0,1.04,3.82,0.17,1.6,3.13,1,A,tomate,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,jantar,legumes,C0145B,217,40.0,3.0,"Couve, manteiga, refogada (c/ óleo, cebola e alho), c/ sal, Brassica oleracea var. Acephala",verdura/legume,83.0,2.03,7.07,6.41,5.59,138.0,1,A,,0,1,0,0,0,0,0,0,1,0,1,0
+Sudeste,jantar,legumes,C0226B,131,70.0,4.0,"Abóbora, moranga, s/ casca, s/ semente, cozida, drenada, c/ óleo de soja, c/ sal",verdura/legume,38.0,1.18,3.89,2.52,2.36,127.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,jantar,legumes,C0030B,93,35.0,5.0,"Pepino, c/ casca, cru, Cucumis sativus l.",verdura/legume,10.0,0.7,2.23,0.09,1.04,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,jantar,legumes,C0166B,87,70.0,6.0,"Abóbora, moranga, s/ casca, s/ semente, cozida, drenada, s/ óleo, c/ sal",verdura/legume,17.0,1.21,3.98,0.14,2.41,127.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,jantar,legumes,C0033B,84,70.0,7.0,"Repolho, cru, Brassica oleracea L.",verdura/legume,20.0,1.12,4.42,0.14,1.92,3.32,1,A,repolho,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,jantar,legumes,C0154B,83,55.0,8.0,"Chuchu, s/ casca, cozido, drenado, s/ óleo, c/ sal, Sechium edule",verdura/legume,21.0,0.5,5.09,0.15,1.39,129.0,1,A,chuchu,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,jantar,legumes,C0153B,81,70.0,9.0,"Abobrinha, italiana, c/ casca, refogada (c/ óleo, cebola e alho), c/ sal",verdura/legume,26.0,1.07,4.19,0.82,1.38,130.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,jantar,legumes,C0224B,80,80.0,10.0,"Quiabo, c/ casca, cozido, drenado, c/ óleo de soja, c/ sal, Hibiscus esculentus L.",verdura/legume,41.0,1.28,4.93,2.5,3.05,128.0,1,A,quiabo,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,jantar,leguminosa,C0091T,8700,140.0,1.0,"Feijão, carioca, cozido (50% grão e 50% caldo), c/ óleo, cebola e alho, c/ sal, Phaseolus vulgaris L.",leguminosa,79.0,4.69,14.6,1.72,6.84,190.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,jantar,proteina,C0028J,757,50.0,1.0,"Ovo, galinha, inteiro, frito (c/ óleo de soja), c/ sal",proteína animal,233.0,15.5,1.19,18.5,0.0,353.0,1,C,,0,0,1,0,0,0,0,0,1,0,1,1
+Sudeste,jantar,proteina,C0634F,681,90.0,2.0,"Carne, boi, patinho, s/ gordura, frita (c/ óleo de soja), c/ sal, Bos taurus",proteína animal,263.0,32.9,0.0,14.7,0.0,234.0,1,C,,0,0,0,0,0,0,0,0,0,0,1,1
+Sudeste,jantar,proteina,C0716F,642,100.0,3.0,"Carne, frango, inteiro, s/ pele, frita (c/ óleo de soja), c/ sal, Gallus gallus",proteína animal,236.0,25.7,0.0,14.8,0.0,244.0,1,B,,0,0,0,0,0,0,0,0,0,0,1,1
+Sudeste,jantar,proteina,C0720F,636,100.0,4.0,"Carne, frango, inteiro, refogada (c/ óleo, cebola e alho), c/ sal (média de amostras c/ e s/ pele), Gallus gallus",proteína animal,236.0,23.9,0.74,15.2,0.13,267.0,1,C,,0,0,0,0,0,0,0,0,0,0,1,1
+Sudeste,jantar,proteina,C0766F,557,50.0,5.0,"Linguiça, frango/porco, fresca, frita (c/ óleo de soja), c/ sal",proteína animal,256.0,19.3,0.0,19.8,0.0,1576.0,4,D,,0,0,0,0,0,0,0,0,0,0,1,1
+Sudeste,jantar,proteina,C0733F,497,90.0,6.0,"Carne, boi, de segunda (acém, paleta, peito), frita (c/ óleo de soja), c/ sal, Bos taurus",proteína animal,291.0,23.9,0.0,21.7,0.0,369.0,1,D,,0,0,0,0,0,0,0,0,0,0,1,1
+Sudeste,jantar,proteina,C0237F,493,100.0,7.0,"Carne, frango, peito, s/ pele, frita (c/ óleo de soja), c/ sal",proteína animal,187.0,30.3,0.0,7.33,0.0,227.0,1,B,,0,0,0,0,0,0,0,0,0,0,1,1
+Sudeste,jantar,proteina,C0732F,393,75.0,8.0,"Carne, boi, de segunda (acém, capa de contrafilé, costela, músculo, paleta, peito), cozida/grelhada/assada, s/ óleo, c/ sal, Bos taurus",proteína animal,254.0,28.4,0.0,15.7,0.0,385.0,1,D,,0,0,0,0,0,0,0,0,0,0,1,1
+Sudeste,jantar,proteina,C0245F,390,65.0,9.0,"Carne, boi, acém, moída, refogada (c/ óleo, cebola e alho), c/ sal",proteína animal,213.0,25.5,0.71,12.1,0.13,263.0,1,C,,0,0,0,0,0,0,0,0,0,0,1,1
+Sudeste,jantar,proteina,C0714F,382,100.0,10.0,"Carne, frango, inteiro, s/ pele, grelhada/assada, s/ óleo, c/ sal, Gallus gallus",proteína animal,179.0,27.9,0.0,7.47,0.0,249.0,1,B,,0,0,0,0,0,0,0,0,0,0,1,1
+Sudeste,lanche,carboidrato,C0002A,3238,70.0,1.0,"Pão francês, trigo, branco, de padaria (médias de diferentes amostras)",base (cereal/tubérculo),300.0,9.83,61.6,2.12,2.61,681.0,3,C,,1,0,0,0,0,0,0,0,1,1,0,1
+Sudeste,lanche,carboidrato,C0155A,214,50.0,2.0,"Pão, trigo, integral, forma (média de diferentes marcas)",base (cereal/tubérculo),249.0,10.5,48.6,2.54,5.29,495.0,4,A,pao_forma,1,0,0,0,0,0,0,0,1,1,0,1
+Sudeste,lanche,carboidrato,C0832A,199,20.0,3.0,"Milho, pipoca, preparada, c/ óleo de soja, c/ açúcar",base (cereal/tubérculo),432.0,8.97,73.1,14.3,12.9,5.13,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,lanche,carboidrato,C0003A,146,50.0,4.0,"Pão, trigo, branco, forma, tradicional (média de diferentes marcas)",base (cereal/tubérculo),260.0,9.53,51.5,2.41,2.68,860.0,4,C,pao_forma,1,0,0,0,0,0,0,0,1,1,0,1
+Sudeste,lanche,carboidrato,C0169A,144,15.0,5.0,"Torrada, trigo, tradicional",base (cereal/tubérculo),395.0,11.5,73.6,6.39,1.28,912.0,1,D,,1,0,0,0,0,0,0,0,1,1,0,1
+Sudeste,lanche,carboidrato,C0209A,106,90.0,6.0,"Arroz, polido, cozido, c/ óleo, cebola e alho, c/ sal",base (cereal/tubérculo),138.0,2.4,29.1,1.59,1.27,189.0,1,B,arroz,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,lanche,carboidrato,C0160A,93,25.0,7.0,"Pão, trigo, sovado",base (cereal/tubérculo),300.0,8.4,61.5,2.84,2.43,430.0,3,B,,1,0,0,0,0,0,0,0,1,1,0,1
+Sudeste,lanche,carboidrato,C0170A,59,15.0,8.0,"Torrada, trigo, integral, Bauducco",base (cereal/tubérculo),398.0,13.0,71.0,7.0,0.7,721.0,4,D,,1,0,0,0,0,0,0,0,1,1,0,1
+Sudeste,lanche,carboidrato,C0082A,51,25.0,9.0,"Cereais, barra (média de diferentes sabores)",base (cereal/tubérculo),396.0,6.25,76.1,8.53,5.25,498.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,lanche,carboidrato,C0906B,51,70.0,10.0,"Tapioca, sem manteiga, sem recheio",base (cereal/tubérculo),289.0,0.36,71.9,0.0,0.2,1.31,1,C,,0,1,0,0,0,0,0,0,1,0,1,0
+Sudeste,lanche,fruta,C0006C,1745,75.0,1.0,"Banana, in natura, Musa spp.",fruta,109.0,1.27,26.7,0.19,2.24,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,lanche,fruta,C0023C,662,150.0,2.0,"Maçã, c/ casca, in natura, Malus spp.",fruta,64.0,0.29,15.7,0.49,2.07,0.66,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,lanche,fruta,C0017C,343,180.0,3.0,"Laranja, in natura, Citrus spp.",fruta,45.0,0.9,10.8,0.24,2.02,0.53,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,lanche,fruta,C0025C,218,140.0,4.0,"Manga, polpa, in natura, Mangifera indica L.",fruta,64.0,0.53,16.0,0.31,2.14,0.92,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,lanche,fruta,C0024C,156,170.0,5.0,"Mamão, polpa, in natura, Carica papaya L.",fruta,44.0,0.57,10.7,0.25,1.83,2.44,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,lanche,fruta,C0032C,141,135.0,6.0,"Tangerina, Ponkã, in natura, Citrus reticulata",fruta,40.0,0.85,9.54,0.07,0.94,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,lanche,fruta,C0030C,104,130.0,7.0,"Pera, c/ casca, in natura, Pyrus communis",fruta,54.0,0.4,14.0,0.23,3.0,0.49,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,lanche,fruta,C0027C,96,200.0,8.0,"Melancia, polpa, in natura, Citrullus spp.",fruta,29.0,0.7,6.52,0.05,0.13,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,lanche,fruta,C0014C,68,170.0,9.0,"Goiaba, inteira, in natura, Psidium guajava L.",fruta,50.0,0.86,13.4,0.53,5.78,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,lanche,fruta,C0028C,53,90.0,10.0,"Melão, polpa, in natura, Cucumis melo",fruta,24.0,0.61,5.7,0.15,1.22,8.96,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sudeste,lanche,proteina,C0034G,518,200.0,1.0,"Leite, vaca, c/ chocolate, Toddynho",laticínio,85.0,2.0,13.9,2.4,0.0,65.0,4,C,,0,1,0,0,0,0,0,0,1,0,1,0
+Sudeste,lanche,proteina,C0043G,456,200.0,2.0,"Leite, vaca, integral, fluído",laticínio,64.0,2.93,5.92,3.23,0.0,63.8,1,B,leite,0,1,0,0,0,0,0,0,1,0,1,0
+Sudeste,lanche,proteina,C0011G,255,170.0,3.0,"Iogurte, integral (média de diferentes sabores)",laticínio,75.0,3.12,10.9,2.17,0.23,55.7,4,B,,0,1,0,0,0,0,0,0,1,0,1,0
+Sudeste,lanche,proteina,C0056G,232,45.0,4.0,"Queijo, minas, padrão (média de diferentes amostras)",laticínio,295.0,20.4,7.54,20.4,0.0,665.0,3,D,,0,1,0,0,0,0,0,0,1,0,1,0
+Sudeste,lanche,proteina,C0059G,170,20.0,5.0,"Queijo, muçarela (média de diferentes amostras)",laticínio,320.0,23.8,1.97,24.1,0.0,506.0,3,D,mussarela,0,1,0,0,0,0,0,0,1,0,1,0
+Sudeste,lanche,proteina,C0066G,116,15.0,6.0,"Queijo, requeijão (média de diferentes amostras)",laticínio,281.0,9.91,3.03,25.5,0.0,608.0,4,D,,0,1,0,0,0,0,0,0,1,0,1,0
+Sudeste,lanche,proteina,C0247F,79,15.0,7.0,"Presunto, porco, cozido, c/ capa de gordura (média de diferentes amostras)",proteína animal,127.0,15.2,1.05,6.83,0.0,1044.0,4,D,,0,0,0,0,0,0,0,0,0,0,1,1
+Sudeste,lanche,proteina,C0020G,60,200.0,8.0,"Iogurte, natural (média de diferentes amostras)",laticínio,57.0,4.02,4.76,2.43,0.0,47.7,1,B,,0,1,0,0,0,0,0,0,1,0,1,0
+Sudeste,lanche,proteina,C0023J,45,90.0,9.0,"Ovo, galinha, inteiro, cozido, c/ sal",proteína animal,125.0,10.3,1.38,8.66,0.0,315.0,1,B,ovo,0,0,1,0,0,0,0,0,1,0,1,1
+Sudeste,lanche,proteina,C0036G,45,200.0,10.0,"Leite, vaca, desnatado, fluído (média de diferentes amostras)",laticínio,37.0,3.12,5.14,0.4,0.0,51.1,1,B,,0,1,0,0,0,0,0,0,1,0,1,0
+Sul,almoco,carboidrato,C0209A,6972,90.0,1.0,"Arroz, polido, cozido, c/ óleo, cebola e alho, c/ sal",base (cereal/tubérculo),138.0,2.4,29.1,1.59,1.27,189.0,1,B,arroz,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,almoco,carboidrato,C0834A,1255,110.0,2.0,"Macarrão, trigo, cozido, drenado, s/ óleo, c/ sal",base (cereal/tubérculo),125.0,3.54,26.9,0.57,0.91,189.0,1,B,,1,0,0,0,0,0,0,0,1,1,0,1
+Sul,almoco,carboidrato,C0908B,559,200.0,3.0,"Mandioca (aipim, macaxeira), s/ casca, cozida, drenada, s/ óleo, c/ sal, Manihot esculenta Crantz.",base (cereal/tubérculo),120.0,0.64,29.7,0.24,1.77,128.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,almoco,carboidrato,C0143A,322,145.0,4.0,"Milho, polenta/fubá, cozido, c/ sal",base (cereal/tubérculo),104.0,2.25,23.0,0.69,1.74,429.0,1,C,fuba,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,almoco,carboidrato,C0117B,314,90.0,5.0,"Batata, inglesa, s/ casca, cozida, drenada, s/ óleo, c/ sal, Solanum tuberosum L.",base (cereal/tubérculo),52.0,1.33,12.2,0.05,1.46,190.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,almoco,carboidrato,C0118B,247,110.0,6.0,"Batata, inglesa, frita (c/ óleo de soja), c/ sal, Solanum tuberosum L.",base (cereal/tubérculo),248.0,4.04,32.7,11.9,3.16,189.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,almoco,carboidrato,C0089B,229,30.0,7.0,"Mandioca, farofa, temperada, c/ sal",base (cereal/tubérculo),396.0,2.06,80.3,9.12,7.82,574.0,1,C,,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,almoco,carboidrato,C0211A,214,125.0,8.0,"Arroz, integral, cozido, c/ óleo, cebola e alho, c/ sal",base (cereal/tubérculo),116.0,2.46,23.0,2.03,2.14,188.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,almoco,carboidrato,C0002A,189,70.0,9.0,"Pão francês, trigo, branco, de padaria (médias de diferentes amostras)",base (cereal/tubérculo),300.0,9.83,61.6,2.12,2.61,681.0,3,C,,1,0,0,0,0,0,0,0,1,1,0,1
+Sul,almoco,carboidrato,C0835A,183,110.0,10.0,"Macarrão, trigo, integral, cozido, drenado, s/ óleo, c/ sal",base (cereal/tubérculo),123.0,4.89,26.3,0.56,3.5,129.0,1,A,,1,0,0,0,0,0,0,0,1,1,0,1
+Sul,almoco,fruta,C0017C,76,180.0,1.0,"Laranja, in natura, Citrus spp.",fruta,45.0,0.9,10.8,0.24,2.02,0.53,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,almoco,fruta,C0006C,53,75.0,2.0,"Banana, in natura, Musa spp.",fruta,109.0,1.27,26.7,0.19,2.24,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,almoco,fruta,C0032C,30,135.0,3.0,"Tangerina, Ponkã, in natura, Citrus reticulata",fruta,40.0,0.85,9.54,0.07,0.94,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,almoco,fruta,C0023C,24,150.0,4.0,"Maçã, c/ casca, in natura, Malus spp.",fruta,64.0,0.29,15.7,0.49,2.07,0.66,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,almoco,fruta,C0024C,23,155.0,5.0,"Mamão, polpa, in natura, Carica papaya L.",fruta,44.0,0.57,10.7,0.25,1.83,2.44,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,almoco,legumes,C0009B,1204,30.0,1.0,"Alface, crua, Lactuca sativa L.",verdura/legume,9.0,1.08,1.79,0.12,1.87,4.2,1,A,alface,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,almoco,legumes,C0035B,751,60.0,2.0,"Tomate, cru, Lycopersicon esculentum",verdura/legume,18.0,1.04,3.82,0.17,1.6,3.13,1,A,tomate,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,almoco,legumes,C0033B,505,30.0,3.0,"Repolho, cru, Brassica oleracea L.",verdura/legume,20.0,1.12,4.42,0.14,1.92,3.32,1,A,repolho,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,almoco,legumes,C0912B,204,45.0,4.0,"Beterraba, cozida, drenada, s/ óleo, c/ sal, Beta vulgaris L.",verdura/legume,27.0,1.22,6.27,0.09,2.03,147.0,1,A,beterraba,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,almoco,legumes,C0030B,201,35.0,5.0,"Pepino, c/ casca, cru, Cucumis sativus l.",verdura/legume,10.0,0.7,2.23,0.09,1.04,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,almoco,legumes,C0150B,145,90.0,6.0,"Brócolis, flor, cozido, drenado, s/ óleo, c/ sal, Brassica oleracea L. var. italica",verdura/legume,27.0,2.71,4.44,0.54,3.28,130.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,almoco,legumes,C0154B,136,60.0,7.0,"Chuchu, s/ casca, cozido, drenado, s/ óleo, c/ sal, Sechium edule",verdura/legume,21.0,0.5,5.09,0.15,1.39,129.0,1,A,chuchu,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,almoco,legumes,C0705B,126,200.0,8.0,"Picles, pepino, azedo",verdura/legume,10.0,0.33,2.26,0.2,1.2,1208.0,3,C,,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,almoco,legumes,C0020B,125,35.0,9.0,"Cenoura, s/ casca, crua, Daucus carota L.",verdura/legume,31.0,1.12,7.55,0.21,2.98,11.1,1,A,cenoura,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,almoco,legumes,C0913B,104,35.0,10.0,"Cenoura, s/ casca, cozida, drenada, s/ óleo, c/ sal, Daucus carota L.",verdura/legume,17.0,0.54,4.3,0.19,2.17,132.0,1,A,cenoura,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,almoco,leguminosa,C0091T,4962,140.0,1.0,"Feijão, carioca, cozido (50% grão e 50% caldo), c/ óleo, cebola e alho, c/ sal, Phaseolus vulgaris L.",leguminosa,79.0,4.69,14.6,1.72,6.84,190.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,almoco,leguminosa,C0120T,101,225.0,2.0,"Lentilha, cozida, c/ toucinho defumado (bacon), c/ óleo, cebola e alho, c/ sal",leguminosa,163.0,8.97,17.5,7.59,5.63,212.0,4,A,,0,0,0,0,0,0,0,0,0,0,1,1
+Sul,almoco,leguminosa,C0078T,92,160.0,3.0,"Lentilha, cozida, drenada, c/ óleo, cebola e alho, c/ sal, Lens culinaris",leguminosa,107.0,7.04,19.2,1.63,6.22,189.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,almoco,proteina,C0732F,792,70.0,1.0,"Carne, boi, de segunda (acém, capa de contrafilé, costela, músculo, paleta, peito), cozida/grelhada/assada, s/ óleo, c/ sal, Bos taurus",proteína animal,254.0,28.4,0.0,15.7,0.0,385.0,1,D,,0,0,0,0,0,0,0,0,0,0,1,1
+Sul,almoco,proteina,C0634F,549,90.0,2.0,"Carne, boi, patinho, s/ gordura, frita (c/ óleo de soja), c/ sal, Bos taurus",proteína animal,263.0,32.9,0.0,14.7,0.0,234.0,1,C,,0,0,0,0,0,0,0,0,0,0,1,1
+Sul,almoco,proteina,C0708F,528,185.0,3.0,"Carne, porco, pernil, frita (c/ óleo de soja), c/ sal, Sus ssp",proteína animal,304.0,29.4,0.0,20.7,0.0,236.0,1,C,,0,0,0,0,0,0,0,0,0,0,1,1
+Sul,almoco,proteina,C0720F,520,110.0,4.0,"Carne, frango, inteiro, refogada (c/ óleo, cebola e alho), c/ sal (média de amostras c/ e s/ pele), Gallus gallus",proteína animal,236.0,23.9,0.74,15.2,0.13,267.0,1,C,,0,0,0,0,0,0,0,0,0,0,1,1
+Sul,almoco,proteina,C0716F,499,110.0,5.0,"Carne, frango, inteiro, s/ pele, frita (c/ óleo de soja), c/ sal, Gallus gallus",proteína animal,236.0,25.7,0.0,14.8,0.0,244.0,1,B,,0,0,0,0,0,0,0,0,0,0,1,1
+Sul,almoco,proteina,C0733F,480,70.0,6.0,"Carne, boi, de segunda (acém, paleta, peito), frita (c/ óleo de soja), c/ sal, Bos taurus",proteína animal,291.0,23.9,0.0,21.7,0.0,369.0,1,D,,0,0,0,0,0,0,0,0,0,0,1,1
+Sul,almoco,proteina,C0028J,356,50.0,7.0,"Ovo, galinha, inteiro, frito (c/ óleo de soja), c/ sal",proteína animal,233.0,15.5,1.19,18.5,0.0,353.0,1,C,,0,0,1,0,0,0,0,0,1,0,1,1
+Sul,almoco,proteina,C0714F,351,110.0,8.0,"Carne, frango, inteiro, s/ pele, grelhada/assada, s/ óleo, c/ sal, Gallus gallus",proteína animal,179.0,27.9,0.0,7.47,0.0,249.0,1,B,,0,0,0,0,0,0,0,0,0,0,1,1
+Sul,almoco,proteina,C0638F,335,90.0,9.0,"Carne, bovina, patinho, s/ gordura, refogada (c/ óleo, cebola e alho), c/ sal, Bos taurus",proteína animal,164.0,27.8,0.74,5.58,0.13,243.0,1,B,,0,0,0,0,0,0,0,0,0,0,1,1
+Sul,almoco,proteina,C0706F,284,140.0,10.0,"Carne, porco, pernil, grelhada/assada, s/ óleo, c/ sal, Sus ssp",proteína animal,252.0,32.0,0.0,13.8,0.0,241.0,1,C,pernil,0,0,0,0,0,0,0,0,0,0,1,1
+Sul,cafe_da_manha,carboidrato,C0002A,3372,50.0,1.0,"Pão francês, trigo, branco, de padaria (médias de diferentes amostras)",base (cereal/tubérculo),300.0,9.83,61.6,2.12,2.61,681.0,3,C,,1,0,0,0,0,0,0,0,1,1,0,1
+Sul,cafe_da_manha,carboidrato,C0160A,445,25.0,2.0,"Pão, trigo, sovado",base (cereal/tubérculo),300.0,8.4,61.5,2.84,2.43,430.0,3,B,,1,0,0,0,0,0,0,0,1,1,0,1
+Sul,cafe_da_manha,carboidrato,C0155A,440,50.0,3.0,"Pão, trigo, integral, forma (média de diferentes marcas)",base (cereal/tubérculo),249.0,10.5,48.6,2.54,5.29,495.0,4,A,pao_forma,1,0,0,0,0,0,0,0,1,1,0,1
+Sul,cafe_da_manha,carboidrato,C0003A,277,50.0,4.0,"Pão, trigo, branco, forma, tradicional (média de diferentes marcas)",base (cereal/tubérculo),260.0,9.53,51.5,2.41,2.68,860.0,4,C,pao_forma,1,0,0,0,0,0,0,0,1,1,0,1
+Sul,cafe_da_manha,carboidrato,C0169A,143,10.0,5.0,"Torrada, trigo, tradicional",base (cereal/tubérculo),395.0,11.5,73.6,6.39,1.28,912.0,1,D,,1,0,0,0,0,0,0,0,1,1,0,1
+Sul,cafe_da_manha,carboidrato,C0146A,75,35.0,6.0,"Pão, milho, forma",base (cereal/tubérculo),278.0,8.3,56.4,3.11,4.3,506.0,4,A,,1,0,0,0,0,0,0,0,1,1,0,1
+Sul,cafe_da_manha,carboidrato,C0147A,59,50.0,7.0,"Pão, trigo, leite, industrializado (média de diferentes marcas)",base (cereal/tubérculo),284.0,8.15,53.9,4.63,2.97,199.0,4,A,,1,1,0,0,0,0,0,0,1,0,0,0
+Sul,cafe_da_manha,carboidrato,C0157A,56,60.0,8.0,"Pão, trigo/centeio, preto, forma",base (cereal/tubérculo),250.0,10.0,49.0,2.7,5.38,496.0,4,A,,1,0,0,0,0,0,0,0,1,1,0,1
+Sul,cafe_da_manha,carboidrato,C0209A,50,90.0,9.0,"Arroz, polido, cozido, c/ óleo, cebola e alho, c/ sal",base (cereal/tubérculo),138.0,2.4,29.1,1.59,1.27,189.0,1,B,arroz,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,cafe_da_manha,carboidrato,C0170A,38,15.0,10.0,"Torrada, trigo, integral, Bauducco",base (cereal/tubérculo),398.0,13.0,71.0,7.0,0.7,721.0,4,D,,1,0,0,0,0,0,0,0,1,1,0,1
+Sul,cafe_da_manha,fruta,C0006C,603,75.0,1.0,"Banana, in natura, Musa spp.",fruta,109.0,1.27,26.7,0.19,2.24,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,cafe_da_manha,fruta,C0024C,211,170.0,2.0,"Mamão, polpa, in natura, Carica papaya L.",fruta,44.0,0.57,10.7,0.25,1.83,2.44,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,cafe_da_manha,fruta,C0023C,108,150.0,3.0,"Maçã, c/ casca, in natura, Malus spp.",fruta,64.0,0.29,15.7,0.49,2.07,0.66,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,cafe_da_manha,fruta,C0017C,53,180.0,4.0,"Laranja, in natura, Citrus spp.",fruta,45.0,0.9,10.8,0.24,2.02,0.53,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,cafe_da_manha,fruta,C0107C,40,100.0,5.0,"Banana, da terra, assada, s/ adição de ingredientes, Musa acuminata Colla x Musa balbisiana Colla",fruta,165.0,1.69,39.7,0.28,1.8,0.0,1,C,,0,1,0,0,0,0,0,0,1,0,1,0
+Sul,cafe_da_manha,fruta,C0028C,23,90.0,6.0,"Melão, polpa, in natura, Cucumis melo",fruta,24.0,0.61,5.7,0.15,1.22,8.96,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,cafe_da_manha,fruta,C0001C,20,215.0,7.0,"Abacate, polpa, in natura, Persea americana Mill",fruta,76.0,1.15,5.84,6.21,4.03,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,cafe_da_manha,proteina,C0059G,528,45.0,1.0,"Queijo, muçarela (média de diferentes amostras)",laticínio,320.0,23.8,1.97,24.1,0.0,506.0,3,D,mussarela,0,1,0,0,0,0,0,0,1,0,1,0
+Sul,cafe_da_manha,proteina,C0034G,266,240.0,2.0,"Leite, vaca, c/ chocolate, Toddynho",laticínio,85.0,2.0,13.9,2.4,0.0,65.0,4,C,,0,1,0,0,0,0,0,0,1,0,1,0
+Sul,cafe_da_manha,proteina,C0193F,247,15.0,3.0,Mortadela,proteína animal,269.0,13.7,16.1,16.6,0.0,1354.0,4,D,,0,0,0,0,0,0,0,0,0,0,1,1
+Sul,cafe_da_manha,proteina,C0064G,233,15.0,4.0,"Queijo, prato",laticínio,346.0,24.2,0.2,27.6,0.0,550.0,3,D,,0,1,0,0,0,0,0,0,1,0,1,0
+Sul,cafe_da_manha,proteina,C0043G,231,240.0,5.0,"Leite, vaca, integral, fluído",laticínio,64.0,2.93,5.92,3.23,0.0,63.8,1,B,leite,0,1,0,0,0,0,0,0,1,0,1,0
+Sul,cafe_da_manha,proteina,C0247F,189,15.0,6.0,"Presunto, porco, cozido, c/ capa de gordura (média de diferentes amostras)",proteína animal,127.0,15.2,1.05,6.83,0.0,1044.0,4,D,,0,0,0,0,0,0,0,0,0,0,1,1
+Sul,cafe_da_manha,proteina,C0208F,165,40.0,7.0,"Salame, porco, lanche (média de vários tipos)",proteína animal,401.0,26.0,2.45,31.9,0.0,1919.0,4,E,,0,0,0,0,0,0,0,0,0,0,1,1
+Sul,cafe_da_manha,proteina,C0028J,105,50.0,8.0,"Ovo, galinha, inteiro, frito (c/ óleo de soja), c/ sal",proteína animal,233.0,15.5,1.19,18.5,0.0,353.0,1,C,,0,0,1,0,0,0,0,0,1,0,1,1
+Sul,cafe_da_manha,proteina,C0066G,103,10.0,9.0,"Queijo, requeijão (média de diferentes amostras)",laticínio,281.0,9.91,3.03,25.5,0.0,608.0,4,D,,0,1,0,0,0,0,0,0,1,0,1,0
+Sul,cafe_da_manha,proteina,C0011G,90,200.0,10.0,"Iogurte, integral (média de diferentes sabores)",laticínio,75.0,3.12,10.9,2.17,0.23,55.7,4,B,,0,1,0,0,0,0,0,0,1,0,1,0
+Sul,jantar,carboidrato,C0209A,3231,90.0,1.0,"Arroz, polido, cozido, c/ óleo, cebola e alho, c/ sal",base (cereal/tubérculo),138.0,2.4,29.1,1.59,1.27,189.0,1,B,arroz,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,jantar,carboidrato,C0002A,1040,50.0,2.0,"Pão francês, trigo, branco, de padaria (médias de diferentes amostras)",base (cereal/tubérculo),300.0,9.83,61.6,2.12,2.61,681.0,3,C,,1,0,0,0,0,0,0,0,1,1,0,1
+Sul,jantar,carboidrato,C0834A,543,110.0,3.0,"Macarrão, trigo, cozido, drenado, s/ óleo, c/ sal",base (cereal/tubérculo),125.0,3.54,26.9,0.57,0.91,189.0,1,B,,1,0,0,0,0,0,0,0,1,1,0,1
+Sul,jantar,carboidrato,C0143A,212,150.0,4.0,"Milho, polenta/fubá, cozido, c/ sal",base (cereal/tubérculo),104.0,2.25,23.0,0.69,1.74,429.0,1,C,fuba,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,jantar,carboidrato,C0908B,177,200.0,5.0,"Mandioca (aipim, macaxeira), s/ casca, cozida, drenada, s/ óleo, c/ sal, Manihot esculenta Crantz.",base (cereal/tubérculo),120.0,0.64,29.7,0.24,1.77,128.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,jantar,carboidrato,C0155A,118,50.0,6.0,"Pão, trigo, integral, forma (média de diferentes marcas)",base (cereal/tubérculo),249.0,10.5,48.6,2.54,5.29,495.0,4,A,pao_forma,1,0,0,0,0,0,0,0,1,1,0,1
+Sul,jantar,carboidrato,C0118B,114,110.0,7.0,"Batata, inglesa, frita (c/ óleo de soja), c/ sal, Solanum tuberosum L.",base (cereal/tubérculo),248.0,4.04,32.7,11.9,3.16,189.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,jantar,carboidrato,C0160A,114,25.0,8.0,"Pão, trigo, sovado",base (cereal/tubérculo),300.0,8.4,61.5,2.84,2.43,430.0,3,B,,1,0,0,0,0,0,0,0,1,1,0,1
+Sul,jantar,carboidrato,C0117B,95,70.0,9.0,"Batata, inglesa, s/ casca, cozida, drenada, s/ óleo, c/ sal, Solanum tuberosum L.",base (cereal/tubérculo),52.0,1.33,12.2,0.05,1.46,190.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,jantar,carboidrato,C0003A,92,50.0,10.0,"Pão, trigo, branco, forma, tradicional (média de diferentes marcas)",base (cereal/tubérculo),260.0,9.53,51.5,2.41,2.68,860.0,4,C,pao_forma,1,0,0,0,0,0,0,0,1,1,0,1
+Sul,jantar,fruta,C0006C,109,75.0,1.0,"Banana, in natura, Musa spp.",fruta,109.0,1.27,26.7,0.19,2.24,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,jantar,fruta,C0023C,65,150.0,2.0,"Maçã, c/ casca, in natura, Malus spp.",fruta,64.0,0.29,15.7,0.49,2.07,0.66,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,jantar,fruta,C0024C,46,170.0,3.0,"Mamão, polpa, in natura, Carica papaya L.",fruta,44.0,0.57,10.7,0.25,1.83,2.44,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,jantar,fruta,C0017C,33,180.0,4.0,"Laranja, in natura, Citrus spp.",fruta,45.0,0.9,10.8,0.24,2.02,0.53,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,jantar,legumes,C0009B,313,30.0,1.0,"Alface, crua, Lactuca sativa L.",verdura/legume,9.0,1.08,1.79,0.12,1.87,4.2,1,A,alface,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,jantar,legumes,C0035B,212,75.0,2.0,"Tomate, cru, Lycopersicon esculentum",verdura/legume,18.0,1.04,3.82,0.17,1.6,3.13,1,A,tomate,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,jantar,legumes,C0033B,154,50.0,3.0,"Repolho, cru, Brassica oleracea L.",verdura/legume,20.0,1.12,4.42,0.14,1.92,3.32,1,A,repolho,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,jantar,legumes,C0030B,66,35.0,4.0,"Pepino, c/ casca, cru, Cucumis sativus l.",verdura/legume,10.0,0.7,2.23,0.09,1.04,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,jantar,legumes,C0145B,52,40.0,5.0,"Couve, manteiga, refogada (c/ óleo, cebola e alho), c/ sal, Brassica oleracea var. Acephala",verdura/legume,83.0,2.03,7.07,6.41,5.59,138.0,1,A,,0,1,0,0,0,0,0,0,1,0,1,0
+Sul,jantar,legumes,C0912B,44,45.0,6.0,"Beterraba, cozida, drenada, s/ óleo, c/ sal, Beta vulgaris L.",verdura/legume,27.0,1.22,6.27,0.09,2.03,147.0,1,A,beterraba,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,jantar,legumes,C0705B,41,200.0,7.0,"Picles, pepino, azedo",verdura/legume,10.0,0.33,2.26,0.2,1.2,1208.0,3,C,,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,jantar,legumes,C0150B,39,60.0,8.0,"Brócolis, flor, cozido, drenado, s/ óleo, c/ sal, Brassica oleracea L. var. italica",verdura/legume,27.0,2.71,4.44,0.54,3.28,130.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,jantar,legumes,C0100B,37,40.0,9.0,"Tomate, molho, industrializado",verdura/legume,45.0,1.61,9.01,1.06,3.64,488.0,4,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,jantar,legumes,C0020B,35,40.0,10.0,"Cenoura, s/ casca, crua, Daucus carota L.",verdura/legume,31.0,1.12,7.55,0.21,2.98,11.1,1,A,cenoura,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,jantar,leguminosa,C0091T,2219,140.0,1.0,"Feijão, carioca, cozido (50% grão e 50% caldo), c/ óleo, cebola e alho, c/ sal, Phaseolus vulgaris L.",leguminosa,79.0,4.69,14.6,1.72,6.84,190.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,jantar,leguminosa,C0120T,67,225.0,2.0,"Lentilha, cozida, c/ toucinho defumado (bacon), c/ óleo, cebola e alho, c/ sal",leguminosa,163.0,8.97,17.5,7.59,5.63,212.0,4,A,,0,0,0,0,0,0,0,0,0,0,1,1
+Sul,jantar,leguminosa,C0078T,37,160.0,3.0,"Lentilha, cozida, drenada, c/ óleo, cebola e alho, c/ sal, Lens culinaris",leguminosa,107.0,7.04,19.2,1.63,6.22,189.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,jantar,proteina,C0732F,348,70.0,1.0,"Carne, boi, de segunda (acém, capa de contrafilé, costela, músculo, paleta, peito), cozida/grelhada/assada, s/ óleo, c/ sal, Bos taurus",proteína animal,254.0,28.4,0.0,15.7,0.0,385.0,1,D,,0,0,0,0,0,0,0,0,0,0,1,1
+Sul,jantar,proteina,C0028J,300,50.0,2.0,"Ovo, galinha, inteiro, frito (c/ óleo de soja), c/ sal",proteína animal,233.0,15.5,1.19,18.5,0.0,353.0,1,C,,0,0,1,0,0,0,0,0,1,0,1,1
+Sul,jantar,proteina,C0716F,264,110.0,3.0,"Carne, frango, inteiro, s/ pele, frita (c/ óleo de soja), c/ sal, Gallus gallus",proteína animal,236.0,25.7,0.0,14.8,0.0,244.0,1,B,,0,0,0,0,0,0,0,0,0,0,1,1
+Sul,jantar,proteina,C0708F,255,185.0,4.0,"Carne, porco, pernil, frita (c/ óleo de soja), c/ sal, Sus ssp",proteína animal,304.0,29.4,0.0,20.7,0.0,236.0,1,C,,0,0,0,0,0,0,0,0,0,0,1,1
+Sul,jantar,proteina,C0733F,247,70.0,5.0,"Carne, boi, de segunda (acém, paleta, peito), frita (c/ óleo de soja), c/ sal, Bos taurus",proteína animal,291.0,23.9,0.0,21.7,0.0,369.0,1,D,,0,0,0,0,0,0,0,0,0,0,1,1
+Sul,jantar,proteina,C0720F,233,100.0,6.0,"Carne, frango, inteiro, refogada (c/ óleo, cebola e alho), c/ sal (média de amostras c/ e s/ pele), Gallus gallus",proteína animal,236.0,23.9,0.74,15.2,0.13,267.0,1,C,,0,0,0,0,0,0,0,0,0,0,1,1
+Sul,jantar,proteina,C0634F,220,90.0,7.0,"Carne, boi, patinho, s/ gordura, frita (c/ óleo de soja), c/ sal, Bos taurus",proteína animal,263.0,32.9,0.0,14.7,0.0,234.0,1,C,,0,0,0,0,0,0,0,0,0,0,1,1
+Sul,jantar,proteina,C0638F,145,70.0,8.0,"Carne, bovina, patinho, s/ gordura, refogada (c/ óleo, cebola e alho), c/ sal, Bos taurus",proteína animal,164.0,27.8,0.74,5.58,0.13,243.0,1,B,,0,0,0,0,0,0,0,0,0,0,1,1
+Sul,jantar,proteina,C0714F,139,100.0,9.0,"Carne, frango, inteiro, s/ pele, grelhada/assada, s/ óleo, c/ sal, Gallus gallus",proteína animal,179.0,27.9,0.0,7.47,0.0,249.0,1,B,,0,0,0,0,0,0,0,0,0,0,1,1
+Sul,jantar,proteina,C0245F,133,70.0,10.0,"Carne, boi, acém, moída, refogada (c/ óleo, cebola e alho), c/ sal",proteína animal,213.0,25.5,0.71,12.1,0.13,263.0,1,C,,0,0,0,0,0,0,0,0,0,0,1,1
+Sul,lanche,carboidrato,C0002A,1207,70.0,1.0,"Pão francês, trigo, branco, de padaria (médias de diferentes amostras)",base (cereal/tubérculo),300.0,9.83,61.6,2.12,2.61,681.0,3,C,,1,0,0,0,0,0,0,0,1,1,0,1
+Sul,lanche,carboidrato,C0832A,271,30.0,2.0,"Milho, pipoca, preparada, c/ óleo de soja, c/ açúcar",base (cereal/tubérculo),432.0,8.97,73.1,14.3,12.9,5.13,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,lanche,carboidrato,C0160A,186,25.0,3.0,"Pão, trigo, sovado",base (cereal/tubérculo),300.0,8.4,61.5,2.84,2.43,430.0,3,B,,1,0,0,0,0,0,0,0,1,1,0,1
+Sul,lanche,carboidrato,C0155A,133,50.0,4.0,"Pão, trigo, integral, forma (média de diferentes marcas)",base (cereal/tubérculo),249.0,10.5,48.6,2.54,5.29,495.0,4,A,pao_forma,1,0,0,0,0,0,0,0,1,1,0,1
+Sul,lanche,carboidrato,C0003A,121,50.0,5.0,"Pão, trigo, branco, forma, tradicional (média de diferentes marcas)",base (cereal/tubérculo),260.0,9.53,51.5,2.41,2.68,860.0,4,C,pao_forma,1,0,0,0,0,0,0,0,1,1,0,1
+Sul,lanche,carboidrato,C0169A,94,15.0,6.0,"Torrada, trigo, tradicional",base (cereal/tubérculo),395.0,11.5,73.6,6.39,1.28,912.0,1,D,,1,0,0,0,0,0,0,0,1,1,0,1
+Sul,lanche,carboidrato,C0212A,63,85.0,7.0,"Salgadinho, snack, extrusado de milho",base (cereal/tubérculo),546.0,6.17,57.3,33.4,4.0,514.0,4,D,,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,lanche,carboidrato,C0209A,51,90.0,8.0,"Arroz, polido, cozido, c/ óleo, cebola e alho, c/ sal",base (cereal/tubérculo),138.0,2.4,29.1,1.59,1.27,189.0,1,B,arroz,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,lanche,carboidrato,C0082A,31,25.0,9.0,"Cereais, barra (média de diferentes sabores)",base (cereal/tubérculo),396.0,6.25,76.1,8.53,5.25,498.0,1,B,,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,lanche,carboidrato,C0146A,29,35.0,10.0,"Pão, milho, forma",base (cereal/tubérculo),278.0,8.3,56.4,3.11,4.3,506.0,4,A,,1,0,0,0,0,0,0,0,1,1,0,1
+Sul,lanche,fruta,C0006C,907,75.0,1.0,"Banana, in natura, Musa spp.",fruta,109.0,1.27,26.7,0.19,2.24,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,lanche,fruta,C0023C,530,150.0,2.0,"Maçã, c/ casca, in natura, Malus spp.",fruta,64.0,0.29,15.7,0.49,2.07,0.66,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,lanche,fruta,C0017C,408,180.0,3.0,"Laranja, in natura, Citrus spp.",fruta,45.0,0.9,10.8,0.24,2.02,0.53,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,lanche,fruta,C0032C,316,270.0,4.0,"Tangerina, Ponkã, in natura, Citrus reticulata",fruta,40.0,0.85,9.54,0.07,0.94,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,lanche,fruta,C0024C,128,170.0,5.0,"Mamão, polpa, in natura, Carica papaya L.",fruta,44.0,0.57,10.7,0.25,1.83,2.44,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,lanche,fruta,C0027C,114,200.0,6.0,"Melancia, polpa, in natura, Citrullus spp.",fruta,29.0,0.7,6.52,0.05,0.13,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,lanche,fruta,C0031C,77,60.0,7.0,"Pêssego, in natura, Prunus persica",fruta,42.0,0.88,10.1,0.18,1.89,0.0,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,lanche,fruta,C0033C,75,170.0,8.0,"Uva, in natura, Vitis vinifera L.",fruta,57.0,0.55,13.7,0.2,0.93,3.96,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,lanche,fruta,C0025C,59,140.0,9.0,"Manga, polpa, in natura, Mangifera indica L.",fruta,64.0,0.53,16.0,0.31,2.14,0.92,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,lanche,fruta,C0012C,48,110.0,10.0,"Caqui,  c/ casca, in natura, Diospyros kaki L.",fruta,68.0,0.48,18.3,0.2,4.56,2.09,1,A,,0,0,0,0,0,0,0,0,1,1,1,1
+Sul,lanche,proteina,C0034G,175,240.0,1.0,"Leite, vaca, c/ chocolate, Toddynho",laticínio,85.0,2.0,13.9,2.4,0.0,65.0,4,C,,0,1,0,0,0,0,0,0,1,0,1,0
+Sul,lanche,proteina,C0011G,164,200.0,2.0,"Iogurte, integral (média de diferentes sabores)",laticínio,75.0,3.12,10.9,2.17,0.23,55.7,4,B,,0,1,0,0,0,0,0,0,1,0,1,0
+Sul,lanche,proteina,C0059G,135,40.0,3.0,"Queijo, muçarela (média de diferentes amostras)",laticínio,320.0,23.8,1.97,24.1,0.0,506.0,3,D,mussarela,0,1,0,0,0,0,0,0,1,0,1,0
+Sul,lanche,proteina,C0043G,132,200.0,4.0,"Leite, vaca, integral, fluído",laticínio,64.0,2.93,5.92,3.23,0.0,63.8,1,B,leite,0,1,0,0,0,0,0,0,1,0,1,0
+Sul,lanche,proteina,C0193F,98,15.0,5.0,Mortadela,proteína animal,269.0,13.7,16.1,16.6,0.0,1354.0,4,D,,0,0,0,0,0,0,0,0,0,0,1,1
+Sul,lanche,proteina,C0064G,96,15.0,6.0,"Queijo, prato",laticínio,346.0,24.2,0.2,27.6,0.0,550.0,3,D,,0,1,0,0,0,0,0,0,1,0,1,0
+Sul,lanche,proteina,C0247F,69,15.0,7.0,"Presunto, porco, cozido, c/ capa de gordura (média de diferentes amostras)",proteína animal,127.0,15.2,1.05,6.83,0.0,1044.0,4,D,,0,0,0,0,0,0,0,0,0,0,1,1
+Sul,lanche,proteina,C0020G,45,200.0,8.0,"Iogurte, natural (média de diferentes amostras)",laticínio,57.0,4.02,4.76,2.43,0.0,47.7,1,B,,0,1,0,0,0,0,0,0,1,0,1,0
+Sul,lanche,proteina,C0066G,38,10.0,9.0,"Queijo, requeijão (média de diferentes amostras)",laticínio,281.0,9.91,3.03,25.5,0.0,608.0,4,D,,0,1,0,0,0,0,0,0,1,0,1,0
+Sul,lanche,proteina,C0028J,30,50.0,10.0,"Ovo, galinha, inteiro, frito (c/ óleo de soja), c/ sal",proteína animal,233.0,15.5,1.19,18.5,0.0,353.0,1,C,,0,0,1,0,0,0,0,0,1,0,1,1
