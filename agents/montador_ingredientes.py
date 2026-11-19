@@ -74,6 +74,27 @@ SUBTIPOS = {
 }
 
 
+# o que NÃO é um item do prato: sucos, doces, farinhas e amidos crus, molhos, pastas e temperos
+FORA_DO_PRATO = re.compile(
+    r"^suco|nectar|refresco|doce|compota|calda|geleia|cristalizad|desidratad|"
+    r"^farinha, (trigo|milho)|^amido|^fecula|^polvilho|^fermento|cru(a)?, |\bcrua?$|in natura, cru|"
+    r"^tempero|^molho|shoyu|^misso|^pasta|^extrato|^caldo|^creme de leite|^leite condensado|^manteiga|^margarina")
+# cru vale para salada e fruta
+CRU_OK = re.compile(r"^(alface|tomate|pepino|cenoura|repolho|rucula|agriao|cebola|pimentao|beterraba|"
+                    r"couve|acelga|chicoria|almeirao|banana|maca|mamao|laranja|tangerina|manga|uva|pera|"
+                    r"abacaxi|melancia|melao|goiaba|abacate|kiwi|morango|caju|acerola|ameixa|pessego|"
+                    r"caqui|carambola|pitanga|jabuticaba|graviola|pinha|cupuacu|maracuja|limao|mexerica|acai|"
+                    r"nabo|berinjela|abobrinha|cereja|abiu)")
+
+
+def serve_no_prato(descricao):
+    """Alimento que pode ser um item do prato (fruta e salada cruas valem; farinha crua e molho não)."""
+    n = sem_acento(descricao)
+    if CRU_OK.match(n):
+        return not re.search(r"suco|doce|compota|calda|geleia|cristalizad|desidratad|frit", n)
+    return not FORA_DO_PRATO.search(n)
+
+
 def sem_acento(t):
     return "".join(c for c in unicodedata.normalize("NFKD", str(t).lower()) if not unicodedata.combining(c))
 
@@ -165,4 +186,24 @@ class MontadorIngredientes:
         df.attrs["escala"] = round(escala, 2)
         self.log.append(f"{refeicao}: {len(df)} combinações ({' × '.join(str(len(t)) for t in tabelas)}), "
                         f"porções × {escala:.2f}")
+        return df
+
+    # ---------------------------------------------------------------- uma combinação montada à mão (troca pelo SOM)
+    @staticmethod
+    def montar_linha(itens: list[dict], tabela: pd.DataFrame, metas: dict) -> pd.DataFrame:
+        """Uma combinação no mesmo formato de combinacoes(), a partir de itens já com gramas.
+        tabela: alimentos da TBCA indexados pelo código (nutrientes por 100 g, alérgenos, dietas, NOVA...)."""
+        cods = [i["codigo"] for i in itens]
+        t = tabela.loc[cods]
+        g = np.array([i["gramas"] for i in itens], dtype=float)
+        linha = {"itens": [itens]}
+        for c in NUTRIENTES:
+            linha[c] = [round(float((t[c].fillna(0).to_numpy() / 100 * g).sum()), 1)]
+        df = pd.DataFrame(linha)
+        df["desvio_energia"] = (df.energia_kcal / metas["energia_kcal"] - 1).round(3)
+        df["codigos"] = [frozenset(cods)]
+        df["codigos_ordem"] = [tuple(cods)]
+        for col in [c for c in t.columns if c.startswith(("alergeno_", "dieta_"))] + ["nova", "nutriscore"]:
+            df[col] = [t[col].to_numpy()]
+        df.attrs["itens"] = t
         return df

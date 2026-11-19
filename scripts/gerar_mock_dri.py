@@ -15,6 +15,7 @@ Cenários do POST /dri (o Mockoon testa na ordem e usa a primeira resposta cujas
   6. sexo F                             -> 200 com as metas de uma mulher de exemplo
   7. qualquer outro (padrão)            -> 200 com as metas de um homem de exemplo
 """
+import itertools
 import json
 import sys
 import uuid
@@ -31,8 +32,12 @@ MULHER = dict(sexo="F", idade=30, altura_cm=163, peso_kg=62, atividade="pouco_at
 HOMEM = dict(sexo="M", idade=35, altura_cm=175, peso_kg=78, atividade="pouco_ativo")
 
 
+_contador = itertools.count()
+
+
 def u():
-    return str(uuid.uuid4())
+    """UUID fixo por posição: gerar de novo não muda o arquivo à toa (diffs limpos no git)."""
+    return str(uuid.uuid5(uuid.NAMESPACE_URL, f"ratatouilleia-mock-{next(_contador)}"))
 
 
 def regra(alvo, campo, valor="", operador="equals"):
@@ -63,6 +68,11 @@ def exemplo(perfil):
 def main():
     fora = {"tipo": "fora_do_escopo"}
     rotas = [
+        rota("get", "", "Página inicial: lista as rotas (para quem abre o endereço no navegador).",
+             [resposta("rotas", 200, {"api": "calculadora DRI (mock do Mockoon)", "rotas": {
+                 "GET /saude": "verifica se está no ar",
+                 "POST /dri": "metas do dia e por refeição; corpo: sexo, idade, altura_cm, peso_kg, atividade"}},
+                 padrao=True)]),
         rota("get", "saude", "Verifica se a API está no ar.",
              [resposta("no ar", 200, {"status": "ok", "fonte": "mockoon"}, padrao=True)]),
         rota("post", "dri", "Metas DRI do dia e por refeição (ver servicos/api_dri.py).", [

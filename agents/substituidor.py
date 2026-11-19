@@ -63,8 +63,12 @@ class Substituidor:
         self.base = [set(filter(None, str(i).split("|"))) for i in self.d.id_base]
 
     # ------------------------------------------------------------------ achar o alimento pedido
-    def achar(self, texto, id_app=None):
-        """Índice do alimento na TBCA: primeiro pelo id da base do app, depois pelas palavras do nome."""
+    def achar(self, texto, id_app=None, codigo=None):
+        """Índice do alimento na TBCA: pelo código da TBCA, pelo id da base do app ou pelas palavras do nome."""
+        if codigo is not None:
+            pos = np.flatnonzero(self.d.codigo.to_numpy() == codigo)
+            if len(pos):
+                return int(pos[0])
         if id_app:
             cand = [i for i, ids in enumerate(self.base) if id_app in ids]
             if cand:
@@ -90,9 +94,10 @@ class Substituidor:
 
     # ------------------------------------------------------------------ substituir
     def substituir(self, texto, n=5, mesmo_grupo=True, restricoes=(), evitar=(), id_app=None, metodo="som",
-                   so_na_base=False):
-        """so_na_base=True: só alimentos ligados a um ingrediente da base do app (dá para trocar na receita)."""
-        i = self.achar(texto, id_app)
+                   so_na_base=False, codigo=None):
+        """so_na_base=True: só alimentos ligados a um ingrediente da base do app (dá para trocar na receita).
+        codigo: código da TBCA do alimento (tem prioridade sobre texto e id_app)."""
+        i = self.achar(texto, id_app, codigo)
         if i is None:
             return {"erro": f"não achei '{texto}' na TBCA", "dica": "tente o nome do alimento (ex.: frango, arroz)"}
         dist = np.sqrt(((self.X - self.X[i]) ** 2).sum(1))
@@ -134,6 +139,6 @@ class Substituidor:
     def _item(self, j, casas, dist):
         motivo = ("mesma gaveta do mapa" if casas == 0 else
                   f"gaveta a {casas} casa{'s' if casas > 1 else ''} no mapa")
-        return {"nome": self.d.descricao[j], "motivo": f"{motivo} (perfil nutricional parecido)",
+        return {"nome": self.d.descricao[j], "codigo": self.d.codigo[j], "motivo": f"{motivo} (perfil nutricional parecido)",
                 "distancia_no_mapa": int(casas), "distancia_nutricional": round(float(dist), 3),
                 "por_100g": self._nutrientes(j), "na_base_do_app": sorted(self.base[j])}

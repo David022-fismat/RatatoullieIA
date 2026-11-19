@@ -9,7 +9,7 @@
 | `demos/` | demonstrações de cada parte, com dados fixos: `python demos/demo_orquestrador.py` |
 | `scripts/` | montar a base, gerar receitas com LLM e rodar os experimentos |
 | `servicos/` | APIs HTTP: `api_dri.py` (calculadora DRI) |
-| `mocks/` | ambientes do Mockoon que imitam as APIs: `dri.json` |
+| `mocks/` | ambientes do Mockoon que imitam as APIs: `dri.json`, `tbca.json`, `usuarios.json` |
 | `tests/` | testes automáticos: `python -m pytest tests -q` |
 | `docs/` | explicações longas (ex.: `avaliador_bandit_explicado.pdf`) |
 | `kb/`, `fontes/`, `resultados/` | base de conhecimento gerada, fontes originais e resultados dos experimentos |
@@ -126,32 +126,63 @@ Avaliador aprende com isso.
 |---|---|
 | agents/calculadora_dri.py | metas do dia e de cada refeição para adultos: energia pelas equações EER de 2023 (as da calculadora DRI do USDA), proteína, carboidrato, gordura, fibra, sódio e água pelas DRI. Menores de 19 anos, gestantes e lactantes são encaminhados a um profissional |
 | servicos/api_dri.py | a calculadora como API HTTP (`POST /dri`, `GET /saude`), só com a biblioteca padrão |
-| mocks/dri.json | o **Mockoon** imitando essa API, com cenários de teste (gerado por `scripts/gerar_mock_dri.py`) |
+| mocks/dri.json | o **Mockoon** imitando essa API, com cenários de teste (gerado por `scripts/gerar_mocks.py`, junto com os outros mocks) |
 | agents/cliente_dri.py | como o Montador pede as metas: chama a API em `DRI_API_URL`; se ela cair, calcula localmente |
 | kb/cronograma/despensa.csv | os alimentos que se combinam, por região, refeição e grupo: os mais comidos na POF 2017–2018, com a porção típica, e os nutrientes da TBCA sem receitas (gerado por `scripts/preparar_despensa.py`) |
 | agents/montador_ingredientes.py | todas as combinações da refeição, com as gramas ajustadas à energia e à proteína da meta |
 | agents/avaliador_ingredientes.py | trava (restrições, não gosta, sódio), nota de bem-estar e bandit (LinUCB) que escolhe as 3 opções e aprende com a escolha. O método está explicado em `docs/avaliador_bandit_explicado.pdf` |
-| agents/cronograma.py | junta tudo: `Cronograma(...).dia()` e `.escolher(refeicao, posicao)` |
+| agents/cliente_kb.py | busca na base de conhecimento (TBCA sem receitas e despensa) pela API em `KB_API_URL`; se ela cair, lê os arquivos de `kb/` |
+| agents/cliente_usuarios.py | cadastra o usuário (devolve o ID), guarda perfil e estado do bandit e registra as escolhas, pela API em `USUARIOS_API_URL`; se ela cair, usa `usuarios_local.json` |
+| agents/cronograma.py | junta tudo: `Cronograma(...).dia()`, `.escolher(refeicao, posicao)`, `Cronograma.do_usuario(id)` e a troca pelo mapa SOM: `.substitutos(refeicao, posicao, grupo)` e `.trocar(refeicao, posicao, grupo, codigo)` |
+| layout/cronograma_app.py + pages/1_Cronograma.py | a página **Cronograma** do app no navegador (ver abaixo) |
 
 ### Rodar
 
     pip install -r requirements.txt
-    npx @mockoon/cli start --data mocks/dri.json      # terminal 1: o mock da API DRI na porta 3001
+    npx @mockoon/cli start --data mocks/dri.json mocks/tbca.json mocks/usuarios.json   # terminal 1
     python demos/demo_cronograma.py                   # terminal 2
     python demos/demo_cronograma.py --regiao Sul --restricoes vegetariano --nao-gosta tomate
     python demos/demo_cronograma.py --aprender        # 20 almoços simulados: o que o bandit aprende
+    python demos/demo_usuario.py                      # cadastra um usuário (ID), monta o dia e registra as escolhas
+    python demos/demo_usuario.py --id exemplo         # usa o usuário de exemplo que já vem no mock
+    streamlit run app.py                              # o app, com a página Cronograma no menu lateral
 
-No lugar do mock, dá para subir a calculadora de verdade na mesma porta: `python -m servicos.api_dri`.
-Sem nenhuma das duas, use `--local`.
+No lugar do mock da DRI, dá para subir a calculadora de verdade na mesma porta: `python -m servicos.api_dri`.
+Sem nenhuma API no ar, tudo funciona com os arquivos locais (`--local` na demo do cronograma).
+
+### No navegador (Streamlit)
+
+    streamlit run app.py          # o app de sempre; no menu lateral aparece a página "Cronograma"
+
+Na página **Cronograma**:
+* **barra lateral:** entrar com o ID (o mock já tem o usuário `exemplo`), **cadastrar** (o ID gerado aparece na
+  tela para voltar outro dia) ou montar um dia **sem cadastro**. Embaixo, de onde vieram as metas, os alimentos e
+  os usuários (mock, API real ou arquivo local);
+* **metas do dia** (calculadora DRI) e uma aba por refeição, cada uma com as **3 opções**: alimentos e gramas,
+  totais em relação à meta, nota de bem-estar e o botão **Escolher esta** (o bandit aprende; com usuário, a
+  escolha e o estado vão para a API de usuários);
+* **🔄 Trocar um alimento (mapa SOM):** escolha o item, veja os substitutos parecidos (primeiro os que se comem
+  naquela refeição na POF) e troque. As gramas mudam para manter a energia do item, e a opção é reavaliada;
+  substitutos que fariam a opção passar do sódio ou bater numa restrição nem aparecem;
+* embaixo, **o que o agente aprendeu** e o **histórico de escolhas**.
 
 ### Mockoon
 
-O Mockoon serve uma API falsa a partir de um arquivo. O `mocks/dri.json` responde como a API da calculadora
-DRI, para quem trabalha no Montador, no Avaliador ou na interface não depender da calculadora real estar no ar.
+O Mockoon serve APIs falsas a partir de arquivos. Quem trabalha no Montador, no Avaliador ou na interface não
+depende da calculadora, da base ou do banco de usuários de verdade estarem no ar.
 
-* **No aplicativo (Mockoon Desktop):** *Open environment* → `mocks/dri.json` → *Start*. As rotas, as respostas
-  e as regras de cada cenário aparecem na tela.
-* **No terminal:** `npx @mockoon/cli start --data mocks/dri.json` (precisa do Node.js).
+| arquivo | porta | o que imita | variável que o código usa |
+|---|---|---|---|
+| `mocks/dri.json` | 3001 | calculadora DRI | `DRI_API_URL` |
+| `mocks/tbca.json` | 3002 | base de conhecimento: alimentos da TBCA sem receitas e despensa da POF | `KB_API_URL` |
+| `mocks/usuarios.json` | 3003 | cadastro de usuários (ID, perfil, estado do bandit) e registro das escolhas | `USUARIOS_API_URL` |
+
+* **No aplicativo (Mockoon Desktop):** *Open environment* → escolha o arquivo → *Start*. As rotas, as respostas,
+  as regras e os data buckets aparecem na tela.
+* **No terminal:** `npx @mockoon/cli start --data mocks/dri.json mocks/tbca.json mocks/usuarios.json` (precisa do Node.js).
+* **Para refazer os três** depois de mudar os dados ou o formato: `python scripts/gerar_mocks.py`.
+
+**Calculadora DRI (3001)**
 
 | pedido | resposta do mock |
 |---|---|
@@ -163,23 +194,38 @@ DRI, para quem trabalha no Montador, no Avaliador ou na interface não depender 
 | cabeçalho `X-Cenario: erro` | 500 (o cliente calcula as metas localmente) |
 | cabeçalho `X-Cenario: lento` | resposta depois de 8 s (o cliente desiste em 5 s e calcula localmente) |
 
-As metas do mock são **fixas**: servem para testar o fluxo, não para a pessoa real. As respostas de sucesso
-são geradas pela calculadora de verdade, então o formato é sempre o mesmo da API. Se o formato mudar, rode
-`python scripts/gerar_mock_dri.py` de novo.
-
-Corpo do `POST /dri`:
+As metas desse mock são **fixas**: servem para testar o fluxo, não para a pessoa real. As respostas são geradas
+pela calculadora de verdade, então o formato é o mesmo da API. Corpo do `POST /dri`:
 
     {"sexo": "F", "idade": 30, "altura_cm": 163, "peso_kg": 62, "atividade": "pouco_ativo",
      "gestante": false, "amamentando": false}
 
 `atividade`: `inativo`, `pouco_ativo`, `ativo` ou `muito_ativo`.
 
+**Base de conhecimento (3002)** e **usuários (3003)** usam rotas CRUD do Mockoon sobre listas em memória:
+
+| pedido | o que faz |
+|---|---|
+| `GET /alimentos?search=frango&limit=5` | busca em todos os campos (2.556 alimentos da TBCA sem receitas, nutrientes por 100 g) |
+| `GET /alimentos?grupo_eq=fruta&nova_eq=1&sort=fibra_g&order=desc` | filtros e ordenação |
+| `GET /alimentos?proteina_g_gte=20&alergeno_leite_eq=0` | filtros numéricos: `_gt`, `_gte`, `_lt`, `_lte`, `_ne`; texto: `_like` (regex), `_start`, `_end` |
+| `GET /alimentos/C0209A` | um alimento pelo código da TBCA (404 se não existe) |
+| `GET /despensa?regiao_eq=Nordeste&refeicao_eq=almoco` | o que o Montador combina, com a porção típica da POF |
+| `POST /usuarios` com `nome`, `dados_dri`, `regiao`, `restricoes`, `nao_gosta` | cadastra e devolve o usuário com o `id` gerado (UUID) |
+| `GET /usuarios/<id>` · `PATCH /usuarios/<id>` | lê · atualiza (ex.: `estado_bandit`) |
+| `POST /escolhas` · `GET /escolhas?usuario_id_eq=<id>` | registra · lista as escolhas de um usuário |
+
+O mock de usuários já vem com um usuário de exemplo (`id` = `exemplo`). O que é criado fica na memória do
+Mockoon e **some quando ele é reiniciado**. Para guardar de verdade, a API real (por exemplo, no banco que o
+grupo escolher) precisa responder nessas mesmas rotas.
+
 ### Testes
 
     pip install pytest
     python -m pytest tests -q
 
-Com o Mockoon (ou a API) no ar, o teste do contrato também roda; sem, ele é pulado.
+Com os mocks no ar, os testes de contrato e do fluxo com usuário também rodam; sem, eles são pulados e só os
+testes com arquivos locais rodam.
 
 ## Demonstrações
 
@@ -189,6 +235,7 @@ Com o Mockoon (ou a API) no ar, o teste do contrato também roda; sem, ele é pu
     python demos/demo_avaliador.py                 # só o Avaliador
     python demos/demo.py                           # protótipo inicial (Leitor, Planejador, Comprador)
     python demos/demo_cronograma.py                # cronograma por ingredientes (ver acima)
+    python demos/demo_usuario.py                   # cadastro com ID, escolhas registradas e estado salvo
     python demos/demo_substituicao.py              # mapa SOM direto (ex.: python demos/demo_substituicao.py carne --vegetariano)
 
 ## Base de conhecimento (kb/)

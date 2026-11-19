@@ -26,6 +26,8 @@ from pathlib import Path
 import pandas as pd
 
 RAIZ = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(RAIZ))
+from agents.montador_ingredientes import serve_no_prato   # noqa: E402  (o mesmo filtro da troca pelo SOM)
 BASE = RAIZ / "kb" / "som" / "tbca_som.csv"
 SAIDA = RAIZ / "kb" / "cronograma" / "despensa.csv"
 TOP = 10                    # alimentos por região × refeição × grupo
@@ -39,27 +41,11 @@ LEVE = {"proteína animal": ["proteina"], "laticínio": ["proteina"], "base (cer
         "fruta": ["fruta"]}
 GRUPOS = {"almoco": PRINCIPAL, "jantar": PRINCIPAL, "cafe_da_manha": LEVE, "lanche": LEVE}
 FEIJAO = re.compile(r"^feijao")          # feijão vai para o grupo leguminosa, não para o da proteína
-# não é "a fruta" nem "o carboidrato" de um prato: sucos, doces, farinhas cruas, temperos
-FORA = re.compile(r"^suco|nectar|refresco|doce|compota|calda|geleia|cristalizad|desidratad|"
-                  r"^farinha, (trigo|milho)|^amido|^fecula|^polvilho|^fermento|cru(a)?, |\bcrua?$|in natura, cru|"
-                  r"^tempero|^molho|^caldo|^creme de leite|^leite condensado|^manteiga|^margarina")
-FORA_CRU_OK = re.compile(r"^(alface|tomate|pepino|cenoura|repolho|rucula|agriao|cebola|pimentao|beterraba|"
-                         r"couve|acelga|chicoria|almeirao|banana|maca|mamao|laranja|tangerina|manga|uva|pera|"
-                         r"abacaxi|melancia|melao|goiaba|abacate|kiwi|morango|caju|acerola|ameixa|pessego|"
-                         r"caqui|carambola|pitanga|jabuticaba|graviola|pinha|cupuacu|maracuja|limao|mexerica|acai)")
 NUTRIENTES = ["energia_kcal", "proteina_g", "carboidrato_total_g", "lipidios_g", "fibra_g", "sodio_mg"]
 
 
 def sem_acento(t):
     return "".join(c for c in unicodedata.normalize("NFKD", str(t).lower()) if not unicodedata.combining(c))
-
-
-def serve(descricao):
-    """Alimento que pode ser servido como um item do prato (fruta e salada cruas valem; farinha crua não)."""
-    n = sem_acento(descricao)
-    if FORA_CRU_OK.match(n) and not re.match(r"^(suco|doce|geleia)", n):
-        return not re.search(r"suco|doce|compota|calda|geleia|cristalizad|desidratad|frit", n)
-    return not FORA.search(n)
 
 
 def main(caminho_pof):
@@ -75,7 +61,7 @@ def main(caminho_pof):
     pof = pof.explode("grupo_cron").dropna(subset=["grupo_cron"])
     eh_feijao = pof.descricao.map(lambda d: bool(FEIJAO.match(sem_acento(d))))
     pof = pof[~((pof.grupo_cron == "proteina") & eh_feijao)]
-    pof = pof[pof.descricao.map(serve)]
+    pof = pof[pof.descricao.map(serve_no_prato)]
     brasil = pof.assign(regiao="Brasil")
 
     chaves = ["regiao", "refeicao", "grupo_cron", "codigo"]

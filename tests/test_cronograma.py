@@ -8,6 +8,7 @@ O teste do contrato com o Mockoon só roda se houver uma API DRI no ar em DRI_AP
 http://localhost:3001): suba o mock com  npx @mockoon/cli start --data mocks/dri.json  antes.
 """
 import json
+import re
 import os
 import socket
 import threading
@@ -156,3 +157,30 @@ def test_bandit_aprende_o_gosto(metas):
     novo = AvaliadorIngredientes()
     novo.carregar(json.loads(json.dumps(estado)))
     assert np.allclose(novo.modelos["almoco"][1], av.modelos["almoco"][1])
+
+
+# ---------------------------------------------------------------- troca pelo mapa SOM
+def test_substitutos_e_troca_pelo_som():
+    from agents.cronograma import Cronograma
+    c = Cronograma(MULHER, restricoes=["sem_lactose"], regiao="Sudeste", usar_api=False)
+    c.opcoes("almoco")
+    res = c.substitutos("almoco", 0, "proteina")
+    original = c._mesmo_alimento(res["original"]["alimento"])
+    assert res["substitutos"], "o SOM deveria achar substitutos"
+    chaves = [c._mesmo_alimento(x["nome"]) for x in res["substitutos"]]
+    assert original not in chaves and len(set(chaves)) == len(chaves)     # nem o próprio, nem repetidos
+    antes = c.mostradas["almoco"].iloc[0]
+    kcal_item = lambda op: next(i for i in op.itens if i["grupo"] == "proteina")
+    nova = c.trocar("almoco", 0, "proteina", res["substitutos"][0]["codigo"])
+    assert nova["itens"][0]["alimento"] != antes.itens[0]["alimento"]
+    assert abs(nova["totais"]["energia_kcal"] - antes.energia_kcal) < 0.15 * antes.energia_kcal
+    assert c.mostradas["almoco"].iloc[0].motivo_veto is None
+    c.escolher("almoco", 0)                                    # o bandit aprende com a opção trocada
+
+
+def test_troca_respeita_restricao():
+    from agents.cronograma import Cronograma
+    c = Cronograma(MULHER, restricoes=["vegetariano"], regiao="Nordeste", usar_api=False)
+    c.opcoes("almoco")
+    for x in c.substitutos("almoco", 0, "proteina")["substitutos"]:
+        assert not re.search(r"carne|frango|peixe|boi|porco|linguica", x["nome"].lower())

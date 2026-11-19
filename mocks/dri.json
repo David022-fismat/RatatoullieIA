@@ -1,5 +1,5 @@
 {
-  "uuid": "1bfd9b3a-1687-437d-a570-a208e421d02d",
+  "uuid": "7f88b22b-8cc0-5795-8c24-c3f106c387df",
   "lastMigration": 33,
   "name": "RatatouilleIA - calculadora DRI (mock)",
   "endpointPrefix": "",
@@ -9,14 +9,50 @@
   "folders": [],
   "routes": [
     {
-      "uuid": "286b4ffd-9e4b-401d-9734-dbdbe3802e11",
+      "uuid": "2f800fb2-6a23-5778-bcd9-8d20a9ba2caa",
+      "type": "http",
+      "documentation": "Página inicial: lista as rotas (para quem abre o endereço no navegador).",
+      "method": "get",
+      "endpoint": "",
+      "responses": [
+        {
+          "uuid": "0a307e9f-f561-5ee7-a979-28411cd378ba",
+          "body": "{\n  \"api\": \"calculadora DRI (mock do Mockoon)\",\n  \"rotas\": {\n    \"GET /saude\": \"verifica se está no ar\",\n    \"POST /dri\": \"metas do dia e por refeição; corpo: sexo, idade, altura_cm, peso_kg, atividade\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "rotas",
+          "headers": [
+            {
+              "key": "X-Mock",
+              "value": "mockoon"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "7023dcb3-2fd7-54ea-850a-daf9894291ce",
       "type": "http",
       "documentation": "Verifica se a API está no ar.",
       "method": "get",
       "endpoint": "saude",
       "responses": [
         {
-          "uuid": "bc987262-b7bb-46d3-8225-fb577642d7b9",
+          "uuid": "edea90cc-af7d-5835-bba4-e255d6165623",
           "body": "{\n  \"status\": \"ok\",\n  \"fonte\": \"mockoon\"\n}",
           "latency": 0,
           "statusCode": 200,
@@ -45,14 +81,14 @@
       "streamingInterval": 0
     },
     {
-      "uuid": "8ea17ff8-89ab-4450-8414-0e1a4c04acf8",
+      "uuid": "2f8e3728-de9a-5459-a475-bdb040fc8bd2",
       "type": "http",
       "documentation": "Metas DRI do dia e por refeição (ver servicos/api_dri.py).",
       "method": "post",
       "endpoint": "dri",
       "responses": [
         {
-          "uuid": "06dcdfda-e66b-43f4-9441-40a529551528",
+          "uuid": "c9d3788c-ceda-54c6-8c70-306b4746869b",
           "body": "{\n  \"erro\": \"erro simulado no servidor\"\n}",
           "latency": 0,
           "statusCode": 500,
@@ -84,7 +120,7 @@
           "callbacks": []
         },
         {
-          "uuid": "4aea642f-4692-4690-a187-2db32073cf5b",
+          "uuid": "c93caa99-98b3-5ac7-8f6c-78f68345d599",
           "body": "{\n  \"fonte\": \"mockoon (exemplo fixo: homem de 35 anos, 175 cm, 78 kg, pouco_ativo)\",\n  \"entrada\": {\n    \"sexo\": \"M\",\n    \"idade\": 35,\n    \"altura_cm\": 175,\n    \"peso_kg\": 78,\n    \"atividade\": \"pouco_ativo\"\n  },\n  \"imc\": 25.5,\n  \"classificacao_imc\": \"sobrepeso\",\n  \"dia\": {\n    \"energia_kcal\": 2820,\n    \"proteina_g\": {\n      \"rda\": 62.4,\n      \"min\": 70.5,\n      \"max\": 246.8,\n      \"meta\": 105.8\n    },\n    \"carboidrato_g\": {\n      \"rda\": 130,\n      \"min\": 317.3,\n      \"max\": 458.3,\n      \"meta\": 387.8\n    },\n    \"gordura_g\": {\n      \"min\": 62.7,\n      \"max\": 109.7,\n      \"meta\": 94.0\n    },\n    \"fibra_g\": 39.5,\n    \"sodio_mg_max\": 2300,\n    \"gordura_saturada_g_max\": 31.3,\n    \"acucar_adicao_g_max\": 70.5,\n    \"agua_l\": 3.7\n  },\n  \"refeicoes\": {\n    \"cafe_da_manha\": {\n      \"fracao\": 0.2,\n      \"energia_kcal\": 564,\n      \"proteina_g\": 21.2,\n      \"carboidrato_g\": 77.6,\n      \"gordura_g\": 18.8,\n      \"gordura_g_max\": 21.9,\n      \"fibra_g\": 7.9,\n      \"sodio_mg_max\": 460\n    },\n    \"almoco\": {\n      \"fracao\": 0.35,\n      \"energia_kcal\": 987,\n      \"proteina_g\": 37.0,\n      \"carboidrato_g\": 135.7,\n      \"gordura_g\": 32.9,\n      \"gordura_g_max\": 38.4,\n      \"fibra_g\": 13.8,\n      \"sodio_mg_max\": 805\n    },\n    \"lanche\": {\n      \"fracao\": 0.15,\n      \"energia_kcal\": 423,\n      \"proteina_g\": 15.9,\n      \"carboidrato_g\": 58.2,\n      \"gordura_g\": 14.1,\n      \"gordura_g_max\": 16.5,\n      \"fibra_g\": 5.9,\n      \"sodio_mg_max\": 345\n    },\n    \"jantar\": {\n      \"fracao\": 0.3,\n      \"energia_kcal\": 846,\n      \"proteina_g\": 31.7,\n      \"carboidrato_g\": 116.3,\n      \"gordura_g\": 28.2,\n      \"gordura_g_max\": 32.9,\n      \"fibra_g\": 11.8,\n      \"sodio_mg_max\": 690\n    }\n  },\n  \"avisos\": [],\n  \"referencias\": [\n    \"National Academies (2023). Dietary Reference Intakes for Energy — equações EER, Tabela S-1.\",\n    \"Institute of Medicine (2005). DRI for Energy, Carbohydrate, Fiber, Fat, Fatty Acids, Cholesterol, Protein, and Amino Acids — RDA, AMDR e AI de fibra.\",\n    \"National Academies (2019). DRI for Sodium and Potassium — CDRR de sódio.\",\n    \"Institute of Medicine (2005). DRI for Water, Potassium, Sodium, Chloride, and Sulfate — AI de água.\"\n  ]\n}",
           "latency": 8000,
           "statusCode": 200,
@@ -116,7 +152,7 @@
           "callbacks": []
         },
         {
-          "uuid": "0852a9e0-c7d4-487d-82a4-e013cf895de5",
+          "uuid": "f1138a51-40a0-5c1d-8090-e1de9fc4955a",
           "body": "{\n  \"tipo\": \"fora_do_escopo\",\n  \"erro\": \"Gestação e amamentação mudam muito as necessidades: procure um nutricionista ou o pré-natal para ter metas individuais.\"\n}",
           "latency": 0,
           "statusCode": 422,
@@ -155,7 +191,7 @@
           "callbacks": []
         },
         {
-          "uuid": "b9840b22-66d0-4587-aac8-0c46acaa9309",
+          "uuid": "9d67725c-3cd1-52e3-985d-0f15623061a4",
           "body": "{\n  \"tipo\": \"fora_do_escopo\",\n  \"erro\": \"As metas para menores de 19 anos incluem a energia do crescimento e não são calculadas aqui: procure um nutricionista ou pediatra.\"\n}",
           "latency": 0,
           "statusCode": 422,
@@ -187,7 +223,7 @@
           "callbacks": []
         },
         {
-          "uuid": "82ec2bcb-be2d-4315-9a94-2b52f7a9e3cb",
+          "uuid": "bcb1d666-e877-5099-818c-f451c44e0414",
           "body": "{\n  \"tipo\": \"invalido\",\n  \"erro\": \"faltam campos: sexo, idade, altura_cm, peso_kg e atividade são obrigatórios\"\n}",
           "latency": 0,
           "statusCode": 422,
@@ -247,7 +283,7 @@
           "callbacks": []
         },
         {
-          "uuid": "8ef1a3c7-e488-4ee3-8f2d-3d8d33376a3a",
+          "uuid": "33166a93-5202-556a-a13b-6888594d6e2f",
           "body": "{\n  \"fonte\": \"mockoon (exemplo fixo: mulher de 30 anos, 163 cm, 62 kg, pouco_ativo)\",\n  \"entrada\": {\n    \"sexo\": \"F\",\n    \"idade\": 30,\n    \"altura_cm\": 163,\n    \"peso_kg\": 62,\n    \"atividade\": \"pouco_ativo\"\n  },\n  \"imc\": 23.3,\n  \"classificacao_imc\": \"eutrofia\",\n  \"dia\": {\n    \"energia_kcal\": 2194,\n    \"proteina_g\": {\n      \"rda\": 49.6,\n      \"min\": 54.8,\n      \"max\": 192.0,\n      \"meta\": 82.3\n    },\n    \"carboidrato_g\": {\n      \"rda\": 130,\n      \"min\": 246.8,\n      \"max\": 356.5,\n      \"meta\": 301.7\n    },\n    \"gordura_g\": {\n      \"min\": 48.8,\n      \"max\": 85.3,\n      \"meta\": 73.1\n    },\n    \"fibra_g\": 30.7,\n    \"sodio_mg_max\": 2300,\n    \"gordura_saturada_g_max\": 24.4,\n    \"acucar_adicao_g_max\": 54.8,\n    \"agua_l\": 2.7\n  },\n  \"refeicoes\": {\n    \"cafe_da_manha\": {\n      \"fracao\": 0.2,\n      \"energia_kcal\": 439,\n      \"proteina_g\": 16.5,\n      \"carboidrato_g\": 60.3,\n      \"gordura_g\": 14.6,\n      \"gordura_g_max\": 17.1,\n      \"fibra_g\": 6.1,\n      \"sodio_mg_max\": 460\n    },\n    \"almoco\": {\n      \"fracao\": 0.35,\n      \"energia_kcal\": 768,\n      \"proteina_g\": 28.8,\n      \"carboidrato_g\": 105.6,\n      \"gordura_g\": 25.6,\n      \"gordura_g_max\": 29.9,\n      \"fibra_g\": 10.7,\n      \"sodio_mg_max\": 805\n    },\n    \"lanche\": {\n      \"fracao\": 0.15,\n      \"energia_kcal\": 329,\n      \"proteina_g\": 12.3,\n      \"carboidrato_g\": 45.3,\n      \"gordura_g\": 11.0,\n      \"gordura_g_max\": 12.8,\n      \"fibra_g\": 4.6,\n      \"sodio_mg_max\": 345\n    },\n    \"jantar\": {\n      \"fracao\": 0.3,\n      \"energia_kcal\": 658,\n      \"proteina_g\": 24.7,\n      \"carboidrato_g\": 90.5,\n      \"gordura_g\": 21.9,\n      \"gordura_g_max\": 25.6,\n      \"fibra_g\": 9.2,\n      \"sodio_mg_max\": 690\n    }\n  },\n  \"avisos\": [],\n  \"referencias\": [\n    \"National Academies (2023). Dietary Reference Intakes for Energy — equações EER, Tabela S-1.\",\n    \"Institute of Medicine (2005). DRI for Energy, Carbohydrate, Fiber, Fat, Fatty Acids, Cholesterol, Protein, and Amino Acids — RDA, AMDR e AI de fibra.\",\n    \"National Academies (2019). DRI for Sodium and Potassium — CDRR de sódio.\",\n    \"Institute of Medicine (2005). DRI for Water, Potassium, Sodium, Chloride, and Sulfate — AI de água.\"\n  ]\n}",
           "latency": 0,
           "statusCode": 200,
@@ -279,7 +315,7 @@
           "callbacks": []
         },
         {
-          "uuid": "08452b8c-a1a8-4fc6-a278-4b508719090e",
+          "uuid": "ddb6fde9-84f1-5984-8499-a91b1adc6b1e",
           "body": "{\n  \"fonte\": \"mockoon (exemplo fixo: homem de 35 anos, 175 cm, 78 kg, pouco_ativo)\",\n  \"entrada\": {\n    \"sexo\": \"M\",\n    \"idade\": 35,\n    \"altura_cm\": 175,\n    \"peso_kg\": 78,\n    \"atividade\": \"pouco_ativo\"\n  },\n  \"imc\": 25.5,\n  \"classificacao_imc\": \"sobrepeso\",\n  \"dia\": {\n    \"energia_kcal\": 2820,\n    \"proteina_g\": {\n      \"rda\": 62.4,\n      \"min\": 70.5,\n      \"max\": 246.8,\n      \"meta\": 105.8\n    },\n    \"carboidrato_g\": {\n      \"rda\": 130,\n      \"min\": 317.3,\n      \"max\": 458.3,\n      \"meta\": 387.8\n    },\n    \"gordura_g\": {\n      \"min\": 62.7,\n      \"max\": 109.7,\n      \"meta\": 94.0\n    },\n    \"fibra_g\": 39.5,\n    \"sodio_mg_max\": 2300,\n    \"gordura_saturada_g_max\": 31.3,\n    \"acucar_adicao_g_max\": 70.5,\n    \"agua_l\": 3.7\n  },\n  \"refeicoes\": {\n    \"cafe_da_manha\": {\n      \"fracao\": 0.2,\n      \"energia_kcal\": 564,\n      \"proteina_g\": 21.2,\n      \"carboidrato_g\": 77.6,\n      \"gordura_g\": 18.8,\n      \"gordura_g_max\": 21.9,\n      \"fibra_g\": 7.9,\n      \"sodio_mg_max\": 460\n    },\n    \"almoco\": {\n      \"fracao\": 0.35,\n      \"energia_kcal\": 987,\n      \"proteina_g\": 37.0,\n      \"carboidrato_g\": 135.7,\n      \"gordura_g\": 32.9,\n      \"gordura_g_max\": 38.4,\n      \"fibra_g\": 13.8,\n      \"sodio_mg_max\": 805\n    },\n    \"lanche\": {\n      \"fracao\": 0.15,\n      \"energia_kcal\": 423,\n      \"proteina_g\": 15.9,\n      \"carboidrato_g\": 58.2,\n      \"gordura_g\": 14.1,\n      \"gordura_g_max\": 16.5,\n      \"fibra_g\": 5.9,\n      \"sodio_mg_max\": 345\n    },\n    \"jantar\": {\n      \"fracao\": 0.3,\n      \"energia_kcal\": 846,\n      \"proteina_g\": 31.7,\n      \"carboidrato_g\": 116.3,\n      \"gordura_g\": 28.2,\n      \"gordura_g_max\": 32.9,\n      \"fibra_g\": 11.8,\n      \"sodio_mg_max\": 690\n    }\n  },\n  \"avisos\": [],\n  \"referencias\": [\n    \"National Academies (2023). Dietary Reference Intakes for Energy — equações EER, Tabela S-1.\",\n    \"Institute of Medicine (2005). DRI for Energy, Carbohydrate, Fiber, Fat, Fatty Acids, Cholesterol, Protein, and Amino Acids — RDA, AMDR e AI de fibra.\",\n    \"National Academies (2019). DRI for Sodium and Potassium — CDRR de sódio.\",\n    \"Institute of Medicine (2005). DRI for Water, Potassium, Sodium, Chloride, and Sulfate — AI de água.\"\n  ]\n}",
           "latency": 0,
           "statusCode": 200,
@@ -311,11 +347,15 @@
   "rootChildren": [
     {
       "type": "route",
-      "uuid": "286b4ffd-9e4b-401d-9734-dbdbe3802e11"
+      "uuid": "2f800fb2-6a23-5778-bcd9-8d20a9ba2caa"
     },
     {
       "type": "route",
-      "uuid": "8ea17ff8-89ab-4450-8414-0e1a4c04acf8"
+      "uuid": "7023dcb3-2fd7-54ea-850a-daf9894291ce"
+    },
+    {
+      "type": "route",
+      "uuid": "2f8e3728-de9a-5459-a475-bdb040fc8bd2"
     }
   ],
   "proxyMode": false,

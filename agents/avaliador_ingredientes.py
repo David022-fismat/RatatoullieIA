@@ -159,8 +159,8 @@ class AvaliadorIngredientes:
         prot, carb = tipo("proteina"), item("carboidrato")
         escolhidas: list[int] = []
         # variedade, do mais exigente ao menos: alimentos diferentes, proteína de outro tipo, outro carboidrato
-        for minimo, prot_dif, carb_dif in ((2, True, True), (2, True, False), (2, False, False), (1, False, False),
-                                           (0, False, False)):
+        for minimo, prot_dif, carb_dif in ((2, True, True), (2, True, False), (2, False, True), (2, False, False),
+                                           (1, False, False), (0, False, False)):
             for i in ordem:
                 if len(escolhidas) == 3:
                     break

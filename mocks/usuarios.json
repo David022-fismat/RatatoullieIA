@@ -1,0 +1,224 @@
+{
+  "uuid": "40b762fe-54cf-5638-be5f-8cb83fb63c8a",
+  "lastMigration": 33,
+  "name": "RatatouilleIA - usuários (mock)",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3003,
+  "hostname": "",
+  "folders": [],
+  "routes": [
+    {
+      "uuid": "3db75f9e-5337-5776-b79d-d4fde7cc20d9",
+      "type": "http",
+      "documentation": "Página inicial: lista as rotas.",
+      "method": "get",
+      "endpoint": "",
+      "responses": [
+        {
+          "uuid": "34d49ea3-b187-5a56-b468-09bbc18adb8b",
+          "body": "{\n  \"api\": \"usuários (mock do Mockoon)\",\n  \"rotas\": {\n    \"GET /saude\": \"verifica se está no ar\",\n    \"POST /usuarios\": \"cadastra e devolve o usuário com o id gerado\",\n    \"GET /usuarios/exemplo\": \"um usuário pelo id\",\n    \"PATCH /usuarios/<id>\": \"atualiza perfil ou estado_bandit\",\n    \"POST /escolhas\": \"registra uma escolha\",\n    \"GET /escolhas?usuario_id_eq=<id>\": \"escolhas de um usuário\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "rotas",
+          "headers": [
+            {
+              "key": "X-Mock",
+              "value": "mockoon"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "6ad4deb7-f879-5ee1-9bf3-69d770e94ee4",
+      "type": "http",
+      "documentation": "Verifica se a API está no ar.",
+      "method": "get",
+      "endpoint": "saude",
+      "responses": [
+        {
+          "uuid": "17399e9c-3bd8-5fe7-b49b-a8bf0e30b3c1",
+          "body": "{\n  \"status\": \"ok\",\n  \"fonte\": \"mockoon\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "no ar",
+          "headers": [
+            {
+              "key": "X-Mock",
+              "value": "mockoon"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "dd817dd9-2f81-50d1-b65c-103925c22aad",
+      "type": "crud",
+      "documentation": "Cadastro de usuários. POST /usuarios sem 'id' cria e devolve o usuário com um id (UUID) gerado pelo Mockoon. PATCH /usuarios/<id> atualiza perfil ou estado_bandit.",
+      "method": "",
+      "endpoint": "usuarios",
+      "responses": [
+        {
+          "uuid": "163a1c2b-4a8a-57a6-bd81-a45c5d127703",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "data bucket",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "usu",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "b0a79b30-7483-57c3-a414-59fbbe8d2270",
+      "type": "crud",
+      "documentation": "Registro das escolhas (qual das 3 opções a pessoa escolheu). Ex.: /escolhas?usuario_id_eq=<id>&refeicao_eq=almoco&sort=data&order=desc",
+      "method": "",
+      "endpoint": "escolhas",
+      "responses": [
+        {
+          "uuid": "69a27919-cb79-56df-926e-06ec4a45c97f",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "data bucket",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "esc",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "route",
+      "uuid": "3db75f9e-5337-5776-b79d-d4fde7cc20d9"
+    },
+    {
+      "type": "route",
+      "uuid": "6ad4deb7-f879-5ee1-9bf3-69d770e94ee4"
+    },
+    {
+      "type": "route",
+      "uuid": "dd817dd9-2f81-50d1-b65c-103925c22aad"
+    },
+    {
+      "type": "route",
+      "uuid": "b0a79b30-7483-57c3-a414-59fbbe8d2270"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json; charset=utf-8"
+    },
+    {
+      "key": "Access-Control-Allow-Origin",
+      "value": "*"
+    },
+    {
+      "key": "Access-Control-Allow-Methods",
+      "value": "GET,POST,PUT,PATCH,DELETE,OPTIONS"
+    },
+    {
+      "key": "Access-Control-Allow-Headers",
+      "value": "Content-Type"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": [
+    {
+      "uuid": "4addec04-4d42-5cf8-9607-9586c7621e81",
+      "id": "usu",
+      "name": "usuarios",
+      "documentation": "Começa com um usuário de exemplo (id 'exemplo'). Os novos ganham UUID.",
+      "value": "[{\"id\":\"exemplo\",\"nome\":\"Usuária de exemplo\",\"criado_em\":\"2026-11-18T12:00:00-03:00\",\"dados_dri\":{\"sexo\":\"F\",\"idade\":30,\"altura_cm\":163,\"peso_kg\":62,\"atividade\":\"pouco_ativo\"},\"regiao\":\"Nordeste\",\"restricoes\":[\"sem_lactose\"],\"nao_gosta\":[\"jilo\"],\"estado_bandit\":{}}]"
+    },
+    {
+      "uuid": "38cfad92-08aa-5cb4-abe3-624502657081",
+      "id": "esc",
+      "name": "escolhas",
+      "documentation": "Começa com uma escolha de exemplo (id 1). As novas ganham id 2, 3...",
+      "value": "[{\"id\":1,\"usuario_id\":\"exemplo\",\"data\":\"2026-11-18T12:30:00-03:00\",\"refeicao\":\"almoco\",\"posicao\":1,\"codigos\":[\"C0732F\",\"C0209A\",\"C0091T\",\"C0035B\",\"C0006C\"]}]"
+    }
+  ],
+  "callbacks": []
+}
